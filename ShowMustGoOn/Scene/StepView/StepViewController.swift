@@ -1,8 +1,8 @@
 //
-//  ListViewController.swift
+//  StepViewController.swift
 //  ShowMustGoOn
 //
-//  Created by 김지훈 on 10/17/24.
+//  Created by 김지훈 on 10/18/24.
 //
 
 import UIKit
@@ -10,7 +10,7 @@ import UIKit
 import Combine
 import SnapKit
 
-class ListViewController: UIViewController {
+class StepViewController: UIViewController {
     // MARK: - Properties
     
     
@@ -28,7 +28,7 @@ class ListViewController: UIViewController {
 }
 
 // MARK: - LifeCycle
-extension ListViewController {
+extension StepViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,28 +40,31 @@ extension ListViewController {
 }
 
 // MARK: - Navigation
-extension ListViewController {
+extension StepViewController {
     func navigationUI() {
         navigationController?.navigationBar.barTintColor = .background.white
         
-        let viewTitle = CustomLabel(title: "List Practice", size: Constants.size.size28, weight: .Bold, color: .text.black)
+        let viewTitle = CustomLabel(title: "Step Practice", size: Constants.size.size28, weight: .Bold, color: .text.black)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: viewTitle)
     }
 }
 
 // MARK: - SetUp
-private extension ListViewController {
+private extension StepViewController {
     func setUp() {
         
     }
 }
 
 // MARK: - Method
-private extension ListViewController {
-
+private extension StepViewController {
+    //    func <#name#>() {
+    //
+    //    }
 }
 
 // MARK: - Delegate
-extension ListViewController {
+extension StepViewController {
     
 }
+
