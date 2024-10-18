@@ -20,6 +20,9 @@
 		B8CD65442CC1038C00E8F8B3 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65432CC1038C00E8F8B3 /* CustomLabel.swift */; };
 		B8CD65472CC104C400E8F8B3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B8CD65462CC104C400E8F8B3 /* SnapKit */; };
 		B8CD654C2CC1FC1700E8F8B3 /* StepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD654B2CC1FC1700E8F8B3 /* StepViewController.swift */; };
+		B8CD654F2CC221FC00E8F8B3 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD654E2CC221FC00E8F8B3 /* SplashViewController.swift */; };
+		B8CD65512CC2225800E8F8B3 /* codingGIF.gif in Resources */ = {isa = PBXBuildFile; fileRef = B8CD65502CC2225800E8F8B3 /* codingGIF.gif */; };
+		B8CD65542CC2227F00E8F8B3 /* FLAnimatedImage in Frameworks */ = {isa = PBXBuildFile; productRef = B8CD65532CC2227F00E8F8B3 /* FLAnimatedImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,8 @@
 		B8CD65412CC0FEC000E8F8B3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B8CD65432CC1038C00E8F8B3 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		B8CD654B2CC1FC1700E8F8B3 /* StepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepViewController.swift; sourceTree = "<group>"; };
+		B8CD654E2CC221FC00E8F8B3 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		B8CD65502CC2225800E8F8B3 /* codingGIF.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = codingGIF.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +50,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8CD65472CC104C400E8F8B3 /* SnapKit in Frameworks */,
+				B8CD65542CC2227F00E8F8B3 /* FLAnimatedImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +119,7 @@
 		B8CD65322CC0FC7200E8F8B3 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				B8CD654D2CC221D600E8F8B3 /* StartView */,
 				B8CD65372CC0FD5F00E8F8B3 /* ListView */,
 				B8CD654A2CC1FBFE00E8F8B3 /* StepView */,
 			);
@@ -151,6 +158,15 @@
 			path = StepView;
 			sourceTree = "<group>";
 		};
+		B8CD654D2CC221D600E8F8B3 /* StartView */ = {
+			isa = PBXGroup;
+			children = (
+				B8CD654E2CC221FC00E8F8B3 /* SplashViewController.swift */,
+				B8CD65502CC2225800E8F8B3 /* codingGIF.gif */,
+			);
+			path = StartView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -169,6 +185,7 @@
 			name = ShowMustGoOn;
 			packageProductDependencies = (
 				B8CD65462CC104C400E8F8B3 /* SnapKit */,
+				B8CD65532CC2227F00E8F8B3 /* FLAnimatedImage */,
 			);
 			productName = ShowMustGoOn;
 			productReference = B8CD65052CC0FC4000E8F8B3 /* ShowMustGoOn.app */;
@@ -200,6 +217,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				B8CD65452CC104C400E8F8B3 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				B8CD65522CC2227F00E8F8B3 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B8CD65062CC0FC4000E8F8B3 /* Products */;
@@ -218,6 +236,7 @@
 			files = (
 				B8CD652B2CC0FC5C00E8F8B3 /* Assets.xcassets in Resources */,
 				B8CD652D2CC0FC5C00E8F8B3 /* LaunchScreen.storyboard in Resources */,
+				B8CD65512CC2225800E8F8B3 /* codingGIF.gif in Resources */,
 				B8CD653C2CC0FE1500E8F8B3 /* PretendardVariable.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,6 +257,7 @@
 				B8CD653E2CC0FE8600E8F8B3 /* UIColor.swift in Sources */,
 				B8CD65442CC1038C00E8F8B3 /* CustomLabel.swift in Sources */,
 				B8CD654C2CC1FC1700E8F8B3 /* StepViewController.swift in Sources */,
+				B8CD654F2CC221FC00E8F8B3 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +482,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		B8CD65522CC2227F00E8F8B3 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Flipboard/FLAnimatedImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.17;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -469,6 +497,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B8CD65452CC104C400E8F8B3 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		B8CD65532CC2227F00E8F8B3 /* FLAnimatedImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8CD65522CC2227F00E8F8B3 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */;
+			productName = FLAnimatedImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

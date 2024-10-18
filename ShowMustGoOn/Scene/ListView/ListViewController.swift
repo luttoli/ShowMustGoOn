@@ -32,7 +32,7 @@ extension ListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        view.backgroundColor = .background.white
         
         navigationUI()
         setUp()
