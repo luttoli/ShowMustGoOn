@@ -8,12 +8,12 @@
 import UIKit
 
 import Combine
-import FLAnimatedImage
 import SnapKit
+import SwiftyGif
 
 class SplashViewController: UIViewController {
     // MARK: - Components
-    var loadingGIF = FLAnimatedImageView()
+    var loadingGif = UIImageView()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -40,17 +40,17 @@ extension SplashViewController {
 // MARK: - SetUp
 private extension SplashViewController {
     func setUp() {
-        view.addSubview(loadingGIF)
+        view.addSubview(loadingGif)
         
-        loadingGIF.snp.makeConstraints {
+        loadingGif.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
         }
         
-        // GIF 파일 불러오기
-        if let gifUrl = Bundle.main.url(forResource: "codingGIF", withExtension: "gif"),
-           let gifData = try? Data(contentsOf: gifUrl) {
-            let animatedImage = FLAnimatedImage(animatedGIFData: gifData)
-            loadingGIF.animatedImage = animatedImage
+        do {
+            let gif = try UIImage(gifName: "codingGif.gif")
+            loadingGif.setGifImage(gif, loopCount: 3)
+        } catch {
+            print("fail")
         }
     }
 }
@@ -59,7 +59,7 @@ private extension SplashViewController {
 private extension SplashViewController {
     // 화면 전환
     func transitionToList() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) { // 2초 후 전환 (GIF를 보여주기 위해)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) { // 후 전환 (GIF를 보여주기 위해)
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                let window = windowScene.windows.first {
                 let customTBC = CustomTabBarController()
