@@ -2,7 +2,7 @@
 iOS 앱 개발 공부하고 기록합니다. 계속 합니다!
 
 ## CustomTabBar
--[UITabBarController](https://luttoli.notion.site/UITabBarController-6157ff0460724ba9ab1458d0cf845553?pvs=4) 
+- [UITabBarController](https://luttoli.notion.site/UITabBarController-6157ff0460724ba9ab1458d0cf845553?pvs=4) 
 
 ## SplashViewController
 - 앱 실행 시 런치스크린, 메인뷰 로드되기 전 보여주기
