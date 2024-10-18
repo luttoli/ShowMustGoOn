@@ -12,7 +12,7 @@ extension UIColor {
     static let textField = TextFieldColor()
     static let button = ButtonColor()
     static let border = BorderColor()
-    static let tabbar = TabbarColor()
+    static let tabBar = TabBarColor()
     static let background = BackGroundColor()
     static let cell = CellColor()
 
@@ -51,7 +51,7 @@ extension UIColor {
         var red = UIColor.red
     }
     
-    struct TabbarColor {
+    struct TabBarColor {
         var darkGray = UIColor.darkGray
     }
     

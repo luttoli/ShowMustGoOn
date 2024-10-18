@@ -19,9 +19,8 @@ class CustomTabBarController: UITabBarController {
         self.viewControllers = [listNaviController]
         
         self.tabBar.barTintColor = .background.white
+        self.tabBar.tintColor = .tabBar.darkGray
         self.tabBar.unselectedItemTintColor = .text.subDarkGray
-        self.tabBar.tintColor = .tabbar.darkGray
-        
         self.selectedIndex = 0
     }
 }
