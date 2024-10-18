@@ -33,6 +33,7 @@ extension SplashViewController {
         view.backgroundColor = .background.white
         
         setUp()
+        transitionToList()
     }
 }
 
@@ -46,9 +47,9 @@ private extension SplashViewController {
         }
         
         // GIF 파일 불러오기
-        if let gifURL = Bundle.main.url(forResource: "codingGIF", withExtension: "gif"),
-           let gifData = try? Data(contentsOf: gifURL) {
-            let animatedImage = FLAnimatedImage(gifData: gifData)
+        if let gifUrl = Bundle.main.url(forResource: "codingGIF", withExtension: "gif"),
+           let gifData = try? Data(contentsOf: gifUrl) {
+            let animatedImage = FLAnimatedImage(animatedGIFData: gifData)
             loadingGIF.animatedImage = animatedImage
         }
     }
@@ -56,5 +57,15 @@ private extension SplashViewController {
 
 // MARK: - Method
 private extension SplashViewController {
-    
+    // 화면 전환
+    func transitionToList() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) { // 2초 후 전환 (GIF를 보여주기 위해)
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let window = windowScene.windows.first {
+                let customTBC = CustomTabBarController()
+                window.rootViewController = customTBC
+                window.makeKeyAndVisible()
+            }
+        }
+    }
 }

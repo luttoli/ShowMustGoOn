@@ -23,6 +23,8 @@
 		B8CD654F2CC221FC00E8F8B3 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD654E2CC221FC00E8F8B3 /* SplashViewController.swift */; };
 		B8CD65512CC2225800E8F8B3 /* codingGIF.gif in Resources */ = {isa = PBXBuildFile; fileRef = B8CD65502CC2225800E8F8B3 /* codingGIF.gif */; };
 		B8CD65542CC2227F00E8F8B3 /* FLAnimatedImage in Frameworks */ = {isa = PBXBuildFile; productRef = B8CD65532CC2227F00E8F8B3 /* FLAnimatedImage */; };
+		B8CD65572CC2355E00E8F8B3 /* SwiftyGif in Frameworks */ = {isa = PBXBuildFile; productRef = B8CD65562CC2355E00E8F8B3 /* SwiftyGif */; };
+		B8CD65592CC2355E00E8F8B3 /* SwiftyGif-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = B8CD65582CC2355E00E8F8B3 /* SwiftyGif-Dynamic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 			files = (
 				B8CD65472CC104C400E8F8B3 /* SnapKit in Frameworks */,
 				B8CD65542CC2227F00E8F8B3 /* FLAnimatedImage in Frameworks */,
+				B8CD65572CC2355E00E8F8B3 /* SwiftyGif in Frameworks */,
+				B8CD65592CC2355E00E8F8B3 /* SwiftyGif-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +190,8 @@
 			packageProductDependencies = (
 				B8CD65462CC104C400E8F8B3 /* SnapKit */,
 				B8CD65532CC2227F00E8F8B3 /* FLAnimatedImage */,
+				B8CD65562CC2355E00E8F8B3 /* SwiftyGif */,
+				B8CD65582CC2355E00E8F8B3 /* SwiftyGif-Dynamic */,
 			);
 			productName = ShowMustGoOn;
 			productReference = B8CD65052CC0FC4000E8F8B3 /* ShowMustGoOn.app */;
@@ -218,6 +224,7 @@
 			packageReferences = (
 				B8CD65452CC104C400E8F8B3 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				B8CD65522CC2227F00E8F8B3 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */,
+				B8CD65552CC2355E00E8F8B3 /* XCRemoteSwiftPackageReference "SwiftyGif" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B8CD65062CC0FC4000E8F8B3 /* Products */;
@@ -490,6 +497,14 @@
 				minimumVersion = 1.0.17;
 			};
 		};
+		B8CD65552CC2355E00E8F8B3 /* XCRemoteSwiftPackageReference "SwiftyGif" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kirualex/SwiftyGif";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -502,6 +517,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B8CD65522CC2227F00E8F8B3 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */;
 			productName = FLAnimatedImage;
+		};
+		B8CD65562CC2355E00E8F8B3 /* SwiftyGif */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8CD65552CC2355E00E8F8B3 /* XCRemoteSwiftPackageReference "SwiftyGif" */;
+			productName = SwiftyGif;
+		};
+		B8CD65582CC2355E00E8F8B3 /* SwiftyGif-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8CD65552CC2355E00E8F8B3 /* XCRemoteSwiftPackageReference "SwiftyGif" */;
+			productName = "SwiftyGif-Dynamic";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
