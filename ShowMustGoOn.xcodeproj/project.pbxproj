@@ -19,6 +19,7 @@
 		B8CD65422CC0FEC000E8F8B3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65412CC0FEC000E8F8B3 /* Constants.swift */; };
 		B8CD65442CC1038C00E8F8B3 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65432CC1038C00E8F8B3 /* CustomLabel.swift */; };
 		B8CD65472CC104C400E8F8B3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B8CD65462CC104C400E8F8B3 /* SnapKit */; };
+		B8CD654C2CC1FC1700E8F8B3 /* StepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD654B2CC1FC1700E8F8B3 /* StepViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		B8CD653F2CC0FE9D00E8F8B3 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		B8CD65412CC0FEC000E8F8B3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B8CD65432CC1038C00E8F8B3 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		B8CD654B2CC1FC1700E8F8B3 /* StepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				B8CD65372CC0FD5F00E8F8B3 /* ListView */,
+				B8CD654A2CC1FBFE00E8F8B3 /* StepView */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -138,6 +141,14 @@
 				B8CD653B2CC0FE1500E8F8B3 /* PretendardVariable.ttf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		B8CD654A2CC1FBFE00E8F8B3 /* StepView */ = {
+			isa = PBXGroup;
+			children = (
+				B8CD654B2CC1FC1700E8F8B3 /* StepViewController.swift */,
+			);
+			path = StepView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,6 +237,7 @@
 				B8CD65392CC0FD7100E8F8B3 /* ListViewController.swift in Sources */,
 				B8CD653E2CC0FE8600E8F8B3 /* UIColor.swift in Sources */,
 				B8CD65442CC1038C00E8F8B3 /* CustomLabel.swift in Sources */,
+				B8CD654C2CC1FC1700E8F8B3 /* StepViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

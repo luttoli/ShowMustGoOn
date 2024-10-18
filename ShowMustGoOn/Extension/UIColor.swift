@@ -52,7 +52,8 @@ extension UIColor {
     }
     
     struct TabBarColor {
-        var darkGray = UIColor.darkGray
+        var black = UIColor.black
+        var lightGray = UIColor.lightGray
     }
     
     struct BackGroundColor {
