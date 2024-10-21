@@ -44,7 +44,7 @@ extension StepViewController {
     func navigationUI() {
         navigationController?.navigationBar.barTintColor = .background.white
         
-        let viewTitle = CustomLabel(title: "Step Practice", size: Constants.size.size28, weight: .Bold, color: .text.black)
+        let viewTitle = CustomLabel(title: "Step Practice", size: Constants.size.size30, weight: .Bold, color: .text.black)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: viewTitle)
     }
 }

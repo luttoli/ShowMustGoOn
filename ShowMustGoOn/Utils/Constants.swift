@@ -18,7 +18,7 @@ struct Constants {
 
 struct Margin {
     let vertical: CGFloat = 12
-    let horizontal: CGFloat = 20
+    let horizontal: CGFloat = 16
     let cellSpacing: CGFloat = 20
 }
 
@@ -44,12 +44,14 @@ struct Radius {
 
 struct Size {
     let size10: CGFloat = 10
-    let size12: CGFloat = 12
-    let size14: CGFloat = 14
-    let size18: CGFloat = 18
     let size20: CGFloat = 20
-    let size28: CGFloat = 28
     let size30: CGFloat = 30
+    let size40: CGFloat = 40
+    let size50: CGFloat = 50
+    let size60: CGFloat = 60
+    let size70: CGFloat = 70
+    let size80: CGFloat = 80
+    let size90: CGFloat = 90
     let size100: CGFloat = 100
     let size120: CGFloat = 120
     let size130: CGFloat = 130

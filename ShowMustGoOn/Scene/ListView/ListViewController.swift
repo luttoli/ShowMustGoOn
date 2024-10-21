@@ -60,7 +60,7 @@ extension ListViewController {
     func navigationUI() {
         navigationController?.navigationBar.barTintColor = .background.white
         
-        let viewTitle = CustomLabel(title: "List Practice", size: Constants.size.size28, weight: .Bold, color: .text.black)
+        let viewTitle = CustomLabel(title: "List Practice", size: Constants.size.size30, weight: .Bold, color: .text.black)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: viewTitle)
     }
 }
@@ -71,14 +71,18 @@ private extension ListViewController {
         view.addSubview(listSegment)
         
         listSegment.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
             $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(Constants.size.size50)
         }
 
         view.addSubview(firstView)
         firstView.snp.makeConstraints {
-            $0.top.equalTo(listSegment.snp.bottom).offset(20)
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.top.equalTo(listSegment.snp.bottom).offset(Constants.margin.vertical)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
         }
         
         listSegment.addAction(UIAction(handler: { [weak self] _ in
@@ -95,16 +99,20 @@ private extension ListViewController {
             secondView.removeFromSuperview() // 다른 뷰는 제거
             view.addSubview(firstView)
             firstView.snp.makeConstraints {
-                $0.top.equalTo(listSegment.snp.bottom).offset(20)
-                $0.leading.trailing.bottom.equalToSuperview()
+                $0.top.equalTo(listSegment.snp.bottom).offset(Constants.margin.vertical)
+                $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
+                $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
+                $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
             }
         } else {
             // 두 번째 뷰를 보여줌
             firstView.removeFromSuperview() // 다른 뷰는 제거
             view.addSubview(secondView)
             secondView.snp.makeConstraints {
-                $0.top.equalTo(listSegment.snp.bottom).offset(20)
-                $0.leading.trailing.bottom.equalToSuperview()
+                $0.top.equalTo(listSegment.snp.bottom).offset(Constants.margin.vertical)
+                $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
+                $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
+                $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
             }
         }
     }
