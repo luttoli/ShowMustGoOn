@@ -33,7 +33,6 @@ extension SplashViewController {
         view.backgroundColor = .background.white
         
         setUp()
-        transitionToList()
     }
 }
 
@@ -46,12 +45,22 @@ private extension SplashViewController {
             $0.centerX.centerY.equalToSuperview()
         }
         
+        // Gif 세팅
         do {
             let gif = try UIImage(gifName: "codingGif.gif")
-            loadingGif.setGifImage(gif, loopCount: 3)
+            loadingGif.setGifImage(gif, loopCount: 2)
+            loadingGif.delegate = self  // Delegate 설정
         } catch {
             print("fail")
         }
+    }
+}
+
+// MARK: - SwiftyGifDelegate
+extension SplashViewController: SwiftyGifDelegate {
+    // GIF의 루프가 끝났을 때 호출되는 메서드
+    func gifDidStop(sender: UIImageView) {
+        transitionToList()
     }
 }
 
@@ -59,13 +68,11 @@ private extension SplashViewController {
 private extension SplashViewController {
     // 화면 전환
     func transitionToList() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) { // 후 전환 (GIF를 보여주기 위해)
-            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-               let window = windowScene.windows.first {
-                let customTBC = CustomTabBarController()
-                window.rootViewController = customTBC
-                window.makeKeyAndVisible()
-            }
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            let customTBC = CustomTabBarController()
+            window.rootViewController = customTBC
+            window.makeKeyAndVisible()
         }
     }
 }
