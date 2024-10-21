@@ -9,3 +9,5 @@ iOS 앱 개발 공부하고 기록합니다. 계속 합니다!
 - [SwiftyGif 사용하기](https://luttoli.notion.site/SwiftyGif-1230f60899b9809d963aee78a98b7218?pvs=4) 
 - [gif 파일로 Custom SplashVC 만들기](https://luttoli.notion.site/gif-Custom-SplashVC-1230f60899b980369912d551bba46645?pvs=4) 
 
+## UISegmentedControl
+- [기본 사용방법](https://luttoli.notion.site/UISegmentedControl-1260f60899b98056afc2e35c8172eef3?pvs=4)

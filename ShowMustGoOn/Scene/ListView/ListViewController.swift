@@ -15,7 +15,23 @@ class ListViewController: UIViewController {
     
     
     // MARK: - Components
+    var listSegment: UISegmentedControl = {
+        let listSegment = UISegmentedControl(items: ["테이블뷰", "콜랙션뷰"])
+        listSegment.selectedSegmentIndex = 0
+        return listSegment
+    }()
     
+    let firstView: UIView = {
+        let firstView = UIView()
+        firstView.backgroundColor = .red
+        return firstView
+    }()
+    
+    let secondView: UIView = {
+        let secondView = UIView()
+        secondView.backgroundColor = .blue
+        return secondView
+    }()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -52,13 +68,46 @@ extension ListViewController {
 // MARK: - SetUp
 private extension ListViewController {
     func setUp() {
+        view.addSubview(listSegment)
         
+        listSegment.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+        }
+
+        view.addSubview(firstView)
+        firstView.snp.makeConstraints {
+            $0.top.equalTo(listSegment.snp.bottom).offset(20)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        listSegment.addAction(UIAction(handler: { [weak self] _ in
+            self?.changeView()
+        }), for: .valueChanged)
     }
 }
 
 // MARK: - Method
 private extension ListViewController {
-
+    func changeView() {
+        if listSegment.selectedSegmentIndex == 0 {
+            // 첫 번째 뷰를 보여줌
+            secondView.removeFromSuperview() // 다른 뷰는 제거
+            view.addSubview(firstView)
+            firstView.snp.makeConstraints {
+                $0.top.equalTo(listSegment.snp.bottom).offset(20)
+                $0.leading.trailing.bottom.equalToSuperview()
+            }
+        } else {
+            // 두 번째 뷰를 보여줌
+            firstView.removeFromSuperview() // 다른 뷰는 제거
+            view.addSubview(secondView)
+            secondView.snp.makeConstraints {
+                $0.top.equalTo(listSegment.snp.bottom).offset(20)
+                $0.leading.trailing.bottom.equalToSuperview()
+            }
+        }
+    }
 }
 
 // MARK: - Delegate
