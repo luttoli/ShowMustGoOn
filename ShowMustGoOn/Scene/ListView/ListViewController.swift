@@ -16,8 +16,27 @@ class ListViewController: UIViewController {
     
     // MARK: - Components
     var listSegment: UISegmentedControl = {
-        let listSegment = UISegmentedControl(items: ["테이블뷰", "콜랙션뷰"])
+        let listSegment = UISegmentedControl(items: ["테이블뷰", "콜랙션뷰", "메뉴뷰", "선택뷰"])
         listSegment.selectedSegmentIndex = 0
+        
+        let nomal: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.text.button.disabled,
+            .font: UIFont.toPretendard(size: Constants.size.size10, weight: .SemiBold)
+        ]
+        
+        let selected: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.text.button.black,
+            .font: UIFont.toPretendard(size: Constants.size.size15, weight: .SemiBold)
+        ]
+        
+        listSegment.setTitleTextAttributes(nomal, for: .normal)
+        listSegment.setTitleTextAttributes(selected, for: .selected)
+        
+        let clearImage = UIImage()
+        listSegment.setBackgroundImage(clearImage, for: .normal, barMetrics: .default) // 배경색 변경
+        listSegment.setBackgroundImage(clearImage, for: .selected, barMetrics: .default) // 선택된 색 변경 -> 흰색
+        listSegment.setDividerImage(clearImage, forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default) // 구분선 흰색
+        
         return listSegment
     }()
     
@@ -31,6 +50,12 @@ class ListViewController: UIViewController {
         let secondView = UIView()
         secondView.backgroundColor = .blue
         return secondView
+    }()
+    
+    let thirdView: UIView = {
+        let thirdView = UIView()
+        thirdView.backgroundColor = .green
+        return thirdView
     }()
     
     init() {
@@ -53,6 +78,10 @@ extension ListViewController {
         navigationUI()
         setUp()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        listSegment.selectedSegmentIndex = 0
+    }
 }
 
 // MARK: - Navigation
@@ -71,9 +100,9 @@ private extension ListViewController {
         view.addSubview(listSegment)
         
         listSegment.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.vertical)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
-            $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(Constants.size.size50)
         }
 
@@ -97,6 +126,7 @@ private extension ListViewController {
         if listSegment.selectedSegmentIndex == 0 {
             // 첫 번째 뷰를 보여줌
             secondView.removeFromSuperview() // 다른 뷰는 제거
+            thirdView.removeFromSuperview()
             view.addSubview(firstView)
             firstView.snp.makeConstraints {
                 $0.top.equalTo(listSegment.snp.bottom).offset(Constants.margin.vertical)
@@ -104,11 +134,22 @@ private extension ListViewController {
                 $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
                 $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
             }
-        } else {
+        } else if listSegment.selectedSegmentIndex == 1 {
             // 두 번째 뷰를 보여줌
             firstView.removeFromSuperview() // 다른 뷰는 제거
+            thirdView.removeFromSuperview()
             view.addSubview(secondView)
             secondView.snp.makeConstraints {
+                $0.top.equalTo(listSegment.snp.bottom).offset(Constants.margin.vertical)
+                $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
+                $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
+                $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
+            }
+        } else {
+            firstView.removeFromSuperview()
+            thirdView.removeFromSuperview()
+            view.addSubview(thirdView)
+            thirdView.snp.makeConstraints {
                 $0.top.equalTo(listSegment.snp.bottom).offset(Constants.margin.vertical)
                 $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
                 $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)

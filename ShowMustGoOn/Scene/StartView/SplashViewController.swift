@@ -48,7 +48,7 @@ private extension SplashViewController {
         // Gif 세팅
         do {
             let gif = try UIImage(gifName: "codingGif.gif")
-            loadingGif.setGifImage(gif, loopCount: 2)
+            loadingGif.setGifImage(gif, loopCount: 1)
             loadingGif.delegate = self  // Delegate 설정
         } catch {
             print("fail")
