@@ -32,10 +32,23 @@ class ListViewController: UIViewController {
         return listSegment
     }()
     
+    // 선택한 세그먼트 바텀라인
     var bottomLineView: UIView = {
         let view = UIView()
         view.backgroundColor = .button.lavender
         return view
+    }()
+    
+    // 테이블뷰
+    var firstTableView: UITableView = {
+        let firstTableView = UITableView(frame: .zero, style: .grouped)
+        firstTableView.register(NumTableViewCell.self, forCellReuseIdentifier: NumTableViewCell.identifier)
+        firstTableView.backgroundColor = .red
+        firstTableView.tableFooterView = UIView(frame: .zero)
+        firstTableView.sectionFooterHeight = 0
+        firstTableView.showsVerticalScrollIndicator = true
+        firstTableView.separatorStyle = .singleLine
+        return firstTableView
     }()
     
     init() {
@@ -84,17 +97,25 @@ private extension ListViewController {
     func setUp() {
         view.addSubview(listSegment)
         view.addSubview(bottomLineView)
+        view.addSubview(firstTableView)
         
         listSegment.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.vertical)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
             $0.height.equalTo(Constants.size.size50)
         }
         listSegment.addAction(UIAction(handler: { [weak self] _ in
             self?.animateSelectedSegment(segment: self!.listSegment)
             self?.updateBottomLinePosition()
         }), for: .valueChanged)
+        
+        firstTableView.snp.makeConstraints {
+            $0.top.equalTo(listSegment.snp.bottom).offset(Constants.margin.vertical)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
+        }
     }
 }
 
@@ -117,7 +138,7 @@ private extension ListViewController {
 
         UIView.animate(withDuration: 0.3) {
             self.bottomLineView.frame = CGRect(
-                x: CGFloat(selectedSegmentIndex) * segmentWidth + Constants.margin.vertical,
+                x: CGFloat(selectedSegmentIndex) * segmentWidth + Constants.margin.horizontal,
                 y: self.listSegment.frame.maxY - lineHeight,
                 width: segmentWidth,
                 height: lineHeight
