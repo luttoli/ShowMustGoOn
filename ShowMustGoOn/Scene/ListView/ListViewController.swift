@@ -44,10 +44,24 @@ class ListViewController: UIViewController {
         let firstTableView = UITableView(frame: .zero, style: .plain)
         firstTableView.register(NumTableViewCell.self, forCellReuseIdentifier: NumTableViewCell.identifier)
         firstTableView.backgroundColor = .clear
-        firstTableView.tableFooterView = UIView(frame: .zero)
-        firstTableView.sectionFooterHeight = 0
-        firstTableView.showsVerticalScrollIndicator = true
-        firstTableView.separatorStyle = .singleLine
+        // 스크롤 설정
+        firstTableView.bounces = true // 스크롤중 테이블뷰 하단에 도달했을 때 반동 효과 여부
+        firstTableView.alwaysBounceVertical = true // cell 컨텐츠가 뷰 높이보다 작아도 수직 방향 반동 효과 여부
+        firstTableView.isScrollEnabled = true // 스크롤 가능 여부
+        firstTableView.showsVerticalScrollIndicator = true // 스크롤 시 스크롤바 노출 여부
+        // 선택
+        firstTableView.allowsSelection = true // 하나 선택
+        firstTableView.allowsMultipleSelection = true // 중복 선택
+        // 여백
+        firstTableView.contentInset = .zero // 테이블뷰 컨텐츠 여백
+        // 표시
+        firstTableView.separatorStyle = .singleLine // 구분선 노출 여부
+        firstTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) // 구분선 여백 설정
+        firstTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: firstTableView.frame.width, height: 50)) // 헤더뷰
+        firstTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: firstTableView.frame.width, height: 50)) // 푸터뷰
+        // 성능
+        firstTableView.estimatedRowHeight = 44
+        firstTableView.rowHeight = UITableView.automaticDimension
         return firstTableView
     }()
     
