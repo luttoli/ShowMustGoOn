@@ -87,8 +87,8 @@ private extension ListViewController {
         
         listSegment.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.leading.equalTo(view.safeAreaLayoutGuide)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.vertical)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
             $0.height.equalTo(Constants.size.size50)
         }
         listSegment.addAction(UIAction(handler: { [weak self] _ in
@@ -117,7 +117,7 @@ private extension ListViewController {
 
         UIView.animate(withDuration: 0.3) {
             self.bottomLineView.frame = CGRect(
-                x: CGFloat(selectedSegmentIndex) * segmentWidth,
+                x: CGFloat(selectedSegmentIndex) * segmentWidth + Constants.margin.vertical,
                 y: self.listSegment.frame.maxY - lineHeight,
                 width: segmentWidth,
                 height: lineHeight
