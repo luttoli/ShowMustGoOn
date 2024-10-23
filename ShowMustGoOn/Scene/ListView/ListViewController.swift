@@ -12,7 +12,7 @@ import SnapKit
 
 class ListViewController: UIViewController {
     // MARK: - Properties
-    
+    var tableViewCellItem = Array(1...50).map {"\($0)"}
     
     // MARK: - Components
     var listSegment: UISegmentedControl = {
@@ -41,9 +41,9 @@ class ListViewController: UIViewController {
     
     // 테이블뷰
     var firstTableView: UITableView = {
-        let firstTableView = UITableView(frame: .zero, style: .grouped)
+        let firstTableView = UITableView(frame: .zero, style: .plain)
         firstTableView.register(NumTableViewCell.self, forCellReuseIdentifier: NumTableViewCell.identifier)
-        firstTableView.backgroundColor = .red
+        firstTableView.backgroundColor = .clear
         firstTableView.tableFooterView = UIView(frame: .zero)
         firstTableView.sectionFooterHeight = 0
         firstTableView.showsVerticalScrollIndicator = true
@@ -79,6 +79,8 @@ extension ListViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         listSegment.selectedSegmentIndex = 0
+        updateBottomLinePosition()
+        changeView()
     }
 }
 
@@ -105,9 +107,11 @@ private extension ListViewController {
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
             $0.height.equalTo(Constants.size.size50)
         }
-        listSegment.addAction(UIAction(handler: { [weak self] _ in
-            self?.animateSelectedSegment(segment: self!.listSegment)
-            self?.updateBottomLinePosition()
+        listSegment.addAction(UIAction(handler: { [weak self] _ in // combine 연습하기
+            guard let self = self else { return }
+            self.animateSelectedSegment(segment: self.listSegment)
+            self.updateBottomLinePosition()
+            self.changeView()
         }), for: .valueChanged)
         
         firstTableView.snp.makeConstraints {
@@ -116,11 +120,16 @@ private extension ListViewController {
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
         }
+        firstTableView.delegate = self
+        firstTableView.dataSource = self
+        
+        changeView()
     }
 }
 
 // MARK: - Method
 private extension ListViewController {
+    // 세그먼트 선택 시 애니메이션
     func animateSelectedSegment(segment: UISegmentedControl) {
         UIView.animate(withDuration: 0.3) {
             segment.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
@@ -131,6 +140,7 @@ private extension ListViewController {
         }
     }
     
+    // 선택된 세그먼트 바텀라인 표시
     private func updateBottomLinePosition() {
         let selectedSegmentIndex = listSegment.selectedSegmentIndex
         let segmentWidth = listSegment.bounds.width / CGFloat(listSegment.numberOfSegments)
@@ -145,9 +155,40 @@ private extension ListViewController {
             )
         }
     }
+    
+    // 세그먼트 선택 시 View 노출
+    func changeView() {
+        // 모든 뷰 숨김 처리 했다가
+        let segmentView = [firstTableView, ]
+        segmentView.forEach { $0.isHidden = true }
+        
+        // 선택된 세그먼트에 따라 해당 뷰만 보이게
+        switch listSegment.selectedSegmentIndex {
+        case 0:
+            firstTableView.isHidden = false
+        case 1:
+            break
+        case 2:
+            break
+        case 3:
+            break
+        default:
+            break
+        }
+    }
 }
 
 // MARK: - Delegate
-extension ListViewController {
+extension ListViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableViewCellItem.count
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NumTableViewCell.identifier, for: indexPath) as? NumTableViewCell else { return UITableViewCell() }
+        
+        cell.numLabel.text = tableViewCellItem[indexPath.row].description
+        
+        return cell
+    }
 }
