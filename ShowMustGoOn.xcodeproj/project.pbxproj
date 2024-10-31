@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B877DBC62CD30C2E009D9C49 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBC52CD30C2E009D9C49 /* CollectionViewController.swift */; };
 		B8CD65282CC0FC5C00E8F8B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD651E2CC0FC5C00E8F8B3 /* AppDelegate.swift */; };
 		B8CD65292CC0FC5C00E8F8B3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65252CC0FC5C00E8F8B3 /* SceneDelegate.swift */; };
 		B8CD652B2CC0FC5C00E8F8B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8CD651F2CC0FC5C00E8F8B3 /* Assets.xcassets */; };
 		B8CD652D2CC0FC5C00E8F8B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8CD65222CC0FC5C00E8F8B3 /* LaunchScreen.storyboard */; };
 		B8CD65362CC0FD2B00E8F8B3 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65352CC0FD2B00E8F8B3 /* CustomTabBarController.swift */; };
-		B8CD65392CC0FD7100E8F8B3 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65382CC0FD7100E8F8B3 /* ListViewController.swift */; };
+		B8CD65392CC0FD7100E8F8B3 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65382CC0FD7100E8F8B3 /* TableViewController.swift */; };
 		B8CD653C2CC0FE1500E8F8B3 /* PretendardVariable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8CD653B2CC0FE1500E8F8B3 /* PretendardVariable.ttf */; };
 		B8CD653E2CC0FE8600E8F8B3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD653D2CC0FE8600E8F8B3 /* UIColor.swift */; };
 		B8CD65402CC0FE9D00E8F8B3 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD653F2CC0FE9D00E8F8B3 /* UIFont.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B877DBC52CD30C2E009D9C49 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		B8CD65052CC0FC4000E8F8B3 /* ShowMustGoOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowMustGoOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8CD651E2CC0FC5C00E8F8B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8CD651F2CC0FC5C00E8F8B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -35,7 +37,7 @@
 		B8CD65212CC0FC5C00E8F8B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8CD65252CC0FC5C00E8F8B3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B8CD65352CC0FD2B00E8F8B3 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
-		B8CD65382CC0FD7100E8F8B3 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		B8CD65382CC0FD7100E8F8B3 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		B8CD653B2CC0FE1500E8F8B3 /* PretendardVariable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PretendardVariable.ttf; sourceTree = "<group>"; };
 		B8CD653D2CC0FE8600E8F8B3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		B8CD653F2CC0FE9D00E8F8B3 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
@@ -61,6 +63,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B877DBC42CD30C08009D9C49 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				B877DBC52CD30C2E009D9C49 /* CollectionViewController.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
 		B8CD64FC2CC0FC4000E8F8B3 = {
 			isa = PBXGroup;
 			children = (
@@ -125,7 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				B8CD654D2CC221D600E8F8B3 /* StartView */,
-				B8CD65372CC0FD5F00E8F8B3 /* ListView */,
+				B8CD65372CC0FD5F00E8F8B3 /* TableView */,
+				B877DBC42CD30C08009D9C49 /* CollectionView */,
 				B8CD654A2CC1FBFE00E8F8B3 /* StepView */,
 			);
 			path = Scene;
@@ -139,13 +150,13 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
-		B8CD65372CC0FD5F00E8F8B3 /* ListView */ = {
+		B8CD65372CC0FD5F00E8F8B3 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
-				B8CD65382CC0FD7100E8F8B3 /* ListViewController.swift */,
+				B8CD65382CC0FD7100E8F8B3 /* TableViewController.swift */,
 				B8CD655E2CC8879F00E8F8B3 /* Cell */,
 			);
-			path = ListView;
+			path = TableView;
 			sourceTree = "<group>";
 		};
 		B8CD653A2CC0FE0200E8F8B3 /* Font */ = {
@@ -262,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B877DBC62CD30C2E009D9C49 /* CollectionViewController.swift in Sources */,
 				B8CD655D2CC8879800E8F8B3 /* NumTableViewCell.swift in Sources */,
 				B8CD65282CC0FC5C00E8F8B3 /* AppDelegate.swift in Sources */,
 				B8CD65292CC0FC5C00E8F8B3 /* SceneDelegate.swift in Sources */,
@@ -269,7 +281,7 @@
 				B8CD65362CC0FD2B00E8F8B3 /* CustomTabBarController.swift in Sources */,
 				B8CD65422CC0FEC000E8F8B3 /* Constants.swift in Sources */,
 				B8CD655B2CC8848900E8F8B3 /* UITableViewCell.swift in Sources */,
-				B8CD65392CC0FD7100E8F8B3 /* ListViewController.swift in Sources */,
+				B8CD65392CC0FD7100E8F8B3 /* TableViewController.swift in Sources */,
 				B8CD653E2CC0FE8600E8F8B3 /* UIColor.swift in Sources */,
 				B8CD65442CC1038C00E8F8B3 /* CustomLabel.swift in Sources */,
 				B8CD654C2CC1FC1700E8F8B3 /* StepViewController.swift in Sources */,

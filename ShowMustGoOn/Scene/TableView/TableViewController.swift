@@ -1,5 +1,5 @@
 //
-//  ListViewController.swift
+//  TableViewController.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 10/17/24.
@@ -7,29 +7,28 @@
 
 import UIKit
 
-import Combine
 import SnapKit
 
-class ListViewController: UIViewController {
+class TableViewController: UIViewController {
     // MARK: - Properties
     var tableViewCellItem = Array(1...50).map {"\($0)"}
     
     // MARK: - Components
-    var listSegment: UISegmentedControl = {
-        let listSegment = UISegmentedControl(items: ["테이블뷰", "콜랙션뷰", "카테고리", "선택하기"])
-        listSegment.selectedSegmentIndex = 0
+    var tableSegment: UISegmentedControl = {
+        let tableSegment = UISegmentedControl(items: ["기본", "섹션", "혼합", "추가"])
+        tableSegment.selectedSegmentIndex = 0
         
         // 선택, 미선택 타이틀설정
-        listSegment.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.toPretendard(size: Constants.size.size15, weight: .Regular), .foregroundColor: UIColor.text.subDarkGray], for: .normal)
-        listSegment.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.toPretendard(size: Constants.size.size15, weight: .SemiBold), .foregroundColor: UIColor.text.black], for: .selected)
+        tableSegment.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.toPretendard(size: Constants.size.size15, weight: .Regular), .foregroundColor: UIColor.text.subDarkGray], for: .normal)
+        tableSegment.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.toPretendard(size: Constants.size.size15, weight: .SemiBold), .foregroundColor: UIColor.text.black], for: .selected)
         
         // 배경색 설정
-        listSegment.setBackgroundImage(UIImage(), for: .normal, barMetrics: .default) // 배경색 변경
-        listSegment.setBackgroundImage(UIImage(), for: .highlighted, barMetrics: .default) // 선택된 색 변경 -> 흰색
+        tableSegment.setBackgroundImage(UIImage(), for: .normal, barMetrics: .default) // 배경색 변경
+        tableSegment.setBackgroundImage(UIImage(), for: .highlighted, barMetrics: .default) // 선택된 색 변경 -> 흰색
         
         // 구분선 설정
-        listSegment.setDividerImage(UIImage(), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default) // 구분선 흰색
-        return listSegment
+        tableSegment.setDividerImage(UIImage(), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default) // 구분선 흰색
+        return tableSegment
     }()
     
     // 선택한 세그먼트 바텀라인
@@ -76,7 +75,7 @@ class ListViewController: UIViewController {
 }
 
 // MARK: - LifeCycle
-extension ListViewController {
+extension TableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -92,44 +91,44 @@ extension ListViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        listSegment.selectedSegmentIndex = 0
+        tableSegment.selectedSegmentIndex = 0
         updateBottomLinePosition()
         changeView()
     }
 }
 
 // MARK: - Navigation
-extension ListViewController {
+extension TableViewController {
     func navigationUI() {
         navigationController?.navigationBar.barTintColor = .background.white
         
-        let viewTitle = CustomLabel(title: "List Practice", size: Constants.size.size30, weight: .Bold, color: .text.black)
+        let viewTitle = CustomLabel(title: "TableView Practice", size: Constants.size.size20, weight: .Bold, color: .text.black)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: viewTitle)
     }
 }
 
 // MARK: - SetUp
-private extension ListViewController {
+private extension TableViewController {
     func setUp() {
-        view.addSubview(listSegment)
+        view.addSubview(tableSegment)
         view.addSubview(bottomLineView)
         view.addSubview(firstTableView)
         
-        listSegment.snp.makeConstraints {
+        tableSegment.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
             $0.height.equalTo(Constants.size.size50)
         }
-        listSegment.addAction(UIAction(handler: { [weak self] _ in // combine 연습하기
+        tableSegment.addAction(UIAction(handler: { [weak self] _ in // combine 연습하기
             guard let self = self else { return }
-            self.animateSelectedSegment(segment: self.listSegment)
+            self.animateSelectedSegment(segment: self.tableSegment)
             self.updateBottomLinePosition()
             self.changeView()
         }), for: .valueChanged)
         
         firstTableView.snp.makeConstraints {
-            $0.top.equalTo(listSegment.snp.bottom).offset(Constants.margin.vertical)
+            $0.top.equalTo(tableSegment.snp.bottom).offset(Constants.margin.vertical)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
@@ -142,7 +141,7 @@ private extension ListViewController {
 }
 
 // MARK: - Method
-private extension ListViewController {
+private extension TableViewController {
     // 세그먼트 선택 시 애니메이션
     func animateSelectedSegment(segment: UISegmentedControl) {
         UIView.animate(withDuration: 0.3) {
@@ -156,14 +155,14 @@ private extension ListViewController {
     
     // 선택된 세그먼트 바텀라인 표시
     private func updateBottomLinePosition() {
-        let selectedSegmentIndex = listSegment.selectedSegmentIndex
-        let segmentWidth = listSegment.bounds.width / CGFloat(listSegment.numberOfSegments)
+        let selectedSegmentIndex = tableSegment.selectedSegmentIndex
+        let segmentWidth = tableSegment.bounds.width / CGFloat(tableSegment.numberOfSegments)
         let lineHeight: CGFloat = 3 // 바텀 라인의 높이
 
         UIView.animate(withDuration: 0.3) {
             self.bottomLineView.frame = CGRect(
                 x: CGFloat(selectedSegmentIndex) * segmentWidth + Constants.margin.horizontal,
-                y: self.listSegment.frame.maxY - lineHeight,
+                y: self.tableSegment.frame.maxY - lineHeight,
                 width: segmentWidth,
                 height: lineHeight
             )
@@ -177,7 +176,7 @@ private extension ListViewController {
         segmentView.forEach { $0.isHidden = true }
         
         // 선택된 세그먼트에 따라 해당 뷰만 보이게
-        switch listSegment.selectedSegmentIndex {
+        switch tableSegment.selectedSegmentIndex {
         case 0:
             firstTableView.isHidden = false
         case 1:
@@ -193,7 +192,7 @@ private extension ListViewController {
 }
 
 // MARK: - Delegate
-extension ListViewController: UITableViewDelegate, UITableViewDataSource {
+extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableViewCellItem.count
     }
