@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B877DBC62CD30C2E009D9C49 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBC52CD30C2E009D9C49 /* CollectionViewController.swift */; };
+		B877DBC92CD32623009D9C49 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBC82CD32623009D9C49 /* FirstView.swift */; };
 		B8CD65282CC0FC5C00E8F8B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD651E2CC0FC5C00E8F8B3 /* AppDelegate.swift */; };
 		B8CD65292CC0FC5C00E8F8B3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65252CC0FC5C00E8F8B3 /* SceneDelegate.swift */; };
 		B8CD652B2CC0FC5C00E8F8B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8CD651F2CC0FC5C00E8F8B3 /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		B877DBC52CD30C2E009D9C49 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		B877DBC82CD32623009D9C49 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
 		B8CD65052CC0FC4000E8F8B3 /* ShowMustGoOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowMustGoOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8CD651E2CC0FC5C00E8F8B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8CD651F2CC0FC5C00E8F8B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -69,6 +71,15 @@
 				B877DBC52CD30C2E009D9C49 /* CollectionViewController.swift */,
 			);
 			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		B877DBC72CD325F3009D9C49 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B877DBC82CD32623009D9C49 /* FirstView.swift */,
+				B8CD655E2CC8879F00E8F8B3 /* Cell */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		B8CD64FC2CC0FC4000E8F8B3 = {
@@ -154,7 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				B8CD65382CC0FD7100E8F8B3 /* TableViewController.swift */,
-				B8CD655E2CC8879F00E8F8B3 /* Cell */,
+				B877DBC72CD325F3009D9C49 /* View */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -280,6 +291,7 @@
 				B8CD65402CC0FE9D00E8F8B3 /* UIFont.swift in Sources */,
 				B8CD65362CC0FD2B00E8F8B3 /* CustomTabBarController.swift in Sources */,
 				B8CD65422CC0FEC000E8F8B3 /* Constants.swift in Sources */,
+				B877DBC92CD32623009D9C49 /* FirstView.swift in Sources */,
 				B8CD655B2CC8848900E8F8B3 /* UITableViewCell.swift in Sources */,
 				B8CD65392CC0FD7100E8F8B3 /* TableViewController.swift in Sources */,
 				B8CD653E2CC0FE8600E8F8B3 /* UIColor.swift in Sources */,
