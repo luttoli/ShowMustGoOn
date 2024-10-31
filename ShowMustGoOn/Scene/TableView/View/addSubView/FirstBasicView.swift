@@ -9,14 +9,14 @@ import UIKit
 
 import SnapKit
 
-class FirstView: UIView {
+class FirstBasicView: UIView {
     // MARK: - Properties
-    var tableViewCellItem = Array(1...30).map {"\($0)"}
+    private let viewModel = TableViewModel()
     
     // MARK: - Components
     var basicTableView: UITableView = {
         let basicTableView = UITableView(frame: .zero, style: .plain)
-        basicTableView.register(NumTableViewCell.self, forCellReuseIdentifier: NumTableViewCell.identifier)
+        basicTableView.register(basicTableViewCell.self, forCellReuseIdentifier: basicTableViewCell.identifier)
         basicTableView.backgroundColor = .clear
         // 스크롤 설정
         basicTableView.bounces = true // 스크롤중 테이블뷰 하단에 도달했을 때 반동 효과 여부
@@ -51,7 +51,7 @@ class FirstView: UIView {
 }
 
 // MARK: - SetUp
-private extension FirstView {
+private extension FirstBasicView {
     func setUp() {
         addSubview(basicTableView)
         
@@ -67,26 +67,27 @@ private extension FirstView {
 }
 
 // MARK: - Method
-extension FirstView {
+extension FirstBasicView {
 
 }
 
 // MARK: - delegate
-extension FirstView: UITableViewDelegate, UITableViewDataSource {
+extension FirstBasicView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableViewCellItem.count
+        return viewModel.tableData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: NumTableViewCell.identifier, for: indexPath) as? NumTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: basicTableViewCell.identifier, for: indexPath) as? basicTableViewCell else { return UITableViewCell() }
         
-        cell.numLabel.text = tableViewCellItem[indexPath.row].description
+        cell.configure(with: viewModel.tableData[indexPath.row])
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("\(indexPath.row)")
+        let model = viewModel.tableData[indexPath.row]
+        print("\(model.number). \(model.title)")
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
