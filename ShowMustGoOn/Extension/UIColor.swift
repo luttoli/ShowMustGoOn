@@ -20,6 +20,7 @@ extension UIColor {
         var lavender = UIColor(red: 162/255, green: 149/255, blue: 243/255, alpha: 1.0)
         var black = UIColor.black
         var subDarkGray = UIColor.darkGray
+        var white = UIColor.white
         
         var button = ButtonTextColor()
         var notification = NotificationColor()

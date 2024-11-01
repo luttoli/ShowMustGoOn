@@ -31,11 +31,7 @@ class FirstBasicView: UIView {
         // 표시
         basicTableView.separatorStyle = .singleLine // 구분선 노출 여부
         basicTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) // 구분선 여백 설정
-        basicTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: basicTableView.frame.width, height: 50)) // 헤더뷰
-        basicTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: basicTableView.frame.width, height: 50)) // 푸터뷰
-        // 성능
-        basicTableView.estimatedRowHeight = 44
-        basicTableView.rowHeight = UITableView.automaticDimension
+        
         return basicTableView
     }()
     
@@ -91,6 +87,6 @@ extension FirstBasicView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return Constants.size.size50
     }
 }
