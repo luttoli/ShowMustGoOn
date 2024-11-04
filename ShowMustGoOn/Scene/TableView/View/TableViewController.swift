@@ -11,11 +11,12 @@ import SnapKit
 
 class TableViewController: UIViewController {
     // MARK: - Properties
-    private let viewModel = TableViewModel()
+    private let viewModel = FirstViewModel()
     
     // MARK: - Components
     var tableSegmentView = TableSegmentView()
-    var firstView = FirstBasicView()
+    var firstView = FirstView()
+    var secondView = SecondView()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -66,6 +67,7 @@ private extension TableViewController {
     func setUp() {
         view.addSubview(tableSegmentView)
         view.addSubview(firstView)
+        view.addSubview(secondView)
         
         tableSegmentView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
@@ -75,6 +77,13 @@ private extension TableViewController {
         }
         
         firstView.snp.makeConstraints {
+            $0.top.equalTo(tableSegmentView.snp.bottom).offset(Constants.margin.vertical)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
+        }
+        
+        secondView.snp.makeConstraints {
             $0.top.equalTo(tableSegmentView.snp.bottom).offset(Constants.margin.vertical)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
@@ -100,7 +109,7 @@ private extension TableViewController {
     // 세그먼트 선택 시 View 노출
     func changeView() {
         // 모든 뷰 숨김 처리 했다가
-        let segmentView = [firstView, ]
+        let segmentView = [firstView, secondView]
         segmentView.forEach { $0.isHidden = true }
         
         // 선택된 세그먼트에 따라 해당 뷰만 보이게
@@ -108,7 +117,7 @@ private extension TableViewController {
         case 0:
             firstView.isHidden = false
         case 1:
-            break
+            secondView.isHidden = false
         case 2:
             break
         case 3:

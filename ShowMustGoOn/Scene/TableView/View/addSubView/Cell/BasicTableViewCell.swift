@@ -1,5 +1,5 @@
 //
-//  basicTableViewCell.swift
+//  BasicTableViewCell.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 10/23/24.
@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class basicTableViewCell: UITableViewCell {
+class BasicTableViewCell: UITableViewCell {
     // MARK: - Components
     var numLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
     var titleLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
@@ -29,7 +29,7 @@ class basicTableViewCell: UITableViewCell {
 }
 
 // MARK: - SetUp
-private extension basicTableViewCell {
+private extension BasicTableViewCell {
     func setUp() {
         contentView.addSubview(numLabel)
         contentView.addSubview(titleLabel)
@@ -47,7 +47,7 @@ private extension basicTableViewCell {
 }
 
 // MARK: - Method
-extension basicTableViewCell {
+extension BasicTableViewCell {
     func configure(with model: TableModel) {
         numLabel.text = "\(model.number)."
         titleLabel.text = model.title

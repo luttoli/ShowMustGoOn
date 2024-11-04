@@ -59,6 +59,7 @@ extension UIColor {
     
     struct BackGroundColor {
         var white = UIColor.white
+        var lavender = UIColor(red: 162/255, green: 149/255, blue: 243/255, alpha: 1.0)
     }
     
     struct CellColor {

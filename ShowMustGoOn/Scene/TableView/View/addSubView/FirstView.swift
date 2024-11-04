@@ -9,14 +9,14 @@ import UIKit
 
 import SnapKit
 
-class FirstBasicView: UIView {
+class FirstView: UIView {
     // MARK: - Properties
-    private let viewModel = TableViewModel()
+    private let viewModel = FirstViewModel()
     
     // MARK: - Components
     var basicTableView: UITableView = {
         let basicTableView = UITableView(frame: .zero, style: .plain)
-        basicTableView.register(basicTableViewCell.self, forCellReuseIdentifier: basicTableViewCell.identifier)
+        basicTableView.register(BasicTableViewCell.self, forCellReuseIdentifier: BasicTableViewCell.identifier)
         basicTableView.backgroundColor = .clear
         // 스크롤 설정
         basicTableView.bounces = true // 스크롤중 테이블뷰 하단에 도달했을 때 반동 효과 여부
@@ -47,7 +47,7 @@ class FirstBasicView: UIView {
 }
 
 // MARK: - SetUp
-private extension FirstBasicView {
+private extension FirstView {
     func setUp() {
         addSubview(basicTableView)
         
@@ -63,18 +63,18 @@ private extension FirstBasicView {
 }
 
 // MARK: - Method
-extension FirstBasicView {
+extension FirstView {
 
 }
 
 // MARK: - delegate
-extension FirstBasicView: UITableViewDelegate, UITableViewDataSource {
+extension FirstView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.tableData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: basicTableViewCell.identifier, for: indexPath) as? basicTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BasicTableViewCell.identifier, for: indexPath) as? BasicTableViewCell else { return UITableViewCell() }
         
         cell.configure(with: viewModel.tableData[indexPath.row])
         
