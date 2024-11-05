@@ -16,6 +16,11 @@
 		B877DBD82CD4723F009D9C49 /* MultiplyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBD72CD4723F009D9C49 /* MultiplyModel.swift */; };
 		B877DBDA2CD472A9009D9C49 /* SecondViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBD92CD472A9009D9C49 /* SecondViewModel.swift */; };
 		B877DBDC2CD47374009D9C49 /* MultiplyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBDB2CD47374009D9C49 /* MultiplyTableViewCell.swift */; };
+		B877DBE02CD99D02009D9C49 /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBDF2CD99D02009D9C49 /* ThirdView.swift */; };
+		B877DBE22CD9A47B009D9C49 /* MainNewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBE12CD9A47B009D9C49 /* MainNewsTableViewCell.swift */; };
+		B877DBE42CD9B5F8009D9C49 /* HorizontalNewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBE32CD9B5F8009D9C49 /* HorizontalNewsCollectionViewCell.swift */; };
+		B877DBE62CD9B621009D9C49 /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBE52CD9B621009D9C49 /* UICollectionViewCell.swift */; };
+		B877DBE82CD9B96C009D9C49 /* VerticalNewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBE72CD9B96C009D9C49 /* VerticalNewsTableViewCell.swift */; };
 		B8CD65282CC0FC5C00E8F8B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD651E2CC0FC5C00E8F8B3 /* AppDelegate.swift */; };
 		B8CD65292CC0FC5C00E8F8B3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65252CC0FC5C00E8F8B3 /* SceneDelegate.swift */; };
 		B8CD652B2CC0FC5C00E8F8B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8CD651F2CC0FC5C00E8F8B3 /* Assets.xcassets */; };
@@ -46,6 +51,11 @@
 		B877DBD72CD4723F009D9C49 /* MultiplyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplyModel.swift; sourceTree = "<group>"; };
 		B877DBD92CD472A9009D9C49 /* SecondViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewModel.swift; sourceTree = "<group>"; };
 		B877DBDB2CD47374009D9C49 /* MultiplyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplyTableViewCell.swift; sourceTree = "<group>"; };
+		B877DBDF2CD99D02009D9C49 /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
+		B877DBE12CD9A47B009D9C49 /* MainNewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNewsTableViewCell.swift; sourceTree = "<group>"; };
+		B877DBE32CD9B5F8009D9C49 /* HorizontalNewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalNewsCollectionViewCell.swift; sourceTree = "<group>"; };
+		B877DBE52CD9B621009D9C49 /* UICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
+		B877DBE72CD9B96C009D9C49 /* VerticalNewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalNewsTableViewCell.swift; sourceTree = "<group>"; };
 		B8CD65052CC0FC4000E8F8B3 /* ShowMustGoOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowMustGoOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8CD651E2CC0FC5C00E8F8B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8CD651F2CC0FC5C00E8F8B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -120,6 +130,7 @@
 				B877DBD32CD37465009D9C49 /* TableSegmentView.swift */,
 				B877DBC82CD32623009D9C49 /* FirstView.swift */,
 				B877DBD52CD47127009D9C49 /* SecondView.swift */,
+				B877DBDF2CD99D02009D9C49 /* ThirdView.swift */,
 				B8CD655E2CC8879F00E8F8B3 /* Cell */,
 			);
 			path = addSubView;
@@ -171,6 +182,7 @@
 				B8CD653F2CC0FE9D00E8F8B3 /* UIFont.swift */,
 				B8CD653D2CC0FE8600E8F8B3 /* UIColor.swift */,
 				B8CD655A2CC8848900E8F8B3 /* UITableViewCell.swift */,
+				B877DBE52CD9B621009D9C49 /* UICollectionViewCell.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -244,6 +256,9 @@
 			children = (
 				B8CD655C2CC8879800E8F8B3 /* BasicTableViewCell.swift */,
 				B877DBDB2CD47374009D9C49 /* MultiplyTableViewCell.swift */,
+				B877DBE12CD9A47B009D9C49 /* MainNewsTableViewCell.swift */,
+				B877DBE32CD9B5F8009D9C49 /* HorizontalNewsCollectionViewCell.swift */,
+				B877DBE72CD9B96C009D9C49 /* VerticalNewsTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -329,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B877DBE22CD9A47B009D9C49 /* MainNewsTableViewCell.swift in Sources */,
 				B877DBD42CD37465009D9C49 /* TableSegmentView.swift in Sources */,
 				B877DBC62CD30C2E009D9C49 /* CollectionViewController.swift in Sources */,
 				B8CD655D2CC8879800E8F8B3 /* BasicTableViewCell.swift in Sources */,
@@ -337,8 +353,10 @@
 				B8CD65292CC0FC5C00E8F8B3 /* SceneDelegate.swift in Sources */,
 				B8CD65402CC0FE9D00E8F8B3 /* UIFont.swift in Sources */,
 				B8CD65362CC0FD2B00E8F8B3 /* CustomTabBarController.swift in Sources */,
+				B877DBE02CD99D02009D9C49 /* ThirdView.swift in Sources */,
 				B877DBDA2CD472A9009D9C49 /* SecondViewModel.swift in Sources */,
 				B8CD65422CC0FEC000E8F8B3 /* Constants.swift in Sources */,
+				B877DBE82CD9B96C009D9C49 /* VerticalNewsTableViewCell.swift in Sources */,
 				B877DBC92CD32623009D9C49 /* FirstView.swift in Sources */,
 				B8CD655B2CC8848900E8F8B3 /* UITableViewCell.swift in Sources */,
 				B8CD65392CC0FD7100E8F8B3 /* TableViewController.swift in Sources */,
@@ -349,7 +367,9 @@
 				B8CD65442CC1038C00E8F8B3 /* CustomLabel.swift in Sources */,
 				B8CD654C2CC1FC1700E8F8B3 /* StepViewController.swift in Sources */,
 				B8CD654F2CC221FC00E8F8B3 /* SplashViewController.swift in Sources */,
+				B877DBE62CD9B621009D9C49 /* UICollectionViewCell.swift in Sources */,
 				B877DBCF2CD373D5009D9C49 /* TableModel.swift in Sources */,
+				B877DBE42CD9B5F8009D9C49 /* HorizontalNewsCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
