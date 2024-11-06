@@ -36,17 +36,17 @@ private extension VerticalNewsTableViewCell {
         
         newsImageView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.leading.equalTo(safeAreaLayoutGuide).offset(Constants.margin.horizontal)
+            $0.leading.equalTo(safeAreaLayoutGuide)
             $0.width.equalTo(Constants.size.size100)
-            $0.height.equalTo(Constants.size.size50)
+            $0.height.equalTo(Constants.size.size80)
         }
         newsImageView.layer.cornerRadius = Constants.radius.px8
         newsImageView.layer.masksToBounds = true
         
         newsTitleLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.leading.equalTo(newsImageView).offset(Constants.margin.horizontal)
-            $0.trailing.equalTo(safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
+            $0.leading.equalTo(newsImageView.snp.trailing).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(safeAreaLayoutGuide)
         }
         newsTitleLabel.numberOfLines = 0
     }
@@ -54,7 +54,8 @@ private extension VerticalNewsTableViewCell {
 
 // MARK: - Method
 extension VerticalNewsTableViewCell {
-    func configure() {
-        
+    func configure(with subNews: SubNews) {
+        newsImageView.image = subNews.subImage
+        newsTitleLabel.text = subNews.subTitle
     }
 }

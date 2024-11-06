@@ -33,12 +33,13 @@ private extension HorizontalNewsCollectionViewCell {
         }
         newsImageView.layer.cornerRadius = Constants.radius.px10
         newsImageView.layer.masksToBounds = true
+        newsImageView.contentMode = .scaleToFill
     }
 }
 
 // MARK: - Method
 extension HorizontalNewsCollectionViewCell {
-    func configure() {
-        
+    func configure(with mainNews: ESportsModel, at index: Int) {
+        newsImageView.image = mainNews.mainImage[index]
     }
 }

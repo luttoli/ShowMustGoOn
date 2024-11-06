@@ -11,7 +11,7 @@ import SnapKit
 
 class ThirdView: UIView {
     // MARK: - Properties
-    var images = []
+    var viewModel = ThirdViewModel()
     
     // MARK: - Components
     var eSportsTableView: UITableView = {
@@ -81,11 +81,11 @@ extension ThirdView: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainNewsTableViewCell.identifier, for: indexPath) as? MainNewsTableViewCell else { return UITableViewCell() }
             
-            
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: VerticalNewsTableViewCell.identifier, for: indexPath) as? VerticalNewsTableViewCell else { return UITableViewCell() }
             
+            cell.configure(with: viewModel.eSportNews[0].subNews[indexPath.row])
             
             return cell
         }
@@ -93,9 +93,9 @@ extension ThirdView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 260
+            return Constants.size.size260
         } else {
-            return 100
+            return Constants.size.size100
         }
     }
 }

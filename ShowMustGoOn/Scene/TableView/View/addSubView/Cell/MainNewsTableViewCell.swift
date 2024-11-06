@@ -11,7 +11,7 @@ import SnapKit
 
 class MainNewsTableViewCell: UITableViewCell {
     // MARK: - Properties
-    var images = [UIImage(named: "proveit"), UIImage(named: "GENGDown"), UIImage(named: "BLGDown")]
+    var viewModel = ThirdViewModel()
     
     // MARK: - Components
     let horizontalNewsCollectionView: UICollectionView = {
@@ -62,13 +62,14 @@ extension MainNewsTableViewCell {
 // MARK: - CollectionViewDelegate
 extension MainNewsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return viewModel.eSportNews.first?.mainImage.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HorizontalNewsCollectionViewCell.identifier, for: indexPath) as? HorizontalNewsCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.newsImageView.image = images[indexPath.row]
+        let model = viewModel.eSportNews[0]
+        cell.configure(with: model, at: indexPath.row)
         
         return cell
     }
