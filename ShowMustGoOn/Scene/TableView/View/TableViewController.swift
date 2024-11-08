@@ -140,10 +140,10 @@ extension TableViewController: ThirdViewDelegate {
     }
     
     //
-    func didSelectItem(with url: String, newsTitle: String) {
+    func didSelectItem(with url: String) {
         guard let url = URL(string: url) else { return }
 
-        let detailNewsViewController = DetailThirdViewController(url: url, title: newsTitle)
+        let detailNewsViewController = DetailThirdViewController(url: url)
         detailNewsViewController.modalPresentationStyle = .formSheet
         present(detailNewsViewController, animated: true, completion: nil)
     }

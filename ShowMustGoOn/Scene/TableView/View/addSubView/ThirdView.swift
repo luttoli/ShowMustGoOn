@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 protocol ThirdViewDelegate: AnyObject {
-    func didSelectItem(with url: String, newsTitle: String)
+    func didSelectItem(with url: String)
 }
 
 class ThirdView: UIView {
@@ -110,8 +110,7 @@ extension ThirdView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedSubNews = viewModel.eSportNews[0].subNews[indexPath.row]
         let url = selectedSubNews.url ?? ""
-        let newsTitle = selectedSubNews.subTitle
-        
-        delegate?.didSelectItem(with: url, newsTitle: newsTitle)
+
+        delegate?.didSelectItem(with: url)
     }
 }

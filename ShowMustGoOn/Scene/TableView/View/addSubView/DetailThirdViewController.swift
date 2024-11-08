@@ -26,9 +26,8 @@ class DetailThirdViewController: UIViewController, WKNavigationDelegate {
         return webView
     }()
     
-    init(url: URL?, title: String?) {
+    init(url: URL?) {
         self.url = url
-        self.newsTitle = title
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -50,21 +49,7 @@ extension DetailThirdViewController {
             webView.load(request)
         }
         
-        navigationUI()
         setUp()
-    }
-}
-
-// MARK: - Navigation
-extension DetailThirdViewController {
-    func navigationUI() {
-        navigationController?.navigationBar.barTintColor = .background.white
-
-        let titleLabel = CustomLabel(title: self.newsTitle ?? "", size: Constants.size.size15, weight: .SemiBold, color: .text.black)
-        navigationItem.titleView = titleLabel
-        
-        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationController?.navigationBar.tintColor = .text.black
     }
 }
 
