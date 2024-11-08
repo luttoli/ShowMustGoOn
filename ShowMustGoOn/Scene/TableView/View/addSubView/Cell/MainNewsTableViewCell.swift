@@ -24,10 +24,24 @@ class MainNewsTableViewCell: UITableViewCell {
         horizontalNewsCollectionView.isPagingEnabled = true
         return horizontalNewsCollectionView
     }()
+    
+    // 페이지 컨트롤 인디케이터
+    let pageControl: UIPageControl = {
+        let pageControl = UIPageControl()
+        pageControl.numberOfPages = 0
+        pageControl.currentPage = 0
+        pageControl.pageIndicatorTintColor = .button.disabled
+        pageControl.currentPageIndicatorTintColor = .button.lavender
+        return pageControl
+    }()
+    
+    // 자동 스크롤 타이머
+    private var timer: Timer?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUp()
+        startTimer()
     }
     
     required init?(coder: NSCoder) {
@@ -43,26 +57,45 @@ class MainNewsTableViewCell: UITableViewCell {
 private extension MainNewsTableViewCell {
     func setUp() {
         contentView.addSubview(horizontalNewsCollectionView)
+        contentView.addSubview(pageControl)
         
         horizontalNewsCollectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         horizontalNewsCollectionView.delegate = self
         horizontalNewsCollectionView.dataSource = self
+        
+        pageControl.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(safeAreaLayoutGuide)
+        }
     }
 }
 
 // MARK: - Method
 extension MainNewsTableViewCell {
-    func configure() {
-        
+    // 컬렉션 뷰 셀 전환 속도 조정
+    private func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 3.5, target: self, selector: #selector(scrollToNext), userInfo: nil, repeats: true)
+    }
+    
+    @objc private func scrollToNext() {
+        let currentOffset = horizontalNewsCollectionView.contentOffset.x
+        let nextOffset = currentOffset + horizontalNewsCollectionView.frame.width
+        if nextOffset < horizontalNewsCollectionView.contentSize.width {
+            horizontalNewsCollectionView.setContentOffset(CGPoint(x: nextOffset, y: 0), animated: true)
+        } else {
+            horizontalNewsCollectionView.setContentOffset(.zero, animated: true)
+        }
     }
 }
 
 // MARK: - CollectionViewDelegate
 extension MainNewsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.eSportNews.first?.mainImage.count ?? 0
+        let newImageCount = viewModel.eSportNews.first?.mainImage.count ?? 0
+        pageControl.numberOfPages = newImageCount
+        return newImageCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -80,5 +113,12 @@ extension MainNewsTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+}
+
+extension MainNewsTableViewCell {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let pageIndex = round(scrollView.contentOffset.x / scrollView.frame.width)
+        pageControl.currentPage = Int(pageIndex)
     }
 }

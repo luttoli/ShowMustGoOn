@@ -29,7 +29,8 @@ private extension HorizontalNewsCollectionViewCell {
         contentView.addSubview(newsImageView)
         
         newsImageView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(Constants.size.size220)
         }
         newsImageView.layer.cornerRadius = Constants.radius.px10
         newsImageView.layer.masksToBounds = true
