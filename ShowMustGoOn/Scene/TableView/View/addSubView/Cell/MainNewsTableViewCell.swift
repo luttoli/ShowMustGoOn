@@ -93,6 +93,7 @@ extension MainNewsTableViewCell {
 // MARK: - CollectionViewDelegate
 extension MainNewsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // 페이지 컨트롤 인디케이터도 개수가 동일하여 여기서 설정
         let newImageCount = viewModel.eSportNews.first?.mainImage.count ?? 0
         pageControl.numberOfPages = newImageCount
         return newImageCount

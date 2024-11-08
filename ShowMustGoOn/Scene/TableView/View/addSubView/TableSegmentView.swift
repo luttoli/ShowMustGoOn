@@ -53,7 +53,7 @@ private extension TableSegmentView {
         addSubview(bottomLineView)
         
         tableSegment.snp.makeConstraints {
-            $0.edges.equalTo(safeAreaLayoutGuide)
+            $0.edges.equalToSuperview()
         }
     }
 }

@@ -23,6 +23,8 @@
 		B877DBE82CD9B96C009D9C49 /* VerticalNewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBE72CD9B96C009D9C49 /* VerticalNewsTableViewCell.swift */; };
 		B877DBEA2CDAF506009D9C49 /* ThirdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBE92CDAF506009D9C49 /* ThirdViewModel.swift */; };
 		B877DBEC2CDAF81A009D9C49 /* ESportsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBEB2CDAF81A009D9C49 /* ESportsModel.swift */; };
+		B877DBF02CDDD942009D9C49 /* DetailThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBEF2CDDD942009D9C49 /* DetailThirdViewController.swift */; };
+		B877DBF22CDDDEA4009D9C49 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBF12CDDDEA4009D9C49 /* WebView.swift */; };
 		B8CD65282CC0FC5C00E8F8B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD651E2CC0FC5C00E8F8B3 /* AppDelegate.swift */; };
 		B8CD65292CC0FC5C00E8F8B3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65252CC0FC5C00E8F8B3 /* SceneDelegate.swift */; };
 		B8CD652B2CC0FC5C00E8F8B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8CD651F2CC0FC5C00E8F8B3 /* Assets.xcassets */; };
@@ -60,6 +62,8 @@
 		B877DBE72CD9B96C009D9C49 /* VerticalNewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalNewsTableViewCell.swift; sourceTree = "<group>"; };
 		B877DBE92CDAF506009D9C49 /* ThirdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewModel.swift; sourceTree = "<group>"; };
 		B877DBEB2CDAF81A009D9C49 /* ESportsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESportsModel.swift; sourceTree = "<group>"; };
+		B877DBEF2CDDD942009D9C49 /* DetailThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailThirdViewController.swift; sourceTree = "<group>"; };
+		B877DBF12CDDDEA4009D9C49 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		B8CD65052CC0FC4000E8F8B3 /* ShowMustGoOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowMustGoOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8CD651E2CC0FC5C00E8F8B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8CD651F2CC0FC5C00E8F8B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 				B877DBC82CD32623009D9C49 /* FirstView.swift */,
 				B877DBD52CD47127009D9C49 /* SecondView.swift */,
 				B877DBDF2CD99D02009D9C49 /* ThirdView.swift */,
+				B877DBEF2CDDD942009D9C49 /* DetailThirdViewController.swift */,
 				B8CD655E2CC8879F00E8F8B3 /* Cell */,
 			);
 			path = addSubView;
@@ -189,6 +194,7 @@
 				B8CD653D2CC0FE8600E8F8B3 /* UIColor.swift */,
 				B8CD655A2CC8848900E8F8B3 /* UITableViewCell.swift */,
 				B877DBE52CD9B621009D9C49 /* UICollectionViewCell.swift */,
+				B877DBF12CDDDEA4009D9C49 /* WebView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -354,6 +360,7 @@
 				B877DBD42CD37465009D9C49 /* TableSegmentView.swift in Sources */,
 				B877DBEC2CDAF81A009D9C49 /* ESportsModel.swift in Sources */,
 				B877DBC62CD30C2E009D9C49 /* CollectionViewController.swift in Sources */,
+				B877DBF02CDDD942009D9C49 /* DetailThirdViewController.swift in Sources */,
 				B877DBEA2CDAF506009D9C49 /* ThirdViewModel.swift in Sources */,
 				B8CD655D2CC8879800E8F8B3 /* BasicTableViewCell.swift in Sources */,
 				B8CD65282CC0FC5C00E8F8B3 /* AppDelegate.swift in Sources */,
@@ -370,6 +377,7 @@
 				B8CD65392CC0FD7100E8F8B3 /* TableViewController.swift in Sources */,
 				B877DBD82CD4723F009D9C49 /* MultiplyModel.swift in Sources */,
 				B877DBD62CD47127009D9C49 /* SecondView.swift in Sources */,
+				B877DBF22CDDDEA4009D9C49 /* WebView.swift in Sources */,
 				B877DBDC2CD47374009D9C49 /* MultiplyTableViewCell.swift in Sources */,
 				B8CD653E2CC0FE8600E8F8B3 /* UIColor.swift in Sources */,
 				B8CD65442CC1038C00E8F8B3 /* CustomLabel.swift in Sources */,

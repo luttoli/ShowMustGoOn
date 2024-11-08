@@ -15,4 +15,5 @@ struct ESportsModel {
 struct SubNews {
     let subImage: UIImage?
     let subTitle: String
+    let url: String?
 }

@@ -9,9 +9,15 @@ import UIKit
 
 import SnapKit
 
+protocol ThirdViewDelegate: AnyObject {
+    func didSelectItem(with url: String, newsTitle: String)
+}
+
 class ThirdView: UIView {
     // MARK: - Properties
     var viewModel = ThirdViewModel()
+    
+    weak var delegate: ThirdViewDelegate?
     
     // MARK: - Components
     var eSportsTableView: UITableView = {
@@ -85,6 +91,8 @@ extension ThirdView: UITableViewDelegate, UITableViewDataSource {
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: VerticalNewsTableViewCell.identifier, for: indexPath) as? VerticalNewsTableViewCell else { return UITableViewCell() }
             
+            cell.selectionStyle = .none
+            
             cell.configure(with: viewModel.eSportNews[0].subNews[indexPath.row])
             
             return cell
@@ -97,5 +105,13 @@ extension ThirdView: UITableViewDelegate, UITableViewDataSource {
         } else {
             return Constants.size.size100
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedSubNews = viewModel.eSportNews[0].subNews[indexPath.row]
+        let url = selectedSubNews.url ?? ""
+        let newsTitle = selectedSubNews.subTitle
+        
+        delegate?.didSelectItem(with: url, newsTitle: newsTitle)
     }
 }

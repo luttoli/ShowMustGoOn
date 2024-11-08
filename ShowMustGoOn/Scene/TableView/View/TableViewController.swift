@@ -39,6 +39,7 @@ extension TableViewController {
         navigationUI()
         setUp()
         didTapSegment()
+        thirdView.delegate = self
     }
     
     override func viewDidLayoutSubviews() {
@@ -104,7 +105,7 @@ private extension TableViewController {
 }
 
 // MARK: - Method
-private extension TableViewController {
+extension TableViewController: ThirdViewDelegate {
     // 세그먼트 클릭 이벤트
     func didTapSegment() {
         tableSegmentView.tableSegment.addAction(UIAction(handler: { [weak self] _ in // combine 연습하기
@@ -136,5 +137,14 @@ private extension TableViewController {
         default:
             break
         }
+    }
+    
+    //
+    func didSelectItem(with url: String, newsTitle: String) {
+        guard let url = URL(string: url) else { return }
+
+        let detailNewsViewController = DetailThirdViewController(url: url, title: newsTitle)
+        detailNewsViewController.modalPresentationStyle = .formSheet
+        present(detailNewsViewController, animated: true, completion: nil)
     }
 }
