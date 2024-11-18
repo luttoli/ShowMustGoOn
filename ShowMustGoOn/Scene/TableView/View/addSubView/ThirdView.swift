@@ -79,7 +79,7 @@ extension ThirdView: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return 1
         } else {
-            return 5
+            return viewModel.eSportNews.first?.subNews.count ?? 0
         }
     }
     
