@@ -18,6 +18,7 @@ class TableViewController: UIViewController {
     var firstView = FirstView()
     var secondView = SecondView()
     var thirdView = ThirdView()
+    var fourthView = FourthView()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -48,7 +49,8 @@ extension TableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tableSegmentView.tableSegment.selectedSegmentIndex = 0
+//        tableSegmentView.tableSegment.selectedSegmentIndex = 0
+        tableSegmentView.tableSegment.selectedSegmentIndex = 3
         tableSegmentView.updateBottomLinePosition()
         changeView()
     }
@@ -71,6 +73,7 @@ private extension TableViewController {
         view.addSubview(firstView)
         view.addSubview(secondView)
         view.addSubview(thirdView)
+        view.addSubview(fourthView)
         
         tableSegmentView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
@@ -100,6 +103,13 @@ private extension TableViewController {
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
         }
         
+        fourthView.snp.makeConstraints {
+            $0.top.equalTo(tableSegmentView.snp.bottom).offset(Constants.margin.vertical)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
+        }
+        
         changeView()
     }
 }
@@ -119,7 +129,7 @@ extension TableViewController: ThirdViewDelegate {
     // 세그먼트 선택 시 View 노출
     func changeView() {
         // 모든 뷰 숨김 처리 했다가
-        let segmentView = [firstView, secondView, thirdView]
+        let segmentView = [firstView, secondView, thirdView, fourthView, ]
         segmentView.forEach { $0.isHidden = true }
         
         // 선택된 세그먼트에 따라 해당 뷰만 보이게
@@ -131,7 +141,7 @@ extension TableViewController: ThirdViewDelegate {
         case 2:
             thirdView.isHidden = false
         case 3:
-            break
+            fourthView.isHidden = false
         case 4:
             break
         default:
