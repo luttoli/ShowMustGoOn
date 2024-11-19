@@ -1,15 +1,15 @@
 //
-//  StepViewController.swift
+//  CollectionViewController.swift
 //  ShowMustGoOn
 //
-//  Created by 김지훈 on 10/18/24.
+//  Created by 김지훈 on 10/31/24.
 //
 
 import UIKit
 
 import SnapKit
 
-class StepViewController: UIViewController {
+class CollectionViewController: UIViewController {
     // MARK: - Properties
     
     
@@ -27,11 +27,11 @@ class StepViewController: UIViewController {
 }
 
 // MARK: - LifeCycle
-extension StepViewController {
+extension CollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .background.white
+        view.backgroundColor = .white
         
         navigationUI()
         setUp()
@@ -39,30 +39,30 @@ extension StepViewController {
 }
 
 // MARK: - Navigation
-extension StepViewController {
+extension CollectionViewController {
     func navigationUI() {
         navigationController?.navigationBar.barTintColor = .background.white
         
-        let viewTitle = CustomLabel(title: "Step Practice", size: Constants.size.size30, weight: .Bold, color: .text.black)
+        let viewTitle = CustomLabel(title: "CollectionView Practice", size: Constants.size.size20, weight: .Bold, color: .text.black)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: viewTitle)
     }
 }
 
 // MARK: - SetUp
-private extension StepViewController {
+private extension CollectionViewController {
     func setUp() {
         
     }
 }
 
 // MARK: - Method
-private extension StepViewController {
+private extension CollectionViewController {
     //    func <#name#>() {
     //
     //    }
 }
 
 // MARK: - Delegate
-extension StepViewController {
+extension CollectionViewController {
     
 }

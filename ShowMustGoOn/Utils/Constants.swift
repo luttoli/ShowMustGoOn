@@ -23,6 +23,7 @@ struct Margin {
 }
 
 struct Spacing {
+    let px2: CGFloat = 2
     let px4: CGFloat = 4
     let px8: CGFloat = 8
     let px10: CGFloat = 10
@@ -44,6 +45,7 @@ struct Radius {
 
 struct Size {
     let size10: CGFloat = 10
+    let size12: CGFloat = 12
     let size15: CGFloat = 15
     let size20: CGFloat = 20
     let size25: CGFloat = 25
@@ -66,5 +68,10 @@ struct Size {
     let size110: CGFloat = 110
     let size120: CGFloat = 120
     let size130: CGFloat = 130
+    let size200: CGFloat = 200
+    let size220: CGFloat = 220
+    let size240: CGFloat = 240
+    let size260: CGFloat = 260
+    let size280: CGFloat = 280
     let size300: CGFloat = 300
 }
