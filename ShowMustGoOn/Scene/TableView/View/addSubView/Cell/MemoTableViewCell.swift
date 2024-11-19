@@ -47,15 +47,14 @@ private extension MemoTableViewCell {
         
         switchButton.snp.makeConstraints {
             $0.centerY.equalTo(contentView)
-            $0.trailing.equalTo(contentView)
+            $0.trailing.equalTo(contentView).offset(-Constants.spacing.px2)
         }
     }
 }
 
 // MARK: - Method
 extension MemoTableViewCell {
-//    func configure(with model: TableModel) {
-//        numLabel.text = "\(model.number)."
-//        titleLabel.text = model.title
-//    }
+    func configure(with title: String ) {
+        itemTitle.text = title
+    }
 }

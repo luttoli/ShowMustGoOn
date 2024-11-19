@@ -12,6 +12,7 @@ import SnapKit
 class FourthView: UIView {
     // MARK: - Properties
     var viewModel = FourthViewModel()
+    weak var parentViewController: UIViewController?
     
     // MARK: - Components
     var inputCategoryBar: UISearchBar = {
@@ -24,7 +25,7 @@ class FourthView: UIView {
     
     var addCategoryButton: UIButton = {
         let addCategoryButton = UIButton()
-        addCategoryButton.setTitle("추가", for: .normal)
+        addCategoryButton.setTitle("+", for: .normal)
         addCategoryButton.setTitleColor(.white, for: .normal)
         addCategoryButton.backgroundColor = .button.lavender
         addCategoryButton.layer.cornerRadius = 10
@@ -137,7 +138,7 @@ extension FourthView: UITableViewDelegate, UITableViewDataSource {
         
         let addItemButton: UIButton = {
             let addItemButton = UIButton()
-            addItemButton.setTitle("추가", for: .normal)
+            addItemButton.setTitle("+", for: .normal)
             addItemButton.setTitleColor(.white, for: .normal)
             addItemButton.backgroundColor = .button.lavender
             addItemButton.layer.cornerRadius = 10
@@ -146,7 +147,7 @@ extension FourthView: UITableViewDelegate, UITableViewDataSource {
         
         let deleteCategoryButton: UIButton = {
             let deleteCategoryButton = UIButton()
-            deleteCategoryButton.setTitle("삭제", for: .normal)
+            deleteCategoryButton.setTitle("-", for: .normal)
             deleteCategoryButton.setTitleColor(.white, for: .normal)
             deleteCategoryButton.backgroundColor = .button.lavender
             deleteCategoryButton.layer.cornerRadius = 10
@@ -180,14 +181,44 @@ extension FourthView: UITableViewDelegate, UITableViewDataSource {
         
         addItemButton.addAction(UIAction(handler: { [weak self] _ in
             guard let self = self else { return }
-            self.viewModel.addItem(self.viewModel.categories[section].categoryTitle, self.viewModel.categories[section].itemTitle)
+            
+            // 해당 카테고리의 id를 가져오기
+            let categoryId = self.viewModel.categories[section].id
+            
+            guard let parentVC = self.parentViewController else { return }
+            
+            let alert = UIAlertController(
+                title: "항목 추가",
+                message: "추가할 항목을 입력하세요",
+                preferredStyle: .alert
+            )
+            
+            alert.addTextField { textField in
+                textField.placeholder = "항목 입력"
+            }
+            
+            let addAction = UIAlertAction(title: "추가", style: .default) { [weak self] _ in
+                guard let self = self else { return }
+                if let textField = alert.textFields?.first, let text = textField.text, !text.isEmpty {
+                    // 카테고리 id와 함께 아이템 추가
+                    self.viewModel.addItem(categoryId: categoryId, itemTitle: text)
+                }
+            }
+            
+            let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+            
+            alert.addAction(addAction)
+            alert.addAction(cancelAction)
+            
+            parentVC.present(alert, animated: true, completion: nil)
         }), for: .touchUpInside)
-        
         
         deleteCategoryButton.addAction(UIAction(handler: { [weak self] _ in
             guard let self = self else { return }
-            self.viewModel.deleteCategory(self.viewModel.categories[section].id)
+            let categoryId = self.viewModel.categories[section].id
+            self.viewModel.deleteCategory(categoryId)
         }), for: .touchUpInside)
+        
         return headerView
     }
     
@@ -196,7 +227,7 @@ extension FourthView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.categories[section].categoryTitle.count - 1
+        return viewModel.categories[section].itemTitle.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -206,10 +237,27 @@ extension FourthView: UITableViewDelegate, UITableViewDataSource {
         
         cell.selectionStyle = .none
         
+        let itemTitle = viewModel.categories[indexPath.section].itemTitle[indexPath.row]
+        cell.configure(with: itemTitle)
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constants.size.size50
+    }
+    
+    // 셀 삭제 기능 추가
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let category = viewModel.categories[indexPath.section]
+            let itemToDelete = category.itemTitle[indexPath.row]
+            
+            // ViewModel에서 데이터 삭제
+            viewModel.deleteItem(categoryId: category.id, itemTitle: itemToDelete)
+            
+            // 전체 테이블 뷰 갱신
+            tableView.reloadData()
+        }
     }
 }

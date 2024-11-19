@@ -109,6 +109,7 @@ private extension TableViewController {
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
         }
+        fourthView.parentViewController = self
         
         changeView()
     }

@@ -14,18 +14,36 @@ class FourthViewModel {
     // 데이터 변경 알림
     var onCategoriesUpdated: (() -> Void)?
     
-    // addItem
-    func addItem(_ category: String, _ item: String) {
-        guard !category.isEmpty, !item.isEmpty else { return }
-        let newItem = MemoModel(id: UUID(), categoryTitle: category, itemTitle: item, itemCompleted: Bool())
-        categories.append(newItem)
+    // 항목 추가
+    func addItem(categoryId: UUID, itemTitle: String) {
+        // 동일한 id를 가진 카테고리 찾기
+        if let index = categories.firstIndex(where: { $0.id == categoryId }) {
+            // 해당 카테고리에 아이템 추가
+            categories[index].itemTitle.append(itemTitle)
+        }
+        
+        // 데이터 갱신 후 UI 업데이트
+        onCategoriesUpdated?()
+    }
+    
+    // 항목 삭제
+    func deleteItem(categoryId: UUID, itemTitle: String) {
+        // 동일한 categoryTitle을 가진 카테고리들 중에서 항목 삭제
+        if let categoryIndex = categories.firstIndex(where: { $0.id == categoryId }) {
+            // 해당 카테고리에서 아이템 삭제
+            if let itemIndex = categories[categoryIndex].itemTitle.firstIndex(of: itemTitle) {
+                categories[categoryIndex].itemTitle.remove(at: itemIndex)
+            }
+        }
+        
+        // 데이터 갱신 후 UI 업데이트
         onCategoriesUpdated?()
     }
     
     // 카테고리 추가 메서드
     func addCategory(_ category: String) {
         guard !category.isEmpty else { return } // 빈 값 방지
-        let newCategory = MemoModel(id: UUID(), categoryTitle: category, itemTitle: String(), itemCompleted: Bool())
+        let newCategory = MemoModel(id: UUID(), categoryTitle: category, itemTitle: [], itemCompleted: [])
         categories.append(newCategory)
         onCategoriesUpdated?() // 데이터 변경 알림
     }
