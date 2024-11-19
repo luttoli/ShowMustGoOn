@@ -50,19 +50,24 @@ class FourthView: UIView {
         // 표시
         memoTableView.separatorStyle = .singleLine // 구분선 노출 여부
         memoTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) // 구분선 여백 설정
+        memoTableView.showsVerticalScrollIndicator = false
         return memoTableView
     }()
+    
+    var nodataLabel = CustomLabel(title: "메모할 카테고리를 입력해주세요.", size: Constants.size.size15, weight: .Regular, color: .text.black)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
         didTabAddCategoryButton()
+        hideOnLabel()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setUp()
         didTabAddCategoryButton()
+        hideOnLabel()
     }
 }
 
@@ -72,6 +77,7 @@ private extension FourthView {
         addSubview(inputCategoryBar)
         addSubview(addCategoryButton)
         addSubview(memoTableView)
+        addSubview(nodataLabel)
         
         inputCategoryBar.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide)
@@ -95,19 +101,29 @@ private extension FourthView {
         memoTableView.delegate = self
         memoTableView.dataSource = self
         
+        nodataLabel.snp.makeConstraints {
+            $0.centerX.centerY.equalTo(safeAreaLayoutGuide)
+        }
+        
         setUpBindings()
     }
 }
 
 // MARK: - Method
 extension FourthView {
+    func hideOnLabel() {
+        nodataLabel.isHidden = !viewModel.categories.isEmpty
+    }
+    
     func didTabAddCategoryButton() {
         addCategoryButton.addAction(UIAction(handler: { [weak self] _ in
             guard let self = self else { return }
             
             // 입력값을 가져와 ViewModel로 전달
             guard let inputText = self.inputCategoryBar.searchTextField.text, !inputText.isEmpty else {
-                print("빈 값은 추가할 수 없습니다.")
+                let alert = UIAlertController(title: "빈 값", message: "추가할 카테고리 이름을 입력해주세요.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default))
+                self.parentViewController?.present(alert, animated: true)
                 return
             }
             
@@ -119,7 +135,9 @@ extension FourthView {
     func setUpBindings() {
         // ViewModel 데이터 변경을 감지하고 TableView 갱신
         viewModel.onCategoriesUpdated = { [weak self] in
-            self?.memoTableView.reloadData()
+            guard let self = self else { return }
+            self.memoTableView.reloadData()
+            self.hideOnLabel()
         }
     }
 }
@@ -187,14 +205,10 @@ extension FourthView: UITableViewDelegate, UITableViewDataSource {
             
             guard let parentVC = self.parentViewController else { return }
             
-            let alert = UIAlertController(
-                title: "항목 추가",
-                message: "추가할 항목을 입력하세요",
-                preferredStyle: .alert
-            )
+            let alert = UIAlertController(title: "항목 추가", message: "추가할 항목을 입력하세요", preferredStyle: .alert)
             
-            alert.addTextField { textField in
-                textField.placeholder = "항목 입력"
+            alert.addTextField {
+                textField in textField.placeholder = "항목 입력"
             }
             
             let addAction = UIAlertAction(title: "추가", style: .default) { [weak self] _ in
