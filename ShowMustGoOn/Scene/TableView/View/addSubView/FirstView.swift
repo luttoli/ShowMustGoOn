@@ -41,8 +41,7 @@ class FirstView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setUp()
+        fatalError("init(coder:) has not been implemented")
     }
 }
 

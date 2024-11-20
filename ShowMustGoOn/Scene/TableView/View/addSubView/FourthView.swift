@@ -20,6 +20,7 @@ class FourthView: UIView {
         inputCategoryBar.placeholder = "카테고리 입력 후 추가"
         inputCategoryBar.searchBarStyle = .minimal
         inputCategoryBar.sizeToFit()
+        inputCategoryBar.returnKeyType = .done
         return inputCategoryBar
     }()
     
@@ -61,13 +62,11 @@ class FourthView: UIView {
         setUp()
         didTabAddCategoryButton()
         hideOnLabel()
+        configureDismissKeyboard()
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setUp()
-        didTabAddCategoryButton()
-        hideOnLabel()
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
@@ -83,6 +82,7 @@ private extension FourthView {
             $0.top.equalTo(safeAreaLayoutGuide)
             $0.leading.equalTo(safeAreaLayoutGuide).offset(-Constants.spacing.px8)
         }
+        inputCategoryBar.delegate = self
         
         addCategoryButton.snp.makeConstraints {
             $0.centerY.equalTo(inputCategoryBar.searchTextField)
@@ -111,10 +111,12 @@ private extension FourthView {
 
 // MARK: - Method
 extension FourthView {
+    // 입력한 데이터가 없는 경우
     func hideOnLabel() {
         nodataLabel.isHidden = !viewModel.categories.isEmpty
     }
     
+    // 카테고리 추가 버튼
     func didTabAddCategoryButton() {
         addCategoryButton.addAction(UIAction(handler: { [weak self] _ in
             guard let self = self else { return }
@@ -132,6 +134,7 @@ extension FourthView {
         }), for: .touchUpInside)
     }
 
+    //
     func setUpBindings() {
         // ViewModel 데이터 변경을 감지하고 TableView 갱신
         viewModel.onCategoriesUpdated = { [weak self] in
@@ -139,6 +142,16 @@ extension FourthView {
             self.memoTableView.reloadData()
             self.hideOnLabel()
         }
+    }
+    
+    // 화면 클릭 시 키보드 내리기
+    func configureDismissKeyboard() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func dismissKeyboard() {
+        self.endEditing(true)
     }
 }
 
@@ -273,5 +286,13 @@ extension FourthView: UITableViewDelegate, UITableViewDataSource {
             // 전체 테이블 뷰 갱신
             tableView.reloadData()
         }
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension FourthView: UISearchBarDelegate {
+    // 텍스트필드 리턴키 눌리면 키보드 내리기
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder() // 키보드 내리기
     }
 }
