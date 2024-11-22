@@ -13,18 +13,7 @@ class MemoTableViewCell: UITableViewCell {
     // MARK: - Components
     var itemTitle = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
     
-//    var switchButton: UISwitch = {
-//        let switchButton = UISwitch()
-//        switchButton.isOn = false
-//        return switchButton
-//    }()
-    
-    var checkBoxButton: UIButton = {
-        let checkBoxButton = UIButton()
-        checkBoxButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
-        checkBoxButton.tintColor = .button.lavender
-        return checkBoxButton
-    }()
+    var checkBoxButton = CustomButton(buttonType: .checkBox, size: 24, tintColor: .button.lavender, backgroundColor: .background.white)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -51,6 +40,7 @@ private extension MemoTableViewCell {
             $0.leading.equalTo(contentView).offset(Constants.spacing.px8)
             $0.trailing.equalTo(checkBoxButton.snp.leading).offset(-Constants.spacing.px10)
         }
+        itemTitle.numberOfLines = 1
         
         checkBoxButton.snp.makeConstraints {
             $0.centerY.equalTo(contentView)

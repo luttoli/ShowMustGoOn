@@ -24,14 +24,16 @@ class FourthView: UIView {
         return inputCategoryBar
     }()
     
-    var addCategoryButton: UIButton = {
-        let addCategoryButton = UIButton()
-        addCategoryButton.setTitle("+", for: .normal)
-        addCategoryButton.setTitleColor(.white, for: .normal)
-        addCategoryButton.backgroundColor = .button.lavender
-        addCategoryButton.layer.cornerRadius = 10
-        return addCategoryButton
-    }()
+//    var addCategoryButton: UIButton = {
+//        let addCategoryButton = UIButton()
+//        addCategoryButton.setTitle("+", for: .normal)
+//        addCategoryButton.setTitleColor(.white, for: .normal)
+//        addCategoryButton.backgroundColor = .button.lavender
+//        addCategoryButton.layer.cornerRadius = 10
+//        return addCategoryButton
+//    }()
+    
+    var addCategoryButton = CustomButton(buttonType: .plus, size: 30, tintColor: .button.white, backgroundColor: .background.lavender)
     
     var memoTableView: UITableView = {
         let memoTableView = UITableView(frame: .zero, style: .grouped)
@@ -88,8 +90,8 @@ private extension FourthView {
             $0.centerY.equalTo(inputCategoryBar.searchTextField)
             $0.leading.equalTo(inputCategoryBar.snp.trailing).offset(Constants.spacing.px10)
             $0.trailing.equalTo(safeAreaLayoutGuide)
-            $0.width.equalTo(Constants.size.size50)
-            $0.height.equalTo(inputCategoryBar.searchTextField.snp.height)
+//            $0.width.equalTo(Constants.size.size50)
+//            $0.height.equalTo(inputCategoryBar.searchTextField.snp.height)
         }
         
         memoTableView.snp.makeConstraints {

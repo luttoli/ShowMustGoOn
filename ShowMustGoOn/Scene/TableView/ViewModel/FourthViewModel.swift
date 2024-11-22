@@ -9,7 +9,7 @@ import UIKit
 
 class FourthViewModel {
     // 섹션 데이터를 관리
-    private(set) var categories: [MemoModel] = []
+    private(set) var categories: [MemoModel] = [MemoModel(id: UUID(), categoryTitle: "T1", itemTitle: ["도란", "오너", "페이커", "구마유시", "캐리아"], itemCompleted: [false, false, false, false, false])]
     
     // 데이터 변경 알림
     var onCategoriesUpdated: (() -> Void)?
