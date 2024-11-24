@@ -12,5 +12,8 @@ iOS 앱 개발 공부하고 기록합니다. 계속 합니다!
 ## UISegmentedControl
 - [기본 & 커스텀 사용 방법](https://luttoli.notion.site/UISegmentedControl-1260f60899b98056afc2e35c8172eef3?pvs=4)
 
-## UITebleView
-ddd
+## UITableView
+- [UITableView, Cell 기본 사용 방법](https://luttoli.notion.site/UITableView-51f407dc74c1490babe37eecd411a12d?pvs=4)
+- [UITableView Section 설정]
+- [UITableViewCell 안에 CollectionView]
+- [UITableView Header, cell 추가 엑션]

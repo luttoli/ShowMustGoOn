@@ -22,11 +22,11 @@ class CustomButton: UIButton {
             case .textButton:
                 return nil
             case .plus:
-                return UIImage(systemName: "plus")
+                return UIImage(named: "plus.svg")
             case .minus:
-                return UIImage(systemName: "minus")
+                return UIImage(named: "minus.svg")
             case .checkBox:
-                return UIImage(named: "icon_checkBox.svg")
+                return UIImage(named: "checkbox.svg")
             }
         }
     }
@@ -52,7 +52,7 @@ private extension CustomButton {
         if case let .textButton(text) = type {
             setTitle(text, for: .normal)
             setTitleColor(.text.white, for: .normal)
-            titleLabel?.font = UIFont.toPretendard(size: Constants.size.size15, weight: .medium)
+            titleLabel?.font = UIFont.toPretendard(size: Constants.size.size20, weight: .medium)
         }
         
         self.snp.makeConstraints {
@@ -61,5 +61,6 @@ private extension CustomButton {
 
         clipsToBounds = true
         contentHorizontalAlignment = .center
+        layer.cornerRadius = Constants.radius.px4
     }
 }

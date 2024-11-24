@@ -33,7 +33,7 @@ class FourthView: UIView {
 //        return addCategoryButton
 //    }()
     
-    var addCategoryButton = CustomButton(buttonType: .plus, size: 30, tintColor: .button.white, backgroundColor: .background.lavender)
+    var addCategoryButton = CustomButton(buttonType: .plus, size: 24, tintColor: .button.white, backgroundColor: .background.white)
     
     var memoTableView: UITableView = {
         let memoTableView = UITableView(frame: .zero, style: .grouped)
@@ -169,23 +169,27 @@ extension FourthView: UITableViewDelegate, UITableViewDataSource {
         
         let headerLabel = CustomLabel(title: "\(viewModel.categories[section].categoryTitle)", size: Constants.size.size12, weight: .Regular, color: .text.subDarkGray)
         
-        let addItemButton: UIButton = {
-            let addItemButton = UIButton()
-            addItemButton.setTitle("+", for: .normal)
-            addItemButton.setTitleColor(.white, for: .normal)
-            addItemButton.backgroundColor = .button.lavender
-            addItemButton.layer.cornerRadius = 10
-            return addItemButton
-        }()
+//        let addItemButton: UIButton = {
+//            let addItemButton = UIButton()
+//            addItemButton.setTitle("+", for: .normal)
+//            addItemButton.setTitleColor(.white, for: .normal)
+//            addItemButton.backgroundColor = .button.lavender
+//            addItemButton.layer.cornerRadius = 10
+//            return addItemButton
+//        }()
+//        
+//        let deleteCategoryButton: UIButton = {
+//            let deleteCategoryButton = UIButton()
+//            deleteCategoryButton.setTitle("-", for: .normal)
+//            deleteCategoryButton.setTitleColor(.white, for: .normal)
+//            deleteCategoryButton.backgroundColor = .button.lavender
+//            deleteCategoryButton.layer.cornerRadius = 10
+//            return deleteCategoryButton
+//        }()
         
-        let deleteCategoryButton: UIButton = {
-            let deleteCategoryButton = UIButton()
-            deleteCategoryButton.setTitle("-", for: .normal)
-            deleteCategoryButton.setTitleColor(.white, for: .normal)
-            deleteCategoryButton.backgroundColor = .button.lavender
-            deleteCategoryButton.layer.cornerRadius = 10
-            return deleteCategoryButton
-        }()
+        let addItemButton = CustomButton(buttonType: .plus, size: 30, tintColor: .button.white, backgroundColor: .background.white)
+        
+        let deleteCategoryButton = CustomButton(buttonType: .minus, size: 30, tintColor: .button.white, backgroundColor: .background.white)
         
         headerView.addSubview(headerLabel)
         headerView.addSubview(addItemButton)
