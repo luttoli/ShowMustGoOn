@@ -45,7 +45,7 @@ extension UIColor {
         var white = UIColor.white
         var lavender = UIColor(red: 162/255, green: 149/255, blue: 243/255, alpha: 1.0)
         var lightGray = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1.0)
-        var disabled = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
+        var disabled = UIColor.systemGray4
     }
     
     struct BorderColor {

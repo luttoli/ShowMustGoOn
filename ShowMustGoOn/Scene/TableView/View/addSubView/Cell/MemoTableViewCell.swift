@@ -12,8 +12,7 @@ import SnapKit
 class MemoTableViewCell: UITableViewCell {
     // MARK: - Components
     var itemTitle = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
-    
-    var checkBoxButton = CustomButton(buttonType: .checkBox, size: 24, tintColor: .button.lavender, backgroundColor: .background.white)
+    var checkBoxButton = CustomButton(type: .iconButton(icon: .checkBox))
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -44,7 +43,7 @@ private extension MemoTableViewCell {
         
         checkBoxButton.snp.makeConstraints {
             $0.centerY.equalTo(contentView)
-            $0.trailing.equalTo(contentView).offset(-Constants.spacing.px2)
+            $0.trailing.equalTo(contentView)
         }
     }
 }

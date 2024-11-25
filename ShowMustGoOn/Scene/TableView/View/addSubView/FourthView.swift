@@ -24,16 +24,7 @@ class FourthView: UIView {
         return inputCategoryBar
     }()
     
-//    var addCategoryButton: UIButton = {
-//        let addCategoryButton = UIButton()
-//        addCategoryButton.setTitle("+", for: .normal)
-//        addCategoryButton.setTitleColor(.white, for: .normal)
-//        addCategoryButton.backgroundColor = .button.lavender
-//        addCategoryButton.layer.cornerRadius = 10
-//        return addCategoryButton
-//    }()
-    
-    var addCategoryButton = CustomButton(buttonType: .plus, size: 24, tintColor: .button.white, backgroundColor: .background.white)
+    var addCategoryButton = CustomButton(type: .iconButton(icon: .plus))
     
     var memoTableView: UITableView = {
         let memoTableView = UITableView(frame: .zero, style: .grouped)
@@ -90,8 +81,6 @@ private extension FourthView {
             $0.centerY.equalTo(inputCategoryBar.searchTextField)
             $0.leading.equalTo(inputCategoryBar.snp.trailing).offset(Constants.spacing.px10)
             $0.trailing.equalTo(safeAreaLayoutGuide)
-//            $0.width.equalTo(Constants.size.size50)
-//            $0.height.equalTo(inputCategoryBar.searchTextField.snp.height)
         }
         
         memoTableView.snp.makeConstraints {
@@ -169,27 +158,8 @@ extension FourthView: UITableViewDelegate, UITableViewDataSource {
         
         let headerLabel = CustomLabel(title: "\(viewModel.categories[section].categoryTitle)", size: Constants.size.size12, weight: .Regular, color: .text.subDarkGray)
         
-//        let addItemButton: UIButton = {
-//            let addItemButton = UIButton()
-//            addItemButton.setTitle("+", for: .normal)
-//            addItemButton.setTitleColor(.white, for: .normal)
-//            addItemButton.backgroundColor = .button.lavender
-//            addItemButton.layer.cornerRadius = 10
-//            return addItemButton
-//        }()
-//        
-//        let deleteCategoryButton: UIButton = {
-//            let deleteCategoryButton = UIButton()
-//            deleteCategoryButton.setTitle("-", for: .normal)
-//            deleteCategoryButton.setTitleColor(.white, for: .normal)
-//            deleteCategoryButton.backgroundColor = .button.lavender
-//            deleteCategoryButton.layer.cornerRadius = 10
-//            return deleteCategoryButton
-//        }()
-        
-        let addItemButton = CustomButton(buttonType: .plus, size: 30, tintColor: .button.white, backgroundColor: .background.white)
-        
-        let deleteCategoryButton = CustomButton(buttonType: .minus, size: 30, tintColor: .button.white, backgroundColor: .background.white)
+        let addItemButton = CustomButton(type: .iconButton(icon: .plus))
+        let deleteCategoryButton = CustomButton(type: .iconButton(icon: .minus))
         
         headerView.addSubview(headerLabel)
         headerView.addSubview(addItemButton)
@@ -204,16 +174,12 @@ extension FourthView: UITableViewDelegate, UITableViewDataSource {
             $0.centerY.equalTo(headerLabel)
             $0.leading.equalTo(headerLabel.snp.trailing).offset(Constants.margin.horizontal)
             $0.trailing.equalTo(deleteCategoryButton.snp.leading).offset(-Constants.margin.horizontal)
-            $0.width.equalTo(Constants.size.size50)
-            $0.height.equalTo(Constants.size.size35)
         }
         
         deleteCategoryButton.snp.makeConstraints {
             $0.centerY.equalTo(headerLabel)
             $0.leading.equalTo(addItemButton.snp.trailing).offset(Constants.margin.horizontal)
             $0.trailing.equalTo(headerView)
-            $0.width.equalTo(Constants.size.size50)
-            $0.height.equalTo(Constants.size.size35)
         }
         
         addItemButton.addAction(UIAction(handler: { [weak self] _ in
