@@ -226,7 +226,7 @@ extension FourthView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.categories[section].itemTitle.count
+        return viewModel.categories[section].items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -236,8 +236,9 @@ extension FourthView: UITableViewDelegate, UITableViewDataSource {
         
         cell.selectionStyle = .none
         
-        let itemTitle = viewModel.categories[indexPath.section].itemTitle[indexPath.row]
-        cell.configure(with: itemTitle)
+        //
+        let item = viewModel.categories[indexPath.section].items[indexPath.row]
+        cell.configure(with: item)
         
         return cell
     }
@@ -250,7 +251,7 @@ extension FourthView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let category = viewModel.categories[indexPath.section]
-            let itemToDelete = category.itemTitle[indexPath.row]
+            let itemToDelete = category.items[indexPath.row].title
             
             // ViewModel에서 데이터 삭제
             viewModel.deleteItem(categoryId: category.id, itemTitle: itemToDelete)

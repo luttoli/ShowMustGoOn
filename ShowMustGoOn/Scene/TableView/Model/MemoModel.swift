@@ -10,6 +10,11 @@ import UIKit
 struct MemoModel {
     let id: UUID
     let categoryTitle: String
-    var itemTitle: [String]
-    let itemCompleted: [Bool]
+    var items: [Item]
+}
+
+struct Item {
+    let id: UUID
+    let title: String
+    var isChecked: Bool
 }

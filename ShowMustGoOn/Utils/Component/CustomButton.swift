@@ -117,7 +117,7 @@ class CustomButton: UIButton {
         }
     }
     
-    private var isChecked: Bool = false
+    var isChecked: Bool = false
     
     // MARK:  Initializer
     init(type: ButtonType) {
@@ -181,6 +181,7 @@ private extension CustomButton {
 private extension CustomButton {
     func toggleButton(icon: ButtonType.IconType) {
         isChecked.toggle()
+        print("Button Toggled: \(isChecked)")
         setImage(isChecked ? icon.selectedImage : icon.image, for: .normal)
     }
 }
