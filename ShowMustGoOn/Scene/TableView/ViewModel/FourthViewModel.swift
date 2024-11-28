@@ -16,7 +16,11 @@ class FourthViewModel {
             Item(id: UUID(), title: "페이커", isChecked: true),
             Item(id: UUID(), title: "구마유시", isChecked: false),
             Item(id: UUID(), title: "케리아", isChecked: false),
-        ])
+        ]),
+        MemoModel(id: UUID(), categoryTitle: "케스파컵", items: [
+            Item(id: UUID(), title: "12월 1일 일 14시 15분 베트남 올스타", isChecked: true),
+            Item(id: UUID(), title: "12월 1일 일 16시 45분 한화생명", isChecked: true),
+        ]),
     ]
     
     // 데이터 변경 알림
@@ -33,13 +37,11 @@ class FourthViewModel {
     }
     
     // 항목 삭제
-    func deleteItem(categoryId: UUID, itemTitle: String) {
-        if let categoryIndex = categories.firstIndex(where: { $0.id == categoryId }) {
-            // items 배열에서 title 비교
-            if let itemIndex = categories[categoryIndex].items.firstIndex(where: { $0.title == itemTitle }) {
-                categories[categoryIndex].items.remove(at: itemIndex)
-                onCategoriesUpdated?() // 데이터 변경 알림
-            }
+    func deleteItem(categoryId: UUID, itemId: UUID) {
+        if let categoryIndex = categories.firstIndex(where: { $0.id == categoryId }),
+           let itemIndex = categories[categoryIndex].items.firstIndex(where: { $0.id == itemId }) {
+            categories[categoryIndex].items.remove(at: itemIndex)
+            onCategoriesUpdated?() // 데이터 변경 알림
         }
     }
     

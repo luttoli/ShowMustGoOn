@@ -236,9 +236,21 @@ extension FourthView: UITableViewDelegate, UITableViewDataSource {
         
         cell.selectionStyle = .none
         
-        //
+        // 셀에 데이터를 설정
         let item = viewModel.categories[indexPath.section].items[indexPath.row]
         cell.configure(with: item)
+
+        // 기존의 버튼 액션 제거 후 추가
+        cell.checkBoxButton.removeTarget(nil, action: nil, for: .allEvents)
+        cell.checkBoxButton.addAction(UIAction(handler: { [weak self] _ in
+            guard let self = self else { return }
+            
+            // 상태 토글 후 ViewModel 업데이트
+            self.viewModel.toggleItemCheck(categoryId: self.viewModel.categories[indexPath.section].id, itemId: item.id)
+            
+            // 변경된 데이터로 UI를 업데이트하기 위해 테이블뷰 리로드
+            self.memoTableView.reloadRows(at: [indexPath], with: .none)
+        }), for: .touchUpInside)
         
         return cell
     }
@@ -251,12 +263,8 @@ extension FourthView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let category = viewModel.categories[indexPath.section]
-            let itemToDelete = category.items[indexPath.row].title
-            
-            // ViewModel에서 데이터 삭제
-            viewModel.deleteItem(categoryId: category.id, itemTitle: itemToDelete)
-            
-            // 전체 테이블 뷰 갱신
+            let itemId = category.items[indexPath.row].id
+            viewModel.deleteItem(categoryId: category.id, itemId: itemId)
             tableView.reloadData()
         }
     }

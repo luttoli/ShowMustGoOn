@@ -181,7 +181,6 @@ private extension CustomButton {
 private extension CustomButton {
     func toggleButton(icon: ButtonType.IconType) {
         isChecked.toggle()
-        print("Button Toggled: \(isChecked)")
         setImage(isChecked ? icon.selectedImage : icon.image, for: .normal)
     }
 }
