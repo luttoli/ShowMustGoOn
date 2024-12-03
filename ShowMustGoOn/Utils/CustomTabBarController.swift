@@ -16,22 +16,22 @@ class CustomTabBarController: UITabBarController {
         let tableNaviController = UINavigationController(rootViewController: tableVC) // 네비게이션 컨트롤러로 감싸주기
         tableNaviController.tabBarItem = tableTabBarItem
         
+        let rxVC = RxTableViewController()
+        let rxTabBarItem = UITabBarItem(title: "Rx 테이블뷰", image: UIImage(systemName: "lizard"), tag: 1)
+        let rxNaviController = UINavigationController(rootViewController: rxVC)
+        rxNaviController.tabBarItem = rxTabBarItem
+        
         let collectionVC = CollectionViewController()
-        let collectionTabBarItem = UITabBarItem(title: "콜랙션뷰", image: UIImage(systemName: "square.grid.3x3.middle.filled"), tag: 1)
+        let collectionTabBarItem = UITabBarItem(title: "콜랙션뷰", image: UIImage(systemName: "square.grid.3x3.middle.filled"), tag: 2)
         let collectionNaviController = UINavigationController(rootViewController: collectionVC)
         collectionNaviController.tabBarItem = collectionTabBarItem
         
-        let stepVC = StepViewController()
-        let stepTabBarItem = UITabBarItem(title: "단계", image: UIImage(systemName: "figure.stair.stepper"), tag: 2)
-        let stepNaviController = UINavigationController(rootViewController: stepVC)
-        stepNaviController.tabBarItem = stepTabBarItem
-        
-        self.viewControllers = [tableNaviController, collectionNaviController, stepNaviController]
+        self.viewControllers = [tableNaviController, rxNaviController, collectionNaviController, ]
         
         self.tabBar.barTintColor = .background.white // 투명한 배경을 가진 탭바의 배경 색상 설정
         self.tabBar.backgroundColor = .background.white // iOS 15 이상부터 명확하게 적용
         self.tabBar.tintColor = .tabBar.black // 선택된 항목 색상
         self.tabBar.unselectedItemTintColor = .tabBar.lightGray // 선택되지 않은 항목 색상
-        self.selectedIndex = 0 // 기본 선택 인덱스 첫번째
+        self.selectedIndex = 1 // 기본 선택 인덱스 첫번째
     }
 }

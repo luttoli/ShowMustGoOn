@@ -49,8 +49,7 @@ extension TableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        tableSegmentView.tableSegment.selectedSegmentIndex = 0
-        tableSegmentView.tableSegment.selectedSegmentIndex = 3
+        tableSegmentView.tableSegment.selectedSegmentIndex = 0
         tableSegmentView.updateBottomLinePosition()
         changeView()
     }
@@ -119,7 +118,7 @@ private extension TableViewController {
 extension TableViewController: ThirdViewDelegate {
     // 세그먼트 클릭 이벤트
     func didTapSegment() {
-        tableSegmentView.tableSegment.addAction(UIAction(handler: { [weak self] _ in // combine 연습하기
+        tableSegmentView.tableSegment.addAction(UIAction(handler: { [weak self] _ in
             guard let self = self else { return }
             self.tableSegmentView.animateSelectedSegment()
             self.tableSegmentView.updateBottomLinePosition()
@@ -143,8 +142,6 @@ extension TableViewController: ThirdViewDelegate {
             thirdView.isHidden = false
         case 3:
             fourthView.isHidden = false
-        case 4:
-            break
         default:
             break
         }

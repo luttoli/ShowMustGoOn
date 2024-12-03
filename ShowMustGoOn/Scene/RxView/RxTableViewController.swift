@@ -1,17 +1,18 @@
 //
-//  StepViewController.swift
+//  RxViewController.swift
 //  ShowMustGoOn
 //
-//  Created by 김지훈 on 10/18/24.
+//  Created by 김지훈 on 12/3/24.
 //
 
 import UIKit
 
+import RxSwift
 import SnapKit
 
-class StepViewController: UIViewController {
+class RxTableViewController: UIViewController {
     // MARK: - Properties
-    
+    let disposeBag = DisposeBag()
     
     // MARK: - Components
     
@@ -27,7 +28,7 @@ class StepViewController: UIViewController {
 }
 
 // MARK: - LifeCycle
-extension StepViewController {
+extension RxTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,34 +36,37 @@ extension StepViewController {
         
         navigationUI()
         setUp()
+        
+
+        
     }
 }
 
 // MARK: - Navigation
-extension StepViewController {
+extension RxTableViewController {
     func navigationUI() {
         navigationController?.navigationBar.barTintColor = .background.white
         
-        let viewTitle = CustomLabel(title: "Step Practice", size: Constants.size.size30, weight: .Bold, color: .text.black)
+        let viewTitle = CustomLabel(title: "RxSwift Practice", size: Constants.size.size20, weight: .Bold, color: .text.black)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: viewTitle)
     }
 }
 
 // MARK: - SetUp
-private extension StepViewController {
+private extension RxTableViewController {
     func setUp() {
         
     }
 }
 
 // MARK: - Method
-private extension StepViewController {
+private extension RxTableViewController {
     //    func <#name#>() {
     //
     //    }
 }
 
 // MARK: - Delegate
-extension StepViewController {
+extension RxTableViewController {
     
 }

@@ -12,7 +12,7 @@ import SnapKit
 class TableSegmentView: UIView {
     // MARK: - Components
     var tableSegment: UISegmentedControl = {
-        let tableSegment = UISegmentedControl(items: ["기본", "섹션", "혼합", "추가", "응용"])
+        let tableSegment = UISegmentedControl(items: ["기본", "섹션", "혼합", "추가", ])
         tableSegment.selectedSegmentIndex = 0
         
         // 선택, 미선택 타이틀설정
