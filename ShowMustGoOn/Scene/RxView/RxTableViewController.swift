@@ -37,7 +37,45 @@ extension RxTableViewController {
         navigationUI()
         setUp()
         
+        
+        let publishSubject = PublishSubject<String>()
 
+        // 첫 번째 구독자
+        publishSubject.subscribe(onNext: { value in
+            print("첫 번째 구독자: \(value)")
+        })
+
+        // 첫 번째 구독자가 구독된 후 이벤트 발생
+        publishSubject.onNext("RxSwift")
+
+        // 두 번째 구독자 추가
+        publishSubject.subscribe(onNext: { value in
+            print("두 번째 구독자: \(value)")
+        })
+
+        // 이후 이벤트 발생
+        publishSubject.onNext("새로운 이벤트")
+        
+
+        
+        let behaviorSubject = BehaviorSubject(value: "초기값")
+
+        // 첫 번째 구독자
+        behaviorSubject.subscribe(onNext: { value in
+            print("첫 번째 구독자: \(value)")
+        })
+
+        // 첫 번째 구독자에게 새로운 값 방출
+        behaviorSubject.onNext("첫 번째 값")
+
+        // 두 번째 구독자 추가
+        behaviorSubject.subscribe(onNext: { value in
+            print("두 번째 구독자: \(value)")
+        })
+
+        // 이후 새로운 값 방출
+        behaviorSubject.onNext("두 번째 값")
+        
         
     }
 }
