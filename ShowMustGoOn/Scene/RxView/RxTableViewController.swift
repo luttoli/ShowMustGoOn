@@ -7,6 +7,7 @@
 
 import UIKit
 
+import RxCocoa
 import RxSwift
 import SnapKit
 
@@ -38,43 +39,23 @@ extension RxTableViewController {
         setUp()
         
         
-        let publishSubject = PublishSubject<String>()
+   
+        let buttonTap = PublishSubject<Void>()
+        let textInput = BehaviorSubject(value: "초기 값")
 
-        // 첫 번째 구독자
-        publishSubject.subscribe(onNext: { value in
-            print("첫 번째 구독자: \(value)")
-        })
+        buttonTap
+            .withLatestFrom(textInput)
+            .subscribe(onNext: { value in
+                print("버튼 클릭 시 값: \(value)")
+            })
+            .disposed(by: disposeBag)
 
-        // 첫 번째 구독자가 구독된 후 이벤트 발생
-        publishSubject.onNext("RxSwift")
-
-        // 두 번째 구독자 추가
-        publishSubject.subscribe(onNext: { value in
-            print("두 번째 구독자: \(value)")
-        })
-
-        // 이후 이벤트 발생
-        publishSubject.onNext("새로운 이벤트")
+        textInput.onNext("변경된 값")
+        buttonTap.onNext(()) // 출력: 버튼 클릭 시 값: 변경된 값
         
-
         
-        let behaviorSubject = BehaviorSubject(value: "초기값")
-
-        // 첫 번째 구독자
-        behaviorSubject.subscribe(onNext: { value in
-            print("첫 번째 구독자: \(value)")
-        })
-
-        // 첫 번째 구독자에게 새로운 값 방출
-        behaviorSubject.onNext("첫 번째 값")
-
-        // 두 번째 구독자 추가
-        behaviorSubject.subscribe(onNext: { value in
-            print("두 번째 구독자: \(value)")
-        })
-
-        // 이후 새로운 값 방출
-        behaviorSubject.onNext("두 번째 값")
+        
+        
         
         
     }
