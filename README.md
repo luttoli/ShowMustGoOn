@@ -21,7 +21,7 @@ iOS 앱 개발 공부하고 기록합니다. 계속 합니다!
 ## RxSwift
 - [RxSwift](https://luttoli.notion.site/RXSwift-9dc9f7f9815f401f860dadc08732e599?pvs=4)
 - [Observable 생성](https://luttoli.notion.site/Observable-Observer-1530f60899b98019bb71ef0301cf2602?pvs=4)
-- [변환 연산자](https://luttoli.notion.site/1530f60899b980bbbc45d5340165eb1c?pvs=4)
+- [변환 연산자](https://luttoli.notion.site/1540f60899b980f58245f548c1e1abaf?pvs=4)
 - [Subject](https://luttoli.notion.site/Subject-1530f60899b98092806bdb600505af92?pvs=4)
 - [필터링 연산자](https://luttoli.notion.site/1540f60899b980a1be16e12afb6c6f17?pvs=4)
 - [결합 연산자](https://luttoli.notion.site/1540f60899b980b98ad1cd5003eb122e?pvs=4)
