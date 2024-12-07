@@ -1,0 +1,146 @@
+//
+//  RxSwiftPractice.swift
+//  ShowMustGoOn
+//
+//  Created by 김지훈 on 12/7/24.
+//
+
+import UIKit
+
+import RxSwift
+
+let disposeBag = DisposeBag()
+
+class RxSwifts {
+    func observable() {
+        Observable.of("안녕", "RxSwift", "공부")
+            .subscribe(onNext: { value in
+                print("받은 값: \(value)")
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func create() {
+        let observable = Observable<String>.create { observer in
+            observer.onNext("안녕하세요")
+            observer.onNext("RxSwift 입니다")
+            observer.onCompleted()
+            return Disposables.create()
+        }
+
+        observable.subscribe(
+            onNext: { value in
+                print("create: \(value) ")
+            },
+            onCompleted: {
+                print("완료됨")
+            }
+        ).disposed(by: disposeBag)
+    }
+    
+    func map() {
+        let observable = Observable.of(1, 2, 3, 4, 5)
+        
+        observable
+            .map { $0 * 5 }
+            .subscribe(onNext: { value in
+                print("\(value)")
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func filter() {
+        let observable = Observable.of(1, 2, 3, 4, 5)
+        
+        observable
+            .filter { $0 % 2 == 0 }
+            .subscribe(onNext: { value in
+                print("\(value)")
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func reduce() {
+        let observable = Observable.of(1, 2, 3, 4, 5)
+        
+        observable
+            .reduce(1) { a, b in
+                return a * b
+            }
+            .subscribe(onNext: { result in
+                print("reduce 결과: \(result)")
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func publishSubject() {
+        let publishSubject = PublishSubject<String>()
+
+        // 첫 번째 구독자
+        publishSubject
+            .subscribe(onNext: { value in
+                print("첫 번째 구독자: \(value)")
+            })
+            .disposed(by: disposeBag)
+
+        // 첫 번째 구독자가 구독된 후 이벤트 발생
+        publishSubject.onNext("RxSwift")
+
+        // 두 번째 구독자 추가
+        publishSubject
+            .subscribe(onNext: { value in
+                print("두 번째 구독자: \(value)")
+            })
+            .disposed(by: disposeBag)
+
+        // 이후 이벤트 발생
+        publishSubject.onNext("새로운 이벤트")
+    }
+    
+    func behaviorSubject() {
+        let behaviorSubject = BehaviorSubject(value: "초기값")
+
+        // 첫 번째 구독자
+        behaviorSubject
+            .subscribe(onNext: { value in
+                print("첫 번째 구독자: \(value)")
+            })
+            .disposed(by: disposeBag)
+
+        // 첫 번째 구독자에게 새로운 값 방출
+        behaviorSubject.onNext("첫 번째 값")
+
+        // 두 번째 구독자 추가
+        behaviorSubject
+            .subscribe(onNext: { value in
+                print("두 번째 구독자: \(value)")
+            })
+            .disposed(by: disposeBag)
+
+        // 이후 새로운 값 방출
+        behaviorSubject.onNext("두 번째 값")
+    }
+    
+    func mapscan() {
+        let observable = Observable.of(1, 2, 3, 4, 5)
+        
+        observable
+            .scan(0) { acc, value in acc + value }
+            .map { "누적 결과: \($0)" }
+            .subscribe(onNext: { result in
+                print(result) // 출력: 누적 결과: 1, 누적 결과: 3, ...
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func zip() {
+        let observable3 = Observable.of(1, 2, 3)
+        let observable4 = Observable.of("A", "B", "C")
+
+        Observable.zip(observable3, observable4)
+            .subscribe (onNext: { a, b in
+                print("\(a)\(b)")
+            })
+            .disposed(by: disposeBag)
+    }
+}

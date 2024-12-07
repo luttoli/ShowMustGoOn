@@ -17,7 +17,6 @@ class RxTableViewController: UIViewController {
     
     // MARK: - Components
     
-    
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -37,24 +36,6 @@ extension RxTableViewController {
         
         navigationUI()
         setUp()
-        
-        
-   
-        let buttonTap = PublishSubject<Void>()
-        let textInput = BehaviorSubject(value: "초기 값")
-
-        buttonTap
-            .withLatestFrom(textInput)
-            .subscribe(onNext: { value in
-                print("버튼 클릭 시 값: \(value)")
-            })
-            .disposed(by: disposeBag)
-
-        textInput.onNext("변경된 값")
-        buttonTap.onNext(()) // 출력: 버튼 클릭 시 값: 변경된 값
-        
-        
-        
         
         
         
