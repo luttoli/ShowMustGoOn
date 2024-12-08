@@ -143,4 +143,18 @@ class RxSwifts {
             })
             .disposed(by: disposeBag)
     }
+    
+    func mainThread() {
+        let observable = Observable.of(1, 2, 3, 4, 5)
+
+        // subscribeOn으로 백그라운드 스레드에서 데이터 생성
+        // observeOn으로 메인 스레드에서 데이터를 처리
+        observable
+            .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)) // 생성 시점: 백그라운드
+            .observe(on: MainScheduler.instance) // 소비 시점: 메인 스레드
+            .subscribe(onNext: { value in
+                print("현재 쓰레드: \(Thread.isMainThread ? "메인 스레드" : "백그라운드 스레드") - 값: \(value)")
+            })
+            .disposed(by: disposeBag)
+    }
 }

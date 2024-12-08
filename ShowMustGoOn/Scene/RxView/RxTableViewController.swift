@@ -16,6 +16,10 @@ class RxTableViewController: UIViewController {
     let disposeBag = DisposeBag()
     
     // MARK: - Components
+    lazy var rxButtonPage: UIBarButtonItem = {
+        let allCancelButton = UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise"), style: .plain, target: self, action: #selector(goRxButtonPage))
+        return allCancelButton
+    }()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -49,6 +53,9 @@ extension RxTableViewController {
         
         let viewTitle = CustomLabel(title: "RxSwift Practice", size: Constants.size.size20, weight: .Bold, color: .text.black)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: viewTitle)
+        
+        navigationItem.rightBarButtonItem = rxButtonPage
+        navigationController?.navigationBar.tintColor = .button.lavender
     }
 }
 
@@ -61,9 +68,11 @@ private extension RxTableViewController {
 
 // MARK: - Method
 private extension RxTableViewController {
-    //    func <#name#>() {
-    //
-    //    }
+    @objc func goRxButtonPage() {
+        let rxButtonVC = RxButtonViewController()
+        rxButtonVC.hidesBottomBarWhenPushed = true // VC tabbar 숨기기
+        navigationController?.pushViewController(rxButtonVC, animated: true)
+    }
 }
 
 // MARK: - Delegate
