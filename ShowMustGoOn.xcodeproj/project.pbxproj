@@ -35,6 +35,7 @@
 		B8975F332CF06D6F008F2BA6 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8975F322CF06D6F008F2BA6 /* CustomButton.swift */; };
 		B8975F392CFE936A008F2BA6 /* RxTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8975F382CFE936A008F2BA6 /* RxTableViewController.swift */; };
 		B8975F3E2CFEA1AD008F2BA6 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B8975F3D2CFEA1AD008F2BA6 /* RxSwift */; };
+		B8B9A1AB2D06763C008D8130 /* RxTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B9A1AA2D06763C008D8130 /* RxTextFieldViewController.swift */; };
 		B8BDF7ED2D04430E0045FA94 /* RxSwiftPractice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDF7EC2D04430E0045FA94 /* RxSwiftPractice.swift */; };
 		B8BDF7EF2D05DB0D0045FA94 /* RxButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDF7EE2D05DB0D0045FA94 /* RxButtonViewController.swift */; };
 		B8CD65282CC0FC5C00E8F8B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD651E2CC0FC5C00E8F8B3 /* AppDelegate.swift */; };
@@ -95,6 +96,7 @@
 		B877DC052CEAE361009D9C49 /* FourthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthViewModel.swift; sourceTree = "<group>"; };
 		B8975F322CF06D6F008F2BA6 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		B8975F382CFE936A008F2BA6 /* RxTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTableViewController.swift; sourceTree = "<group>"; };
+		B8B9A1AA2D06763C008D8130 /* RxTextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTextFieldViewController.swift; sourceTree = "<group>"; };
 		B8BDF7EC2D04430E0045FA94 /* RxSwiftPractice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftPractice.swift; sourceTree = "<group>"; };
 		B8BDF7EE2D05DB0D0045FA94 /* RxButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxButtonViewController.swift; sourceTree = "<group>"; };
 		B8CD65052CC0FC4000E8F8B3 /* ShowMustGoOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowMustGoOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,9 +190,8 @@
 		B8975F372CFE934B008F2BA6 /* RxView */ = {
 			isa = PBXGroup;
 			children = (
-				B8BDF7EC2D04430E0045FA94 /* RxSwiftPractice.swift */,
+				B8B9A1A92D06747F008D8130 /* PracticeRx */,
 				B8975F382CFE936A008F2BA6 /* RxTableViewController.swift */,
-				B8BDF7EE2D05DB0D0045FA94 /* RxButtonViewController.swift */,
 			);
 			path = RxView;
 			sourceTree = "<group>";
@@ -200,6 +201,16 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B8B9A1A92D06747F008D8130 /* PracticeRx */ = {
+			isa = PBXGroup;
+			children = (
+				B8BDF7EC2D04430E0045FA94 /* RxSwiftPractice.swift */,
+				B8BDF7EE2D05DB0D0045FA94 /* RxButtonViewController.swift */,
+				B8B9A1AA2D06763C008D8130 /* RxTextFieldViewController.swift */,
+			);
+			path = PracticeRx;
 			sourceTree = "<group>";
 		};
 		B8CD64FC2CC0FC4000E8F8B3 = {
@@ -429,6 +440,7 @@
 				B8BDF7ED2D04430E0045FA94 /* RxSwiftPractice.swift in Sources */,
 				B8CD65292CC0FC5C00E8F8B3 /* SceneDelegate.swift in Sources */,
 				B8975F392CFE936A008F2BA6 /* RxTableViewController.swift in Sources */,
+				B8B9A1AB2D06763C008D8130 /* RxTextFieldViewController.swift in Sources */,
 				B8CD65402CC0FE9D00E8F8B3 /* UIFont.swift in Sources */,
 				B8CD65362CC0FD2B00E8F8B3 /* CustomTabBarController.swift in Sources */,
 				B877DBE02CD99D02009D9C49 /* ThirdView.swift in Sources */,

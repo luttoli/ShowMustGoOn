@@ -16,6 +16,11 @@ class RxButtonViewController: UIViewController {
     let disposeBag = DisposeBag()
     
     // MARK: - Components
+    lazy var rxTextFieldPage: UIBarButtonItem = {
+        let rxTextFieldPage = UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise"), style: .plain, target: self, action: #selector(goRxTextFieldPage))
+        return rxTextFieldPage
+    }()
+    
     let button: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("클릭하세요!", for: .normal)
@@ -52,8 +57,19 @@ extension RxButtonViewController {
         
         view.backgroundColor = .background.white
         
+        navigationUI()
         setUp()
         didTabButton()
+    }
+}
+
+// MARK: - Navigation
+extension RxButtonViewController {
+    func navigationUI() {
+        navigationController?.navigationBar.barTintColor = .background.white
+        
+        navigationItem.rightBarButtonItem = rxTextFieldPage
+        navigationController?.navigationBar.tintColor = .button.lavender
     }
 }
 
@@ -70,6 +86,12 @@ private extension RxButtonViewController {
 
 // MARK: - Method
 private extension RxButtonViewController {
+    @objc func goRxTextFieldPage() {
+        let rxTextFieldVC = RxTextFieldViewController()
+        rxTextFieldVC.hidesBottomBarWhenPushed = true // VC tabbar 숨기기
+        navigationController?.pushViewController(rxTextFieldVC, animated: true)
+    }
+    
     // 버튼 클릭 이벤트를 Rx로 처리
     func didTabButton() {
         button.rx.tap

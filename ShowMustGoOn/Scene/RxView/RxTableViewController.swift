@@ -17,8 +17,8 @@ class RxTableViewController: UIViewController {
     
     // MARK: - Components
     lazy var rxButtonPage: UIBarButtonItem = {
-        let allCancelButton = UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise"), style: .plain, target: self, action: #selector(goRxButtonPage))
-        return allCancelButton
+        let rxButtonPage = UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise"), style: .plain, target: self, action: #selector(goRxButtonPage))
+        return rxButtonPage
     }()
     
     init() {
