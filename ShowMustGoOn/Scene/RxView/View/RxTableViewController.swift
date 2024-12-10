@@ -22,6 +22,10 @@ class RxTableViewController: UIViewController {
     }()
     
     let segment = CustomSegment(items: ["기본", "섹션", "혼합", "추가"])
+    let rxBasicTableView = RxBasicTableView()
+    let rxSectionTableView = RxSectionTableView()
+    let rxMixTableView = RxMixTableView()
+    let rxAddTableView = RxAddTableView()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -74,11 +78,43 @@ extension RxTableViewController {
 private extension RxTableViewController {
     func setUp() {
         view.addSubview(segment)
+        view.addSubview(rxBasicTableView)
+        view.addSubview(rxSectionTableView)
+        view.addSubview(rxMixTableView)
+        view.addSubview(rxAddTableView)
         
         segment.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
             $0.height.equalTo(Constants.size.size50)
+        }
+        
+        rxBasicTableView.snp.makeConstraints {
+            $0.top.equalTo(segment.snp.bottom).offset(Constants.margin.vertical)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
+        }
+        
+        rxSectionTableView.snp.makeConstraints {
+            $0.top.equalTo(segment.snp.bottom).offset(Constants.margin.vertical)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
+        }
+        
+        rxMixTableView.snp.makeConstraints {
+            $0.top.equalTo(segment.snp.bottom).offset(Constants.margin.vertical)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
+        }
+        
+        rxAddTableView.snp.makeConstraints {
+            $0.top.equalTo(segment.snp.bottom).offset(Constants.margin.vertical)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
         }
     }
 }
@@ -96,7 +132,23 @@ private extension RxTableViewController {
     func segmentClickEvent() {
         segment.selectedIndex
             .subscribe(onNext: { index in
-                print(index)
+                // 모든 뷰 숨김 처리 했다가
+                let segmentView = [self.rxBasicTableView, self.rxSectionTableView, self.rxMixTableView, self.rxAddTableView, ]
+                segmentView.forEach { $0.isHidden = true }
+                
+                // 선택된 세그먼트에 따라 해당 뷰만 보이게
+                switch self.segment.segment.selectedSegmentIndex {
+                case 0:
+                    self.rxBasicTableView.isHidden = false
+                case 1:
+                    self.rxSectionTableView.isHidden = false
+                case 2:
+                    self.rxMixTableView.isHidden = false
+                case 3:
+                    self.rxAddTableView.isHidden = false
+                default:
+                    break
+                }
             })
             .disposed(by: disposeBag)
     }
