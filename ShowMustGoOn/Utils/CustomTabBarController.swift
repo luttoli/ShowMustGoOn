@@ -32,6 +32,6 @@ class CustomTabBarController: UITabBarController {
         self.tabBar.backgroundColor = .background.white // iOS 15 이상부터 명확하게 적용
         self.tabBar.tintColor = .tabBar.black // 선택된 항목 색상
         self.tabBar.unselectedItemTintColor = .tabBar.lightGray // 선택되지 않은 항목 색상
-        self.selectedIndex = 1 // 기본 선택 인덱스 첫번째
+        self.selectedIndex = 0 // 기본 선택 인덱스 첫번째
     }
 }

@@ -1,5 +1,5 @@
 //
-//  FirstView.swift
+//  BasicTableView.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 10/31/24.
@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class FirstView: UIView {
+class BasicTableView: UIView {
     // MARK: - Properties
     private let viewModel = FirstViewModel()
     
@@ -46,7 +46,7 @@ class FirstView: UIView {
 }
 
 // MARK: - SetUp
-private extension FirstView {
+private extension BasicTableView {
     func setUp() {
         addSubview(basicTableView)
         
@@ -62,12 +62,12 @@ private extension FirstView {
 }
 
 // MARK: - Method
-extension FirstView {
+extension BasicTableView {
 
 }
 
 // MARK: - delegate
-extension FirstView: UITableViewDelegate, UITableViewDataSource {
+extension BasicTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.tableData.count
     }

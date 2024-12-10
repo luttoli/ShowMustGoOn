@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class FourthView: UIView {
+class AddTableView: UIView {
     // MARK: - Properties
     var viewModel = FourthViewModel()
     weak var parentViewController: UIViewController?
@@ -64,7 +64,7 @@ class FourthView: UIView {
 }
 
 // MARK: - SetUp
-private extension FourthView {
+private extension AddTableView {
     func setUp() {
         addSubview(inputCategoryBar)
         addSubview(addCategoryButton)
@@ -101,7 +101,7 @@ private extension FourthView {
 }
 
 // MARK: - Method
-extension FourthView {
+extension AddTableView {
     // 입력한 데이터가 없는 경우
     func hideOnLabel() {
         nodataLabel.isHidden = !viewModel.categories.isEmpty
@@ -147,7 +147,7 @@ extension FourthView {
 }
 
 // MARK: - delegate
-extension FourthView: UITableViewDelegate, UITableViewDataSource {
+extension AddTableView: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.categories.count
     }
@@ -271,7 +271,7 @@ extension FourthView: UITableViewDelegate, UITableViewDataSource {
 }
 
 // MARK: - UITextFieldDelegate
-extension FourthView: UISearchBarDelegate {
+extension AddTableView: UISearchBarDelegate {
     // 텍스트필드 리턴키 눌리면 키보드 내리기
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder() // 키보드 내리기

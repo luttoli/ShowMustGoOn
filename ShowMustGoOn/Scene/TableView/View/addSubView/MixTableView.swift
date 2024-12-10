@@ -1,5 +1,5 @@
 //
-//  ThirdView.swift
+//  MixTableView.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 11/5/24.
@@ -13,7 +13,7 @@ protocol ThirdViewDelegate: AnyObject {
     func didSelectItem(with url: String)
 }
 
-class ThirdView: UIView {
+class MixTableView: UIView {
     // MARK: - Properties
     var viewModel = ThirdViewModel()
     
@@ -48,7 +48,7 @@ class ThirdView: UIView {
 }
 
 // MARK: - SetUp
-private extension ThirdView {
+private extension MixTableView {
     func setUp() {
         addSubview(eSportsTableView)
         
@@ -64,12 +64,12 @@ private extension ThirdView {
 }
 
 // MARK: - Method
-extension ThirdView {
+extension MixTableView {
 
 }
 
 // MARK: - delegate
-extension ThirdView: UITableViewDelegate, UITableViewDataSource {
+extension MixTableView: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }

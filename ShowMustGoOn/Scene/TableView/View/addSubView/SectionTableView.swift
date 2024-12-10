@@ -1,5 +1,5 @@
 //
-//  SecondView.swift
+//  SectionTableView.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 11/1/24.
@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class SecondView: UIView {
+class SectionTableView: UIView {
     // MARK: - Properties
     private let viewModel = SecondViewModel()
     
@@ -49,7 +49,7 @@ class SecondView: UIView {
 }
 
 // MARK: - SetUp
-private extension SecondView {
+private extension SectionTableView {
     func setUp() {
         addSubview(multiplicationTableView)
         
@@ -65,12 +65,12 @@ private extension SecondView {
 }
 
 // MARK: - Method
-extension SecondView {
+extension SectionTableView {
 
 }
 
 // MARK: - delegate
-extension SecondView: UITableViewDelegate, UITableViewDataSource {
+extension SectionTableView: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.frontNumbers.count
     }

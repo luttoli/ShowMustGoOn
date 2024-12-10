@@ -47,17 +47,25 @@ extension RxTableViewController {
         navigationUI()
         setUp()
         segmentClickEvent()
+        segment.layoutIfNeeded() // 강제로 레이아웃 반영
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        segment.segment.selectedSegmentIndex = 0
         segment.updateBottomLinePosition()
+        segment.layoutIfNeeded() // 강제로 레이아웃 반영
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // 세그먼트 인덱스 초기화
         segment.segment.selectedSegmentIndex = 0
         segment.updateBottomLinePosition()
-        segmentClickEvent()
+        
+        // 초기화된 세그먼트 인덱스에 맞는 화면 업데이트
+        segment.selectedIndex.accept(0)
     }
 }
 
@@ -137,7 +145,7 @@ private extension RxTableViewController {
                 segmentView.forEach { $0.isHidden = true }
                 
                 // 선택된 세그먼트에 따라 해당 뷰만 보이게
-                switch self.segment.segment.selectedSegmentIndex {
+                switch index {
                 case 0:
                     self.rxBasicTableView.isHidden = false
                 case 1:

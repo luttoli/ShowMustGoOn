@@ -7,18 +7,21 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
 import SnapKit
 
 class TableViewController: UIViewController {
     // MARK: - Properties
+    let disposeBag = DisposeBag()
     private let viewModel = FirstViewModel()
     
     // MARK: - Components
-    var tableSegmentView = TableSegmentView()
-    var firstView = FirstView()
-    var secondView = SecondView()
-    var thirdView = ThirdView()
-    var fourthView = FourthView()
+    let segment = CustomSegment(items: ["기본", "섹션", "혼합", "추가"])
+    var basicTableView = BasicTableView()
+    var sectionTableView = SectionTableView()
+    var mixTableView = MixTableView()
+    var addTableView = AddTableView()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -39,19 +42,25 @@ extension TableViewController {
         
         navigationUI()
         setUp()
-        didTapSegment()
-        thirdView.delegate = self
+        segmentClickEvent()
+        mixTableView.delegate = self
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        tableSegmentView.updateBottomLinePosition()
+        segment.segment.selectedSegmentIndex = 0
+        segment.updateBottomLinePosition()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tableSegmentView.tableSegment.selectedSegmentIndex = 0
-        tableSegmentView.updateBottomLinePosition()
-        changeView()
+        super.viewWillAppear(animated)
+        
+        // 세그먼트 인덱스 초기화
+        segment.segment.selectedSegmentIndex = 0
+        segment.updateBottomLinePosition()
+        
+        // 초기화된 세그먼트 인덱스에 맞는 화면 업데이트
+        segment.selectedIndex.accept(0)
     }
 }
 
@@ -68,83 +77,75 @@ extension TableViewController {
 // MARK: - SetUp
 private extension TableViewController {
     func setUp() {
-        view.addSubview(tableSegmentView)
-        view.addSubview(firstView)
-        view.addSubview(secondView)
-        view.addSubview(thirdView)
-        view.addSubview(fourthView)
+        view.addSubview(segment)
+        view.addSubview(basicTableView)
+        view.addSubview(sectionTableView)
+        view.addSubview(mixTableView)
+        view.addSubview(addTableView)
         
-        tableSegmentView.snp.makeConstraints {
+        segment.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
             $0.height.equalTo(Constants.size.size50)
         }
         
-        firstView.snp.makeConstraints {
-            $0.top.equalTo(tableSegmentView.snp.bottom).offset(Constants.margin.vertical)
+        basicTableView.snp.makeConstraints {
+            $0.top.equalTo(segment.snp.bottom).offset(Constants.margin.vertical)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
         }
         
-        secondView.snp.makeConstraints {
-            $0.top.equalTo(tableSegmentView.snp.bottom).offset(Constants.margin.vertical)
+        sectionTableView.snp.makeConstraints {
+            $0.top.equalTo(segment.snp.bottom).offset(Constants.margin.vertical)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
         }
         
-        thirdView.snp.makeConstraints {
-            $0.top.equalTo(tableSegmentView.snp.bottom).offset(Constants.margin.vertical)
+        mixTableView.snp.makeConstraints {
+            $0.top.equalTo(segment.snp.bottom).offset(Constants.margin.vertical)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
         }
         
-        fourthView.snp.makeConstraints {
-            $0.top.equalTo(tableSegmentView.snp.bottom).offset(Constants.margin.vertical)
+        addTableView.snp.makeConstraints {
+            $0.top.equalTo(segment.snp.bottom).offset(Constants.margin.vertical)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
         }
-        fourthView.parentViewController = self
-        
-        changeView()
+        addTableView.parentViewController = self
     }
 }
 
 // MARK: - Method
 extension TableViewController: ThirdViewDelegate {
-    // 세그먼트 클릭 이벤트
-    func didTapSegment() {
-        tableSegmentView.tableSegment.addAction(UIAction(handler: { [weak self] _ in
-            guard let self = self else { return }
-            self.tableSegmentView.animateSelectedSegment()
-            self.tableSegmentView.updateBottomLinePosition()
-            self.changeView()
-        }), for: .valueChanged)
-    }
-    
-    // 세그먼트 선택 시 View 노출
-    func changeView() {
-        // 모든 뷰 숨김 처리 했다가
-        let segmentView = [firstView, secondView, thirdView, fourthView, ]
-        segmentView.forEach { $0.isHidden = true }
-        
-        // 선택된 세그먼트에 따라 해당 뷰만 보이게
-        switch tableSegmentView.tableSegment.selectedSegmentIndex {
-        case 0:
-            firstView.isHidden = false
-        case 1:
-            secondView.isHidden = false
-        case 2:
-            thirdView.isHidden = false
-        case 3:
-            fourthView.isHidden = false
-        default:
-            break
-        }
+    // 선택된 세그먼트에 반응
+    func segmentClickEvent() {
+        segment.selectedIndex
+            .subscribe(onNext: { index in
+                // 모든 뷰 숨김 처리
+                let segmentView = [self.basicTableView, self.sectionTableView, self.mixTableView, self.addTableView]
+                segmentView.forEach { $0.isHidden = true }
+                
+                // 선택된 세그먼트에 따라 해당 뷰만 보이게
+                switch index {
+                case 0:
+                    self.basicTableView.isHidden = false
+                case 1:
+                    self.sectionTableView.isHidden = false
+                case 2:
+                    self.mixTableView.isHidden = false
+                case 3:
+                    self.addTableView.isHidden = false
+                default:
+                    break
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     //

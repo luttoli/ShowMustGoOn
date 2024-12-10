@@ -8,15 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		B877DBC62CD30C2E009D9C49 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBC52CD30C2E009D9C49 /* CollectionViewController.swift */; };
-		B877DBC92CD32623009D9C49 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBC82CD32623009D9C49 /* FirstView.swift */; };
+		B877DBC92CD32623009D9C49 /* BasicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBC82CD32623009D9C49 /* BasicTableView.swift */; };
 		B877DBCF2CD373D5009D9C49 /* TableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBCE2CD373D5009D9C49 /* TableModel.swift */; };
 		B877DBD12CD373E0009D9C49 /* FirstViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBD02CD373E0009D9C49 /* FirstViewModel.swift */; };
-		B877DBD42CD37465009D9C49 /* TableSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBD32CD37465009D9C49 /* TableSegmentView.swift */; };
-		B877DBD62CD47127009D9C49 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBD52CD47127009D9C49 /* SecondView.swift */; };
+		B877DBD62CD47127009D9C49 /* SectionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBD52CD47127009D9C49 /* SectionTableView.swift */; };
 		B877DBD82CD4723F009D9C49 /* MultiplyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBD72CD4723F009D9C49 /* MultiplyModel.swift */; };
 		B877DBDA2CD472A9009D9C49 /* SecondViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBD92CD472A9009D9C49 /* SecondViewModel.swift */; };
 		B877DBDC2CD47374009D9C49 /* MultiplyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBDB2CD47374009D9C49 /* MultiplyTableViewCell.swift */; };
-		B877DBE02CD99D02009D9C49 /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBDF2CD99D02009D9C49 /* ThirdView.swift */; };
+		B877DBE02CD99D02009D9C49 /* MixTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBDF2CD99D02009D9C49 /* MixTableView.swift */; };
 		B877DBE22CD9A47B009D9C49 /* MainNewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBE12CD9A47B009D9C49 /* MainNewsTableViewCell.swift */; };
 		B877DBE42CD9B5F8009D9C49 /* HorizontalNewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBE32CD9B5F8009D9C49 /* HorizontalNewsCollectionViewCell.swift */; };
 		B877DBE62CD9B621009D9C49 /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBE52CD9B621009D9C49 /* UICollectionViewCell.swift */; };
@@ -26,7 +25,7 @@
 		B877DBF02CDDD942009D9C49 /* DetailThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBEF2CDDD942009D9C49 /* DetailThirdViewController.swift */; };
 		B877DBF22CDDDEA4009D9C49 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBF12CDDDEA4009D9C49 /* WebView.swift */; };
 		B877DBF92CE06E56009D9C49 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B877DBF82CE06E56009D9C49 /* README.md */; };
-		B877DC002CEACB10009D9C49 /* FourthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBFF2CEACB10009D9C49 /* FourthView.swift */; };
+		B877DC002CEACB10009D9C49 /* AddTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBFF2CEACB10009D9C49 /* AddTableView.swift */; };
 		B877DC022CEAD977009D9C49 /* MemoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DC012CEAD977009D9C49 /* MemoTableViewCell.swift */; };
 		B877DC042CEAE2A0009D9C49 /* MemoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DC032CEAE2A0009D9C49 /* MemoModel.swift */; };
 		B877DC062CEAE361009D9C49 /* FourthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DC052CEAE361009D9C49 /* FourthViewModel.swift */; };
@@ -77,15 +76,14 @@
 
 /* Begin PBXFileReference section */
 		B877DBC52CD30C2E009D9C49 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
-		B877DBC82CD32623009D9C49 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
+		B877DBC82CD32623009D9C49 /* BasicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTableView.swift; sourceTree = "<group>"; };
 		B877DBCE2CD373D5009D9C49 /* TableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableModel.swift; sourceTree = "<group>"; };
 		B877DBD02CD373E0009D9C49 /* FirstViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewModel.swift; sourceTree = "<group>"; };
-		B877DBD32CD37465009D9C49 /* TableSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSegmentView.swift; sourceTree = "<group>"; };
-		B877DBD52CD47127009D9C49 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
+		B877DBD52CD47127009D9C49 /* SectionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTableView.swift; sourceTree = "<group>"; };
 		B877DBD72CD4723F009D9C49 /* MultiplyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplyModel.swift; sourceTree = "<group>"; };
 		B877DBD92CD472A9009D9C49 /* SecondViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewModel.swift; sourceTree = "<group>"; };
 		B877DBDB2CD47374009D9C49 /* MultiplyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplyTableViewCell.swift; sourceTree = "<group>"; };
-		B877DBDF2CD99D02009D9C49 /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
+		B877DBDF2CD99D02009D9C49 /* MixTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixTableView.swift; sourceTree = "<group>"; };
 		B877DBE12CD9A47B009D9C49 /* MainNewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNewsTableViewCell.swift; sourceTree = "<group>"; };
 		B877DBE32CD9B5F8009D9C49 /* HorizontalNewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalNewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B877DBE52CD9B621009D9C49 /* UICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
@@ -95,7 +93,7 @@
 		B877DBEF2CDDD942009D9C49 /* DetailThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailThirdViewController.swift; sourceTree = "<group>"; };
 		B877DBF12CDDDEA4009D9C49 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		B877DBF82CE06E56009D9C49 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		B877DBFF2CEACB10009D9C49 /* FourthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthView.swift; sourceTree = "<group>"; };
+		B877DBFF2CEACB10009D9C49 /* AddTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTableView.swift; sourceTree = "<group>"; };
 		B877DC012CEAD977009D9C49 /* MemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTableViewCell.swift; sourceTree = "<group>"; };
 		B877DC032CEAE2A0009D9C49 /* MemoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoModel.swift; sourceTree = "<group>"; };
 		B877DC052CEAE361009D9C49 /* FourthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthViewModel.swift; sourceTree = "<group>"; };
@@ -186,12 +184,11 @@
 		B877DBD22CD37430009D9C49 /* addSubView */ = {
 			isa = PBXGroup;
 			children = (
-				B877DBD32CD37465009D9C49 /* TableSegmentView.swift */,
-				B877DBC82CD32623009D9C49 /* FirstView.swift */,
-				B877DBD52CD47127009D9C49 /* SecondView.swift */,
-				B877DBDF2CD99D02009D9C49 /* ThirdView.swift */,
+				B877DBC82CD32623009D9C49 /* BasicTableView.swift */,
+				B877DBD52CD47127009D9C49 /* SectionTableView.swift */,
+				B877DBDF2CD99D02009D9C49 /* MixTableView.swift */,
 				B877DBEF2CDDD942009D9C49 /* DetailThirdViewController.swift */,
-				B877DBFF2CEACB10009D9C49 /* FourthView.swift */,
+				B877DBFF2CEACB10009D9C49 /* AddTableView.swift */,
 				B8CD655E2CC8879F00E8F8B3 /* Cell */,
 			);
 			path = addSubView;
@@ -480,7 +477,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B877DBE22CD9A47B009D9C49 /* MainNewsTableViewCell.swift in Sources */,
-				B877DBD42CD37465009D9C49 /* TableSegmentView.swift in Sources */,
 				B877DC062CEAE361009D9C49 /* FourthViewModel.swift in Sources */,
 				B877DBEC2CDAF81A009D9C49 /* ESportsModel.swift in Sources */,
 				B8975F332CF06D6F008F2BA6 /* CustomButton.swift in Sources */,
@@ -499,19 +495,19 @@
 				B8B9A1AB2D06763C008D8130 /* RxTextFieldViewController.swift in Sources */,
 				B8CD65402CC0FE9D00E8F8B3 /* UIFont.swift in Sources */,
 				B8CD65362CC0FD2B00E8F8B3 /* CustomTabBarController.swift in Sources */,
-				B877DBE02CD99D02009D9C49 /* ThirdView.swift in Sources */,
+				B877DBE02CD99D02009D9C49 /* MixTableView.swift in Sources */,
 				B877DBDA2CD472A9009D9C49 /* SecondViewModel.swift in Sources */,
 				B8CD65422CC0FEC000E8F8B3 /* Constants.swift in Sources */,
 				B8B9A1BD2D086B01008D8130 /* RxAddTableView.swift in Sources */,
 				B877DBE82CD9B96C009D9C49 /* VerticalNewsTableViewCell.swift in Sources */,
 				B8B9A1BB2D086AF3008D8130 /* RxMixTableView.swift in Sources */,
-				B877DBC92CD32623009D9C49 /* FirstView.swift in Sources */,
+				B877DBC92CD32623009D9C49 /* BasicTableView.swift in Sources */,
 				B8CD655B2CC8848900E8F8B3 /* UITableViewCell.swift in Sources */,
 				B8CD65392CC0FD7100E8F8B3 /* TableViewController.swift in Sources */,
 				B8BDF7EF2D05DB0D0045FA94 /* RxButtonViewController.swift in Sources */,
-				B877DC002CEACB10009D9C49 /* FourthView.swift in Sources */,
+				B877DC002CEACB10009D9C49 /* AddTableView.swift in Sources */,
 				B877DBD82CD4723F009D9C49 /* MultiplyModel.swift in Sources */,
-				B877DBD62CD47127009D9C49 /* SecondView.swift in Sources */,
+				B877DBD62CD47127009D9C49 /* SectionTableView.swift in Sources */,
 				B8B9A1B92D086AB1008D8130 /* RxSectionTableView.swift in Sources */,
 				B877DBF22CDDDEA4009D9C49 /* WebView.swift in Sources */,
 				B877DBDC2CD47374009D9C49 /* MultiplyTableViewCell.swift in Sources */,
