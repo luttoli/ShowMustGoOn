@@ -17,10 +17,6 @@ class FourthViewModel {
             Item(id: UUID(), title: "구마유시", isChecked: false),
             Item(id: UUID(), title: "케리아", isChecked: false),
         ]),
-        MemoModel(id: UUID(), categoryTitle: "케스파컵", items: [
-            Item(id: UUID(), title: "12월 1일 일 14시 15분 베트남 올스타", isChecked: true),
-            Item(id: UUID(), title: "12월 1일 일 16시 45분 한화생명", isChecked: true),
-        ]),
     ]
     
     // 데이터 변경 알림
