@@ -18,7 +18,7 @@ class CustomSegment: UIView {
     private let disposeBag = DisposeBag()
     
     // MARK: - Components
-    private let segmentedControl: UISegmentedControl = {
+    let segment: UISegmentedControl = {
         let segment = UISegmentedControl()
         segment.selectedSegmentIndex = 0
         
@@ -56,28 +56,35 @@ class CustomSegment: UIView {
 // MARK: - SetUp
 private extension CustomSegment {
     func setUp() {
-        addSubview(segmentedControl)
+        addSubview(segment)
         addSubview(bottomLineView)
         
-        segmentedControl.snp.makeConstraints {
+        segment.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
-        // Rx로 선택 이벤트 처리
-        segmentedControl.rx.selectedSegmentIndex
+        segment.rx.selectedSegmentIndex
             .bind(to: selectedIndex)
+            .disposed(by: disposeBag)
+        
+        // Rx로 선택 이벤트 처리
+        segment.rx.selectedSegmentIndex
+            .subscribe(onNext: { [weak self] _ in
+                self?.animateSegmentSelection()
+                self?.updateBottomLinePosition(animated: true)
+            })
             .disposed(by: disposeBag)
     }
     
     // Configure
     func configureSegments(items: [String]) {
-        segmentedControl.removeAllSegments()
+        segment.removeAllSegments()
         for (index, title) in items.enumerated() {
-            segmentedControl.insertSegment(withTitle: title, at: index, animated: false)
+            segment.insertSegment(withTitle: title, at: index, animated: false)
         }
         
         // 기본 선택
-        segmentedControl.selectedSegmentIndex = 0
+        segment.selectedSegmentIndex = 0
         updateBottomLinePosition(animated: false)
     }
 }
@@ -85,14 +92,14 @@ private extension CustomSegment {
 // MARK: - Method
 extension CustomSegment {
     // Bottom Line
-    private func updateBottomLinePosition(animated: Bool = true) {
-        let selectedIndex = CGFloat(segmentedControl.selectedSegmentIndex)
-        let segmentWidth = segmentedControl.bounds.width / CGFloat(segmentedControl.numberOfSegments)
+    func updateBottomLinePosition(animated: Bool = true) {
+        let selectedIndex = CGFloat(segment.selectedSegmentIndex)
+        let segmentWidth = segment.bounds.width / CGFloat(segment.numberOfSegments)
         let lineHeight: CGFloat = 3
         
         let newFrame = CGRect(
             x: segmentWidth * selectedIndex,
-            y: segmentedControl.frame.maxY - lineHeight,
+            y: segment.frame.maxY - lineHeight,
             width: segmentWidth,
             height: lineHeight
         )
@@ -109,10 +116,10 @@ extension CustomSegment {
     // Animation
     func animateSegmentSelection() {
         UIView.animate(withDuration: 0.2, animations: {
-            self.segmentedControl.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+            self.segment.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         }, completion: { _ in
             UIView.animate(withDuration: 0.2) {
-                self.segmentedControl.transform = .identity
+                self.segment.transform = .identity
             }
         })
     }

@@ -1,5 +1,5 @@
 //
-//  RxViewController.swift
+//  RxTableViewController.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 12/3/24.
@@ -42,7 +42,17 @@ extension RxTableViewController {
         
         navigationUI()
         setUp()
-        
+        segmentClickEvent()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        segment.updateBottomLinePosition()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        segment.segment.selectedSegmentIndex = 0
+        segment.updateBottomLinePosition()
         segmentClickEvent()
     }
 }
@@ -90,9 +100,4 @@ private extension RxTableViewController {
             })
             .disposed(by: disposeBag)
     }
-}
-
-// MARK: - Delegate
-extension RxTableViewController {
-    
 }
