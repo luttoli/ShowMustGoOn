@@ -50,13 +50,6 @@ extension RxTableViewController {
         segment.layoutIfNeeded() // 강제로 레이아웃 반영
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        segment.segment.selectedSegmentIndex = 0
-        segment.updateBottomLinePosition()
-        segment.layoutIfNeeded() // 강제로 레이아웃 반영
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

@@ -46,12 +46,6 @@ extension TableViewController {
         mixTableView.delegate = self
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        segment.segment.selectedSegmentIndex = 0
-        segment.updateBottomLinePosition()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
