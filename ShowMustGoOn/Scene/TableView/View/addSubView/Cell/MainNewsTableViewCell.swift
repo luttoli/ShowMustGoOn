@@ -28,10 +28,11 @@ class MainNewsTableViewCell: UITableViewCell {
     // 페이지 컨트롤 인디케이터
     let pageControl: UIPageControl = {
         let pageControl = UIPageControl()
-        pageControl.numberOfPages = 0
-        pageControl.currentPage = 0
-        pageControl.pageIndicatorTintColor = .button.disabled
-        pageControl.currentPageIndicatorTintColor = .button.lavender
+        pageControl.numberOfPages = 0 // 총 페이지 개수
+        pageControl.currentPage = 0 // 현재 활성화된 페이지 인덱스
+        pageControl.pageIndicatorTintColor = .button.disabled // 비활성화 색상
+        pageControl.currentPageIndicatorTintColor = .button.lavender // 활성화 색상
+        pageControl.hidesForSinglePage = false // 페이지 하나일 시 숨길지 말지
         return pageControl
     }()
     

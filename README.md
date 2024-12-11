@@ -11,7 +11,7 @@ iOS 앱 개발 공부하고 기록합니다. 계속 합니다!
 
 ## UISegmentedControl
 - [기본 & 커스텀 사용 방법](https://luttoli.notion.site/UISegmentedControl-1260f60899b98056afc2e35c8172eef3?pvs=4)
-- [CustomSegment]()
+- [CustomSegment](https://luttoli.notion.site/CustomSegment-1590f60899b980ec83bfeeddff8c6872?pvs=4)
 
 ## UITableView
 - [UITableView, Cell 기본 사용 방법](https://luttoli.notion.site/UITableView-51f407dc74c1490babe37eecd411a12d?pvs=4)
@@ -21,7 +21,7 @@ iOS 앱 개발 공부하고 기록합니다. 계속 합니다!
     - [CollectionView 자동스크롤](https://luttoli.notion.site/CollectionView-1380f60899b980aca1f4d187c1ca060d?pvs=4)
     - [WebView](https://luttoli.notion.site/WebKit-WebView-dbb909fa1dc34ba4a407193a37b4fdf9?pvs=4)
 - [UITableView Header, cell 추가 액션](https://luttoli.notion.site/UITableView-51f407dc74c1490babe37eecd411a12d?pvs=4)
-    - [CustomButton]()
+    - [CustomButton](https://luttoli.notion.site/CustomButton-1590f60899b980fbb534cd53f043f494?pvs=4)
     - [UISearchBar](https://luttoli.notion.site/UISearchBar-1590f60899b980e1bad3f288d272b945?pvs=4)
 
 ## RxSwift

@@ -81,15 +81,15 @@ private extension RxExViewController {
     func didTapButton() {
         // 버튼 클릭 시 텍스트 필드 값에 따라 레이블 업데이트
         button.rx.tap
-            .withLatestFrom(textField.rx.text.orEmpty)
-            .map { $0.isEmpty ? "값을 입력하세요." : $0 }
-            .bind(to: label.rx.text)
+            .withLatestFrom(textField.rx.text.orEmpty) // 버튼이 클릭되면 텍스트 필드 값 가져오기 / .orEmpty: 비어있으면 "" 대체
+            .map { $0.isEmpty ? "값을 입력하세요." : $0 } // 텍스트 필드가 비어 있다면 "값을 입력하세요."를 반환하고, 그렇지 않으면 입력된 텍스트를 반환
+            .bind(to: label.rx.text) //반환된 값을 라벨의 text 속성에 바인딩
             .disposed(by: disposeBag)
         
         textField.rx.text.orEmpty
             .filter { $0.isEmpty } // 텍스트가 비어있는 경우만 처리
-            .map { _ in self.labelText.value } // 초기값 설정
-            .bind(to: label.rx.text)
+            .map { _ in self.labelText.value } // labelText의 초기값(버튼 클릭하면 여기에 표시됩니다.)을 반환
+            .bind(to: label.rx.text) // 반환된 값을 라벨의 텍스트에 바인딩
             .disposed(by: disposeBag)
     }
 }
