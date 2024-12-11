@@ -16,6 +16,11 @@ class RxTextFieldViewController: UIViewController {
     let disposeBag = DisposeBag()
     
     // MARK: - Components
+    lazy var rxExButtonPage: UIBarButtonItem = {
+        let rxExButtonPage = UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise"), style: .plain, target: self, action: #selector(goRxExPage))
+        return rxExButtonPage
+    }()
+    
     let textField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
@@ -47,14 +52,26 @@ class RxTextFieldViewController: UIViewController {
     }
 }
 
+// MARK: - LifeCycle
 extension RxTextFieldViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .background.white
         
+        navigationUI()
         setUp()
         bindTextField()
+    }
+}
+
+// MARK: - Navigation
+extension RxTextFieldViewController {
+    func navigationUI() {
+        navigationController?.navigationBar.barTintColor = .background.white
+        
+        navigationItem.rightBarButtonItem = rxExButtonPage
+        navigationController?.navigationBar.tintColor = .button.lavender
     }
 }
 
@@ -72,6 +89,13 @@ private extension RxTextFieldViewController {
 
 // MARK: - Method
 private extension RxTextFieldViewController {
+    @objc func goRxExPage() {
+        let rxExVC = RxExViewController()
+        rxExVC.hidesBottomBarWhenPushed = true // VC tabbar 숨기기
+        navigationController?.pushViewController(rxExVC, animated: true)
+    }
+    
+    // 텍스트필드의 텍스트를 UILabel에 bind
     func bindTextField() {
         // 텍스트 필드의 텍스트를 레이블에 실시간으로 반영
         textField.rx.text
@@ -81,16 +105,3 @@ private extension RxTextFieldViewController {
             .disposed(by: disposeBag)
     }
 }
-
-//private extension RxTextFieldViewController {
-//    func bindTextField() {
-//        // 텍스트 필드 입력 값에 따라 레이블 업데이트
-//        textField.rx.text.orEmpty
-//            .filter { !$0.isEmpty } // 빈 문자열이 아닌 경우만 필터링
-//            .observe(on: MainScheduler.instance) // UI 업데이트는 메인 스레드에서
-//            .subscribe(onNext: { [weak self] text in
-//                self?.label.text = text
-//            })
-//            .disposed(by: disposeBag)
-//    }
-//}

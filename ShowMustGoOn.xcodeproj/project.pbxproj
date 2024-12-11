@@ -40,6 +40,7 @@
 		B8B9A1B92D086AB1008D8130 /* RxSectionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B9A1B82D086AB1008D8130 /* RxSectionTableView.swift */; };
 		B8B9A1BB2D086AF3008D8130 /* RxMixTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B9A1BA2D086AF3008D8130 /* RxMixTableView.swift */; };
 		B8B9A1BD2D086B01008D8130 /* RxAddTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B9A1BC2D086B01008D8130 /* RxAddTableView.swift */; };
+		B8B9A1BF2D0930D4008D8130 /* RxExViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B9A1BE2D0930D4008D8130 /* RxExViewController.swift */; };
 		B8BDF7ED2D04430E0045FA94 /* RxSwiftPractice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDF7EC2D04430E0045FA94 /* RxSwiftPractice.swift */; };
 		B8BDF7EF2D05DB0D0045FA94 /* RxButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDF7EE2D05DB0D0045FA94 /* RxButtonViewController.swift */; };
 		B8CD65282CC0FC5C00E8F8B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD651E2CC0FC5C00E8F8B3 /* AppDelegate.swift */; };
@@ -105,6 +106,7 @@
 		B8B9A1B82D086AB1008D8130 /* RxSectionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSectionTableView.swift; sourceTree = "<group>"; };
 		B8B9A1BA2D086AF3008D8130 /* RxMixTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxMixTableView.swift; sourceTree = "<group>"; };
 		B8B9A1BC2D086B01008D8130 /* RxAddTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxAddTableView.swift; sourceTree = "<group>"; };
+		B8B9A1BE2D0930D4008D8130 /* RxExViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxExViewController.swift; sourceTree = "<group>"; };
 		B8BDF7EC2D04430E0045FA94 /* RxSwiftPractice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftPractice.swift; sourceTree = "<group>"; };
 		B8BDF7EE2D05DB0D0045FA94 /* RxButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxButtonViewController.swift; sourceTree = "<group>"; };
 		B8CD65052CC0FC4000E8F8B3 /* ShowMustGoOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowMustGoOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,6 +220,7 @@
 				B8BDF7EC2D04430E0045FA94 /* RxSwiftPractice.swift */,
 				B8BDF7EE2D05DB0D0045FA94 /* RxButtonViewController.swift */,
 				B8B9A1AA2D06763C008D8130 /* RxTextFieldViewController.swift */,
+				B8B9A1BE2D0930D4008D8130 /* RxExViewController.swift */,
 			);
 			path = PracticeRx;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				B877DBF22CDDDEA4009D9C49 /* WebView.swift in Sources */,
 				B877DBDC2CD47374009D9C49 /* MultiplyTableViewCell.swift in Sources */,
 				B8CD653E2CC0FE8600E8F8B3 /* UIColor.swift in Sources */,
+				B8B9A1BF2D0930D4008D8130 /* RxExViewController.swift in Sources */,
 				B8CD65442CC1038C00E8F8B3 /* CustomLabel.swift in Sources */,
 				B8CD654F2CC221FC00E8F8B3 /* SplashViewController.swift in Sources */,
 				B8B9A1AF2D073952008D8130 /* CustomSegment.swift in Sources */,

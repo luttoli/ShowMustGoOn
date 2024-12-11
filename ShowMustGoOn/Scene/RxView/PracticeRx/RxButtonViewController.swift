@@ -51,6 +51,7 @@ class RxButtonViewController: UIViewController {
     }
 }
 
+// MARK: - LifeCycle
 extension RxButtonViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
