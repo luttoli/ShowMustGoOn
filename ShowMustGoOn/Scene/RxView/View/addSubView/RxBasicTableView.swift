@@ -14,9 +14,7 @@ import SnapKit
 class RxBasicTableView: UIView {
     // MARK: - Properties
     let disposeBag = DisposeBag()
-    
-    let numbers = Observable.of(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"])
-    let titles = Observable.of(["가", "나", "다", "라", "마", "바", "사", "아", "자", "차", "카", "타", "파", "하"])
+    let viewModel = RxBasicViewModel()
     
     // MARK: - Components
     var rxBasicTableView: UITableView = {
@@ -64,19 +62,17 @@ private extension RxBasicTableView {
 // MARK: - Method
 extension RxBasicTableView {
     func bindTableView() {
-        Observable
-            .combineLatest(numbers, titles) // numbers와 titles Observable을 결합
-            .map { zip($0, $1) } // 두 배열의 각 요소를 짝지어 (numbers, titles) 형태의 튜플 배열로 변환
+        viewModel.data
             .bind(to: rxBasicTableView.rx.items(cellIdentifier: RxBasicTableViewCell.identifier)) { index, model, cell in
-                guard let customCell = cell as? RxBasicTableViewCell else { return }
-                customCell.numLabel.text = "\(model.0)." // 튜플의 첫 번째 값
-                customCell.titleLabel.text = model.1 // 튜플의 두 번째 값
+                guard let cell = cell as? RxBasicTableViewCell else { return }
+                cell.numLabel.text = "\(model.number)."
+                cell.titleLabel.text = model.title
             }
             .disposed(by: disposeBag)
         
-        rxBasicTableView.rx.modelSelected((String, String).self) // 테이블 뷰에서 특정 셀을 선택했을 때 동작
+        rxBasicTableView.rx.modelSelected(BasicModel.self)
             .subscribe(onNext: { model in
-                print("\(model.0). \(model.1)")
+                print("\(model.number). \(model.title)")
             })
             .disposed(by: disposeBag)
     }

@@ -48,7 +48,7 @@ private extension BasicTableViewCell {
 
 // MARK: - Method
 extension BasicTableViewCell {
-    func configure(with model: TableModel) {
+    func configure(with model: BasicModel) {
         numLabel.text = "\(model.number)."
         titleLabel.text = model.title
     }

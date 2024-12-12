@@ -1,5 +1,5 @@
 //
-//  MultiplyModel.swift
+//  SectionModel.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 11/1/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct MultiplyModel {
+struct SectionModel {
     let frontNumber: Int
     let backNumber: Int
     let resultNumber: String

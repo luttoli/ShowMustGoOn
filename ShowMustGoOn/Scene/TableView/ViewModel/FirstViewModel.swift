@@ -8,11 +8,11 @@
 import UIKit
 
 class FirstViewModel {
-    var tableData: [TableModel] = {
+    var tableData: [BasicModel] = {
         let numbers = Array(1...14).map { "\($0)" }
         let titles = ["가", "나", "다", "라", "마", "바", "사", "아", "자", "차", "카", "타", "파", "하"]
         
-        return zip(numbers, titles).map { TableModel(number: $0, title: $1) }
+        return zip(numbers, titles).map { BasicModel(number: $0, title: $1) }
     }()
 }
 

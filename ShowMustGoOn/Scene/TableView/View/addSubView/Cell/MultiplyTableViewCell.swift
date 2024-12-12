@@ -53,7 +53,7 @@ private extension MultiplyTableViewCell {
 
 // MARK: - Method
 extension MultiplyTableViewCell {
-    func configure(with model: MultiplyModel, showResult: Bool) {
+    func configure(with model: SectionModel, showResult: Bool) {
         frontNumberLabel.text = "\(model.frontNumber)"
         backNumberLabel.text = "\(model.backNumber)"
         resultNumberLabel.text = showResult ? "\(model.resultNumber)" : "?"

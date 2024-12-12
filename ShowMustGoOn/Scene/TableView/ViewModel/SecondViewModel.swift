@@ -11,10 +11,10 @@ class SecondViewModel {
     let frontNumbers = Array(2...9)
     let backNumbers = Array(1...9)
     
-    var multiplyData: [[MultiplyModel]] {
+    var multiplyData: [[SectionModel]] {
         return frontNumbers.map { front in
             backNumbers.map { back in
-                MultiplyModel(frontNumber: front, backNumber: back, resultNumber: "\(front * back)")
+                SectionModel(frontNumber: front, backNumber: back, resultNumber: "\(front * back)")
             }
         }
     }
