@@ -157,4 +157,44 @@ class RxSwifts {
             })
             .disposed(by: disposeBag)
     }
+
+    func apiError() {
+        let disposeBag = DisposeBag()
+
+        enum APIError: Error {
+            case networkError
+        }
+
+        func fetchDataFromAPI() -> Observable<[String]> {
+            return Observable<[String]>.create { observer in
+                print("API 호출 시작")
+                observer.onNext(["API 데이터 1", "API 데이터 2"])
+                observer.onError(APIError.networkError) // 에러 발생
+                return Disposables.create {
+                    print("Observable disposed")
+                }
+            }
+        }
+
+        let defaultData = ["기본 데이터 A", "기본 데이터 B"]
+
+        fetchDataFromAPI()
+            .debug("API Observable") // 이벤트 흐름 디버깅
+            .catch { error in
+                print("에러 발생, 기본 데이터를 반환합니다: \(error)")
+                return Observable.just(defaultData) // 에러 발생 시 기본 데이터로 복구
+            }
+            .subscribe(
+                onNext: { data in
+                    print("받은 데이터:", data)
+                },
+                onError: { error in
+                    print("Error:", error)
+                },
+                onCompleted: {
+                    print("Completed")
+                }
+            )
+            .disposed(by: disposeBag)
+    }
 }
