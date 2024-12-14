@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B80B9F102D0D5E5F00052199 /* RxTodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80B9F0F2D0D5E5F00052199 /* RxTodoListView.swift */; };
+		B80B9F132D0D5EDC00052199 /* RxTodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80B9F122D0D5EDC00052199 /* RxTodoModel.swift */; };
+		B80B9F152D0D5F0600052199 /* RxTodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80B9F142D0D5F0600052199 /* RxTodoListViewModel.swift */; };
 		B877DBC62CD30C2E009D9C49 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBC52CD30C2E009D9C49 /* CollectionViewController.swift */; };
 		B877DBC92CD32623009D9C49 /* BasicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBC82CD32623009D9C49 /* BasicTableView.swift */; };
 		B877DBCF2CD373D5009D9C49 /* BasicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBCE2CD373D5009D9C49 /* BasicModel.swift */; };
@@ -78,6 +81,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B80B9F0F2D0D5E5F00052199 /* RxTodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTodoListView.swift; sourceTree = "<group>"; };
+		B80B9F122D0D5EDC00052199 /* RxTodoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTodoModel.swift; sourceTree = "<group>"; };
+		B80B9F142D0D5F0600052199 /* RxTodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTodoListViewModel.swift; sourceTree = "<group>"; };
 		B877DBC52CD30C2E009D9C49 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		B877DBC82CD32623009D9C49 /* BasicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTableView.swift; sourceTree = "<group>"; };
 		B877DBCE2CD373D5009D9C49 /* BasicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicModel.swift; sourceTree = "<group>"; };
@@ -148,6 +154,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B80B9F112D0D5ECB00052199 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B80B9F122D0D5EDC00052199 /* RxTodoModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		B877DBC42CD30C08009D9C49 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +217,7 @@
 		B8975F372CFE934B008F2BA6 /* RxView */ = {
 			isa = PBXGroup;
 			children = (
+				B80B9F112D0D5ECB00052199 /* Model */,
 				B8B9A1B22D086A14008D8130 /* View */,
 				B8B9A1B32D086A1D008D8130 /* ViewModel */,
 				B8B9A1A92D06747F008D8130 /* PracticeRx */,
@@ -242,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				B8B9A1C22D0AEAB4008D8130 /* RxBasicViewModel.swift */,
+				B80B9F142D0D5F0600052199 /* RxTodoListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -250,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				B8B9A1B62D086AA6008D8130 /* RxBasicTableView.swift */,
+				B80B9F0F2D0D5E5F00052199 /* RxTodoListView.swift */,
 				B8B9A1B82D086AB1008D8130 /* RxSectionTableView.swift */,
 				B8B9A1BA2D086AF3008D8130 /* RxMixTableView.swift */,
 				B8B9A1BC2D086B01008D8130 /* RxAddTableView.swift */,
@@ -500,9 +517,11 @@
 				B877DBDA2CD472A9009D9C49 /* SecondViewModel.swift in Sources */,
 				B8CD65422CC0FEC000E8F8B3 /* Constants.swift in Sources */,
 				B8B9A1BD2D086B01008D8130 /* RxAddTableView.swift in Sources */,
+				B80B9F132D0D5EDC00052199 /* RxTodoModel.swift in Sources */,
 				B877DBE82CD9B96C009D9C49 /* VerticalNewsTableViewCell.swift in Sources */,
 				B8B9A1BB2D086AF3008D8130 /* RxMixTableView.swift in Sources */,
 				B877DBC92CD32623009D9C49 /* BasicTableView.swift in Sources */,
+				B80B9F102D0D5E5F00052199 /* RxTodoListView.swift in Sources */,
 				B8CD655B2CC8848900E8F8B3 /* UITableViewCell.swift in Sources */,
 				B8CD65392CC0FD7100E8F8B3 /* TableViewController.swift in Sources */,
 				B8BDF7EF2D05DB0D0045FA94 /* RxButtonViewController.swift in Sources */,
@@ -519,6 +538,7 @@
 				B8CD65442CC1038C00E8F8B3 /* CustomLabel.swift in Sources */,
 				B8CD654F2CC221FC00E8F8B3 /* SplashViewController.swift in Sources */,
 				B8B9A1AF2D073952008D8130 /* CustomSegment.swift in Sources */,
+				B80B9F152D0D5F0600052199 /* RxTodoListViewModel.swift in Sources */,
 				B877DBE62CD9B621009D9C49 /* UICollectionViewCell.swift in Sources */,
 				B877DBCF2CD373D5009D9C49 /* BasicModel.swift in Sources */,
 				B877DBE42CD9B5F8009D9C49 /* HorizontalNewsCollectionViewCell.swift in Sources */,

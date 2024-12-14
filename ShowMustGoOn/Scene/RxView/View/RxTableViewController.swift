@@ -21,8 +21,9 @@ class RxTableViewController: UIViewController {
         return rxButtonPage
     }()
     
-    let segment = CustomSegment(items: ["기본", "섹션", "혼합", "추가"])
+    let segment = CustomSegment(items: ["기본", "투두", "섹션", "혼합", "추가"])
     let rxBasicTableView = RxBasicTableView()
+    let rxTodoListView = RxTodoListView()
     let rxSectionTableView = RxSectionTableView()
     let rxMixTableView = RxMixTableView()
     let rxAddTableView = RxAddTableView()
@@ -80,6 +81,7 @@ private extension RxTableViewController {
     func setUp() {
         view.addSubview(segment)
         view.addSubview(rxBasicTableView)
+        view.addSubview(rxTodoListView)
         view.addSubview(rxSectionTableView)
         view.addSubview(rxMixTableView)
         view.addSubview(rxAddTableView)
@@ -91,6 +93,13 @@ private extension RxTableViewController {
         }
         
         rxBasicTableView.snp.makeConstraints {
+            $0.top.equalTo(segment.snp.bottom).offset(Constants.margin.vertical)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
+        }
+        
+        rxTodoListView.snp.makeConstraints {
             $0.top.equalTo(segment.snp.bottom).offset(Constants.margin.vertical)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
@@ -134,7 +143,7 @@ private extension RxTableViewController {
         segment.selectedIndex
             .subscribe(onNext: { index in
                 // 모든 뷰 숨김 처리 했다가
-                let segmentView = [self.rxBasicTableView, self.rxSectionTableView, self.rxMixTableView, self.rxAddTableView, ]
+                let segmentView = [self.rxBasicTableView, self.rxTodoListView, self.rxSectionTableView, self.rxMixTableView, self.rxAddTableView]
                 segmentView.forEach { $0.isHidden = true }
                 
                 // 선택된 세그먼트에 따라 해당 뷰만 보이게
@@ -142,10 +151,12 @@ private extension RxTableViewController {
                 case 0:
                     self.rxBasicTableView.isHidden = false
                 case 1:
-                    self.rxSectionTableView.isHidden = false
+                    self.rxTodoListView.isHidden = false
                 case 2:
-                    self.rxMixTableView.isHidden = false
+                    self.rxSectionTableView.isHidden = false
                 case 3:
+                    self.rxMixTableView.isHidden = false
+                case 4:
                     self.rxAddTableView.isHidden = false
                 default:
                     break

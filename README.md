@@ -34,3 +34,4 @@ iOS 앱 개발 공부하고 기록합니다. 계속 합니다!
 - [스케줄러](https://luttoli.notion.site/1550f60899b9808e92fded610d4a6d46?pvs=4)
 - [UI와 RxSwift의 연동(RxCocoa)](https://luttoli.notion.site/UI-RxSwift-1570f60899b9809ab796cd95127a0a32?pvs=4)
 - [에러 처리 및 디버깅](https://luttoli.notion.site/e901bb919a4f469d9f325e3b1787c4c9?pvs=4)
+- [MVVM 패턴에서 RxSwift 적용](https://luttoli.notion.site/MVVM-RxSwift-15b0f60899b98059af9cfe1e3aeee44e?pvs=4)
