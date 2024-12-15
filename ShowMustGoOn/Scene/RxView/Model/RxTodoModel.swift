@@ -9,4 +9,5 @@ import UIKit
 
 struct RxTodoModel {
     let title: String
+    var isCompleted: Bool = false
 }

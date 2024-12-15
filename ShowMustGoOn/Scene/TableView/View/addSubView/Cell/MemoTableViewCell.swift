@@ -56,6 +56,9 @@ extension MemoTableViewCell {
     func configure(with item: Item) {
         itemTitle.text = item.title
         checkBoxButton.isChecked = item.isChecked
+        
+        itemTitle.textColor = item.isChecked ? .text.lavender : .text.black
+        
         // item.isChecked 값에 따라 이미지 교체
         checkBoxButton.setImage(
             item.isChecked ? CustomButton.ButtonType.IconType.checkBox.selectedImage : CustomButton.ButtonType.IconType.checkBox.image, for: .normal)

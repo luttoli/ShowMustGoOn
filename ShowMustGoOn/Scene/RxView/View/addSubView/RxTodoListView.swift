@@ -84,7 +84,13 @@ extension RxTodoListView {
         viewModel.todoItems
             .bind(to: tableView.rx.items(cellIdentifier: "TodoCell")) { index, todo, cell in
                 cell.textLabel?.text = todo.title
+                cell.textLabel?.textColor = todo.isCompleted ? .text.lavender : .text.black
             }
+            .disposed(by: disposeBag)
+        
+        tableView.rx.itemSelected
+            .map { $0.row }
+            .bind(to: viewModel.toggleComplete)
             .disposed(by: disposeBag)
     }
 }

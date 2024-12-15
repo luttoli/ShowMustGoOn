@@ -11,24 +11,39 @@ import RxCocoa
 import RxSwift
 
 class RxTodoListViewModel {
-    // Input: 새 할 일을 추가하는 이벤트
-    let addTodo = PublishSubject<String>()
+    // Input
+    let addTodo = PublishSubject<String>() // 새 할 일 추가
+    let toggleComplete = PublishSubject<Int>() // 특정 Todo의 완료 상태 토글
     
-    // Output: 현재 Todo 리스트를 Observable로 제공
-    var todoItems: Observable<[RxTodoModel]>
+    // Output
+    lazy var todoItems: Observable<[RxTodoModel]> = {
+        todoList.asObservable()
+    }()
     
     private let disposeBag = DisposeBag()
     private let todoList = BehaviorRelay<[RxTodoModel]>(value: [])
     
     init() {
-        todoItems = todoList.asObservable()
-        
+        // 새 Todo 추가
         addTodo
-            .map { RxTodoModel(title: $0) } // 새 TodoItem 생성
+            .map { RxTodoModel(title: $0) } // 새로운 TodoItem 생성
             .subscribe(onNext: { [weak self] newTodo in
                 guard let self = self else { return }
                 let updatedList = self.todoList.value + [newTodo]
                 self.todoList.accept(updatedList)
+            })
+            .disposed(by: disposeBag)
+        
+        // 완료 상태 토글
+        toggleComplete
+            .subscribe(onNext: { [weak self] index in
+                guard let self = self else { return }
+                var updatedList = self.todoList.value // 현재 저장된 Todo 리스트의 상태 가져오기
+                guard updatedList.indices.contains(index) else { return } // 전달된 index가 Todo 리스트 범위에 있는지 확인
+                
+                // 완료 상태 토글
+                updatedList[index].isCompleted.toggle() // Bool 값을 반전시키는 메서드
+                self.todoList.accept(updatedList) // 새로 생성한 리스트를 accept로 할당
             })
             .disposed(by: disposeBag)
     }
