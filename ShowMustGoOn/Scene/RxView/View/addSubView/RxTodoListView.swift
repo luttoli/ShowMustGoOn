@@ -76,12 +76,16 @@ extension RxTodoListView {
     private func bindViewModel() {
         // Input: Add 버튼 클릭 시, TextField 내용 전달
         addButton.rx.tap
+            .withLatestFrom(textField.rx.text.orEmpty) // 텍스트 필드 값 가져오기
+            .filter { !$0.isEmpty } // 빈 값 무시
+            .distinctUntilChanged() // 값이 변하지 않으면 무시
             .withUnretained(self)
-            .do(onNext: { owner, _ in // do 연산자는 스트림의 값을 변경하지 않고 작업
-                owner.textField.text = ""
+            .do(onNext: { owner, text in
+                owner.viewModel.addTodo.onNext(text) // ViewModel에 값 전달
             })
-            .withLatestFrom(textField.rx.text.orEmpty) // 현재 스트림 발생 이벤트를 사용해 최신값을 가져옴 = 초기화 전에 값을 가져옴
-            .bind(to: viewModel.addTodo)
+            .subscribe(onNext: { owner, _ in
+                owner.textField.text = "" // 값 전달 후 초기화
+            })
             .disposed(by: disposeBag)
         
         // Output: Todo 리스트를 TableView와 바인딩
