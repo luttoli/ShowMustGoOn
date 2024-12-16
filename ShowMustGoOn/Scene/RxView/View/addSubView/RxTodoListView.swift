@@ -76,7 +76,11 @@ extension RxTodoListView {
     private func bindViewModel() {
         // Input: Add 버튼 클릭 시, TextField 내용 전달
         addButton.rx.tap
-            .withLatestFrom(textField.rx.text.orEmpty)
+            .withUnretained(self)
+            .do(onNext: { owner, _ in // do 연산자는 스트림의 값을 변경하지 않고 작업
+                owner.textField.text = ""
+            })
+            .withLatestFrom(textField.rx.text.orEmpty) // 현재 스트림 발생 이벤트를 사용해 최신값을 가져옴 = 초기화 전에 값을 가져옴
             .bind(to: viewModel.addTodo)
             .disposed(by: disposeBag)
         
@@ -88,6 +92,7 @@ extension RxTodoListView {
             }
             .disposed(by: disposeBag)
         
+        // 선택 이벤트
         tableView.rx.itemSelected
             .map { $0.row }
             .bind(to: viewModel.toggleComplete)
