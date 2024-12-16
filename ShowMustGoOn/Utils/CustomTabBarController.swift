@@ -16,9 +16,9 @@ class CustomTabBarController: UITabBarController {
         let tableNaviController = UINavigationController(rootViewController: tableVC) // 네비게이션 컨트롤러로 감싸주기
         tableNaviController.tabBarItem = tableTabBarItem
         
-        let rxVC = RxTableViewController()
+        let rxTableVC = RxTableViewController()
         let rxTabBarItem = UITabBarItem(title: "Rx 테이블뷰", image: UIImage(systemName: "lizard"), tag: 1)
-        let rxNaviController = UINavigationController(rootViewController: rxVC)
+        let rxNaviController = UINavigationController(rootViewController: rxTableVC)
         rxNaviController.tabBarItem = rxTabBarItem
         
         let collectionVC = CollectionViewController()
@@ -26,7 +26,17 @@ class CustomTabBarController: UITabBarController {
         let collectionNaviController = UINavigationController(rootViewController: collectionVC)
         collectionNaviController.tabBarItem = collectionTabBarItem
         
-        self.viewControllers = [tableNaviController, rxNaviController, collectionNaviController, ]
+        let rxCollectionVC = RxCollectionViewController()
+        let rxCollectionTabBarItem = UITabBarItem(title: "Rx 콜랙션뷰", image: UIImage(systemName: "lizard.fill"), tag: 3)
+        let rxCollectionNaviController = UINavigationController(rootViewController: rxCollectionVC)
+        rxCollectionNaviController.tabBarItem = rxCollectionTabBarItem
+        
+        let rxWeatherVC = RxWeatherViewController()
+        let rxWeatherTabBarItem = UITabBarItem(title: "Rx 날씨", image: UIImage(systemName: "sun.max.fill"), tag: 4)
+        let rxWeatherNaviController = UINavigationController(rootViewController: rxWeatherVC)
+        rxWeatherNaviController.tabBarItem = rxWeatherTabBarItem
+        
+        self.viewControllers = [tableNaviController, rxNaviController, collectionNaviController, rxCollectionNaviController, rxWeatherNaviController]
         
         self.tabBar.barTintColor = .background.white // 투명한 배경을 가진 탭바의 배경 색상 설정
         self.tabBar.backgroundColor = .background.white // iOS 15 이상부터 명확하게 적용

@@ -10,6 +10,8 @@
 		B80B9F102D0D5E5F00052199 /* RxTodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80B9F0F2D0D5E5F00052199 /* RxTodoListView.swift */; };
 		B80B9F132D0D5EDC00052199 /* RxTodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80B9F122D0D5EDC00052199 /* RxTodoModel.swift */; };
 		B80B9F152D0D5F0600052199 /* RxTodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80B9F142D0D5F0600052199 /* RxTodoListViewModel.swift */; };
+		B80B9F182D101E8200052199 /* RxCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80B9F172D101E8200052199 /* RxCollectionViewController.swift */; };
+		B80B9F1B2D101EE800052199 /* RxWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80B9F1A2D101EE800052199 /* RxWeatherViewController.swift */; };
 		B877DBC62CD30C2E009D9C49 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBC52CD30C2E009D9C49 /* CollectionViewController.swift */; };
 		B877DBC92CD32623009D9C49 /* BasicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBC82CD32623009D9C49 /* BasicTableView.swift */; };
 		B877DBCF2CD373D5009D9C49 /* BasicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBCE2CD373D5009D9C49 /* BasicModel.swift */; };
@@ -84,6 +86,8 @@
 		B80B9F0F2D0D5E5F00052199 /* RxTodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTodoListView.swift; sourceTree = "<group>"; };
 		B80B9F122D0D5EDC00052199 /* RxTodoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTodoModel.swift; sourceTree = "<group>"; };
 		B80B9F142D0D5F0600052199 /* RxTodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTodoListViewModel.swift; sourceTree = "<group>"; };
+		B80B9F172D101E8200052199 /* RxCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCollectionViewController.swift; sourceTree = "<group>"; };
+		B80B9F1A2D101EE800052199 /* RxWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxWeatherViewController.swift; sourceTree = "<group>"; };
 		B877DBC52CD30C2E009D9C49 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		B877DBC82CD32623009D9C49 /* BasicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTableView.swift; sourceTree = "<group>"; };
 		B877DBCE2CD373D5009D9C49 /* BasicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicModel.swift; sourceTree = "<group>"; };
@@ -162,6 +166,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B80B9F162D101E4900052199 /* RxCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				B80B9F172D101E8200052199 /* RxCollectionViewController.swift */,
+			);
+			path = RxCollectionView;
+			sourceTree = "<group>";
+		};
+		B80B9F192D101E8A00052199 /* RxWeatherForecast */ = {
+			isa = PBXGroup;
+			children = (
+				B80B9F1A2D101EE800052199 /* RxWeatherViewController.swift */,
+			);
+			path = RxWeatherForecast;
+			sourceTree = "<group>";
+		};
 		B877DBC42CD30C08009D9C49 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,7 +234,7 @@
 			path = addSubView;
 			sourceTree = "<group>";
 		};
-		B8975F372CFE934B008F2BA6 /* RxView */ = {
+		B8975F372CFE934B008F2BA6 /* RxTableView */ = {
 			isa = PBXGroup;
 			children = (
 				B80B9F112D0D5ECB00052199 /* Model */,
@@ -222,7 +242,7 @@
 				B8B9A1B32D086A1D008D8130 /* ViewModel */,
 				B8B9A1A92D06747F008D8130 /* PracticeRx */,
 			);
-			path = RxView;
+			path = RxTableView;
 			sourceTree = "<group>";
 		};
 		B8975F3C2CFEA1AD008F2BA6 /* Frameworks */ = {
@@ -351,8 +371,10 @@
 			children = (
 				B8CD654D2CC221D600E8F8B3 /* StartView */,
 				B8CD65372CC0FD5F00E8F8B3 /* TableView */,
-				B8975F372CFE934B008F2BA6 /* RxView */,
+				B8975F372CFE934B008F2BA6 /* RxTableView */,
 				B877DBC42CD30C08009D9C49 /* CollectionView */,
+				B80B9F162D101E4900052199 /* RxCollectionView */,
+				B80B9F192D101E8A00052199 /* RxWeatherForecast */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -501,6 +523,7 @@
 				B877DC022CEAD977009D9C49 /* MemoTableViewCell.swift in Sources */,
 				B877DBC62CD30C2E009D9C49 /* CollectionViewController.swift in Sources */,
 				B877DBF02CDDD942009D9C49 /* DetailThirdViewController.swift in Sources */,
+				B80B9F1B2D101EE800052199 /* RxWeatherViewController.swift in Sources */,
 				B8B9A1B72D086AA6008D8130 /* RxBasicTableView.swift in Sources */,
 				B877DBEA2CDAF506009D9C49 /* ThirdViewModel.swift in Sources */,
 				B8CD655D2CC8879800E8F8B3 /* BasicTableViewCell.swift in Sources */,
@@ -539,6 +562,7 @@
 				B8CD654F2CC221FC00E8F8B3 /* SplashViewController.swift in Sources */,
 				B8B9A1AF2D073952008D8130 /* CustomSegment.swift in Sources */,
 				B80B9F152D0D5F0600052199 /* RxTodoListViewModel.swift in Sources */,
+				B80B9F182D101E8200052199 /* RxCollectionViewController.swift in Sources */,
 				B877DBE62CD9B621009D9C49 /* UICollectionViewCell.swift in Sources */,
 				B877DBCF2CD373D5009D9C49 /* BasicModel.swift in Sources */,
 				B877DBE42CD9B5F8009D9C49 /* HorizontalNewsCollectionViewCell.swift in Sources */,
