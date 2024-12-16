@@ -85,10 +85,10 @@ extension RxTodoListView {
             .disposed(by: disposeBag)
         
         // Output: Todo 리스트를 TableView와 바인딩
-        viewModel.todoItems
-            .bind(to: tableView.rx.items(cellIdentifier: "TodoCell")) { index, todo, cell in
-                cell.textLabel?.text = todo.title
-                cell.textLabel?.textColor = todo.isCompleted ? .text.lavender : .text.black
+        viewModel.rxTodoCellData
+            .bind(to: tableView.rx.items(cellIdentifier: "TodoCell")) { index, rxTodoCellData, cell in
+                cell.textLabel?.text = rxTodoCellData.title
+                cell.textLabel?.textColor = rxTodoCellData.textColor
             }
             .disposed(by: disposeBag)
         

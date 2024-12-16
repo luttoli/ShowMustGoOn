@@ -14,14 +14,23 @@ class RxTodoListViewModel {
     // Input
     let addTodo = PublishSubject<String>() // 새 할 일 추가
     let toggleComplete = PublishSubject<Int>() // 특정 Todo의 완료 상태 토글
-    
-    // Output
-    lazy var todoItems: Observable<[RxTodoModel]> = {
-        todoList.asObservable()
+        
+    // ViewModel에서 TodoCellData 생성, todoList를 가공하여 셀이 사용할 데이터로 변환
+    lazy var rxTodoCellData: Observable<[RxTodoCellData]> = {
+        todoList
+            .map { todos in
+                todos.map { todo in
+                    RxTodoCellData(
+                        title: todo.title,
+                        isCompleted: todo.isCompleted,
+                        textColor: todo.isCompleted ? .text.lavender : .text.black
+                    )
+                }
+            }
     }()
     
     private let disposeBag = DisposeBag()
-    private let todoList = BehaviorRelay<[RxTodoModel]>(value: [])
+    private let todoList = BehaviorRelay<[RxTodoModel]>(value: [RxTodoModel(title: "1", isCompleted: true)])
     
     init() {
         // 새 Todo 추가

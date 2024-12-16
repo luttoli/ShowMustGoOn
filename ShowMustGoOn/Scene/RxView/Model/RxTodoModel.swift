@@ -11,3 +11,10 @@ struct RxTodoModel {
     let title: String
     var isCompleted: Bool = false
 }
+
+// RxTodoCellData
+struct RxTodoCellData {
+    let title: String
+    var isCompleted: Bool    
+    var textColor: UIColor
+}
