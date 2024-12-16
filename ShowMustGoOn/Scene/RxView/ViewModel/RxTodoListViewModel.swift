@@ -34,16 +34,14 @@ class RxTodoListViewModel {
             })
             .disposed(by: disposeBag)
         
-        // 완료 상태 토글
+        // 완료 상태 토글 - 코드 개선
         toggleComplete
-            .subscribe(onNext: { [weak self] index in
-                guard let self = self else { return }
-                var updatedList = self.todoList.value // 현재 저장된 Todo 리스트의 상태 가져오기
-                guard updatedList.indices.contains(index) else { return } // 전달된 index가 Todo 리스트 범위에 있는지 확인
-                
-                // 완료 상태 토글
-                updatedList[index].isCompleted.toggle() // Bool 값을 반전시키는 메서드
-                self.todoList.accept(updatedList) // 새로 생성한 리스트를 accept로 할당
+            .withUnretained(self) // [welf self] 대체
+            .filter { $0.todoList.value.indices.contains($1) } // 범위 체크
+            .subscribe(onNext: { owner, index in // owner는 withUnretained(self)를 통해 전달된 ViewModel 인스턴스(self)를 나타냄
+                var updatedList = owner.todoList.value
+                updatedList[index].isCompleted.toggle()
+                owner.todoList.accept(updatedList)
             })
             .disposed(by: disposeBag)
     }
