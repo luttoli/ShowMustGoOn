@@ -12,6 +12,7 @@
 		B80B9F152D0D5F0600052199 /* RxTodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80B9F142D0D5F0600052199 /* RxTodoListViewModel.swift */; };
 		B80B9F182D101E8200052199 /* RxCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80B9F172D101E8200052199 /* RxCollectionViewController.swift */; };
 		B80B9F1B2D101EE800052199 /* RxWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80B9F1A2D101EE800052199 /* RxWeatherViewController.swift */; };
+		B80B9F1D2D110B3A00052199 /* RxSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80B9F1C2D110B3A00052199 /* RxSectionViewModel.swift */; };
 		B877DBC62CD30C2E009D9C49 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBC52CD30C2E009D9C49 /* CollectionViewController.swift */; };
 		B877DBC92CD32623009D9C49 /* BasicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBC82CD32623009D9C49 /* BasicTableView.swift */; };
 		B877DBCF2CD373D5009D9C49 /* BasicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBCE2CD373D5009D9C49 /* BasicModel.swift */; };
@@ -88,6 +89,7 @@
 		B80B9F142D0D5F0600052199 /* RxTodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTodoListViewModel.swift; sourceTree = "<group>"; };
 		B80B9F172D101E8200052199 /* RxCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCollectionViewController.swift; sourceTree = "<group>"; };
 		B80B9F1A2D101EE800052199 /* RxWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxWeatherViewController.swift; sourceTree = "<group>"; };
+		B80B9F1C2D110B3A00052199 /* RxSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSectionViewModel.swift; sourceTree = "<group>"; };
 		B877DBC52CD30C2E009D9C49 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		B877DBC82CD32623009D9C49 /* BasicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTableView.swift; sourceTree = "<group>"; };
 		B877DBCE2CD373D5009D9C49 /* BasicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicModel.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 			children = (
 				B8B9A1C22D0AEAB4008D8130 /* RxBasicViewModel.swift */,
 				B80B9F142D0D5F0600052199 /* RxTodoListViewModel.swift */,
+				B80B9F1C2D110B3A00052199 /* RxSectionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				B877DBC92CD32623009D9C49 /* BasicTableView.swift in Sources */,
 				B80B9F102D0D5E5F00052199 /* RxTodoListView.swift in Sources */,
 				B8CD655B2CC8848900E8F8B3 /* UITableViewCell.swift in Sources */,
+				B80B9F1D2D110B3A00052199 /* RxSectionViewModel.swift in Sources */,
 				B8CD65392CC0FD7100E8F8B3 /* TableViewController.swift in Sources */,
 				B8BDF7EF2D05DB0D0045FA94 /* RxButtonViewController.swift in Sources */,
 				B877DC002CEACB10009D9C49 /* AddTableView.swift in Sources */,
