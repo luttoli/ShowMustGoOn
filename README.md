@@ -26,7 +26,7 @@ iOS 앱 개발 공부하고 기록합니다. 계속 합니다!
 
 ## RxSwift
 |순서|목록|미리보기|
-|:-:|:--|:--|
+|:--|:--|:--|
 |1.|[RxSwift](https://luttoli.notion.site/RxSwift-15f0f60899b980e0a161cb9a8a01ac30?pvs=4)|'Observable', 'Observer'|
 |2.|[Observable 생성](https://luttoli.notion.site/Observable-Observer-15f0f60899b980e7a73cd7d639a22b8f?pvs=4)|'just', 'of', 'from', 'create', 'range', 'empty', 'never', 'interval', 'timer', 'deferred', 'repeat'|
 |3.|[변환 연산자](https://luttoli.notion.site/15f0f60899b98034a5a9e4bcc34f6dae?pvs=4)|'toArray', 'map', 'faltMap', 'flatMapLatest', 'scan', 'reduce'|
