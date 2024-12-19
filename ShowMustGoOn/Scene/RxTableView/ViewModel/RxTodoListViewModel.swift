@@ -30,12 +30,12 @@ class RxTodoListViewModel {
     }()
     
     private let disposeBag = DisposeBag()
-    private let todoList = BehaviorRelay<[RxTodoModel]>(value: [RxTodoModel(title: "1", isCompleted: true)])
+    private let todoList = BehaviorRelay<[TodoModel]>(value: [TodoModel(title: "1", isCompleted: true)])
     
     init() {
         // 새 Todo 추가
         addTodo
-            .map { RxTodoModel(title: $0) } // 새로운 TodoItem 생성
+            .map { TodoModel(title: $0) } // 새로운 TodoItem 생성
             .subscribe(onNext: { [weak self] newTodo in
                 guard let self = self else { return }
                 let updatedList = self.todoList.value + [newTodo]

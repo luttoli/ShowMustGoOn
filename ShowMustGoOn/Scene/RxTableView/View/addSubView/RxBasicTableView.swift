@@ -19,7 +19,7 @@ class RxBasicTableView: UIView {
     // MARK: - Components
     var rxBasicTableView: UITableView = {
         let rxBasicTableView = UITableView(frame: .zero, style: .plain)
-        rxBasicTableView.register(RxBasicTableViewCell.self, forCellReuseIdentifier: RxBasicTableViewCell.identifier)
+        rxBasicTableView.register(BasicTableViewCell.self, forCellReuseIdentifier: BasicTableViewCell.identifier)
         rxBasicTableView.backgroundColor = .clear
         rxBasicTableView.bounces = true
         rxBasicTableView.alwaysBounceVertical = true
@@ -63,8 +63,8 @@ private extension RxBasicTableView {
 extension RxBasicTableView {
     func bindTableView() {
         viewModel.data
-            .bind(to: rxBasicTableView.rx.items(cellIdentifier: RxBasicTableViewCell.identifier)) { index, model, cell in
-                guard let cell = cell as? RxBasicTableViewCell else { return }
+            .bind(to: rxBasicTableView.rx.items(cellIdentifier: BasicTableViewCell.identifier)) { index, model, cell in
+                guard let cell = cell as? BasicTableViewCell else { return }
                 cell.numLabel.text = "\(model.number)."
                 cell.titleLabel.text = model.title
             }

@@ -12,6 +12,6 @@ func webView(from viewController: UIViewController, urlString: String, newsTitle
         return
     }
     
-    let detailNewsViewController = DetailThirdViewController(url: url)
-    viewController.navigationController?.pushViewController(detailNewsViewController, animated: true)
+    let detailMixVC = DetailMixViewController(url: url)
+    viewController.navigationController?.pushViewController(detailMixVC, animated: true)
 }

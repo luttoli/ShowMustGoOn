@@ -11,7 +11,7 @@ import SnapKit
 
 class AddTableView: UIView {
     // MARK: - Properties
-    var viewModel = FourthViewModel()
+    var viewModel = AddViewModel()
     weak var parentViewController: UIViewController?
     
     // MARK: - Components
@@ -28,7 +28,7 @@ class AddTableView: UIView {
     
     var memoTableView: UITableView = {
         let memoTableView = UITableView(frame: .zero, style: .grouped)
-        memoTableView.register(MemoTableViewCell.self, forCellReuseIdentifier: MemoTableViewCell.identifier)
+        memoTableView.register(AddTableViewCell.self, forCellReuseIdentifier: AddTableViewCell.identifier)
         memoTableView.backgroundColor = .clear
         // 스크롤 설정
         memoTableView.bounces = true // 스크롤중 테이블뷰 하단에 도달했을 때 반동 효과 여부
@@ -230,7 +230,7 @@ extension AddTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MemoTableViewCell", for: indexPath) as? MemoTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: AddTableViewCell.identifier, for: indexPath) as? AddTableViewCell else {
             return UITableViewCell()
         }
         

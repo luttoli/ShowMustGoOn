@@ -1,5 +1,5 @@
 //
-//  FourthViewModel.swift
+//  AddViewModel.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 11/18/24.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-class FourthViewModel {
+class AddViewModel {
     // 섹션 데이터를 관리
-    private(set) var categories: [MemoModel] = [
-        MemoModel(id: UUID(), categoryTitle: "T1", items: [
+    private(set) var categories: [AddModel] = [
+        AddModel(id: UUID(), categoryTitle: "T1", items: [
             Item(id: UUID(), title: "도란", isChecked: false),
             Item(id: UUID(), title: "오너", isChecked: false),
             Item(id: UUID(), title: "페이커", isChecked: true),
@@ -53,7 +53,7 @@ class FourthViewModel {
     // 카테고리 추가
     func addCategory(_ categoryTitle: String) {
         guard !categoryTitle.isEmpty else { return } // 빈 값 방지
-        let newCategory = MemoModel(id: UUID(), categoryTitle: categoryTitle, items: [])
+        let newCategory = AddModel(id: UUID(), categoryTitle: categoryTitle, items: [])
         categories.append(newCategory)
         onCategoriesUpdated?() // 데이터 변경 알림
     }

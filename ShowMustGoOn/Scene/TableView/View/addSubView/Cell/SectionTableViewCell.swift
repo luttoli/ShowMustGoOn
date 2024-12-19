@@ -1,5 +1,5 @@
 //
-//  MultiplyTableViewCell.swift
+//  SectionTableViewCell.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 11/1/24.
@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class MultiplyTableViewCell: UITableViewCell {
+class SectionTableViewCell: UITableViewCell {
     // MARK: - Components
     var frontNumberLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
     var asterisk = CustomLabel(title: "x", size: Constants.size.size15, weight: .Regular, color: .text.black)
@@ -40,7 +40,7 @@ class MultiplyTableViewCell: UITableViewCell {
 }
 
 // MARK: - SetUp
-private extension MultiplyTableViewCell {
+private extension SectionTableViewCell {
     func setUp() {
         contentView.addSubview(multiplyHorizontalStackView)
         
@@ -52,7 +52,7 @@ private extension MultiplyTableViewCell {
 }
 
 // MARK: - Method
-extension MultiplyTableViewCell {
+extension SectionTableViewCell {
     func configure(with model: SectionModel, showResult: Bool) {
         frontNumberLabel.text = "\(model.frontNumber)"
         backNumberLabel.text = "\(model.backNumber)"

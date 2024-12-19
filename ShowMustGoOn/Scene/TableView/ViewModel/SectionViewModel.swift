@@ -1,5 +1,5 @@
 //
-//  SecondViewModel.swift
+//  SectionViewModel.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 11/1/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SecondViewModel {
+class SectionViewModel {
     let frontNumbers = Array(2...9)
     let backNumbers = Array(1...9)
     

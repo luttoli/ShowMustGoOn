@@ -1,5 +1,5 @@
 //
-//  VerticalNewsTableViewCell.swift
+//  VerticalTabelViewCell.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 11/5/24.
@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class VerticalNewsTableViewCell: UITableViewCell {
+class VerticalTabelViewCell: UITableViewCell {
     // MARK: - Components
     var newsImageView = UIImageView()
     var newsTitleLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
@@ -29,7 +29,7 @@ class VerticalNewsTableViewCell: UITableViewCell {
 }
 
 // MARK: - SetUp
-private extension VerticalNewsTableViewCell {
+private extension VerticalTabelViewCell {
     func setUp() {
         contentView.addSubview(newsImageView)
         contentView.addSubview(newsTitleLabel)
@@ -53,7 +53,7 @@ private extension VerticalNewsTableViewCell {
 }
 
 // MARK: - Method
-extension VerticalNewsTableViewCell {
+extension VerticalTabelViewCell {
     func configure(with subNews: SubNews) {
         newsImageView.image = subNews.subImage
         newsTitleLabel.text = subNews.subTitle

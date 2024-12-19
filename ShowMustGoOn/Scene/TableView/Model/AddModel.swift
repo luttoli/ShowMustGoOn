@@ -1,5 +1,5 @@
 //
-//  MemoModel.swift
+//  AddModel.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 11/18/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct MemoModel {
+struct AddModel {
     let id: UUID
     let categoryTitle: String
     var items: [Item]

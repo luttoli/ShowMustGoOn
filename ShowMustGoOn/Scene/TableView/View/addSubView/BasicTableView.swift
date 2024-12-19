@@ -11,7 +11,7 @@ import SnapKit
 
 class BasicTableView: UIView {
     // MARK: - Properties
-    private let viewModel = FirstViewModel()
+    private let viewModel = BasicViewModel()
     
     // MARK: - Components
     var basicTableView: UITableView = {

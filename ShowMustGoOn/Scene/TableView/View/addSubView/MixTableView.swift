@@ -15,15 +15,15 @@ protocol ThirdViewDelegate: AnyObject {
 
 class MixTableView: UIView {
     // MARK: - Properties
-    var viewModel = ThirdViewModel()
+    var viewModel = MixViewModel()
     
     weak var delegate: ThirdViewDelegate?
     
     // MARK: - Components
     var eSportsTableView: UITableView = {
         let eSportsTableView = UITableView(frame: .zero, style: .plain)
-        eSportsTableView.register(MainNewsTableViewCell.self, forCellReuseIdentifier: MainNewsTableViewCell.identifier)
-        eSportsTableView.register(VerticalNewsTableViewCell.self, forCellReuseIdentifier: VerticalNewsTableViewCell.identifier)
+        eSportsTableView.register(HorizontalTableViewCell.self, forCellReuseIdentifier: HorizontalTableViewCell.identifier)
+        eSportsTableView.register(VerticalTabelViewCell.self, forCellReuseIdentifier: VerticalTabelViewCell.identifier)
         eSportsTableView.backgroundColor = .clear
         // 스크롤 설정
         eSportsTableView.bounces = true // 스크롤중 테이블뷰 하단에 도달했을 때 반동 효과 여부
@@ -84,11 +84,11 @@ extension MixTableView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: MainNewsTableViewCell.identifier, for: indexPath) as? MainNewsTableViewCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: HorizontalTableViewCell.identifier, for: indexPath) as? HorizontalTableViewCell else { return UITableViewCell() }
             
             return cell
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: VerticalNewsTableViewCell.identifier, for: indexPath) as? VerticalNewsTableViewCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: VerticalTabelViewCell.identifier, for: indexPath) as? VerticalTabelViewCell else { return UITableViewCell() }
             
             cell.selectionStyle = .none
             

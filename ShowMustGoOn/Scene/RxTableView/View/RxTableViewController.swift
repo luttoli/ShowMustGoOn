@@ -23,7 +23,7 @@ class RxTableViewController: UIViewController {
     
     let segment = CustomSegment(items: ["기본", "투두", "섹션", "혼합", "추가"])
     let rxBasicTableView = RxBasicTableView()
-    let rxTodoListView = RxTodoListView()
+    let rxTodoListView = RxTodoTableView()
     let rxSectionTableView = RxSectionTableView()
     let rxMixTableView = RxMixTableView()
     let rxAddTableView = RxAddTableView()

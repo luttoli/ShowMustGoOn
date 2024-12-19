@@ -14,11 +14,12 @@ import SnapKit
 class TableViewController: UIViewController {
     // MARK: - Properties
     let disposeBag = DisposeBag()
-    private let viewModel = FirstViewModel()
+    private let viewModel = BasicViewModel()
     
     // MARK: - Components
-    let segment = CustomSegment(items: ["기본", "섹션", "혼합", "추가"])
+    let segment = CustomSegment(items: ["기본", "투두", "섹션", "혼합", "추가"])
     var basicTableView = BasicTableView()
+    var todoTableView = TodoTableView()
     var sectionTableView = SectionTableView()
     var mixTableView = MixTableView()
     var addTableView = AddTableView()
@@ -73,6 +74,7 @@ private extension TableViewController {
     func setUp() {
         view.addSubview(segment)
         view.addSubview(basicTableView)
+        view.addSubview(todoTableView)
         view.addSubview(sectionTableView)
         view.addSubview(mixTableView)
         view.addSubview(addTableView)
@@ -85,6 +87,13 @@ private extension TableViewController {
         }
         
         basicTableView.snp.makeConstraints {
+            $0.top.equalTo(segment.snp.bottom).offset(Constants.margin.vertical)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
+        }
+        
+        todoTableView.snp.makeConstraints {
             $0.top.equalTo(segment.snp.bottom).offset(Constants.margin.vertical)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
@@ -122,7 +131,7 @@ extension TableViewController: ThirdViewDelegate {
         segment.selectedIndex
             .subscribe(onNext: { index in
                 // 모든 뷰 숨김 처리
-                let segmentView = [self.basicTableView, self.sectionTableView, self.mixTableView, self.addTableView]
+                let segmentView = [self.basicTableView, self.todoTableView, self.sectionTableView, self.mixTableView, self.addTableView]
                 segmentView.forEach { $0.isHidden = true }
                 
                 // 선택된 세그먼트에 따라 해당 뷰만 보이게
@@ -130,10 +139,12 @@ extension TableViewController: ThirdViewDelegate {
                 case 0:
                     self.basicTableView.isHidden = false
                 case 1:
-                    self.sectionTableView.isHidden = false
+                    self.todoTableView.isHidden = false
                 case 2:
-                    self.mixTableView.isHidden = false
+                    self.sectionTableView.isHidden = false
                 case 3:
+                    self.mixTableView.isHidden = false
+                case 4:
                     self.addTableView.isHidden = false
                 default:
                     break
@@ -146,8 +157,8 @@ extension TableViewController: ThirdViewDelegate {
     func didSelectItem(with url: String) {
         guard let url = URL(string: url) else { return }
 
-        let detailNewsViewController = DetailThirdViewController(url: url)
-        detailNewsViewController.modalPresentationStyle = .formSheet
-        present(detailNewsViewController, animated: true, completion: nil)
+        let detailMixVC = DetailMixViewController(url: url)
+        detailMixVC.modalPresentationStyle = .formSheet
+        present(detailMixVC, animated: true, completion: nil)
     }
 }

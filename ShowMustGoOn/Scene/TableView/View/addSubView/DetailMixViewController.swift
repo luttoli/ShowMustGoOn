@@ -1,5 +1,5 @@
 //
-//  DetailThirdViewController.swift
+//  DetailMixViewController.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 11/8/24.
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import WebKit
 
-class DetailThirdViewController: UIViewController, WKNavigationDelegate {
+class DetailMixViewController: UIViewController, WKNavigationDelegate {
     // MARK: - Properties
     var url: URL?
     var newsTitle: String?
@@ -38,7 +38,7 @@ class DetailThirdViewController: UIViewController, WKNavigationDelegate {
 }
 
 // MARK: - LifeCycle
-extension DetailThirdViewController {
+extension DetailMixViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,7 +54,7 @@ extension DetailThirdViewController {
 }
 
 // MARK: - SetUp
-private extension DetailThirdViewController {
+private extension DetailMixViewController {
     func setUp() {
         view.addSubview(webView)
         

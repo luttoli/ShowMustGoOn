@@ -19,7 +19,7 @@ class RxSectionTableView: UIView {
     // MARK: - Components
     let multiplicationTableView: UITableView = {
         let multiplicationTableView = UITableView()
-        multiplicationTableView.register(MultiplyTableViewCell.self, forCellReuseIdentifier: MultiplyTableViewCell.identifier)
+        multiplicationTableView.register(SectionTableViewCell.self, forCellReuseIdentifier: SectionTableViewCell.identifier)
         return multiplicationTableView
     }()
     
@@ -52,8 +52,8 @@ private extension RxSectionTableView {
 extension RxSectionTableView {
     func bindTableView() {
         viewModel.multiplyData
-            .bind(to: multiplicationTableView.rx.items(cellIdentifier: MultiplyTableViewCell.identifier)) { index, data, cell in
-                guard let cell = cell as? MultiplyTableViewCell else { return }
+            .bind(to: multiplicationTableView.rx.items(cellIdentifier: SectionTableViewCell.identifier)) { index, data, cell in
+                guard let cell = cell as? SectionTableViewCell else { return }
                 cell.frontNumberLabel.text = "\(data.frontNumber)"
                 cell.backNumberLabel.text = "\(data.backNumber)"
                 cell.resultNumberLabel.text = data.resultNumber

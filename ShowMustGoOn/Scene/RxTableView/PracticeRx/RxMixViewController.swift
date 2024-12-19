@@ -1,5 +1,5 @@
 //
-//  RxExViewController.swift
+//  RxMixViewController.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 12/11/24.
@@ -11,7 +11,7 @@ import RxCocoa
 import RxSwift
 import SnapKit
 
-class RxExViewController: UIViewController {
+class RxMixViewController: UIViewController {
     // MARK: - Properties
     let disposeBag = DisposeBag()
     
@@ -49,7 +49,7 @@ class RxExViewController: UIViewController {
 }
 
 // MARK: - LifeCycle
-extension RxExViewController {
+extension RxMixViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,7 +61,7 @@ extension RxExViewController {
 }
 
 // MARK: - SetUp
-private extension RxExViewController {
+private extension RxMixViewController {
     func setUp() {
         view.addSubview(stackView)
         
@@ -77,7 +77,7 @@ private extension RxExViewController {
 }
 
 // MARK: - Method
-private extension RxExViewController {
+private extension RxMixViewController {
     func didTapButton() {
         // 버튼 클릭 시 텍스트 필드 값에 따라 레이블 업데이트
         button.rx.tap

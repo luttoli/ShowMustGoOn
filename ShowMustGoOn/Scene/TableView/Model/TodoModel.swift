@@ -1,13 +1,13 @@
 //
-//  RxTodoModel.swift
+//  TodoModel.swift
 //  ShowMustGoOn
 //
-//  Created by 김지훈 on 12/14/24.
+//  Created by 김지훈 on 12/19/24.
 //
 
 import UIKit
 
-struct RxTodoModel {
+struct TodoModel {
     let title: String
     var isCompleted: Bool = false
 }
@@ -15,6 +15,6 @@ struct RxTodoModel {
 // RxTodoCellData
 struct RxTodoCellData {
     let title: String
-    var isCompleted: Bool    
+    var isCompleted: Bool
     var textColor: UIColor
 }

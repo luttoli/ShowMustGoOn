@@ -1,5 +1,5 @@
 //
-//  eSportsModel.swift
+//  MixModel.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 11/6/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct ESportsModel {
+struct MixModel {
     let mainImage: [UIImage?]
     let subNews: [SubNews]
 }

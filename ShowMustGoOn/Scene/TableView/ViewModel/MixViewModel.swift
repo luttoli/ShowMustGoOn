@@ -1,5 +1,5 @@
 //
-//  ThirdViewModel.swift
+//  MixViewModel.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 11/6/24.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ThirdViewModel {
-    var eSportNews: [ESportsModel] = [
-        ESportsModel(mainImage: [
+class MixViewModel {
+    var eSportNews: [MixModel] = [
+        MixModel(mainImage: [
             UIImage(named: "proveit"),
             UIImage(named: "GENGDown"),
             UIImage(named: "BLGDown"),

@@ -1,5 +1,5 @@
 //
-//  MemoTableViewCell.swift
+//  AddTableViewCell.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 11/18/24.
@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class MemoTableViewCell: UITableViewCell {
+class AddTableViewCell: UITableViewCell {
     // MARK: - Components
     var itemTitle = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
     var checkBoxButton = CustomButton(type: .iconButton(icon: .checkBox))
@@ -32,7 +32,7 @@ class MemoTableViewCell: UITableViewCell {
 }
 
 // MARK: - SetUp
-private extension MemoTableViewCell {
+private extension AddTableViewCell {
     func setUp() {
         contentView.addSubview(itemTitle)
         contentView.addSubview(checkBoxButton)
@@ -52,7 +52,7 @@ private extension MemoTableViewCell {
 }
 
 // MARK: - Method
-extension MemoTableViewCell {
+extension AddTableViewCell {
     func configure(with item: Item) {
         itemTitle.text = item.title
         checkBoxButton.isChecked = item.isChecked

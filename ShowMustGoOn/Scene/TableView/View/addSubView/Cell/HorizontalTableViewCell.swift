@@ -1,5 +1,5 @@
 //
-//  MainNewsTableViewCell.swift
+//  HorizontalTableViewCell.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 11/5/24.
@@ -9,16 +9,16 @@ import UIKit
 
 import SnapKit
 
-class MainNewsTableViewCell: UITableViewCell {
+class HorizontalTableViewCell: UITableViewCell {
     // MARK: - Properties
-    var viewModel = ThirdViewModel()
+    var viewModel = MixViewModel()
     
     // MARK: - Components
     let horizontalNewsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let horizontalNewsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        horizontalNewsCollectionView.register(HorizontalNewsCollectionViewCell.self, forCellWithReuseIdentifier: HorizontalNewsCollectionViewCell.identifier)
+        horizontalNewsCollectionView.register(HorizontalCollectionViewCell.self, forCellWithReuseIdentifier: HorizontalCollectionViewCell.identifier)
         horizontalNewsCollectionView.backgroundColor = .clear
         horizontalNewsCollectionView.showsHorizontalScrollIndicator = false
         horizontalNewsCollectionView.isPagingEnabled = true
@@ -55,7 +55,7 @@ class MainNewsTableViewCell: UITableViewCell {
 }
 
 // MARK: - SetUp
-private extension MainNewsTableViewCell {
+private extension HorizontalTableViewCell {
     func setUp() {
         contentView.addSubview(horizontalNewsCollectionView)
         contentView.addSubview(pageControl)
@@ -74,7 +74,7 @@ private extension MainNewsTableViewCell {
 }
 
 // MARK: - Method
-extension MainNewsTableViewCell {
+extension HorizontalTableViewCell {
     // 컬렉션 뷰 셀 전환 속도 조정
     private func startTimer() {
         timer = Timer.scheduledTimer(timeInterval: 3.5, target: self, selector: #selector(scrollToNext), userInfo: nil, repeats: true)
@@ -92,7 +92,7 @@ extension MainNewsTableViewCell {
 }
 
 // MARK: - CollectionViewDelegate
-extension MainNewsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension HorizontalTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // 페이지 컨트롤 인디케이터도 개수가 동일하여 여기서 설정
         let newImageCount = viewModel.eSportNews.first?.mainImage.count ?? 0
@@ -101,7 +101,7 @@ extension MainNewsTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HorizontalNewsCollectionViewCell.identifier, for: indexPath) as? HorizontalNewsCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HorizontalCollectionViewCell.identifier, for: indexPath) as? HorizontalCollectionViewCell else { return UICollectionViewCell() }
         
         let model = viewModel.eSportNews[0]
         cell.configure(with: model, at: indexPath.row)
@@ -118,7 +118,7 @@ extension MainNewsTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
     }
 }
 
-extension MainNewsTableViewCell {
+extension HorizontalTableViewCell {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = round(scrollView.contentOffset.x / scrollView.frame.width)
         pageControl.currentPage = Int(pageIndex)

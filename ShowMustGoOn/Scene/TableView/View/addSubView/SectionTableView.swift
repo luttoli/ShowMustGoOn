@@ -11,14 +11,14 @@ import SnapKit
 
 class SectionTableView: UIView {
     // MARK: - Properties
-    private let viewModel = SecondViewModel()
+    private let viewModel = SectionViewModel()
     
     var selectedIndexPaths: Set<IndexPath> = []
     
     // MARK: - Components
     var multiplicationTableView: UITableView = {
         let multiplicationTableView = UITableView(frame: .zero, style: .grouped)
-        multiplicationTableView.register(MultiplyTableViewCell.self, forCellReuseIdentifier: MultiplyTableViewCell.identifier)
+        multiplicationTableView.register(SectionTableViewCell.self, forCellReuseIdentifier: SectionTableViewCell.identifier)
         multiplicationTableView.backgroundColor = .clear
         // 스크롤 설정
         multiplicationTableView.bounces = true // 스크롤중 테이블뷰 하단에 도달했을 때 반동 효과 여부
@@ -101,7 +101,7 @@ extension SectionTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MultiplyTableViewCell", for: indexPath) as? MultiplyTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SectionTableViewCell.identifier, for: indexPath) as? SectionTableViewCell else {
             return UITableViewCell()
         }
         

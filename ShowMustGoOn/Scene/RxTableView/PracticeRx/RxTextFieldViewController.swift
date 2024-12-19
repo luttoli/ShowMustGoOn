@@ -90,7 +90,7 @@ private extension RxTextFieldViewController {
 // MARK: - Method
 private extension RxTextFieldViewController {
     @objc func goRxExPage() {
-        let rxExVC = RxExViewController()
+        let rxExVC = RxMixViewController()
         rxExVC.hidesBottomBarWhenPushed = true // VC tabbar 숨기기
         navigationController?.pushViewController(rxExVC, animated: true)
     }

@@ -1,5 +1,5 @@
 //
-//  FirstViewModel.swift
+//  BasicViewModel.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 10/31/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FirstViewModel {
+class BasicViewModel {
     var tableData: [BasicModel] = {
         let numbers = Array(1...14).map { "\($0)" }
         let titles = ["가", "나", "다", "라", "마", "바", "사", "아", "자", "차", "카", "타", "파", "하"]

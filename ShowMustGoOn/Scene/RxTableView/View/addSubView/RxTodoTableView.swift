@@ -1,5 +1,5 @@
 //
-//  RxTodoListView.swift
+//  RxTodoTableView.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 12/14/24.
@@ -11,7 +11,7 @@ import RxCocoa
 import RxSwift
 import SnapKit
 
-class RxTodoListView: UIView {
+class RxTodoTableView: UIView {
     // MARK: - Properties
     let disposeBag = DisposeBag()
     let viewModel = RxTodoListViewModel()
@@ -44,7 +44,7 @@ class RxTodoListView: UIView {
 }
 
 // MARK: - SetUp
-private extension RxTodoListView {
+private extension RxTodoTableView {
     func setUp() {
         addSubview(tableView)
         addSubview(addButton)
@@ -72,7 +72,7 @@ private extension RxTodoListView {
 }
 
 // MARK: - Method
-extension RxTodoListView {
+extension RxTodoTableView {
     private func bindViewModel() {
         // Input: Add 버튼 클릭 시, TextField 내용 전달
         addButton.rx.tap
