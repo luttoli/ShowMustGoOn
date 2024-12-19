@@ -46,9 +46,9 @@ class RxTodoTableView: UIView {
 // MARK: - SetUp
 private extension RxTodoTableView {
     func setUp() {
-        addSubview(tableView)
-        addSubview(addButton)
         addSubview(textField)
+        addSubview(addButton)
+        addSubview(tableView)
         
         textField.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide).offset(20)
