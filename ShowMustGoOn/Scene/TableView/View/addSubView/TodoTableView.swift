@@ -38,6 +38,7 @@ class TodoTableView: UIView {
         setUp()
         updataTodo()
         didTabAddButton()
+        configureDismissKeyboard()
     }
     
     required init?(coder: NSCoder) {
@@ -95,6 +96,16 @@ extension TodoTableView {
             self.textField.text = "" // 추가 버튼 눌리고 나서 비우기
         }), for: .touchUpInside)
     }
+    
+    // 화면 클릭 시 키보드 내리기
+    func configureDismissKeyboard() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func dismissKeyboard() {
+        self.endEditing(true)
+    }
 }
 
 // MARK: - delegate
@@ -119,9 +130,10 @@ extension TodoTableView: UITableViewDelegate, UITableViewDataSource {
 }
 
 // MARK: - UITextFieldDelegate
-extension TodoTableView: UISearchBarDelegate {
+extension TodoTableView: UITextFieldDelegate {
     // 텍스트필드 리턴키 눌리면 키보드 내리기
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder() // 키보드 내리기
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

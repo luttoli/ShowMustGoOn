@@ -125,7 +125,7 @@ private extension TableViewController {
 }
 
 // MARK: - Method
-extension TableViewController: ThirdViewDelegate {
+extension TableViewController {
     // 선택된 세그먼트에 반응
     func segmentClickEvent() {
         segment.selectedIndex
@@ -152,7 +152,10 @@ extension TableViewController: ThirdViewDelegate {
             })
             .disposed(by: disposeBag)
     }
+}
     
+// MARK: - delegate
+extension TableViewController: MixTableViewDelegate {
     //
     func didSelectItem(with url: String) {
         guard let url = URL(string: url) else { return }

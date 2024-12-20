@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-protocol ThirdViewDelegate: AnyObject {
+protocol MixTableViewDelegate: AnyObject {
     func didSelectItem(with url: String)
 }
 
@@ -17,7 +17,7 @@ class MixTableView: UIView {
     // MARK: - Properties
     var viewModel = MixViewModel()
     
-    weak var delegate: ThirdViewDelegate?
+    weak var delegate: MixTableViewDelegate?
     
     // MARK: - Components
     var eSportsTableView: UITableView = {

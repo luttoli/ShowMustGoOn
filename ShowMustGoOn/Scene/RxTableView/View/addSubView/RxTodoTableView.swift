@@ -36,6 +36,7 @@ class RxTodoTableView: UIView {
         super.init(frame: frame)
         setUp()
         bindViewModel()
+        configureDismissKeyboard()
     }
     
     required init?(coder: NSCoder) {
@@ -101,5 +102,23 @@ extension RxTodoTableView {
             .map { $0.row }
             .bind(to: viewModel.toggleComplete)
             .disposed(by: disposeBag)
+    }
+    
+    // 화면 클릭 시 키보드 내리기
+    func configureDismissKeyboard() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func dismissKeyboard() {
+        self.endEditing(true)
+    }
+}
+
+extension RxTodoTableView: UITextFieldDelegate {
+    // 텍스트필드 리턴키 눌리면 키보드 내리기
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
