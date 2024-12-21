@@ -106,20 +106,13 @@ extension SectionTableView: UITableViewDelegate, UITableViewDataSource {
         }
         
         let model = viewModel.multiplyData[indexPath.section][indexPath.row]
-        let isCellSelected = selectedIndexPaths.contains(indexPath)
-        cell.configure(with: model, showResult: isCellSelected)
-
+        cell.configure(with: model)
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if selectedIndexPaths.contains(indexPath) {
-            selectedIndexPaths.remove(indexPath)
-        } else {
-            selectedIndexPaths.insert(indexPath)
-        }
-
-        tableView.reloadRows(at: [indexPath], with: .automatic)
+        viewModel.toggleResult(at: indexPath) // 상태 업데이트
+        tableView.reloadRows(at: [indexPath], with: .automatic) // 해당 셀만 업데이트
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

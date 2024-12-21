@@ -11,4 +11,5 @@ struct SectionModel {
     let frontNumber: Int
     let backNumber: Int
     let resultNumber: String
+    var showResult: Bool
 }

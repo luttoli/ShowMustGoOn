@@ -21,7 +21,8 @@ class RxSectionViewModel {
                 SectionModel(
                     frontNumber: front,
                     backNumber: back,
-                    resultNumber: "?"
+                    resultNumber: "\(front * back)",
+                    showResult: false
                 )
             }
         }

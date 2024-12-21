@@ -54,9 +54,7 @@ extension RxSectionTableView {
         viewModel.multiplyData
             .bind(to: multiplicationTableView.rx.items(cellIdentifier: SectionTableViewCell.identifier)) { index, data, cell in
                 guard let cell = cell as? SectionTableViewCell else { return }
-                cell.frontNumberLabel.text = "\(data.frontNumber)"
-                cell.backNumberLabel.text = "\(data.backNumber)"
-                cell.resultNumberLabel.text = data.resultNumber
+                cell.configure(with: data)
             }
             .disposed(by: disposeBag)
         

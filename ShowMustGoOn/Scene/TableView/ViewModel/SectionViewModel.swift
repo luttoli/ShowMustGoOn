@@ -11,12 +11,21 @@ class SectionViewModel {
     let frontNumbers = Array(2...9)
     let backNumbers = Array(1...9)
     
-    var multiplyData: [[SectionModel]] {
+    lazy var multiplyData: [[SectionModel]] = {
         return frontNumbers.map { front in
             backNumbers.map { back in
-                SectionModel(frontNumber: front, backNumber: back, resultNumber: "\(front * back)")
+                SectionModel(
+                    frontNumber: front,
+                    backNumber: back,
+                    resultNumber: "\(front * back)",
+                    showResult: false // 초기 상태: 결과 숨김
+                )
             }
         }
+    }()
+    
+    func toggleResult(at indexPath: IndexPath) {
+        multiplyData[indexPath.section][indexPath.row].showResult.toggle()
     }
 }
 
