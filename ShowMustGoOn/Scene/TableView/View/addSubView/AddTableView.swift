@@ -55,7 +55,6 @@ class AddTableView: UIView {
         setUp()
         didTabAddCategoryButton()
         hideOnLabel()
-        configureDismissKeyboard()
     }
     
     required init?(coder: NSCoder) {
@@ -75,7 +74,6 @@ private extension AddTableView {
             $0.top.equalTo(safeAreaLayoutGuide)
             $0.leading.equalTo(safeAreaLayoutGuide).offset(-Constants.spacing.px8)
         }
-        inputCategoryBar.delegate = self
         
         addCategoryButton.snp.makeConstraints {
             $0.centerY.equalTo(inputCategoryBar.searchTextField)
@@ -133,17 +131,6 @@ extension AddTableView {
             self.memoTableView.reloadData()
             self.hideOnLabel()
         }
-    }
-    
-    // 화면 클릭 시 키보드 내리기
-    func configureDismissKeyboard() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tapGesture.cancelsTouchesInView = false // 터치 이벤트가 셀로 전달되도록 설정
-        self.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc func dismissKeyboard() {
-        self.endEditing(true)
     }
 }
 
@@ -268,13 +255,5 @@ extension AddTableView: UITableViewDelegate, UITableViewDataSource {
             viewModel.deleteItem(categoryId: category.id, itemId: itemId)
             tableView.reloadData()
         }
-    }
-}
-
-// MARK: - UITextFieldDelegate
-extension AddTableView: UISearchBarDelegate {
-    // 텍스트필드 리턴키 눌리면 키보드 내리기
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder() // 키보드 내리기
     }
 }

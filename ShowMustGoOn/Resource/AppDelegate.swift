@@ -7,6 +7,8 @@
 
 import UIKit
 
+import IQKeyboardManagerSwift
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         sleep(1) // 런치스크린에서 시작할떄까지?
+        IQKeyboardManager.shared.resignOnTouchOutside = true // 화면 터치 키보드 내림
         return true
     }
 

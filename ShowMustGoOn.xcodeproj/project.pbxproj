@@ -70,6 +70,7 @@
 		B8CD65572CC2355E00E8F8B3 /* SwiftyGif in Frameworks */ = {isa = PBXBuildFile; productRef = B8CD65562CC2355E00E8F8B3 /* SwiftyGif */; };
 		B8CD655B2CC8848900E8F8B3 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD655A2CC8848900E8F8B3 /* UITableViewCell.swift */; };
 		B8CD655D2CC8879800E8F8B3 /* BasicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD655C2CC8879800E8F8B3 /* BasicTableViewCell.swift */; };
+		B8E6F8B12D17CFCE00CDC1C4 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B8E6F8B02D17CFCE00CDC1C4 /* IQKeyboardManagerSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -158,6 +159,7 @@
 				B8975F3E2CFEA1AD008F2BA6 /* RxSwift in Frameworks */,
 				B8CD65472CC104C400E8F8B3 /* SnapKit in Frameworks */,
 				B8CD65572CC2355E00E8F8B3 /* SwiftyGif in Frameworks */,
+				B8E6F8B12D17CFCE00CDC1C4 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +447,7 @@
 				B8975F3D2CFEA1AD008F2BA6 /* RxSwift */,
 				B8863D762CFEAE0400717A63 /* RxCocoa */,
 				B8863D782CFEAEF200717A63 /* RxRelay */,
+				B8E6F8B02D17CFCE00CDC1C4 /* IQKeyboardManagerSwift */,
 			);
 			productName = ShowMustGoOn;
 			productReference = B8CD65052CC0FC4000E8F8B3 /* ShowMustGoOn.app */;
@@ -478,6 +481,7 @@
 				B8CD65452CC104C400E8F8B3 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				B8CD65552CC2355E00E8F8B3 /* XCRemoteSwiftPackageReference "SwiftyGif" */,
 				B8975F3A2CFEA06E008F2BA6 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				B8E6F8AF2D17CFCE00CDC1C4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B8CD65062CC0FC4000E8F8B3 /* Products */;
@@ -802,6 +806,14 @@
 				minimumVersion = 5.4.5;
 			};
 		};
+		B8E6F8AF2D17CFCE00CDC1C4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -829,6 +841,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B8CD65552CC2355E00E8F8B3 /* XCRemoteSwiftPackageReference "SwiftyGif" */;
 			productName = SwiftyGif;
+		};
+		B8E6F8B02D17CFCE00CDC1C4 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8E6F8AF2D17CFCE00CDC1C4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
