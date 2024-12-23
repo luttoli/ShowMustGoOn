@@ -93,7 +93,6 @@ private extension AddTableView {
         nodataLabel.snp.makeConstraints {
             $0.centerX.centerY.equalTo(safeAreaLayoutGuide)
         }
-        
         setUpBindings()
     }
 }
@@ -205,7 +204,6 @@ extension AddTableView: UITableViewDelegate, UITableViewDataSource {
             let categoryId = self.viewModel.categories[section].id
             self.viewModel.deleteCategory(categoryId)
         }), for: .touchUpInside)
-        
         return headerView
     }
     
@@ -239,7 +237,6 @@ extension AddTableView: UITableViewDelegate, UITableViewDataSource {
             // 변경된 데이터로 UI를 업데이트하기 위해 테이블뷰 리로드
             self.memoTableView.reloadRows(at: [indexPath], with: .none)
         }), for: .touchUpInside)
-        
         return cell
     }
     

@@ -91,9 +91,7 @@ extension MixTableView: UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: VerticalTabelViewCell.identifier, for: indexPath) as? VerticalTabelViewCell else { return UITableViewCell() }
             
             cell.selectionStyle = .none
-            
             cell.configure(with: viewModel.eSportNews[0].subNews[indexPath.row])
-            
             return cell
         }
     }

@@ -31,7 +31,6 @@ class BasicTableView: UIView {
         // 표시
         basicTableView.separatorStyle = .singleLine // 구분선 노출 여부
         basicTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) // 구분선 여백 설정
-        
         return basicTableView
     }()
     
@@ -76,7 +75,6 @@ extension BasicTableView: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BasicTableViewCell.identifier, for: indexPath) as? BasicTableViewCell else { return UITableViewCell() }
         
         cell.configure(with: viewModel.tableData[indexPath.row])
-        
         return cell
     }
     

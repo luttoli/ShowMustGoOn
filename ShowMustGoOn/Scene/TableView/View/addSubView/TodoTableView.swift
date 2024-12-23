@@ -107,7 +107,6 @@ extension TodoTableView: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoTableViewCell.identifier, for: indexPath) as? TodoTableViewCell else { return UITableViewCell() }
 
         cell.configure(with: viewModel.todoData[indexPath.row])
-        
         return cell
     }
     

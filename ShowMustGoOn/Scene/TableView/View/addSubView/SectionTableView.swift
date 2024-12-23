@@ -88,7 +88,6 @@ extension SectionTableView: UITableViewDelegate, UITableViewDataSource {
             $0.leading.equalTo(headerView).offset(Constants.margin.horizontal)
             $0.trailing.equalTo(headerView).offset(-Constants.margin.horizontal)
         }
-        
         return headerView
     }
     
@@ -101,9 +100,7 @@ extension SectionTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SectionTableViewCell.identifier, for: indexPath) as? SectionTableViewCell else {
-            return UITableViewCell()
-        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SectionTableViewCell.identifier, for: indexPath) as? SectionTableViewCell else { return UITableViewCell() }
         
         let model = viewModel.multiplyData[indexPath.section][indexPath.row]
         cell.configure(with: model)
