@@ -111,8 +111,7 @@ extension TodoTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.todoData[indexPath.row].isCompleted.toggle()
-        viewModel.onTodoUpdated?()
+        viewModel.toggleCompleted(at: indexPath.row)
         print(viewModel.todoData[indexPath.row])
     }
 }

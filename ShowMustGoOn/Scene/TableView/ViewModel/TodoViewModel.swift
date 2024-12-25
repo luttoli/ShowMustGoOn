@@ -23,4 +23,11 @@ class TodoViewModel {
         todoData.append(newTodo)
         onTodoUpdated?()
     }
+    
+    // 완료 상태
+    func toggleCompleted(at index: Int) {
+        guard todoData.indices.contains(index) else { return }
+        todoData[index].isCompleted.toggle()
+        onTodoUpdated?()
+    }
 }
