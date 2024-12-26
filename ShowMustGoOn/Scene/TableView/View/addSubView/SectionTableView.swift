@@ -13,8 +13,6 @@ class SectionTableView: UIView {
     // MARK: - Properties
     private let viewModel = SectionViewModel()
     
-    var selectedIndexPaths: Set<IndexPath> = []
-    
     // MARK: - Components
     var multiplicationTableView: UITableView = {
         let multiplicationTableView = UITableView(frame: .zero, style: .grouped)
@@ -94,6 +92,11 @@ extension SectionTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return Constants.size.size50
     }
+    
+    // 기본 텍스트 헤더
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return "\(viewModel.frontNumbers[section])단"
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.backNumbers.count

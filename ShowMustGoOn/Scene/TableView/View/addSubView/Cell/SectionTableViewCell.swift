@@ -18,7 +18,7 @@ class SectionTableViewCell: UITableViewCell {
     var resultNumberLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
     
     private lazy var multiplyHorizontalStackView: UIStackView = {
-        let multiplyHorizontalStackView = UIStackView(arrangedSubviews: [frontNumberLabel, asterisk, backNumberLabel, equalSign,  resultNumberLabel])
+        let multiplyHorizontalStackView = UIStackView(arrangedSubviews: [frontNumberLabel, asterisk, backNumberLabel, equalSign, resultNumberLabel])
         multiplyHorizontalStackView.axis = .horizontal
         multiplyHorizontalStackView.spacing = Constants.spacing.px10
         multiplyHorizontalStackView.alignment = .center
