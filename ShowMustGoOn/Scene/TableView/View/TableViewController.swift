@@ -156,7 +156,7 @@ extension TableViewController {
     
 // MARK: - delegate
 extension TableViewController: MixTableViewDelegate {
-    //
+    // 혼합테이블뷰 present Delegate 작성
     func didSelectItem(with url: String) {
         guard let url = URL(string: url) else { return }
 
