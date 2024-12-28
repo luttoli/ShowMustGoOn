@@ -29,7 +29,7 @@
     - [UISearchBar](https://luttoli.notion.site/UISearchBar-1590f60899b980e1bad3f288d272b945?pvs=4)
     - [CustomButton](https://luttoli.notion.site/CustomButton-1590f60899b980fbb534cd53f043f494?pvs=4)
 
-|순서|UIKit|RxSwift|
+|순서|UIKit|RxSwift|Component
 |:--|:--|:--|:--|
 |1.|[UITableView, Cell 기본 사용 방법](https://luttoli.notion.site/UITableView-Cell-51f407dc74c1490babe37eecd411a12d?pvs=4)|[Rx 활용 UITableView](https://luttoli.notion.site/Rx-UITableView-16a0f60899b98047bb4de16e68278a33?pvs=4)|- [CustomLabel](https://luttoli.notion.site/CustomLabel-1590f60899b98070a9bdc54119761db1?pvs=4)|
 |2.|[UITableView, Todo 추가, 완료 표시](https://luttoli.notion.site/UITableView-Todo-1680f60899b9801fb796c36edb287c59?pvs=4)||    - [UITextField](https://luttoli.notion.site/UITextField-61d8a4b9c16a45869c95290bfbfeb67e?pvs=4)
