@@ -29,15 +29,15 @@
     - [UISearchBar](https://luttoli.notion.site/UISearchBar-1590f60899b980e1bad3f288d272b945?pvs=4)
     - [CustomButton](https://luttoli.notion.site/CustomButton-1590f60899b980fbb534cd53f043f494?pvs=4)
 
-|순서|UIKit|RxSwift|Component
+|순서|UIKit|RxSwift|Component|
 |:--|:--|:--|:--|
 |1.|[UITableView, Cell 기본 사용 방법](https://luttoli.notion.site/UITableView-Cell-51f407dc74c1490babe37eecd411a12d?pvs=4)|[Rx 활용 UITableView](https://luttoli.notion.site/Rx-UITableView-16a0f60899b98047bb4de16e68278a33?pvs=4)|[CustomLabel](https://luttoli.notion.site/CustomLabel-1590f60899b98070a9bdc54119761db1?pvs=4)|
-|2.|[UITableView, Todo 추가, 완료 표시](https://luttoli.notion.site/UITableView-Todo-1680f60899b9801fb796c36edb287c59?pvs=4)||
+|2.|[UITableView, Todo 추가, 완료 표시](https://luttoli.notion.site/UITableView-Todo-1680f60899b9801fb796c36edb287c59?pvs=4)| |
 [UITextField](https://luttoli.notion.site/UITextField-61d8a4b9c16a45869c95290bfbfeb67e?pvs=4)<br />[키보드 동작](https://luttoli.notion.site/d6da7564f2824b2ba3f29f79f1888238?pvs=4)<br />[IQKeyboardManagerSwift](https://luttoli.notion.site/IQKeyboardManagerSwift-1640f60899b980cd8a99ed22aab0b3cf?pvs=4)|
-|3.|[UITableView Section 설정](https://luttoli.notion.site/UITableView-Section-1680f60899b9809f921eeb7b3af51d47?pvs=4)|||
-|4.|[UITableViewCell 안에 CollectionView](https://luttoli.notion.site/UITableViewCell-UICollectionView-1680f60899b980518244d0b70e3a6da6?pvs=4)||
+|3.|[UITableView Section 설정](https://luttoli.notion.site/UITableView-Section-1680f60899b9809f921eeb7b3af51d47?pvs=4)| | |
+|4.|[UITableViewCell 안에 CollectionView](https://luttoli.notion.site/UITableViewCell-UICollectionView-1680f60899b980518244d0b70e3a6da6?pvs=4)| |
 [UIPageControl](https://luttoli.notion.site/UIPageControl-1380f60899b98017a042e99d09487abc?pvs=4)<br />[CollectionView 자동스크롤](https://luttoli.notion.site/CollectionView-1380f60899b980aca1f4d187c1ca060d?pvs=4)<br />[WebView](https://luttoli.notion.site/WebKit-WebView-dbb909fa1dc34ba4a407193a37b4fdf9?pvs=4)|
-|5.|[UITableView Header, cell 추가 액션](https://luttoli.notion.site/UITableView-Header-cell-1680f60899b980f9a84bcb6b0d63ba2a?pvs=4)||[UISearchBar](https://luttoli.notion.site/UISearchBar-1590f60899b980e1bad3f288d272b945?pvs=4)<br />[CustomButton](https://luttoli.notion.site/CustomButton-1590f60899b980fbb534cd53f043f494?pvs=4)|
+|5.|[UITableView Header, cell 추가 액션](https://luttoli.notion.site/UITableView-Header-cell-1680f60899b980f9a84bcb6b0d63ba2a?pvs=4)| |[UISearchBar](https://luttoli.notion.site/UISearchBar-1590f60899b980e1bad3f288d272b945?pvs=4)<br />[CustomButton](https://luttoli.notion.site/CustomButton-1590f60899b980fbb534cd53f043f494?pvs=4)|
 
 
 ## RxSwift
