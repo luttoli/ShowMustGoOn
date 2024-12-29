@@ -57,9 +57,8 @@ extension AddTableViewCell {
         itemTitle.text = item.title
         checkBoxButton.isChecked = item.isChecked
         
+        // item.isChecked 값에 따라 텍스트 색상, 이미지 교체
         itemTitle.textColor = item.isChecked ? .text.lavender : .text.black
-        
-        // item.isChecked 값에 따라 이미지 교체
         checkBoxButton.setImage(
             item.isChecked ? CustomButton.ButtonType.IconType.checkBox.selectedImage : CustomButton.ButtonType.IconType.checkBox.image, for: .normal)
     }

@@ -40,6 +40,7 @@ class AddTableView: UIView {
         setUp()
         didTabAddCategoryButton()
         hideOnLabel()
+        setUpBindings()
     }
     
     required init?(coder: NSCoder) {
@@ -78,7 +79,6 @@ private extension AddTableView {
         nodataLabel.snp.makeConstraints {
             $0.centerX.centerY.equalTo(safeAreaLayoutGuide)
         }
-        setUpBindings()
     }
 }
 
@@ -89,7 +89,7 @@ extension AddTableView {
         nodataLabel.isHidden = !viewModel.categories.isEmpty
     }
     
-    // 카테고리 추가 버튼
+    // Section 추가 버튼 클릭 동작
     func didTabAddCategoryButton() {
         addCategoryButton.addAction(UIAction(handler: { [weak self] _ in
             guard let self = self else { return }
@@ -129,7 +129,6 @@ extension AddTableView: UITableViewDelegate, UITableViewDataSource {
         headerView.backgroundColor = .clear
         
         let headerLabel = CustomLabel(title: "\(viewModel.categories[section].categoryTitle)", size: Constants.size.size12, weight: .Regular, color: .text.subDarkGray)
-        
         let addItemButton = CustomButton(type: .iconButton(icon: .plus))
         let deleteCategoryButton = CustomButton(type: .iconButton(icon: .minus))
         

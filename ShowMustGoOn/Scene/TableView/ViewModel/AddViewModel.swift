@@ -22,7 +22,7 @@ class AddViewModel {
     // 데이터 변경 알림
     var onCategoriesUpdated: (() -> Void)?
     
-    // 항목 추가
+    // item(cell) 추가
     func addItem(categoryId: UUID, itemTitle: String) {
         // 카테고리 찾기
         if let categoryIndex = categories.firstIndex(where: { $0.id == categoryId }) {
@@ -32,8 +32,9 @@ class AddViewModel {
         }
     }
     
-    // 항목 삭제
+    // cell 삭제
     func deleteItem(categoryId: UUID, itemId: UUID) {
+        // 카테고리, item(cell) 순서 찾기
         if let categoryIndex = categories.firstIndex(where: { $0.id == categoryId }),
            let itemIndex = categories[categoryIndex].items.firstIndex(where: { $0.id == itemId }) {
             categories[categoryIndex].items.remove(at: itemIndex)
@@ -41,7 +42,7 @@ class AddViewModel {
         }
     }
     
-    // 항목 상태 업데이트
+    // cell 상태 토글
     func toggleItemCheck(categoryId: UUID, itemId: UUID) {
         if let categoryIndex = categories.firstIndex(where: { $0.id == categoryId }),
            let itemIndex = categories[categoryIndex].items.firstIndex(where: { $0.id == itemId }) {
@@ -50,7 +51,7 @@ class AddViewModel {
         }
     }
     
-    // 카테고리 추가
+    // section 추가
     func addCategory(_ categoryTitle: String) {
         guard !categoryTitle.isEmpty else { return } // 빈 값 방지
         let newCategory = AddModel(id: UUID(), categoryTitle: categoryTitle, items: [])
@@ -58,7 +59,7 @@ class AddViewModel {
         onCategoriesUpdated?() // 데이터 변경 알림
     }
     
-    // 카테고리 삭제
+    // section 삭제
     func deleteCategory(_ id: UUID) {
         categories.removeAll { $0.id == id }
         onCategoriesUpdated?() // 데이터 변경 알림
