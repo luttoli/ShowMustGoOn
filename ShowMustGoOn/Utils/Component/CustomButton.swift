@@ -170,7 +170,8 @@ private extension CustomButton {
             
             if icon.isToggleable {
                 addAction(UIAction(handler: { [weak self] _ in
-                    self?.toggleButton(icon: icon)
+                    guard let self = self else { return }
+                    self.toggleButton(isChecked: !self.isChecked, icon: icon) // 명시적으로 반전한다는 의미
                 }), for: .touchUpInside)
             }
         }
@@ -178,9 +179,9 @@ private extension CustomButton {
 }
 
 // MARK: - Methods
-private extension CustomButton {
-    func toggleButton(icon: ButtonType.IconType) {
-        isChecked.toggle()
+extension CustomButton {
+    func toggleButton(isChecked: Bool, icon: ButtonType.IconType) {
+        self.isChecked = isChecked
         setImage(isChecked ? icon.selectedImage : icon.image, for: .normal)
     }
 }

@@ -55,11 +55,9 @@ private extension AddTableViewCell {
 extension AddTableViewCell {
     func configure(with item: Item) {
         itemTitle.text = item.title
-        checkBoxButton.isChecked = item.isChecked
         
         // item.isChecked 값에 따라 텍스트 색상, 이미지 교체
         itemTitle.textColor = item.isChecked ? .text.lavender : .text.black
-        checkBoxButton.setImage(
-            item.isChecked ? CustomButton.ButtonType.IconType.checkBox.selectedImage : CustomButton.ButtonType.IconType.checkBox.image, for: .normal)
+        checkBoxButton.toggleButton(isChecked: item.isChecked, icon: .checkBox)
     }
 }
