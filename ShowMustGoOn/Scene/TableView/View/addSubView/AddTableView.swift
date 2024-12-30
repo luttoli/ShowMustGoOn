@@ -15,13 +15,16 @@ class AddTableView: UIView {
     weak var parentViewController: UIViewController?
     
     // MARK: - Components
-    var inputCategoryBar: UISearchBar = {
-        let inputCategoryBar = UISearchBar()
-        inputCategoryBar.placeholder = "카테고리 입력 후 추가"
-        inputCategoryBar.searchBarStyle = .minimal
-        inputCategoryBar.sizeToFit()
-        inputCategoryBar.returnKeyType = .done
-        return inputCategoryBar
+    var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.placeholder = "카테고리 입력 후 추가"
+        searchBar.searchBarStyle = .minimal
+        searchBar.sizeToFit()
+        searchBar.enablesReturnKeyAutomatically = false
+        searchBar.returnKeyType = .done
+        searchBar.showsCancelButton = false
+        searchBar.setValue("취소", forKey: "cancelButtonText")
+        return searchBar
     }()
     
     var addCategoryButton = CustomButton(type: .iconButton(icon: .plus))
@@ -51,24 +54,25 @@ class AddTableView: UIView {
 // MARK: - SetUp
 private extension AddTableView {
     func setUp() {
-        addSubview(inputCategoryBar)
+        addSubview(searchBar)
         addSubview(addCategoryButton)
         addSubview(memoTableView)
         addSubview(nodataLabel)
         
-        inputCategoryBar.snp.makeConstraints {
+        searchBar.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide)
             $0.leading.equalTo(safeAreaLayoutGuide).offset(-Constants.spacing.px8)
         }
+        searchBar.delegate = self
         
         addCategoryButton.snp.makeConstraints {
-            $0.centerY.equalTo(inputCategoryBar.searchTextField)
-            $0.leading.equalTo(inputCategoryBar.snp.trailing).offset(Constants.spacing.px10)
+            $0.centerY.equalTo(searchBar.searchTextField)
+            $0.leading.equalTo(searchBar.snp.trailing).offset(Constants.spacing.px10)
             $0.trailing.equalTo(safeAreaLayoutGuide)
         }
         
         memoTableView.snp.makeConstraints {
-            $0.top.equalTo(inputCategoryBar.snp.bottom).offset(Constants.spacing.px10)
+            $0.top.equalTo(searchBar.snp.bottom).offset(Constants.spacing.px10)
             $0.leading.equalTo(safeAreaLayoutGuide)
             $0.trailing.equalTo(safeAreaLayoutGuide)
             $0.bottom.equalTo(safeAreaLayoutGuide)
@@ -95,7 +99,7 @@ extension AddTableView {
             guard let self = self else { return }
             
             // 입력값을 가져와 ViewModel로 전달
-            guard let inputText = self.inputCategoryBar.searchTextField.text, !inputText.isEmpty else {
+            guard let inputText = self.searchBar.searchTextField.text, !inputText.isEmpty else {
                 let alert = UIAlertController(title: "빈 값", message: "추가할 카테고리 이름을 입력해주세요.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "확인", style: .default))
                 self.parentViewController?.present(alert, animated: true)
@@ -103,11 +107,11 @@ extension AddTableView {
             }
             
             self.viewModel.addCategory(inputText)
-            self.inputCategoryBar.searchTextField.text = "" // 입력 필드 초기화
+            self.searchBar.searchTextField.text = "" // 입력 필드 초기화
         }), for: .touchUpInside)
     }
 
-    //
+    // ViewModel 데이터 변경 시 업데이트
     func setUpBindings() {
         // ViewModel 데이터 변경을 감지하고 TableView 갱신
         viewModel.onCategoriesUpdated = { [weak self] in
@@ -236,5 +240,42 @@ extension AddTableView: UITableViewDelegate, UITableViewDataSource {
             viewModel.deleteItem(categoryId: category.id, itemId: itemId)
             tableView.reloadData()
         }
+    }
+}
+
+// MARK: - delegate
+extension AddTableView: UISearchBarDelegate {
+    // 검색 시작 시 호출
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true // 취소 버튼 표시
+    }
+    
+    // 검색 버튼 클릭 시 호출
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text, !searchText.isEmpty else {
+            print("검색어가 비어 있습니다.")
+            return
+        }
+        print("검색 실행: \(searchText)")
+        
+        // 키보드 숨김
+        searchBar.resignFirstResponder()
+    }
+    
+    // 텍스트 변경될때 호출
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("텍스트 변경: \(searchText)")
+        // 실시간 검색 필터링 처리 가능
+    }
+    
+    // 검색 종료될때 호출
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false // 취소 버튼 숨김
+    }
+    
+    // 취소 버튼 클릭 시 호출
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = "" // 텍스트 초기화
+        searchBar.resignFirstResponder() // 키보드 숨김
     }
 }
