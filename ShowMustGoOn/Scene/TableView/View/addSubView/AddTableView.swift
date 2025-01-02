@@ -100,8 +100,30 @@ extension AddTableView {
             
             // 입력값을 가져와 ViewModel로 전달
             guard let inputText = self.searchBar.searchTextField.text, !inputText.isEmpty else {
-                let alert = UIAlertController(title: "빈 값", message: "추가할 카테고리 이름을 입력해주세요.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "확인", style: .default))
+                let alert = UIAlertController(title: "빈 값", message: "추가할 카테고리 이름을 입력해주세요.", preferredStyle: .actionSheet)
+                let buttonTitles = ["확인1", "확인2", "확인3", "확인4", "확인5", "확인6"]
+                for title in buttonTitles {
+                    alert.addAction(UIAlertAction(title: title, style: .default, handler: { action in
+                        if let buttonTitle = action.title {
+                            switch buttonTitle {
+                            case "확인1":
+                                print("확인1 버튼 동작: 첫 번째 작업 수행")
+                            case "확인2":
+                                print("확인2 버튼 동작: 두 번째 작업 수행")
+                            case "확인3":
+                                print("확인3 버튼 동작: 세 번째 작업 수행")
+                            case "확인4":
+                                print("확인4 버튼 동작: 네 번째 작업 수행")
+                            case "확인5":
+                                print("확인5 버튼 동작: 네 번째 작업 수행")
+                            case "확인6":
+                                print("확인6 버튼 동작: 네 번째 작업 수행")
+                            default:
+                                print("알 수 없는 버튼")
+                            }
+                        }
+                    }))
+                }
                 self.parentViewController?.present(alert, animated: true)
                 return
             }
