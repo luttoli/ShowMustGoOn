@@ -150,7 +150,7 @@
             </td>
             <td>
                 <code>just</code>, <code>of</code>, <code>from</code>, <code>create</code>, <code>range</code>,
-                <code>empty</code>, <code>never</code>, <code>interval</code>, <code>timer</code>, <code>deferred</code>,
+                <code>empty</code>, <code>never</code>, <code>interval</code>,<br/> <code>timer</code>, <code>deferred</code>,
                 <code>repeat</code>
             </td>
         </tr>
@@ -173,9 +173,9 @@
                     Subject
                 </a>
             </td>
+            <td>
                 <code>PublishSubject</code>, <code>BehaviorSubject</code>, <code>ReplaySubject</code>,
                 <code>AsyncSubject</code>, <code>BehaviorRelay</code>, <code>ReplayRealy</code>
-            <td>
             </td>
         </tr>
         <tr>
@@ -211,7 +211,7 @@
             </td>
             <td>
                 <code>MainScheduler</code>, <code>ConcurrentDispatchQueueScheduler</code>,
-                <code>SerialDispatchQueueScheduler</code>, <code>OperationQueueScheduler</code>,
+                <code>SerialDispatchQueueScheduler</code>, <code>OperationQueueScheduler</code>,<br/>
                 <code>subscribe(on: )</code>, <code>observe(on: )</code>
             </td>
         </tr>
