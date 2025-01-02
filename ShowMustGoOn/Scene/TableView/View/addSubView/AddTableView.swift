@@ -15,6 +15,7 @@ class AddTableView: UIView {
     weak var parentViewController: UIViewController?
     
     // MARK: - Components
+    // 추후에는 텍스트필드로 변경할 것
     var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.placeholder = "카테고리 입력 후 추가"

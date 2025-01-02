@@ -20,16 +20,6 @@ class RxBasicTableView: UIView {
     var rxBasicTableView: UITableView = {
         let rxBasicTableView = UITableView(frame: .zero, style: .plain)
         rxBasicTableView.register(BasicTableViewCell.self, forCellReuseIdentifier: BasicTableViewCell.identifier)
-        rxBasicTableView.backgroundColor = .clear
-        rxBasicTableView.bounces = true
-        rxBasicTableView.alwaysBounceVertical = true
-        rxBasicTableView.isScrollEnabled = true
-        rxBasicTableView.showsVerticalScrollIndicator = true
-        rxBasicTableView.allowsSelection = true
-        rxBasicTableView.allowsMultipleSelection = true
-        rxBasicTableView.contentInset = .zero
-        rxBasicTableView.separatorStyle = .singleLine
-        rxBasicTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         rxBasicTableView.rowHeight = Constants.size.size50 // 고정 높이 설정
         return rxBasicTableView
     }()
