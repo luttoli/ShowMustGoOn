@@ -67,9 +67,7 @@
                 </a>
             </td>
             <td>
-                <a href="">
-                    
-                </a>
+                
             </td>
             <td>
                 <a href="https://luttoli.notion.site/UITextField-61d8a4b9c16a45869c95290bfbfeb67e?pvs=4">
@@ -91,14 +89,10 @@
                 </a>
             </td>
             <td>
-                <a href="">
-                    
-                </a>
+                
             </td>
             <td>
-                <a href="">
-                    
-                </a>                
+                
             </td>
         </tr>
         <tr>
@@ -109,9 +103,7 @@
                 </a>
             </td>
             <td>
-                <a href="">
-                    
-                </a>                
+                
             </td>
             <td>
                 <a href="https://luttoli.notion.site/UIPageControl-1380f60899b98017a042e99d09487abc?pvs=4">
@@ -133,9 +125,7 @@
                 </a>
             </td>
             <td>
-                <a href="">
                     
-                </a>                
             </td>
             <td>
                 <a href="https://luttoli.notion.site/UISearchBar-1590f60899b980e1bad3f288d272b945?pvs=4">
