@@ -11,9 +11,12 @@ import RxCocoa
 import RxSwift
 
 class RxTodoListViewModel {
+    private let disposeBag = DisposeBag()
+    
     // Input
     let addTodo = PublishSubject<String>() // 새 할 일 추가
     let toggleComplete = PublishSubject<Int>() // 특정 Todo의 완료 상태 토글
+    private let todoList = BehaviorRelay<[TodoModel]>(value: [TodoModel(title: "1", isCompleted: true)])
         
     // ViewModel에서 TodoCellData 생성, todoList를 가공하여 셀이 사용할 데이터로 변환
     lazy var rxTodoCellData: Observable<[RxTodoCellData]> = {
@@ -29,11 +32,8 @@ class RxTodoListViewModel {
             }
     }()
     
-    private let disposeBag = DisposeBag()
-    private let todoList = BehaviorRelay<[TodoModel]>(value: [TodoModel(title: "1", isCompleted: true)])
-    
     init() {
-        // 새 Todo 추가
+        // 새 Todo 제목을 addTodo에 전달받으면, 이를 TodoModel로 변환하고 todoList에 추가
         addTodo
             .map { TodoModel(title: $0) } // 새로운 TodoItem 생성
             .subscribe(onNext: { [weak self] newTodo in

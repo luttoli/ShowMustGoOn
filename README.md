@@ -50,6 +50,9 @@
                 </a>
             </td>
             <td>
+                <a href="https://luttoli.notion.site/Rx-UITableView-Todo-1700f60899b98097aeecff6fb70ad0cd?pvs=4">
+                    Rx UITableView Todo
+                </a>
             </td>
             <td>
                 <a href="https://luttoli.notion.site/UITextField-61d8a4b9c16a45869c95290bfbfeb67e?pvs=4">
@@ -175,7 +178,7 @@
             </td>
             <td>
                 <code>PublishSubject</code>, <code>BehaviorSubject</code>, <code>ReplaySubject</code>,
-                <code>AsyncSubject</code>, <code>BehaviorRelay</code>, <code>ReplayRealy</code>
+                <code>AsyncSubject</code>,<br/> <code>BehaviorRelay</code>, <code>ReplayRealy</code>
             </td>
         </tr>
         <tr>
