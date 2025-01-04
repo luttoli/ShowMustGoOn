@@ -177,8 +177,8 @@
                 </a>
             </td>
             <td>
-                <code>PublishSubject</code>, <code>BehaviorSubject</code>, <code>ReplaySubject</code>,
-                <code>AsyncSubject</code>,<br/> <code>BehaviorRelay</code>, <code>ReplayRealy</code>
+                <code>PublishSubject</code>, <code>BehaviorSubject</code>, <code>ReplaySubject</code>,<br/>
+                <code>AsyncSubject</code>, <code>BehaviorRelay</code>, <code>ReplayRealy</code>
             </td>
         </tr>
         <tr>
@@ -262,6 +262,17 @@
             </td>
             <td>
                 <code>요청 관리</code>, <code>네트워크 요청 처리</code>, <code>JSON 파싱하기</code>
+            </td>
+        </tr>
+        <tr>
+            <td>12.</td>
+            <td>
+                <a href="https://luttoli.notion.site/Rx-1710f60899b98053882cc8cbf6b1b1ba?pvs=4">
+                    Rx의 개념과 흐름 제대로 이해하기
+                </a>
+            </td>
+            <td>
+                <code>데이터 흐름</code>, <code>Subject별 역할</code>, <code>기준</code>
             </td>
         </tr>
     </tbody>
