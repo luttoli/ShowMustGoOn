@@ -74,21 +74,51 @@ private extension RxTodoTableView {
 // MARK: - Method
 extension RxTodoTableView {
     private func bindViewModel() {
+        // MARK: - 데이터 구조를 두개로 가져갈 때
         // Input: Add 버튼 클릭 시, TextField 내용 전달
+//        addButton.rx.tap
+//            .withLatestFrom(textField.rx.text.orEmpty) // 텍스트 필드 값 가져오기
+//            .filter { !$0.isEmpty } // 빈 값 무시
+//            .distinctUntilChanged() // 값이 변하지 않으면 무시
+//            .withUnretained(self)
+//            .do(onNext: { owner, text in
+//                owner.viewModel.addTodo.onNext(text) // ViewModel에 값 전달
+//            })
+//            .subscribe(onNext: { owner, _ in
+//                owner.textField.text = "" // 값 전달 후 초기화
+//            })
+//            .disposed(by: disposeBag)
+//        
+//        // Output: Todo 리스트를 TableView와 바인딩
+//        viewModel.rxTodoCellData
+//            .bind(to: tableView.rx.items(cellIdentifier: "TodoCell")) { index, rxTodoCellData, cell in
+//                cell.textLabel?.text = rxTodoCellData.title
+//                cell.textLabel?.textColor = rxTodoCellData.textColor
+//            }
+//            .disposed(by: disposeBag)
+//        
+//        // 선택 이벤트
+//        tableView.rx.itemSelected
+//            .map { $0.row }
+//            .bind(to: viewModel.toggleComplete)
+//            .disposed(by: disposeBag)
+        
+        // MARK: - 데이터 구조를 하나로 가져갈 때
+        // Input: Add 버튼 클릭 시 TextField 내용 전달
         addButton.rx.tap
-            .withLatestFrom(textField.rx.text.orEmpty) // 텍스트 필드 값 가져오기
-            .filter { !$0.isEmpty } // 빈 값 무시
-            .distinctUntilChanged() // 값이 변하지 않으면 무시
+            .withLatestFrom(textField.rx.text.orEmpty)
+            .filter { !$0.isEmpty }
+            .distinctUntilChanged()
             .withUnretained(self)
             .do(onNext: { owner, text in
-                owner.viewModel.addTodo.onNext(text) // ViewModel에 값 전달
+                owner.viewModel.addTodoItem(title: text)
             })
             .subscribe(onNext: { owner, _ in
-                owner.textField.text = "" // 값 전달 후 초기화
+                owner.textField.text = ""
             })
             .disposed(by: disposeBag)
         
-        // Output: Todo 리스트를 TableView와 바인딩
+        // Output: Todo 리스트를 TableView에 바인딩
         viewModel.rxTodoCellData
             .bind(to: tableView.rx.items(cellIdentifier: "TodoCell")) { index, rxTodoCellData, cell in
                 cell.textLabel?.text = rxTodoCellData.title
@@ -99,7 +129,16 @@ extension RxTodoTableView {
         // 선택 이벤트
         tableView.rx.itemSelected
             .map { $0.row }
-            .bind(to: viewModel.toggleComplete)
+            .subscribe(onNext: { [weak self] index in
+                self?.viewModel.toggleTodoItem(at: index)
+            })
+            .disposed(by: disposeBag)
+        
+        // 선택한 셀의 선택 상태 해제
+        tableView.rx.itemSelected
+            .subscribe(onNext: { [weak self] indexPath in
+                self?.tableView.deselectRow(at: indexPath, animated: true)
+            })
             .disposed(by: disposeBag)
     }
 }
