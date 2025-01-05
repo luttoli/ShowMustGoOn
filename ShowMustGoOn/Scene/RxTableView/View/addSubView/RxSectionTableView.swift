@@ -45,6 +45,16 @@ private extension RxSectionTableView {
             $0.trailing.equalTo(safeAreaLayoutGuide)
             $0.bottom.equalTo(safeAreaLayoutGuide)
         }
+        
+        
+        
+        viewModel.m.subscribe(onNext: { sections in
+            for section in sections {
+                for item in section {
+                    print("\(item.frontNumber) x \(item.backNumber) = \(item.resultNumber)")
+                }
+            }
+        }).disposed(by: disposeBag)
     }
 }
 

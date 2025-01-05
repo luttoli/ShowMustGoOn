@@ -36,4 +36,25 @@ class RxSectionViewModel {
         currentData[index].showResult.toggle() // 결과 표시 상태 변경
         multiplyData.accept(currentData) // 업데이트된 데이터 반영
     }
+    
+    //
+    let a = Observable.from(Array(2...9))
+    let b = Observable.from(Array(1...9))
+    
+    lazy var m: Observable<[[SectionModel]]> = {
+        a.flatMap { front in
+            self.b.map { back in
+                SectionModel(
+                    frontNumber: front,
+                    backNumber: back,
+                    resultNumber: "\(front * back)",
+                    showResult: false
+                )
+            }
+            .toArray() // Observable<SectionModel>을 Single<[SectionModel]>로 변환
+            .asObservable() // Single<[SectionModel]>을 Observable<[SectionModel]>로 변환
+        }
+        .toArray() // Observable<[SectionModel]>을 Single<[[SectionModel]]>로 변환
+        .asObservable() // Single<[[SectionModel]]>을 Observable<[[SectionModel]]>로 변환
+    }()
 }
