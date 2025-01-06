@@ -71,6 +71,8 @@
 		B8CD655B2CC8848900E8F8B3 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD655A2CC8848900E8F8B3 /* UITableViewCell.swift */; };
 		B8CD655D2CC8879800E8F8B3 /* BasicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD655C2CC8879800E8F8B3 /* BasicTableViewCell.swift */; };
 		B8E6F8B12D17CFCE00CDC1C4 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B8E6F8B02D17CFCE00CDC1C4 /* IQKeyboardManagerSwift */; };
+		B8E6F8B42D2B66F800CDC1C4 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = B8E6F8B32D2B66F800CDC1C4 /* Differentiator */; };
+		B8E6F8B62D2B66F800CDC1C4 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = B8E6F8B52D2B66F800CDC1C4 /* RxDataSources */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -154,10 +156,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8E6F8B42D2B66F800CDC1C4 /* Differentiator in Frameworks */,
 				B8863D792CFEAEF200717A63 /* RxRelay in Frameworks */,
 				B8863D772CFEAE0400717A63 /* RxCocoa in Frameworks */,
 				B8975F3E2CFEA1AD008F2BA6 /* RxSwift in Frameworks */,
 				B8CD65472CC104C400E8F8B3 /* SnapKit in Frameworks */,
+				B8E6F8B62D2B66F800CDC1C4 /* RxDataSources in Frameworks */,
 				B8CD65572CC2355E00E8F8B3 /* SwiftyGif in Frameworks */,
 				B8E6F8B12D17CFCE00CDC1C4 /* IQKeyboardManagerSwift in Frameworks */,
 			);
@@ -448,6 +452,8 @@
 				B8863D762CFEAE0400717A63 /* RxCocoa */,
 				B8863D782CFEAEF200717A63 /* RxRelay */,
 				B8E6F8B02D17CFCE00CDC1C4 /* IQKeyboardManagerSwift */,
+				B8E6F8B32D2B66F800CDC1C4 /* Differentiator */,
+				B8E6F8B52D2B66F800CDC1C4 /* RxDataSources */,
 			);
 			productName = ShowMustGoOn;
 			productReference = B8CD65052CC0FC4000E8F8B3 /* ShowMustGoOn.app */;
@@ -482,6 +488,7 @@
 				B8CD65552CC2355E00E8F8B3 /* XCRemoteSwiftPackageReference "SwiftyGif" */,
 				B8975F3A2CFEA06E008F2BA6 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				B8E6F8AF2D17CFCE00CDC1C4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				B8E6F8B22D2B66F800CDC1C4 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B8CD65062CC0FC4000E8F8B3 /* Products */;
@@ -814,6 +821,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		B8E6F8B22D2B66F800CDC1C4 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -846,6 +861,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B8E6F8AF2D17CFCE00CDC1C4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		B8E6F8B32D2B66F800CDC1C4 /* Differentiator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8E6F8B22D2B66F800CDC1C4 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
+		};
+		B8E6F8B52D2B66F800CDC1C4 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8E6F8B22D2B66F800CDC1C4 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

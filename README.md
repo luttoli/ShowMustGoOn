@@ -33,7 +33,7 @@
             </td>
             <td>
                 <a href="https://luttoli.notion.site/Rx-UITableView-16a0f60899b98047bb4de16e68278a33?pvs=4">
-                    Rx 활용 UITableView
+                    Rx 활용 UITableView, Cell 기본 사용 방법
                 </a>
             </td>
             <td>
@@ -51,7 +51,7 @@
             </td>
             <td>
                 <a href="https://luttoli.notion.site/Rx-UITableView-Todo-1700f60899b98097aeecff6fb70ad0cd?pvs=4">
-                    Rx UITableView Todo
+                    Rx UITableView Todo 추가, 완료 표시
                 </a>
             </td>
             <td>
@@ -74,6 +74,9 @@
                 </a>
             </td>
             <td>
+                <a href="https://luttoli.notion.site/Rx-UITableView-Section-1730f60899b9801d9b54e8b7cc8e9b4c?pvs=4">
+                    Rx UITableView Section 설정
+                </a>
             </td>
             <td>
             </td>
