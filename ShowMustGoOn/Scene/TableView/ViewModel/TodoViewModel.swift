@@ -10,7 +10,7 @@ import UIKit
 class TodoViewModel {
     // 데이터
     var todoData: [TodoModel] = [
-        TodoModel(title: "1", isCompleted: true)
+        TodoModel(title: "기본 값", isCompleted: true)
     ]
     
     // 업데이트 체크

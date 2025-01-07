@@ -21,8 +21,9 @@ class RxSectionTableView: UIView {
     
     // MARK: - Components
     let multiplicationTableView: UITableView = {
-        let multiplicationTableView = UITableView()
+        let multiplicationTableView = UITableView(frame: .zero, style: .grouped)
         multiplicationTableView.register(SectionTableViewCell.self, forCellReuseIdentifier: SectionTableViewCell.identifier)
+        multiplicationTableView.backgroundColor = .clear
         return multiplicationTableView
     }()
     
@@ -70,14 +71,18 @@ extension RxSectionTableView {
             }
             cell.configure(with: item) // 셀에 데이터를 넣음
             return cell
-        } titleForHeaderInSection: { dataSource, index in
-            // 섹션 헤더를 설정
-            dataSource[index].header
+//        } titleForHeaderInSection: { dataSource, index in // UITableViewDelegate로 이동
+//            // 섹션 헤더를 설정
+//            dataSource[index].header
+//        }
         }
     }
     
     func bindTableView() {
         let dataSource = createDataSource()
+        
+        // UITableViewDelegate를 설정
+        multiplicationTableView.rx.setDelegate(self).disposed(by: disposeBag)
         
         // 데이터 바인딩
         viewModel.multiplySections
@@ -91,7 +96,6 @@ extension RxSectionTableView {
             })
             .disposed(by: disposeBag)
     }
-    
     // MARK: - 기본 노출
 //    func bindTableView() {
 //        // 데이터 바인딩
@@ -111,3 +115,33 @@ extension RxSectionTableView {
 //    }
 }
 
+// MARK: - Delegate
+extension RxSectionTableView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = .background.lavender
+        
+        let headerLabel = CustomLabel(title: viewModel.multiplySections.value[section].header, size: Constants.size.size15, weight: .Regular, color: .text.white)
+        
+        headerView.addSubview(headerLabel)
+        
+        headerLabel.snp.makeConstraints {
+            $0.centerY.equalTo(headerView)
+            $0.leading.equalTo(headerView).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(headerView).offset(-Constants.margin.horizontal)
+        }
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return Constants.size.size50
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Constants.size.size50
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(viewModel.multiplySections.value[indexPath.section].items[indexPath.row].resultNumber)
+    }
+}

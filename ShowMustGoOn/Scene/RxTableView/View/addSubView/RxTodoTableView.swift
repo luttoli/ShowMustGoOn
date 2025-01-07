@@ -17,10 +17,14 @@ class RxTodoTableView: UIView {
     let viewModel = RxTodoListViewModel()
     
     // MARK: - Components
-    let textField: UITextField = {
+    var textField: UITextField = {
         let textField = UITextField()
-        textField.borderStyle = .roundedRect
         textField.placeholder = "여기에 입력하세요."
+        textField.borderStyle = .roundedRect
+        textField.font = .systemFont(ofSize: Constants.size.size15)
+        textField.backgroundColor = .systemBackground
+        textField.textColor = .label
+        textField.clearButtonMode = .whileEditing
         return textField
     }()
     
@@ -50,23 +54,23 @@ private extension RxTodoTableView {
         addSubview(addButton)
         addSubview(tableView)
         
-        textField.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide).offset(20)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalTo(addButton.snp.leading).offset(-10)
-            make.height.equalTo(40)
+        textField.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide).offset(Constants.size.size20)
+            $0.leading.equalToSuperview().offset(Constants.size.size20)
+            $0.trailing.equalTo(addButton.snp.leading).offset(-Constants.size.size10)
+            $0.height.equalTo(Constants.size.size40)
         }
         
-        addButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-20)
-            make.centerY.equalTo(textField)
-            make.width.equalTo(60)
-            make.height.equalTo(40)
+        addButton.snp.makeConstraints {
+            $0.trailing.equalToSuperview().offset(-Constants.size.size20)
+            $0.centerY.equalTo(textField)
+            $0.width.equalTo(Constants.size.size60)
+            $0.height.equalTo(Constants.size.size40)
         }
         
-        tableView.snp.makeConstraints { make in
-            make.top.equalTo(textField.snp.bottom).offset(20)
-            make.leading.trailing.bottom.equalToSuperview()
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(textField.snp.bottom).offset(Constants.size.size20)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
 }
