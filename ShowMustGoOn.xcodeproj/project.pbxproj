@@ -73,6 +73,7 @@
 		B8E6F8B12D17CFCE00CDC1C4 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B8E6F8B02D17CFCE00CDC1C4 /* IQKeyboardManagerSwift */; };
 		B8E6F8B42D2B66F800CDC1C4 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = B8E6F8B32D2B66F800CDC1C4 /* Differentiator */; };
 		B8E6F8B62D2B66F800CDC1C4 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = B8E6F8B52D2B66F800CDC1C4 /* RxDataSources */; };
+		B8E6F8BA2D2CCDD800CDC1C4 /* RxMixViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6F8B92D2CCDD800CDC1C4 /* RxMixViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -149,6 +150,7 @@
 		B8CD65502CC2225800E8F8B3 /* codingGif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = codingGif.gif; sourceTree = "<group>"; };
 		B8CD655A2CC8848900E8F8B3 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		B8CD655C2CC8879800E8F8B3 /* BasicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTableViewCell.swift; sourceTree = "<group>"; };
+		B8E6F8B92D2CCDD800CDC1C4 /* RxMixViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxMixViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +286,7 @@
 				B8B9A1C22D0AEAB4008D8130 /* RxBasicViewModel.swift */,
 				B80B9F142D0D5F0600052199 /* RxTodoListViewModel.swift */,
 				B80B9F1C2D110B3A00052199 /* RxSectionViewModel.swift */,
+				B8E6F8B92D2CCDD800CDC1C4 /* RxMixViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				B877DBE62CD9B621009D9C49 /* UICollectionViewCell.swift in Sources */,
 				B877DBCF2CD373D5009D9C49 /* BasicModel.swift in Sources */,
 				B877DBE42CD9B5F8009D9C49 /* HorizontalCollectionViewCell.swift in Sources */,
+				B8E6F8BA2D2CCDD800CDC1C4 /* RxMixViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

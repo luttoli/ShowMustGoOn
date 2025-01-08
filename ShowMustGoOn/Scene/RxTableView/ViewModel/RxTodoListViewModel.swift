@@ -56,10 +56,31 @@ class RxTodoListViewModel {
 //    }
     
     // MARK: - 데이터 구조를 하나로 가져갈 때
-    let todoList = BehaviorRelay<[TodoModel]>(value: [TodoModel(title: "기본 값", isCompleted: true)])
+//    let todoList = BehaviorRelay<[TodoModel]>(value: [TodoModel(title: "기본 값", isCompleted: true)])
+//
+//    lazy var rxTodoCellData: Observable<[RxTodoCellData]> = {
+//        todoList
+//            .map { todos in
+//                todos.map { todo in
+//                    RxTodoCellData(
+//                        title: todo.title,
+//                        isCompleted: todo.isCompleted,
+//                        textColor: todo.isCompleted ? .text.lavender : .text.black
+//                    )
+//                }
+//            }
+//    }()
+    
+    // init 초기화 사용
+    let todoList: BehaviorRelay<[TodoModel]>
+    let rxTodoCellData: Observable<[RxTodoCellData]>
 
-    lazy var rxTodoCellData: Observable<[RxTodoCellData]> = {
-        todoList
+    // 생성자에서 초기화
+    init(initialTodos: [TodoModel] = [TodoModel(title: "기본 값", isCompleted: true)]) {
+        self.todoList = BehaviorRelay(value: initialTodos)
+
+        // rxTodoCellData 초기화
+        self.rxTodoCellData = todoList
             .map { todos in
                 todos.map { todo in
                     RxTodoCellData(
@@ -69,7 +90,7 @@ class RxTodoListViewModel {
                     )
                 }
             }
-    }()
+    }
 
     // 새로운 Todo 추가
     func addTodoItem(title: String) {
