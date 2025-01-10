@@ -74,6 +74,7 @@
 		B8E6F8B42D2B66F800CDC1C4 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = B8E6F8B32D2B66F800CDC1C4 /* Differentiator */; };
 		B8E6F8B62D2B66F800CDC1C4 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = B8E6F8B52D2B66F800CDC1C4 /* RxDataSources */; };
 		B8E6F8BA2D2CCDD800CDC1C4 /* RxMixViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6F8B92D2CCDD800CDC1C4 /* RxMixViewModel.swift */; };
+		B8E6F8BD2D30CB6800CDC1C4 /* RxHorizontalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6F8BC2D30CB6800CDC1C4 /* RxHorizontalTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -151,6 +152,7 @@
 		B8CD655A2CC8848900E8F8B3 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		B8CD655C2CC8879800E8F8B3 /* BasicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTableViewCell.swift; sourceTree = "<group>"; };
 		B8E6F8B92D2CCDD800CDC1C4 /* RxMixViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxMixViewModel.swift; sourceTree = "<group>"; };
+		B8E6F8BC2D30CB6800CDC1C4 /* RxHorizontalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxHorizontalTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,6 +301,7 @@
 				B8B9A1B82D086AB1008D8130 /* RxSectionTableView.swift */,
 				B8B9A1BA2D086AF3008D8130 /* RxMixTableView.swift */,
 				B8B9A1BC2D086B01008D8130 /* RxAddTableView.swift */,
+				B8E6F8BB2D30CAC500CDC1C4 /* Cell */,
 			);
 			path = addSubView;
 			sourceTree = "<group>";
@@ -431,6 +434,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		B8E6F8BB2D30CAC500CDC1C4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B8E6F8BC2D30CB6800CDC1C4 /* RxHorizontalTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -537,6 +548,7 @@
 				B877DBEA2CDAF506009D9C49 /* MixViewModel.swift in Sources */,
 				B8CD655D2CC8879800E8F8B3 /* BasicTableViewCell.swift in Sources */,
 				B877DC042CEAE2A0009D9C49 /* AddModel.swift in Sources */,
+				B8E6F8BD2D30CB6800CDC1C4 /* RxHorizontalTableViewCell.swift in Sources */,
 				B8CD65282CC0FC5C00E8F8B3 /* AppDelegate.swift in Sources */,
 				B877DBD12CD373E0009D9C49 /* BasicViewModel.swift in Sources */,
 				B8BDF7ED2D04430E0045FA94 /* RxSwiftPractice.swift in Sources */,

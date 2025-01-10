@@ -11,7 +11,12 @@ import SnapKit
 
 class HorizontalCollectionViewCell: UICollectionViewCell {
     // MARK: - Components
-    var newsImageView = UIImageView()
+    let newsImageView: UIImageView = {
+        let newsImageView = UIImageView()
+        newsImageView.contentMode = .scaleAspectFill
+        newsImageView.clipsToBounds = true
+        return newsImageView
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

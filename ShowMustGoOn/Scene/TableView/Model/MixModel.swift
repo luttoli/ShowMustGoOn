@@ -17,3 +17,10 @@ struct SubNews {
     let subTitle: String
     let url: String?
 }
+
+//
+import RxDataSources
+
+struct MixSection {
+    var items: [MixModel]
+}

@@ -8,8 +8,8 @@
 import UIKit
 
 import RxCocoa
-import RxSwift
 import RxDataSources
+import RxSwift
 import SnapKit
 
 class RxSectionTableView: UIView {

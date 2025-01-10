@@ -13,14 +13,21 @@ import SnapKit
 
 class RxMixTableView: UIView {
     // MARK: - Properties
-    
+    let disposeBag = DisposeBag()
+    let viewModel = RxMixViewModel()
     
     // MARK: - Components
-    
+    let tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.register(RxHorizontalTableViewCell.self, forCellReuseIdentifier: RxHorizontalTableViewCell.identifier)
+        tableView.backgroundColor = .yellow
+        return tableView
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
+        bindTableView()
     }
     
     required init?(coder: NSCoder) {
@@ -31,13 +38,27 @@ class RxMixTableView: UIView {
 // MARK: - SetUp
 private extension RxMixTableView {
     func setUp() {
-        backgroundColor = .blue
+        addSubview(tableView)
+        
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.leading.equalTo(safeAreaLayoutGuide)
+            $0.trailing.equalTo(safeAreaLayoutGuide)
+            $0.bottom.equalTo(safeAreaLayoutGuide)
+        }
     }
 }
 
 // MARK: - Method
 extension RxMixTableView {
+    func bindTableView() {
+        viewModel.tableViewData
+            .bind(to: tableView.rx.items(cellIdentifier: "RxHorizontalTableViewCell", cellType: RxHorizontalTableViewCell.self)) { index, sectionData, cell in
+                // 각 셀의 컬렉션뷰 데이터 바인딩
 
+            }
+            .disposed(by: disposeBag)
+    }
 }
 
 // MARK: - delegate
