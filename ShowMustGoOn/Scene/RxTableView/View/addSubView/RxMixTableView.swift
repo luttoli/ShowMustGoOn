@@ -18,9 +18,10 @@ class RxMixTableView: UIView {
     
     // MARK: - Components
     let tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
+        let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(RxHorizontalTableViewCell.self, forCellReuseIdentifier: RxHorizontalTableViewCell.identifier)
-        tableView.backgroundColor = .yellow
+        //세로 리스트 셀 구현할거고
+        tableView.backgroundColor = .clear
         return tableView
     }()
     
@@ -46,6 +47,7 @@ private extension RxMixTableView {
             $0.trailing.equalTo(safeAreaLayoutGuide)
             $0.bottom.equalTo(safeAreaLayoutGuide)
         }
+        tableView.delegate = self
     }
 }
 
@@ -62,6 +64,12 @@ extension RxMixTableView {
 }
 
 // MARK: - delegate
-extension RxMixTableView {
-    
+extension RxMixTableView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return Constants.size.size260
+        } else {
+            return Constants.size.size100
+        }
+    }
 }

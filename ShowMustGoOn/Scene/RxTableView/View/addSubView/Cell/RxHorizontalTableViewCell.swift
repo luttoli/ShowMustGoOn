@@ -21,7 +21,7 @@ class RxHorizontalTableViewCell: UITableViewCell {
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(HorizontalCollectionViewCell.self, forCellWithReuseIdentifier: HorizontalCollectionViewCell.identifier)
-        collectionView.backgroundColor = .red
+        collectionView.backgroundColor = .clear
         return collectionView
     }()
     
@@ -64,6 +64,7 @@ private extension RxHorizontalTableViewCell {
         collectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        collectionView.delegate = self
         
         pageControl.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -77,6 +78,9 @@ extension RxHorizontalTableViewCell {
     func bindViewModel() {
         viewModel.tableViewData
             .map { $0.first?.mainImage ?? [] } // 첫 번째 MixModel의 이미지를 가져옴
+            .do(onNext: { [weak self] images in
+                self?.pageControl.numberOfPages = images.count // 페이지 개수 설정
+            })
             .bind(to: collectionView.rx.items(cellIdentifier: HorizontalCollectionViewCell.identifier, cellType: HorizontalCollectionViewCell.self)) { index, image, cell in
                 cell.newsImageView.image = image
             }
@@ -96,5 +100,16 @@ extension RxHorizontalTableViewCell {
         } else {
             collectionView.setContentOffset(.zero, animated: true)
         }
+    }
+}
+
+// MARK: - delegate
+extension RxHorizontalTableViewCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }
