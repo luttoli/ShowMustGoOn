@@ -89,6 +89,12 @@ extension HorizontalTableViewCell {
             horizontalNewsCollectionView.setContentOffset(.zero, animated: true)
         }
     }
+    
+    // 스크롤뷰 위치 파악
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let pageIndex = round(scrollView.contentOffset.x / scrollView.frame.width)
+        pageControl.currentPage = Int(pageIndex)
+    }
 }
 
 // MARK: - CollectionViewDelegate
@@ -115,12 +121,5 @@ extension HorizontalTableViewCell: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
-    }
-}
-
-extension HorizontalTableViewCell {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let pageIndex = round(scrollView.contentOffset.x / scrollView.frame.width)
-        pageControl.currentPage = Int(pageIndex)
     }
 }

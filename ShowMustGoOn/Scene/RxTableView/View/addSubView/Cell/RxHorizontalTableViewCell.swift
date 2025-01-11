@@ -22,6 +22,8 @@ class RxHorizontalTableViewCell: UITableViewCell {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(HorizontalCollectionViewCell.self, forCellWithReuseIdentifier: HorizontalCollectionViewCell.identifier)
         collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.isPagingEnabled = true
         return collectionView
     }()
     
@@ -84,6 +86,17 @@ extension RxHorizontalTableViewCell {
             .bind(to: collectionView.rx.items(cellIdentifier: HorizontalCollectionViewCell.identifier, cellType: HorizontalCollectionViewCell.self)) { index, image, cell in
                 cell.newsImageView.image = image
             }
+            .disposed(by: disposeBag)
+        
+        // pageControl 자동 스크롤에 따른 순번 표시
+        collectionView.rx.contentOffset
+            .map { [weak self] offset -> Int in
+                guard let self = self else { return 0 }
+                let width = self.collectionView.bounds.width
+                return width > 0 ? Int(round(offset.x / width)) : 0
+            }
+            .distinctUntilChanged() // 중복 방지
+            .bind(to: pageControl.rx.currentPage)
             .disposed(by: disposeBag)
     }
     
