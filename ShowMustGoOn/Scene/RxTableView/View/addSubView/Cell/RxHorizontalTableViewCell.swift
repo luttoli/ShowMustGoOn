@@ -8,6 +8,7 @@
 import UIKit
 
 import RxCocoa
+import RxDataSources
 import RxSwift
 
 class RxHorizontalTableViewCell: UITableViewCell {
@@ -79,7 +80,7 @@ private extension RxHorizontalTableViewCell {
 extension RxHorizontalTableViewCell {
     func bindViewModel() {
         viewModel.tableViewData
-            .map { $0.first?.mainImage ?? [] } // 첫 번째 MixModel의 이미지를 가져옴
+            .map { $0.first?.items.first?.mainImage ?? []} // 첫 번째 MixModel의 이미지를 가져옴
             .do(onNext: { [weak self] images in
                 self?.pageControl.numberOfPages = images.count // 페이지 개수 설정
             })

@@ -28,7 +28,7 @@
 		B877DBE22CD9A47B009D9C49 /* HorizontalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBE12CD9A47B009D9C49 /* HorizontalTableViewCell.swift */; };
 		B877DBE42CD9B5F8009D9C49 /* HorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBE32CD9B5F8009D9C49 /* HorizontalCollectionViewCell.swift */; };
 		B877DBE62CD9B621009D9C49 /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBE52CD9B621009D9C49 /* UICollectionViewCell.swift */; };
-		B877DBE82CD9B96C009D9C49 /* VerticalTabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBE72CD9B96C009D9C49 /* VerticalTabelViewCell.swift */; };
+		B877DBE82CD9B96C009D9C49 /* VerticalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBE72CD9B96C009D9C49 /* VerticalTableViewCell.swift */; };
 		B877DBEA2CDAF506009D9C49 /* MixViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBE92CDAF506009D9C49 /* MixViewModel.swift */; };
 		B877DBEC2CDAF81A009D9C49 /* MixModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBEB2CDAF81A009D9C49 /* MixModel.swift */; };
 		B877DBF02CDDD942009D9C49 /* DetailMixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBEF2CDDD942009D9C49 /* DetailMixViewController.swift */; };
@@ -112,7 +112,7 @@
 		B877DBE12CD9A47B009D9C49 /* HorizontalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalTableViewCell.swift; sourceTree = "<group>"; };
 		B877DBE32CD9B5F8009D9C49 /* HorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionViewCell.swift; sourceTree = "<group>"; };
 		B877DBE52CD9B621009D9C49 /* UICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
-		B877DBE72CD9B96C009D9C49 /* VerticalTabelViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalTabelViewCell.swift; sourceTree = "<group>"; };
+		B877DBE72CD9B96C009D9C49 /* VerticalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalTableViewCell.swift; sourceTree = "<group>"; };
 		B877DBE92CDAF506009D9C49 /* MixViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixViewModel.swift; sourceTree = "<group>"; };
 		B877DBEB2CDAF81A009D9C49 /* MixModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixModel.swift; sourceTree = "<group>"; };
 		B877DBEF2CDDD942009D9C49 /* DetailMixViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMixViewController.swift; sourceTree = "<group>"; };
@@ -428,7 +428,7 @@
 				B877DBDB2CD47374009D9C49 /* SectionTableViewCell.swift */,
 				B877DBE12CD9A47B009D9C49 /* HorizontalTableViewCell.swift */,
 				B877DBE32CD9B5F8009D9C49 /* HorizontalCollectionViewCell.swift */,
-				B877DBE72CD9B96C009D9C49 /* VerticalTabelViewCell.swift */,
+				B877DBE72CD9B96C009D9C49 /* VerticalTableViewCell.swift */,
 				B877DC012CEAD977009D9C49 /* AddTableViewCell.swift */,
 			);
 			path = Cell;
@@ -562,7 +562,7 @@
 				B877DBDA2CD472A9009D9C49 /* SectionViewModel.swift in Sources */,
 				B8CD65422CC0FEC000E8F8B3 /* Constants.swift in Sources */,
 				B8B9A1BD2D086B01008D8130 /* RxAddTableView.swift in Sources */,
-				B877DBE82CD9B96C009D9C49 /* VerticalTabelViewCell.swift in Sources */,
+				B877DBE82CD9B96C009D9C49 /* VerticalTableViewCell.swift in Sources */,
 				B8B9A1BB2D086AF3008D8130 /* RxMixTableView.swift in Sources */,
 				B877DBC92CD32623009D9C49 /* BasicTableView.swift in Sources */,
 				B80B9F102D0D5E5F00052199 /* RxTodoTableView.swift in Sources */,

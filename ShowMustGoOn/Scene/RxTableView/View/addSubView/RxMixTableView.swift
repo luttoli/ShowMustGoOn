@@ -8,6 +8,7 @@
 import UIKit
 
 import RxCocoa
+import RxDataSources
 import RxSwift
 import SnapKit
 
@@ -20,6 +21,7 @@ class RxMixTableView: UIView {
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(RxHorizontalTableViewCell.self, forCellReuseIdentifier: RxHorizontalTableViewCell.identifier)
+        tableView.register(VerticalTableViewCell.self, forCellReuseIdentifier: VerticalTableViewCell.identifier)
         //세로 리스트 셀 구현할거고
         tableView.backgroundColor = .clear
         return tableView
@@ -53,12 +55,44 @@ private extension RxMixTableView {
 
 // MARK: - Method
 extension RxMixTableView {
+//    func bindTableView() {
+//        viewModel.tableViewData
+////            .bind(to: tableView.rx.items(cellIdentifier: "RxHorizontalTableViewCell", cellType: RxHorizontalTableViewCell.self)) { index, sectionData, cell in
+////                
+////            }
+//            .bind(to: tableView.rx.items(cellIdentifier: "VerticalTabelViewCell", cellType: VerticalTabelViewCell.self)) { index, sectionData, cell in
+////                cell.newsImageView.image = sectionData.subNews[index].subImage
+////                cell.newsTitleLabel.text = sectionData.subNews[index].subTitle
+//                cell.configure(with: sectionData.subNews[index])
+//            }
+//            .disposed(by: disposeBag)
+//    }
+    
     func bindTableView() {
-        viewModel.tableViewData
-            .bind(to: tableView.rx.items(cellIdentifier: "RxHorizontalTableViewCell", cellType: RxHorizontalTableViewCell.self)) { index, sectionData, cell in
-                // 각 셀의 컬렉션뷰 데이터 바인딩
+        let dataSource = RxTableViewSectionedReloadDataSource<MixSection>(
+            configureCell: { dataSource, tableView, indexPath, item in
+                print("IndexPath: \(indexPath), Item: \(item)") // 로그로 데이터 확인
+                
+                if indexPath.section == 0 {
+                    guard let cell = tableView.dequeueReusableCell(
+                        withIdentifier: RxHorizontalTableViewCell.identifier, for: indexPath) as? RxHorizontalTableViewCell else {
+                        return UITableViewCell()
+                    }
+                    return cell
+                } else {
+                    guard let cell = tableView.dequeueReusableCell(
+                        withIdentifier: VerticalTableViewCell.identifier, for: indexPath) as? VerticalTableViewCell else {
+                        return UITableViewCell()
+                    }
 
+                    cell.configure(with: item.subNews[indexPath.row])
+                    return cell
+                }
             }
+        )
+        
+        viewModel.tableViewData
+            .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }
 }

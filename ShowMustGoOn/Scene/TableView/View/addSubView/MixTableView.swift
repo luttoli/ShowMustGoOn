@@ -22,7 +22,7 @@ class MixTableView: UIView {
     var eSportsTableView: UITableView = {
         let eSportsTableView = UITableView(frame: .zero, style: .plain)
         eSportsTableView.register(HorizontalTableViewCell.self, forCellReuseIdentifier: HorizontalTableViewCell.identifier)
-        eSportsTableView.register(VerticalTabelViewCell.self, forCellReuseIdentifier: VerticalTabelViewCell.identifier)
+        eSportsTableView.register(VerticalTableViewCell.self, forCellReuseIdentifier: VerticalTableViewCell.identifier)
         eSportsTableView.backgroundColor = .clear
         return eSportsTableView
     }()
@@ -78,7 +78,7 @@ extension MixTableView: UITableViewDelegate, UITableViewDataSource {
             
             return cell
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: VerticalTabelViewCell.identifier, for: indexPath) as? VerticalTabelViewCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: VerticalTableViewCell.identifier, for: indexPath) as? VerticalTableViewCell else { return UITableViewCell() }
             
             cell.selectionStyle = .none
             cell.configure(with: viewModel.eSportNews[0].subNews[indexPath.row])
