@@ -17,22 +17,3 @@ struct SubNews {
     let subTitle: String
     let url: String?
 }
-
-import RxDataSources
-
-struct MixSection {
-    var items: [MixModel]
-    
-    init(items: [MixModel]) {
-        self.items = items
-    }
-}
-
-extension MixSection: SectionModelType {
-    typealias Item = MixModel
-    
-    init(original: MixSection, items: [Item]) {
-        self = original
-        self.items = items
-    }
-}

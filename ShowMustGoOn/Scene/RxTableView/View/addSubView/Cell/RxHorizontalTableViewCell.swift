@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 import RxCocoa
 import RxDataSources
 import RxSwift
@@ -14,7 +13,7 @@ import RxSwift
 class RxHorizontalTableViewCell: UITableViewCell {
     // MARK: - Properties
     let disposeBag = DisposeBag()
-    let viewModel = RxMixViewModel()
+    var timer: Timer? // 자동 스크롤 타이머
     
     // MARK: - Components
     let collectionView: UICollectionView = {
@@ -28,7 +27,6 @@ class RxHorizontalTableViewCell: UITableViewCell {
         return collectionView
     }()
     
-    // 페이지 컨트롤 인디케이터
     let pageControl: UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.numberOfPages = 0 // 총 페이지 개수
@@ -38,15 +36,10 @@ class RxHorizontalTableViewCell: UITableViewCell {
         pageControl.hidesForSinglePage = false // 페이지 하나일 시 숨길지 말지
         return pageControl
     }()
-    
-    // 자동 스크롤 타이머
-    private var timer: Timer?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUp()
-        startTimer()
-        bindViewModel()
     }
     
     required init?(coder: NSCoder) {
@@ -55,6 +48,8 @@ class RxHorizontalTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        timer?.invalidate()
+        timer = nil
     }
 }
 
@@ -78,31 +73,11 @@ private extension RxHorizontalTableViewCell {
 
 // MARK: - Method
 extension RxHorizontalTableViewCell {
-    func bindViewModel() {
-        viewModel.tableViewData
-            .map { $0.first?.items.first?.mainImage ?? []} // 첫 번째 MixModel의 이미지를 가져옴
-            .do(onNext: { [weak self] images in
-                self?.pageControl.numberOfPages = images.count // 페이지 개수 설정
-            })
-            .bind(to: collectionView.rx.items(cellIdentifier: HorizontalCollectionViewCell.identifier, cellType: HorizontalCollectionViewCell.self)) { index, image, cell in
-                cell.newsImageView.image = image
-            }
-            .disposed(by: disposeBag)
-        
-        // pageControl 자동 스크롤에 따른 순번 표시
-        collectionView.rx.contentOffset
-            .map { [weak self] offset -> Int in
-                guard let self = self else { return 0 }
-                let width = self.collectionView.bounds.width
-                return width > 0 ? Int(round(offset.x / width)) : 0
-            }
-            .distinctUntilChanged() // 중복 방지
-            .bind(to: pageControl.rx.currentPage)
-            .disposed(by: disposeBag)
-    }
     
-    // 컬렉션 뷰 셀 전환 속도 조정
+
     private func startTimer() {
+        // 타이머가 이미 존재하는 경우 새로 시작하지 않도록
+        guard timer == nil else { return }
         timer = Timer.scheduledTimer(timeInterval: 3.5, target: self, selector: #selector(scrollToNext), userInfo: nil, repeats: true)
     }
     
@@ -112,12 +87,12 @@ extension RxHorizontalTableViewCell {
         if nextOffset < collectionView.contentSize.width {
             collectionView.setContentOffset(CGPoint(x: nextOffset, y: 0), animated: true)
         } else {
-            collectionView.setContentOffset(.zero, animated: true)
+            collectionView.setContentOffset(.zero, animated: false)
         }
     }
 }
 
-// MARK: - delegate
+// MARK: - UICollectionViewDelegateFlowLayout
 extension RxHorizontalTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)

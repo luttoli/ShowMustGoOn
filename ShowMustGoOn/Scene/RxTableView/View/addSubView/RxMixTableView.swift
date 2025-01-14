@@ -30,7 +30,6 @@ class RxMixTableView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
-        bindTableView()
     }
     
     required init?(coder: NSCoder) {
@@ -49,61 +48,21 @@ private extension RxMixTableView {
             $0.trailing.equalTo(safeAreaLayoutGuide)
             $0.bottom.equalTo(safeAreaLayoutGuide)
         }
-        tableView.delegate = self
     }
 }
 
 // MARK: - Method
 extension RxMixTableView {
-//    func bindTableView() {
-//        viewModel.tableViewData
-////            .bind(to: tableView.rx.items(cellIdentifier: "RxHorizontalTableViewCell", cellType: RxHorizontalTableViewCell.self)) { index, sectionData, cell in
-////                
-////            }
-//            .bind(to: tableView.rx.items(cellIdentifier: "VerticalTabelViewCell", cellType: VerticalTabelViewCell.self)) { index, sectionData, cell in
-////                cell.newsImageView.image = sectionData.subNews[index].subImage
-////                cell.newsTitleLabel.text = sectionData.subNews[index].subTitle
-//                cell.configure(with: sectionData.subNews[index])
-//            }
-//            .disposed(by: disposeBag)
-//    }
     
-    func bindTableView() {
-        let dataSource = RxTableViewSectionedReloadDataSource<MixSection>(
-            configureCell: { dataSource, tableView, indexPath, item in
-                print("IndexPath: \(indexPath), Item: \(item)") // 로그로 데이터 확인
-                
-                if indexPath.section == 0 {
-                    guard let cell = tableView.dequeueReusableCell(
-                        withIdentifier: RxHorizontalTableViewCell.identifier, for: indexPath) as? RxHorizontalTableViewCell else {
-                        return UITableViewCell()
-                    }
-                    return cell
-                } else {
-                    guard let cell = tableView.dequeueReusableCell(
-                        withIdentifier: VerticalTableViewCell.identifier, for: indexPath) as? VerticalTableViewCell else {
-                        return UITableViewCell()
-                    }
-
-                    cell.configure(with: item.subNews[indexPath.row])
-                    return cell
-                }
-            }
-        )
-        
-        viewModel.tableViewData
-            .bind(to: tableView.rx.items(dataSource: dataSource))
-            .disposed(by: disposeBag)
-    }
 }
 
-// MARK: - delegate
+// MARK: - Method
 extension RxMixTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return Constants.size.size260
+            return Constants.size.size260 // 0번 섹션 높이
         } else {
-            return Constants.size.size100
+            return Constants.size.size100 // 나머지 섹션 높이
         }
     }
 }
