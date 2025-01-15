@@ -12,13 +12,15 @@ import RxSwift
 
 class RxHorizontalTableViewCell: UITableViewCell {
     // MARK: - Properties
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     var timer: Timer? // 자동 스크롤 타이머
     
     // MARK: - Components
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+//        layout.itemSize = CGSize(width: 370, height: 260) // 크기 설정
+//        layout.minimumLineSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(HorizontalCollectionViewCell.self, forCellWithReuseIdentifier: HorizontalCollectionViewCell.identifier)
         collectionView.backgroundColor = .clear
@@ -48,6 +50,7 @@ class RxHorizontalTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        disposeBag = DisposeBag()
         timer?.invalidate()
         timer = nil
     }
@@ -62,7 +65,6 @@ private extension RxHorizontalTableViewCell {
         collectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        collectionView.delegate = self
         
         pageControl.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -73,14 +75,38 @@ private extension RxHorizontalTableViewCell {
 
 // MARK: - Method
 extension RxHorizontalTableViewCell {
-    
+    func configure(with images: [UIImage?]) {
+        Observable.just(images)
+            .bind(to: collectionView.rx.items(
+                cellIdentifier: HorizontalCollectionViewCell.identifier,
+                cellType: HorizontalCollectionViewCell.self
+            )) { index, image, cell in
+                cell.newsImageView.image = image
+            }
+            .disposed(by: disposeBag)
+
+        pageControl.numberOfPages = images.count
+        
+        collectionView.rx.contentOffset
+            .map { [weak self] offset -> Int in
+                guard let self = self else { return 0 }
+                let width = self.collectionView.bounds.width
+                return width > 0 ? Int(round(offset.x / width)) : 0
+            }
+            .distinctUntilChanged()
+            .bind(to: pageControl.rx.currentPage)
+            .disposed(by: disposeBag)
+
+        collectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        
+        startTimer()
+    }
 
     private func startTimer() {
-        // 타이머가 이미 존재하는 경우 새로 시작하지 않도록
         guard timer == nil else { return }
         timer = Timer.scheduledTimer(timeInterval: 3.5, target: self, selector: #selector(scrollToNext), userInfo: nil, repeats: true)
     }
-    
+
     @objc private func scrollToNext() {
         let currentOffset = collectionView.contentOffset.x
         let nextOffset = currentOffset + collectionView.frame.width

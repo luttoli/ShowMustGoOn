@@ -30,6 +30,7 @@ class RxMixTableView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
+        bindTableView()
     }
     
     required init?(coder: NSCoder) {
@@ -53,7 +54,41 @@ private extension RxMixTableView {
 
 // MARK: - Method
 extension RxMixTableView {
-    
+    private func bindTableView() {
+        let dataSource = RxTableViewSectionedReloadDataSource<MixSection>(
+            configureCell: { dataSource, tableView, indexPath, item in
+                if indexPath.section == 0 {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: RxHorizontalTableViewCell.identifier, for: indexPath) as? RxHorizontalTableViewCell,
+                          let images = item as? [UIImage?] else {
+                        return UITableViewCell()
+                    }
+                    
+                    cell.configure(with: images)
+                    return cell
+                } else {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: VerticalTableViewCell.identifier, for: indexPath) as? VerticalTableViewCell,
+                          let subNews = item as? SubNews else {
+                        return UITableViewCell()
+                    }
+                    
+                    cell.configure(with: subNews)
+                    return cell
+                }
+            }
+        )
+
+        viewModel.mixSections
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
+        tableView.rx.setDelegate(self).disposed(by: disposeBag)
+        
+//        tableView.rx.itemSelected
+//            .subscribe(onNext: { [weak self] indexPath in
+//                
+//            })
+//            .disposed(by: disposeBag)
+    }
 }
 
 // MARK: - Method
