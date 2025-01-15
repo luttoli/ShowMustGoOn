@@ -49,6 +49,7 @@ extension RxTableViewController {
         setUp()
         segmentClickEvent()
         segment.layoutIfNeeded() // 강제로 레이아웃 반영
+        rxMixTableView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -163,5 +164,23 @@ private extension RxTableViewController {
                 }
             })
             .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - delegate
+extension RxTableViewController: RxMixTableViewDelegate {
+    func didSelectItem(at indexPath: IndexPath, item: Any) {
+        if indexPath.section == 1, let subNews = item as? SubNews {
+            // String URL -> URL로 변환
+            guard let urlString = subNews.url,
+                  let url = URL(string: urlString) else {
+                print("유효하지 않은 URL: \(subNews.url ?? "nil")")
+                return
+            }
+
+            let detailMixVC = DetailMixViewController(url: url)
+            detailMixVC.modalPresentationStyle = .formSheet
+            present(detailMixVC, animated: true, completion: nil)
+        }
     }
 }

@@ -11,7 +11,6 @@ import RxCocoa
 import RxSwift
 
 class RxMixViewModel {
-//    var mixSections = BehaviorRelay<[MixSection]>(value: [])
     let mixSections: Observable<[MixSection]>
     
     init() {

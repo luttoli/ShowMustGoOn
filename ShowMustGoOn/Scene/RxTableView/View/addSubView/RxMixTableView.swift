@@ -12,10 +12,15 @@ import RxDataSources
 import RxSwift
 import SnapKit
 
+protocol RxMixTableViewDelegate: AnyObject {
+    func didSelectItem(at indexPath: IndexPath, item: Any)
+}
+
 class RxMixTableView: UIView {
     // MARK: - Properties
     let disposeBag = DisposeBag()
     let viewModel = RxMixViewModel()
+    weak var delegate: RxMixTableViewDelegate?
     
     // MARK: - Components
     let tableView: UITableView = {
@@ -71,23 +76,37 @@ extension RxMixTableView {
                         return UITableViewCell()
                     }
                     
+                    cell.selectionStyle = .none
                     cell.configure(with: subNews)
                     return cell
                 }
             }
         )
 
+        // 테이블뷰 데이터 바인딩
         viewModel.mixSections
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
+        // 테이블뷰 선택 이벤트 처리
+        tableView.rx.itemSelected
+            .withLatestFrom(viewModel.mixSections) { (indexPath, sections) -> (IndexPath, Any)? in
+                guard indexPath.section < sections.count,
+                      indexPath.row < sections[indexPath.section].items.count else {
+                    return nil
+                }
+                return (indexPath, sections[indexPath.section].items[indexPath.row])
+            }
+            .compactMap { $0 }
+            .subscribe(onNext: { [weak self] indexPath, item in
+                guard let self = self else { return }
+                self.delegate?.didSelectItem(at: indexPath, item: item)
+                print("Selected: \(item)")
+            })
+            .disposed(by: disposeBag)
+
+        // 테이블뷰 높이 설정
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
-        
-//        tableView.rx.itemSelected
-//            .subscribe(onNext: { [weak self] indexPath in
-//                
-//            })
-//            .disposed(by: disposeBag)
     }
 }
 

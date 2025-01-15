@@ -14,7 +14,6 @@ import SnapKit
 class TableViewController: UIViewController {
     // MARK: - Properties
     let disposeBag = DisposeBag()
-    private let viewModel = BasicViewModel()
     
     // MARK: - Components
     let segment = CustomSegment(items: ["기본", "투두", "섹션", "혼합", "추가"])
@@ -44,6 +43,7 @@ extension TableViewController {
         navigationUI()
         setUp()
         segmentClickEvent()
+        segment.layoutIfNeeded()
         mixTableView.delegate = self
     }
     
