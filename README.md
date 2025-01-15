@@ -1,11 +1,18 @@
 # ShowMustGoOn
-- [iOS 앱 개발 공부하고 기록합니다. 계속 합니다!](https://luttoli.notion.site/iOS-35e44c5737824333ad083aa20cda3f5d?pvs=4) 
+- [iOS 앱 개발 공부하고 기록합니다. 계속 합니다!](https://luttoli.notion.site/iOS-35e44c5737824333ad083aa20cda3f5d?pvs=4)
+
+## 기본 설정
+- [SceneDelegate, AppDelegate](https://luttoli.notion.site/SceneDelegate-AppDelegate-17c0f60899b980e98010caa11103ee63?pvs=4)
+- [Extension](https://luttoli.notion.site/Extension-17c0f60899b9808382cee3e9a60820d3?pvs=4)
+- [Keybord Library - IQKeyboardManagerSwift](https://luttoli.notion.site/IQKeyboardManagerSwift-1640f60899b980cd8a99ed22aab0b3cf?pvs=4)
+- [폰트 추가](https://luttoli.notion.site/219415e36423405a80588f77a0b62c88?pvs=4)
+
 
 ## CustomTabBar
 - [UITabBarController](https://luttoli.notion.site/UITabBarController-6157ff0460724ba9ab1458d0cf845553?pvs=4) 
 
 ## SplashViewController
-### 앱 실행 시 런치스크린에서 메인뷰로 로드되기 전 보여주기
+#### 앱 실행 시 런치스크린에서 메인뷰로 로드되기 전 보여주기
 - [SwiftyGif 사용하기](https://luttoli.notion.site/SwiftyGif-1230f60899b9809d963aee78a98b7218?pvs=4) 
 - [gif 파일로 Custom SplashVC 만들기](https://luttoli.notion.site/gif-Custom-SplashVC-1230f60899b980369912d551bba46645?pvs=4) 
 
@@ -37,9 +44,8 @@
                 </a>
             </td>
             <td>
-                •
                 <a href="https://luttoli.notion.site/CustomLabel-1590f60899b98070a9bdc54119761db1?pvs=4">
-                    CustomLabel
+                    • CustomLabel
                 </a>
             </td>
         </tr>
@@ -56,17 +62,11 @@
                 </a>
             </td>
             <td>
-                •
                 <a href="https://luttoli.notion.site/UITextField-61d8a4b9c16a45869c95290bfbfeb67e?pvs=4">
-                    UITextField
+                    • UITextField
                 </a><br/>
-                •
                 <a href="https://luttoli.notion.site/d6da7564f2824b2ba3f29f79f1888238?pvs=4">
-                    키보드 동작
-                </a><br/>
-                •
-                <a href="https://luttoli.notion.site/IQKeyboardManagerSwift-1640f60899b980cd8a99ed22aab0b3cf?pvs=4">
-                    IQKeyboardManagerSwift
+                    • 키보드 동작
                 </a>
             </td>
         </tr>
@@ -83,10 +83,6 @@
                 </a>
             </td>
             <td>
-                •
-                <a href="https://luttoli.notion.site/RxDataSources-1760f60899b980b1bfa0d4e42f82584a?pvs=4">
-                    RxDataSources 사용 방법
-                </a>
             </td>
         </tr>
         <tr>
@@ -97,19 +93,19 @@
                 </a>
             </td>
             <td>
+                <a href="https://luttoli.notion.site/Rx-UITableViewCell-UICollectionView-1770f60899b9800caedfd8c1c99c34ef?pvs=4">
+                    Rx UITableViewCell 안에 UICollectionView
+                </a>
             </td>
             <td>
-                •
                 <a href="https://luttoli.notion.site/UIPageControl-1380f60899b98017a042e99d09487abc?pvs=4">
-                    UIPageControl
+                    • UIPageControl
                 </a><br/>
-                •
                 <a href="https://luttoli.notion.site/CollectionView-1380f60899b980aca1f4d187c1ca060d?pvs=4">
-                    CollectionView 자동스크롤
+                    • CollectionView 자동스크롤
                 </a><br/>
-                •
                 <a href="https://luttoli.notion.site/WebKit-WebView-dbb909fa1dc34ba4a407193a37b4fdf9?pvs=4">
-                    WebView
+                    • WebView
                 </a>
             </td>
         </tr>
@@ -123,17 +119,14 @@
             <td>
             </td>
             <td>
-                •
                 <a href="https://luttoli.notion.site/UISearchBar-1590f60899b980e1bad3f288d272b945?pvs=4">
-                    UISearchBar
+                    • UISearchBar
                 </a><br/>
-                •
                 <a href="https://luttoli.notion.site/UIAlertController-16b0f60899b98005bf4de152be44cfbb?pvs=4">
-                    UIAlertController
+                    • UIAlertController
                 </a><br/>
-                •
                 <a href="https://luttoli.notion.site/CustomButton-1590f60899b980fbb534cd53f043f494?pvs=4">
-                    CustomButton
+                    • CustomButton
                 </a>
             </td>
         </tr>
