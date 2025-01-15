@@ -37,8 +37,9 @@
                 </a>
             </td>
             <td>
+                •
                 <a href="https://luttoli.notion.site/CustomLabel-1590f60899b98070a9bdc54119761db1?pvs=4">
-                    - CustomLabel
+                    CustomLabel
                 </a>
             </td>
         </tr>
@@ -55,14 +56,17 @@
                 </a>
             </td>
             <td>
+                •
                 <a href="https://luttoli.notion.site/UITextField-61d8a4b9c16a45869c95290bfbfeb67e?pvs=4">
-                    - UITextField
+                    UITextField
                 </a><br/>
+                •
                 <a href="https://luttoli.notion.site/d6da7564f2824b2ba3f29f79f1888238?pvs=4">
-                    - 키보드 동작
+                    키보드 동작
                 </a><br/>
+                •
                 <a href="https://luttoli.notion.site/IQKeyboardManagerSwift-1640f60899b980cd8a99ed22aab0b3cf?pvs=4">
-                    - IQKeyboardManagerSwift
+                    IQKeyboardManagerSwift
                 </a>
             </td>
         </tr>
@@ -79,8 +83,9 @@
                 </a>
             </td>
             <td>
+                •
                 <a href="https://luttoli.notion.site/RxDataSources-1760f60899b980b1bfa0d4e42f82584a?pvs=4">
-                    - RxDataSources 사용 방법
+                    RxDataSources 사용 방법
                 </a>
             </td>
         </tr>
@@ -94,14 +99,17 @@
             <td>
             </td>
             <td>
+                •
                 <a href="https://luttoli.notion.site/UIPageControl-1380f60899b98017a042e99d09487abc?pvs=4">
-                    - UIPageControl
+                    UIPageControl
                 </a><br/>
+                •
                 <a href="https://luttoli.notion.site/CollectionView-1380f60899b980aca1f4d187c1ca060d?pvs=4">
-                    - CollectionView 자동스크롤
+                    CollectionView 자동스크롤
                 </a><br/>
+                •
                 <a href="https://luttoli.notion.site/WebKit-WebView-dbb909fa1dc34ba4a407193a37b4fdf9?pvs=4">
-                    - WebView
+                    WebView
                 </a>
             </td>
         </tr>
@@ -115,14 +123,17 @@
             <td>
             </td>
             <td>
+                •
                 <a href="https://luttoli.notion.site/UISearchBar-1590f60899b980e1bad3f288d272b945?pvs=4">
-                    - UISearchBar
+                    UISearchBar
                 </a><br/>
+                •
                 <a href="https://luttoli.notion.site/UIAlertController-16b0f60899b98005bf4de152be44cfbb?pvs=4">
-                    - UIAlertController
+                    UIAlertController
                 </a><br/>
+                •
                 <a href="https://luttoli.notion.site/CustomButton-1590f60899b980fbb534cd53f043f494?pvs=4">
-                    - CustomButton
+                    CustomButton
                 </a>
             </td>
         </tr>
