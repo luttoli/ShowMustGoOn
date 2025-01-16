@@ -10,11 +10,11 @@ import UIKit
 struct AddModel {
     let id: UUID
     let categoryTitle: String
-    var items: [Item]
+    var checkItem: [CheckItem]
 }
 
-struct Item {
-    let id: UUID
-    let title: String
+struct CheckItem {
+    let checkItemId: UUID
+    let checkItemTitle: String
     var isChecked: Bool
 }

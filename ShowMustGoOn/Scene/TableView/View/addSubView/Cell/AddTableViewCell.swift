@@ -11,8 +11,8 @@ import SnapKit
 
 class AddTableViewCell: UITableViewCell {
     // MARK: - Components
-    var itemTitle = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
-    var checkBoxButton = CustomButton(type: .iconButton(icon: .checkBox))
+    var checkItemTitle = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
+    var checkItemCheckboxButton = CustomButton(type: .iconButton(icon: .checkBox))
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -25,26 +25,26 @@ class AddTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        itemTitle.text = nil
-        checkBoxButton.isChecked = false
-        checkBoxButton.setImage(CustomButton.ButtonType.IconType.checkBox.image, for: .normal)
+        checkItemTitle.text = nil
+        checkItemCheckboxButton.isChecked = false
+        checkItemCheckboxButton.setImage(CustomButton.ButtonType.IconType.checkBox.image, for: .normal)
     }
 }
 
 // MARK: - SetUp
 private extension AddTableViewCell {
     func setUp() {
-        contentView.addSubview(itemTitle)
-        contentView.addSubview(checkBoxButton)
+        contentView.addSubview(checkItemTitle)
+        contentView.addSubview(checkItemCheckboxButton)
         
-        itemTitle.snp.makeConstraints {
+        checkItemTitle.snp.makeConstraints {
             $0.centerY.equalTo(contentView)
             $0.leading.equalTo(contentView).offset(Constants.spacing.px8)
-            $0.trailing.equalTo(checkBoxButton.snp.leading).offset(-Constants.spacing.px10)
+            $0.trailing.equalTo(checkItemCheckboxButton.snp.leading).offset(-Constants.spacing.px10)
         }
-        itemTitle.numberOfLines = 1
+        checkItemTitle.numberOfLines = 1
         
-        checkBoxButton.snp.makeConstraints {
+        checkItemCheckboxButton.snp.makeConstraints {
             $0.centerY.equalTo(contentView)
             $0.trailing.equalTo(contentView)
         }
@@ -53,11 +53,11 @@ private extension AddTableViewCell {
 
 // MARK: - Method
 extension AddTableViewCell {
-    func configure(with item: Item) {
-        itemTitle.text = item.title
+    func configure(with checkItem: CheckItem) {
+        checkItemTitle.text = checkItem.checkItemTitle
         
         // item.isChecked 값에 따라 텍스트 색상, 이미지 교체
-        itemTitle.textColor = item.isChecked ? .text.lavender : .text.black
-        checkBoxButton.toggleButton(isChecked: item.isChecked, icon: .checkBox)
+        checkItemTitle.textColor = checkItem.isChecked ? .text.lavender : .text.black
+        checkItemCheckboxButton.toggleButton(isChecked: checkItem.isChecked, icon: .checkBox)
     }
 }

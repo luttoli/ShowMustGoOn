@@ -156,11 +156,11 @@ extension AddTableView: UITableViewDelegate, UITableViewDataSource {
         headerView.backgroundColor = .clear
         
         let headerLabel = CustomLabel(title: "\(viewModel.categories[section].categoryTitle)", size: Constants.size.size12, weight: .Regular, color: .text.subDarkGray)
-        let addItemButton = CustomButton(type: .iconButton(icon: .plus))
+        let addCheckListButton = CustomButton(type: .iconButton(icon: .plus))
         let deleteCategoryButton = CustomButton(type: .iconButton(icon: .minus))
         
         headerView.addSubview(headerLabel)
-        headerView.addSubview(addItemButton)
+        headerView.addSubview(addCheckListButton)
         headerView.addSubview(deleteCategoryButton)
         
         headerLabel.snp.makeConstraints {
@@ -168,7 +168,7 @@ extension AddTableView: UITableViewDelegate, UITableViewDataSource {
             $0.bottom.equalTo(headerView).offset(-Constants.margin.vertical)
         }
         
-        addItemButton.snp.makeConstraints {
+        addCheckListButton.snp.makeConstraints {
             $0.centerY.equalTo(headerLabel)
             $0.leading.equalTo(headerLabel.snp.trailing).offset(Constants.margin.horizontal)
             $0.trailing.equalTo(deleteCategoryButton.snp.leading).offset(-Constants.margin.horizontal)
@@ -176,11 +176,11 @@ extension AddTableView: UITableViewDelegate, UITableViewDataSource {
         
         deleteCategoryButton.snp.makeConstraints {
             $0.centerY.equalTo(headerLabel)
-            $0.leading.equalTo(addItemButton.snp.trailing).offset(Constants.margin.horizontal)
+            $0.leading.equalTo(addCheckListButton.snp.trailing).offset(Constants.margin.horizontal)
             $0.trailing.equalTo(headerView)
         }
         
-        addItemButton.addAction(UIAction(handler: { [weak self] _ in
+        addCheckListButton.addAction(UIAction(handler: { [weak self] _ in
             guard let self = self else { return }
             
             // 해당 카테고리의 id를 가져오기
@@ -198,7 +198,7 @@ extension AddTableView: UITableViewDelegate, UITableViewDataSource {
                 guard let self = self else { return }
                 if let textField = alert.textFields?.first, let text = textField.text, !text.isEmpty {
                     // 카테고리 id와 함께 아이템 추가
-                    self.viewModel.addItem(categoryId: categoryId, itemTitle: text)
+                    self.viewModel.addCheckItem(categoryId: categoryId, checkItemTitle: text)
                 }
             }
             
@@ -223,7 +223,7 @@ extension AddTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.categories[section].items.count
+        return viewModel.categories[section].checkItem.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -234,16 +234,16 @@ extension AddTableView: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         
         // 셀에 데이터를 설정
-        let item = viewModel.categories[indexPath.section].items[indexPath.row]
-        cell.configure(with: item)
+        let checkItem = viewModel.categories[indexPath.section].checkItem[indexPath.row]
+        cell.configure(with: checkItem)
 
         // 기존의 버튼 액션 제거 후 추가
-        cell.checkBoxButton.removeTarget(nil, action: nil, for: .allEvents)
-        cell.checkBoxButton.addAction(UIAction(handler: { [weak self] _ in
+        cell.checkItemCheckboxButton.removeTarget(nil, action: nil, for: .allEvents)
+        cell.checkItemCheckboxButton.addAction(UIAction(handler: { [weak self] _ in
             guard let self = self else { return }
             
             // 상태 토글 후 ViewModel 업데이트
-            self.viewModel.toggleItemCheck(categoryId: self.viewModel.categories[indexPath.section].id, itemId: item.id)
+            self.viewModel.checkItemToggle(categoryId: self.viewModel.categories[indexPath.section].id, checkItemId: checkItem.checkItemId)
             
             // 변경된 데이터로 UI를 업데이트하기 위해 테이블뷰 리로드
             self.memoTableView.reloadRows(at: [indexPath], with: .none)
@@ -259,8 +259,8 @@ extension AddTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let category = viewModel.categories[indexPath.section]
-            let itemId = category.items[indexPath.row].id
-            viewModel.deleteItem(categoryId: category.id, itemId: itemId)
+            let checkListId = category.checkItem[indexPath.row].checkItemId
+            viewModel.deleteCheckItem(categoryId: category.id, checkItemId: checkListId)
             tableView.reloadData()
         }
     }
