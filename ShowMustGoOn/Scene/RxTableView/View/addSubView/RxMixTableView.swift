@@ -27,7 +27,6 @@ class RxMixTableView: UIView {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(RxHorizontalTableViewCell.self, forCellReuseIdentifier: RxHorizontalTableViewCell.identifier)
         tableView.register(VerticalTableViewCell.self, forCellReuseIdentifier: VerticalTableViewCell.identifier)
-        //세로 리스트 셀 구현할거고
         tableView.backgroundColor = .clear
         return tableView
     }()
