@@ -75,6 +75,7 @@
 		B8E6F8B62D2B66F800CDC1C4 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = B8E6F8B52D2B66F800CDC1C4 /* RxDataSources */; };
 		B8E6F8BA2D2CCDD800CDC1C4 /* RxMixViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6F8B92D2CCDD800CDC1C4 /* RxMixViewModel.swift */; };
 		B8E6F8BD2D30CB6800CDC1C4 /* RxHorizontalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6F8BC2D30CB6800CDC1C4 /* RxHorizontalTableViewCell.swift */; };
+		B8E6F8BF2D39EAFF00CDC1C4 /* RxAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6F8BE2D39EAFF00CDC1C4 /* RxAddViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -153,6 +154,7 @@
 		B8CD655C2CC8879800E8F8B3 /* BasicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTableViewCell.swift; sourceTree = "<group>"; };
 		B8E6F8B92D2CCDD800CDC1C4 /* RxMixViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxMixViewModel.swift; sourceTree = "<group>"; };
 		B8E6F8BC2D30CB6800CDC1C4 /* RxHorizontalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxHorizontalTableViewCell.swift; sourceTree = "<group>"; };
+		B8E6F8BE2D39EAFF00CDC1C4 /* RxAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxAddViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,6 +291,7 @@
 				B80B9F142D0D5F0600052199 /* RxTodoListViewModel.swift */,
 				B80B9F1C2D110B3A00052199 /* RxSectionViewModel.swift */,
 				B8E6F8B92D2CCDD800CDC1C4 /* RxMixViewModel.swift */,
+				B8E6F8BE2D39EAFF00CDC1C4 /* RxAddViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -588,6 +591,7 @@
 				B877DBE62CD9B621009D9C49 /* UICollectionViewCell.swift in Sources */,
 				B877DBCF2CD373D5009D9C49 /* BasicModel.swift in Sources */,
 				B877DBE42CD9B5F8009D9C49 /* HorizontalCollectionViewCell.swift in Sources */,
+				B8E6F8BF2D39EAFF00CDC1C4 /* RxAddViewModel.swift in Sources */,
 				B8E6F8BA2D2CCDD800CDC1C4 /* RxMixViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

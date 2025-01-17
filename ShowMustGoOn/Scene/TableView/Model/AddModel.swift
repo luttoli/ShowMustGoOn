@@ -18,3 +18,25 @@ struct CheckItem {
     let checkItemTitle: String
     var isChecked: Bool
 }
+
+//
+import RxDataSources
+
+struct AddSection {
+    var header: String
+    var items: [Item]
+    
+    init(header: String, items: [Item]) {
+        self.header = header
+        self.items = items
+    }
+}
+
+extension AddSection: SectionModelType {
+    typealias Item = Any
+    
+    init(original: AddSection, items: [Item]) {
+        self = original
+        self.items = items
+    }
+}
