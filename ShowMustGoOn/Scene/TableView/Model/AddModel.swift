@@ -33,7 +33,7 @@ struct AddSection {
 }
 
 extension AddSection: SectionModelType {
-    typealias Item = Any
+    typealias Item = CheckItem
     
     init(original: AddSection, items: [Item]) {
         self = original

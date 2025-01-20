@@ -40,7 +40,7 @@
             </td>
             <td>
                 <a href="https://luttoli.notion.site/Rx-UITableView-16a0f60899b98047bb4de16e68278a33?pvs=4">
-                    Rx 활용 UITableView, Cell 기본 사용 방법
+                    Rx UITableView, Cell 기본 사용 방법
                 </a>
             </td>
             <td>
@@ -117,6 +117,9 @@
                 </a>
             </td>
             <td>
+                <a href="https://luttoli.notion.site/Rx-UITableView-Header-cell-1810f60899b980bb8167f69115c1288f?pvs=4">
+                    Rx UITableView Header, cell 추가 액션
+                </a>
             </td>
             <td>
                 <a href="https://luttoli.notion.site/UISearchBar-1590f60899b980e1bad3f288d272b945?pvs=4">

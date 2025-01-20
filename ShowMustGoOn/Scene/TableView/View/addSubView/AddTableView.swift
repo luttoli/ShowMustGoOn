@@ -42,8 +42,8 @@ class AddTableView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
-        didTabAddCategoryButton()
         hideOnLabel()
+        didTabAddCategoryButton()
         setUpBindings()
     }
     
