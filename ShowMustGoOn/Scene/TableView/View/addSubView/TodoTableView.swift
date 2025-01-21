@@ -37,7 +37,7 @@ class TodoTableView: UIView {
         super.init(frame: frame)
         setUp()
         updataTodo()
-        didTabAddButton()
+        didTapAddButton()
     }
     
     required init?(coder: NSCoder) {
@@ -86,7 +86,7 @@ extension TodoTableView {
     }
     
     // 추가 버튼 클릭
-    func didTabAddButton() {
+    func didTapAddButton() {
         self.addButton.addAction(UIAction(handler: { [weak self] _ in
             guard let self = self else { return }
             

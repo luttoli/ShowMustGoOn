@@ -14,7 +14,7 @@ class RxAddViewModel {
     let disposeBag = DisposeBag()
     
     var data = BehaviorRelay<[AddSection]>(value: [
-        AddSection(header: "T1", items: [
+        AddSection(id: UUID(), header: "T1", items: [
             CheckItem(checkItemId: UUID(), checkItemTitle: "도란", isChecked: false),
             CheckItem(checkItemId: UUID(), checkItemTitle: "오너", isChecked: true),
             CheckItem(checkItemId: UUID(), checkItemTitle: "페이커", isChecked: true),
@@ -23,5 +23,13 @@ class RxAddViewModel {
         ]),
     ])
     
-    // 동작 추가 예정
+    // 카테고리 추가
+    
+    // 카테고리 삭제
+    
+    // 아이템 추가
+    
+    // 아이템 삭제
+    
+    // 아이템 체크 토글
 }

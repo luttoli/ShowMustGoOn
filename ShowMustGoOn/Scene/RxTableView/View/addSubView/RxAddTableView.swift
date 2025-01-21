@@ -16,6 +16,7 @@ class RxAddTableView: UIView {
     // MARK: - Properties
     let disposeBag = DisposeBag()
     let viewModel = RxAddViewModel()
+    weak var parentViewController: UIViewController?
     
     // MARK: - Components
     var searchBar: UISearchBar = {
@@ -44,7 +45,7 @@ class RxAddTableView: UIView {
         super.init(frame: frame)
         setUp()
         bindNodataLabel()
-        tabButton()
+        tabAddCategoryButton()
         bindTableView()
     }
     
@@ -87,7 +88,7 @@ private extension RxAddTableView {
 
 // MARK: - Method
 extension RxAddTableView {
-    // 데이터 바인딩 정리 - 재사용 가능성
+    // 테이블뷰셀 데이터 바인딩 정리 - 재사용 가능성
     func createDataSource() -> RxTableViewSectionedReloadDataSource<AddSection> {
         return RxTableViewSectionedReloadDataSource<AddSection>(
             configureCell: { _, tableView, indexPath, item in
@@ -99,7 +100,7 @@ extension RxAddTableView {
     }
     
     // 데이터 없다는 라벨 동작
-    func bindNodataLabel() {
+    private func bindNodataLabel() {
         viewModel.data
             .asObservable()
             .map { !$0.isEmpty } // 데이터가 있는 경우 라벨 숨김
@@ -108,7 +109,7 @@ extension RxAddTableView {
     }
     
     // 카테고리 추가 버튼 클릭 동작
-    private func tabButton() {
+    private func tabAddCategoryButton() {
         addCategoryButton.rx.tap
             .withLatestFrom(searchBar.rx.text.orEmpty)
             .filter { !$0.isEmpty }
@@ -164,6 +165,43 @@ extension RxAddTableView: UITableViewDelegate {
             $0.leading.equalTo(addCheckListButton.snp.trailing).offset(Constants.margin.horizontal)
             $0.trailing.equalTo(headerView)
         }
+        
+        // 체크 아이템 추가 버튼 탭 -
+        addCheckListButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                guard let parentVC = owner.parentViewController else { return }
+                
+                let alert = UIAlertController(
+                    title: "항목 추가",
+                    message: "추가할 항목을 입력하세요",
+                    preferredStyle: .alert
+                )
+                
+                alert.addTextField { textField in
+                    textField.placeholder = "항목 입력"
+                }
+                
+                let addAction = UIAlertAction(title: "추가", style: .default) { [weak self] _ in
+                    guard let self = self else { return }
+                    if let textField = alert.textFields?.first, let text = textField.text, !text.isEmpty {
+                        // 카테고리 id와 함께 아이템 추가
+                        let categoryId = self.viewModel.data.value[section].id
+//                        self.viewModel.addCheckItem(categoryId: categoryId, checkItemTitle: text)
+                    }
+                }
+                
+                let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+                
+                alert.addAction(addAction)
+                alert.addAction(cancelAction)
+                
+                parentVC.present(alert, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
+        
+        // 카테고리 삭제 버튼 탭
+        deleteCategoryButton.rx.tap
         
         
         return headerView

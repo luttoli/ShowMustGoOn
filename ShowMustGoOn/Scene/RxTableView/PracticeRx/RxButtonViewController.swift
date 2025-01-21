@@ -60,7 +60,7 @@ extension RxButtonViewController {
         
         navigationUI()
         setUp()
-        didTabButton()
+        didTapButton()
     }
 }
 
@@ -94,7 +94,7 @@ private extension RxButtonViewController {
     }
     
     // 버튼 클릭 이벤트를 Rx로 처리
-    func didTabButton() {
+    func didTapButton() {
         button.rx.tap
             .map { "버튼이 클릭되었습니다!" }
             .observe(on: MainScheduler.instance) // UI 업데이트를 메인 스레드에서 수행

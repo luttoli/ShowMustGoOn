@@ -127,6 +127,7 @@ private extension RxTableViewController {
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
         }
+        rxAddTableView.parentViewController = self
     }
 }
 

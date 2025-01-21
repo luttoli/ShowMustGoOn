@@ -23,10 +23,12 @@ struct CheckItem {
 import RxDataSources
 
 struct AddSection {
+    var id: UUID // 각 섹션의 고유 ID
     var header: String
     var items: [Item]
     
-    init(header: String, items: [Item]) {
+    init(id: UUID = UUID(), header: String, items: [Item]) {
+        self.id = id
         self.header = header
         self.items = items
     }
