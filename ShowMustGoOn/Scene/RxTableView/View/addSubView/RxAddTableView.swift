@@ -43,6 +43,8 @@ class RxAddTableView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
+        bindNodataLabel()
+        tabButton()
         bindTableView()
     }
     
@@ -93,21 +95,20 @@ extension RxAddTableView {
                 cell.checkItemTitle.text = item.checkItemTitle
                 return cell
             }
-//            titleForHeaderInSection: { dataSource, index in
-//                return dataSource[index].header
-//            }
         )
     }
     
-    private func bindTableView() {
-        // 데이터 없다는 라벨 동작
+    // 데이터 없다는 라벨 동작
+    func bindNodataLabel() {
         viewModel.data
             .asObservable()
             .map { !$0.isEmpty } // 데이터가 있는 경우 라벨 숨김
             .bind(to: nodataLabel.rx.isHidden)
             .disposed(by: disposeBag)
-        
-        // 카테고리 추가 버튼 클릭 동작
+    }
+    
+    // 카테고리 추가 버튼 클릭 동작
+    private func tabButton() {
         addCategoryButton.rx.tap
             .withLatestFrom(searchBar.rx.text.orEmpty)
             .filter { !$0.isEmpty }
@@ -121,8 +122,10 @@ extension RxAddTableView {
                 owner.searchBar.text = ""
             })
             .disposed(by: disposeBag)
-        
-        // data bind
+    }
+    
+    // data bind
+    private func bindTableView() {
         viewModel.data
             .bind(to: memoTableView.rx.items(dataSource: createDataSource()))
             .disposed(by: disposeBag)
@@ -161,6 +164,8 @@ extension RxAddTableView: UITableViewDelegate {
             $0.leading.equalTo(addCheckListButton.snp.trailing).offset(Constants.margin.horizontal)
             $0.trailing.equalTo(headerView)
         }
+        
+        
         return headerView
     }
     
