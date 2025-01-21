@@ -153,7 +153,7 @@ extension AddTableView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
-        headerView.backgroundColor = .clear
+        headerView.backgroundColor = .systemGray6
         
         let headerLabel = CustomLabel(title: "\(viewModel.categories[section].categoryTitle)", size: Constants.size.size12, weight: .Regular, color: .text.subDarkGray)
         let addCheckListButton = CustomButton(type: .iconButton(icon: .plus))
@@ -164,7 +164,7 @@ extension AddTableView: UITableViewDelegate, UITableViewDataSource {
         headerView.addSubview(deleteCategoryButton)
         
         headerLabel.snp.makeConstraints {
-            $0.leading.equalTo(headerView)
+            $0.leading.equalTo(headerView).offset(Constants.spacing.px8)
             $0.bottom.equalTo(headerView).offset(-Constants.margin.vertical)
         }
         

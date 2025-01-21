@@ -43,7 +43,7 @@ class RxAddTableView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
-        bind()
+        bindTableView()
     }
     
     required init?(coder: NSCoder) {
@@ -85,8 +85,27 @@ private extension RxAddTableView {
 
 // MARK: - Method
 extension RxAddTableView {
-    private func bind() {
-        let dataSource = createDataSource()
+    // 데이터 바인딩 정리 - 재사용 가능성
+    func createDataSource() -> RxTableViewSectionedReloadDataSource<AddSection> {
+        return RxTableViewSectionedReloadDataSource<AddSection>(
+            configureCell: { _, tableView, indexPath, item in
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: AddTableViewCell.identifier, for: indexPath) as? AddTableViewCell else { return UITableViewCell() }
+                cell.checkItemTitle.text = item.checkItemTitle
+                return cell
+            }
+//            titleForHeaderInSection: { dataSource, index in
+//                return dataSource[index].header
+//            }
+        )
+    }
+    
+    private func bindTableView() {
+        // 데이터 없다는 라벨 동작
+        viewModel.data
+            .asObservable()
+            .map { !$0.isEmpty } // 데이터가 있는 경우 라벨 숨김
+            .bind(to: nodataLabel.rx.isHidden)
+            .disposed(by: disposeBag)
         
         // 카테고리 추가 버튼 클릭 동작
         addCategoryButton.rx.tap
@@ -103,29 +122,53 @@ extension RxAddTableView {
             })
             .disposed(by: disposeBag)
         
-        //
+        // data bind
         viewModel.data
-            .bind(to: memoTableView.rx.items(dataSource: dataSource))
+            .bind(to: memoTableView.rx.items(dataSource: createDataSource()))
             .disposed(by: disposeBag)
+        
+        memoTableView.rx.setDelegate(self).disposed(by: disposeBag)
     }
-    
-    // 데이터 바인딩 정리
-    func createDataSource() -> RxTableViewSectionedReloadDataSource<AddSection> {
-       return RxTableViewSectionedReloadDataSource<AddSection>(
-           configureCell: { _, tableView, indexPath, item in
-               let cell = tableView.dequeueReusableCell(withIdentifier: "AddTableViewCell", for: indexPath)
-               cell.textLabel?.text = item.checkItemTitle
-               cell.accessoryType = item.isChecked ? .checkmark : .none
-               return cell
-           },
-           titleForHeaderInSection: { dataSource, index in
-               return dataSource[index].header
-           }
-       )
-   }
 }
 
 // MARK: - delegate
-extension RxAddTableView {
+extension RxAddTableView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = .systemGray6
+        
+        let headerLabel = CustomLabel(title: viewModel.data.value[section].header, size: Constants.size.size12, weight: .Regular, color: .text.subDarkGray)
+        let addCheckListButton = CustomButton(type: .iconButton(icon: .plus))
+        let deleteCategoryButton = CustomButton(type: .iconButton(icon: .minus))
+        
+        headerView.addSubview(headerLabel)
+        headerView.addSubview(addCheckListButton)
+        headerView.addSubview(deleteCategoryButton)
+        
+        headerLabel.snp.makeConstraints {
+            $0.leading.equalTo(headerView).offset(Constants.spacing.px8)
+            $0.bottom.equalTo(headerView).offset(-Constants.margin.vertical)
+        }
+        
+        addCheckListButton.snp.makeConstraints {
+            $0.centerY.equalTo(headerLabel)
+            $0.leading.equalTo(headerLabel.snp.trailing).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(deleteCategoryButton.snp.leading).offset(-Constants.margin.horizontal)
+        }
+        
+        deleteCategoryButton.snp.makeConstraints {
+            $0.centerY.equalTo(headerLabel)
+            $0.leading.equalTo(addCheckListButton.snp.trailing).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(headerView)
+        }
+        return headerView
+    }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return Constants.size.size40
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Constants.size.size50
+    }
 }

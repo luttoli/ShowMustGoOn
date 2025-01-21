@@ -104,7 +104,7 @@ extension RxMixTableView {
             })
             .disposed(by: disposeBag)
 
-        // 테이블뷰 높이 설정
+        // 테이블뷰 높이 설정하기 위한 델리게이트
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
     }
 }
