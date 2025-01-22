@@ -30,7 +30,6 @@ class RxAddViewModel {
         let newCategory = AddSection(id: UUID(), header: title, items: [])
         datas.append(newCategory)
         data.accept(datas)
-        
     }
     
     // 카테고리 삭제

@@ -109,18 +109,22 @@ extension RxAddTableView {
     }
     
     // 카테고리 추가 버튼 클릭 동작
-    private func tabAddCategoryButton() {
+    private func tabAddCategoryButton() {        
         addCategoryButton.rx.tap
-            .withLatestFrom(searchBar.rx.text.orEmpty)
-            .filter { !$0.isEmpty }
-            .distinctUntilChanged()
+            .withLatestFrom(searchBar.rx.text.orEmpty) // 서치바 텍스트 가져오기
             .withUnretained(self)
-            .do(onNext: { owner, text in
-                owner.viewModel.addCategory(title: text)
-                print(text)
-            })
-            .subscribe(onNext: { owner, _ in
-                owner.searchBar.text = ""
+            .subscribe(onNext: { owner, text in
+                if text.isEmpty {
+                    // 빈 값일 때 얼럿 표시
+                    let alert = UIAlertController(title: "빈 값", message: "추가할 카테고리 이름을 입력해주세요.", preferredStyle: .actionSheet)
+                    alert.addAction(UIAlertAction(title: "확인", style: .default))
+                    owner.parentViewController?.present(alert, animated: true)
+                } else {
+                    // 입력값 등록 및 서치바 초기화
+                    owner.viewModel.addCategory(title: text)
+                    owner.searchBar.searchTextField.text = "" // 텍스트 초기화
+                    owner.searchBar.searchTextField.sendActions(for: .editingChanged) // 이전 입력값 남지 않게
+                }
             })
             .disposed(by: disposeBag)
     }
