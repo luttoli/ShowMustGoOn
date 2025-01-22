@@ -24,23 +24,42 @@ class RxAddViewModel {
     ])
     
     // 카테고리 추가
-    func addCategory(title: String) {
-        guard !title.isEmpty else { return }
+    func addCategory(categoryTitle: String) {
+        guard !categoryTitle.isEmpty else { return }
         var datas = data.value
-        let newCategory = AddSection(id: UUID(), header: title, items: [])
+        let newCategory = AddSection(id: UUID(), header: categoryTitle, items: [])
         datas.append(newCategory)
         data.accept(datas)
     }
     
     // 카테고리 삭제
     func deletecategory(categoryId: UUID) {
-        let filteredData = data.value.filter { $0.id != categoryId }
+        let datas = data.value
+        let filteredData = datas.filter { $0.id != categoryId }
         data.accept(filteredData)
     }
     
     // 아이템 추가
+    func addCheckItem(categoryId: UUID, checkItemTitle: String) {
+        guard !checkItemTitle.isEmpty else { return }
+        var datas = data.value
+        if let categoryIndex = datas.firstIndex(where: { $0.id == categoryId }) {
+            let newCheckItem = CheckItem(checkItemId: UUID(), checkItemTitle: checkItemTitle, isChecked: false)
+            datas[categoryIndex].items.append(newCheckItem)
+        }
+        data.accept(datas)
+    }
     
     // 아이템 삭제
+    func deleteCheckItem(categoryId: UUID, checkItemId: UUID) {
+        var datas = data.value
+        if let categoryIndex = datas.firstIndex(where: { $0.id == categoryId }),
+           let checkItemIndex = datas[categoryIndex].items.firstIndex(where: { $0.checkItemId == checkItemId }) {
+            datas[categoryIndex].items.remove(at: checkItemIndex)
+        }
+        data.accept(datas)
+    }
     
     // 아이템 체크 토글
+    
 }

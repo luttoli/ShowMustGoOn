@@ -45,8 +45,9 @@ class RxAddTableView: UIView {
         super.init(frame: frame)
         setUp()
         bindNodataLabel()
-        tabAddCategoryButton()
         bindTableView()
+        tabAddCategoryButton()
+        deleteItem()
     }
     
     required init?(coder: NSCoder) {
@@ -88,17 +89,6 @@ private extension RxAddTableView {
 
 // MARK: - Method
 extension RxAddTableView {
-    // 테이블뷰셀 데이터 바인딩 정리 - 재사용 가능성
-    func createDataSource() -> RxTableViewSectionedReloadDataSource<AddSection> {
-        return RxTableViewSectionedReloadDataSource<AddSection>(
-            configureCell: { _, tableView, indexPath, item in
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: AddTableViewCell.identifier, for: indexPath) as? AddTableViewCell else { return UITableViewCell() }
-                cell.checkItemTitle.text = item.checkItemTitle
-                return cell
-            }
-        )
-    }
-    
     // 데이터 없다는 라벨 동작
     private func bindNodataLabel() {
         viewModel.data
@@ -108,6 +98,27 @@ extension RxAddTableView {
             .disposed(by: disposeBag)
     }
     
+    // 테이블뷰셀 데이터 바인딩 정리 - 재사용 가능성
+    func createDataSource() -> RxTableViewSectionedReloadDataSource<AddSection> {
+        return RxTableViewSectionedReloadDataSource<AddSection>(
+            configureCell: { _, tableView, indexPath, item in
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: AddTableViewCell.identifier, for: indexPath) as? AddTableViewCell else { return UITableViewCell() }
+                cell.selectionStyle = .none
+                cell.checkItemTitle.text = item.checkItemTitle
+                return cell
+            }
+        )
+    }
+    
+    // data bind
+    private func bindTableView() {
+        viewModel.data
+            .bind(to: memoTableView.rx.items(dataSource: createDataSource()))
+            .disposed(by: disposeBag)
+        
+        memoTableView.rx.setDelegate(self).disposed(by: disposeBag)
+    }
+
     // 카테고리 추가 버튼 클릭 동작
     private func tabAddCategoryButton() {        
         addCategoryButton.rx.tap
@@ -121,7 +132,7 @@ extension RxAddTableView {
                     owner.parentViewController?.present(alert, animated: true)
                 } else {
                     // 입력값 등록 및 서치바 초기화
-                    owner.viewModel.addCategory(title: text)
+                    owner.viewModel.addCategory(categoryTitle: text)
                     owner.searchBar.searchTextField.text = "" // 텍스트 초기화
                     owner.searchBar.searchTextField.sendActions(for: .editingChanged) // 이전 입력값 남지 않게
                 }
@@ -129,13 +140,16 @@ extension RxAddTableView {
             .disposed(by: disposeBag)
     }
     
-    // data bind
-    private func bindTableView() {
-        viewModel.data
-            .bind(to: memoTableView.rx.items(dataSource: createDataSource()))
+    // Item Cell 삭제 동작
+    private func deleteItem() {
+        memoTableView.rx.itemDeleted
+            .withUnretained(self)
+            .subscribe(onNext: { owner, indexPath in
+                let categoryId = owner.viewModel.data.value[indexPath.section].id
+                let checkItemId = owner.viewModel.data.value[indexPath.section].items[indexPath.row].checkItemId
+                owner.viewModel.deleteCheckItem(categoryId: categoryId, checkItemId: checkItemId)
+            })
             .disposed(by: disposeBag)
-        
-        memoTableView.rx.setDelegate(self).disposed(by: disposeBag)
     }
 }
 
@@ -170,7 +184,7 @@ extension RxAddTableView: UITableViewDelegate {
             $0.trailing.equalTo(headerView)
         }
         
-        // 체크 아이템 추가 버튼 탭 -
+        // 체크 아이템 추가 버튼 탭
         addCheckListButton.rx.tap
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
@@ -191,7 +205,7 @@ extension RxAddTableView: UITableViewDelegate {
                     if let textField = alert.textFields?.first, let text = textField.text, !text.isEmpty {
                         // 카테고리 id와 함께 아이템 추가
                         let categoryId = self.viewModel.data.value[section].id
-//                        self.viewModel.addCheckItem(categoryId: categoryId, checkItemTitle: text)
+                        self.viewModel.addCheckItem(categoryId: categoryId, checkItemTitle: text)
                     }
                 }
                 
@@ -211,9 +225,6 @@ extension RxAddTableView: UITableViewDelegate {
                 self.viewModel.deletecategory(categoryId: self.viewModel.data.value[section].id)
             })
             .disposed(by: disposeBag)
-            
-        
-        
         return headerView
     }
     

@@ -49,9 +49,8 @@ class AddViewModel {
         }
     }
     
-    // checkItem(cell) 삭제
+    // checkItem(cell) 삭제 - 카테고리, item(cell) 순서 찾기
     func deleteCheckItem(categoryId: UUID, checkItemId: UUID) {
-        // 카테고리, item(cell) 순서 찾기
         if let categoryIndex = categories.firstIndex(where: { $0.id == categoryId }),
            let checkItemIndex = categories[categoryIndex].checkItem.firstIndex(where: { $0.checkItemId == checkItemId }) {
             categories[categoryIndex].checkItem.remove(at: checkItemIndex)
