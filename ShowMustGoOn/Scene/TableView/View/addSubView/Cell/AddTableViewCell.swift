@@ -7,9 +7,13 @@
 
 import UIKit
 
+import RxSwift
 import SnapKit
 
 class AddTableViewCell: UITableViewCell {
+    //
+    var disposeBag = DisposeBag()
+    
     // MARK: - Components
     var checkItemTitle = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
     var checkItemCheckboxButton = CustomButton(type: .iconButton(icon: .checkBox))
@@ -28,6 +32,7 @@ class AddTableViewCell: UITableViewCell {
         checkItemTitle.text = nil
         checkItemCheckboxButton.isChecked = false
         checkItemCheckboxButton.setImage(CustomButton.ButtonType.IconType.checkBox.image, for: .normal)
+        disposeBag = DisposeBag()
     }
 }
 

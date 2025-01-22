@@ -105,6 +105,16 @@ extension RxAddTableView {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: AddTableViewCell.identifier, for: indexPath) as? AddTableViewCell else { return UITableViewCell() }
                 cell.selectionStyle = .none
                 cell.checkItemTitle.text = item.checkItemTitle
+                cell.checkItemCheckboxButton.rx.tap
+                    .withUnretained(self)
+                    .subscribe(onNext: { owner, _ in
+                        let categoryId = owner.viewModel.data.value[indexPath.section].id
+                        let checkItemId = owner.viewModel.data.value[indexPath.section].items[indexPath.row].checkItemId
+                        owner.viewModel.checkItemToggle(categoryId: categoryId, checkItemId: checkItemId)
+                        print(owner.viewModel.data.value)
+                    })
+                    .disposed(by: cell.disposeBag)
+                cell.configure(with: item)
                 return cell
             }
         )
