@@ -24,8 +24,20 @@ class RxAddViewModel {
     ])
     
     // 카테고리 추가
+    func addCategory(title: String) {
+        guard !title.isEmpty else { return }
+        var datas = data.value
+        let newCategory = AddSection(id: UUID(), header: title, items: [])
+        datas.append(newCategory)
+        data.accept(datas)
+        
+    }
     
     // 카테고리 삭제
+    func deletecategory(categoryId: UUID) {
+        let filteredData = data.value.filter { $0.id != categoryId }
+        data.accept(filteredData)
+    }
     
     // 아이템 추가
     

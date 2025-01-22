@@ -116,7 +116,7 @@ extension RxAddTableView {
             .distinctUntilChanged()
             .withUnretained(self)
             .do(onNext: { owner, text in
-//                owner.viewModel.addTodoItem(title: text)
+                owner.viewModel.addCategory(title: text)
                 print(text)
             })
             .subscribe(onNext: { owner, _ in
@@ -202,6 +202,12 @@ extension RxAddTableView: UITableViewDelegate {
         
         // 카테고리 삭제 버튼 탭
         deleteCategoryButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                self.viewModel.deletecategory(categoryId: self.viewModel.data.value[section].id)
+            })
+            .disposed(by: disposeBag)
+            
         
         
         return headerView

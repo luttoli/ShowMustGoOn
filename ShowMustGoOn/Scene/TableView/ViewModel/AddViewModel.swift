@@ -25,6 +25,20 @@ class AddViewModel {
     // 데이터 변경 알림
     var onCategoriesUpdated: (() -> Void)?
     
+    // section 추가
+    func addCategory(_ categoryTitle: String) {
+        guard !categoryTitle.isEmpty else { return } // 빈 값 방지
+        let newCategory = AddModel(id: UUID(), categoryTitle: categoryTitle, checkItem: [])
+        categories.append(newCategory)
+        onCategoriesUpdated?() // 데이터 변경 알림
+    }
+    
+    // section 삭제
+    func deleteCategory(_ id: UUID) {
+        categories.removeAll { $0.id == id }
+        onCategoriesUpdated?() // 데이터 변경 알림
+    }
+    
     // checkItem(cell) 추가
     func addCheckItem(categoryId: UUID, checkItemTitle: String) {
         // 카테고리 찾기
@@ -52,19 +66,5 @@ class AddViewModel {
             categories[categoryIndex].checkItem[checkItemIndex].isChecked.toggle()
             onCategoriesUpdated?() // 변경 알림
         }
-    }
-    
-    // section 추가
-    func addCategory(_ categoryTitle: String) {
-        guard !categoryTitle.isEmpty else { return } // 빈 값 방지
-        let newCategory = AddModel(id: UUID(), categoryTitle: categoryTitle, checkItem: [])
-        categories.append(newCategory)
-        onCategoriesUpdated?() // 데이터 변경 알림
-    }
-    
-    // section 삭제
-    func deleteCategory(_ id: UUID) {
-        categories.removeAll { $0.id == id }
-        onCategoriesUpdated?() // 데이터 변경 알림
     }
 }
