@@ -63,7 +63,8 @@ class RxAddViewModel {
     // 아이템 체크 토글
     func checkItemToggle(categoryId: UUID, checkItemId: UUID) {
         var datas = data.value
-        if let categoryIndex = datas.firstIndex(where: { $0.id == categoryId }), let checkItemIndex = datas[categoryIndex].items.firstIndex(where: { $0.checkItemId == checkItemId }) {
+        if let categoryIndex = datas.firstIndex(where: { $0.id == categoryId }),
+           let checkItemIndex = datas[categoryIndex].items.firstIndex(where: { $0.checkItemId == checkItemId }) {
             datas[categoryIndex].items[checkItemIndex].isChecked.toggle()
         }
         data.accept(datas)

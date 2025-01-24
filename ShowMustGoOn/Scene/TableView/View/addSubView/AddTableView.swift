@@ -279,7 +279,6 @@ extension AddTableView: UISearchBarDelegate {
     
     // 텍스트 변경될때 호출
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("텍스트 변경: \(searchText)")
         // 실시간 검색 필터링 처리 가능
     }
     

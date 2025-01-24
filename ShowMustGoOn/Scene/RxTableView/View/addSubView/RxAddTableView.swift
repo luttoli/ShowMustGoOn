@@ -99,19 +99,18 @@ extension RxAddTableView {
     }
     
     // 테이블뷰셀 데이터 바인딩 정리 - 재사용 가능성
-    func createDataSource() -> RxTableViewSectionedReloadDataSource<AddSection> {
+    private func createDataSource() -> RxTableViewSectionedReloadDataSource<AddSection> {
         return RxTableViewSectionedReloadDataSource<AddSection>(
             configureCell: { _, tableView, indexPath, item in
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: AddTableViewCell.identifier, for: indexPath) as? AddTableViewCell else { return UITableViewCell() }
                 cell.selectionStyle = .none
                 cell.checkItemTitle.text = item.checkItemTitle
-                cell.checkItemCheckboxButton.rx.tap
+                cell.checkItemCheckboxButton.rx.tap // cll checkItemButton 클릭
                     .withUnretained(self)
                     .subscribe(onNext: { owner, _ in
                         let categoryId = owner.viewModel.data.value[indexPath.section].id
                         let checkItemId = owner.viewModel.data.value[indexPath.section].items[indexPath.row].checkItemId
                         owner.viewModel.checkItemToggle(categoryId: categoryId, checkItemId: checkItemId)
-                        print(owner.viewModel.data.value)
                     })
                     .disposed(by: cell.disposeBag)
                 cell.configure(with: item)
