@@ -7,13 +7,13 @@
 
 import UIKit
 
-struct TodoModel {
+struct TodoTableModel {
     let title: String
     var isCompleted: Bool = false
 }
 
 // RxTodoCellData
-struct RxTodoCellData {
+struct RxTodoTableViewCellData {
     let title: String
     var isCompleted: Bool
     var textColor: UIColor

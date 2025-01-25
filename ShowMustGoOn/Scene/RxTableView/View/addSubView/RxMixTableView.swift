@@ -19,7 +19,7 @@ protocol RxMixTableViewDelegate: AnyObject {
 class RxMixTableView: UIView {
     // MARK: - Properties
     let disposeBag = DisposeBag()
-    let viewModel = RxMixViewModel()
+    let viewModel = RxMixTableViewModel()
     weak var delegate: RxMixTableViewDelegate?
     
     // MARK: - Components
@@ -59,7 +59,7 @@ private extension RxMixTableView {
 // MARK: - Method
 extension RxMixTableView {
     private func bindTableView() {
-        let dataSource = RxTableViewSectionedReloadDataSource<MixSection>(
+        let dataSource = RxTableViewSectionedReloadDataSource<MixTableSection>(
             configureCell: { dataSource, tableView, indexPath, item in
                 if indexPath.section == 0 {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: RxHorizontalTableViewCell.identifier, for: indexPath) as? RxHorizontalTableViewCell,

@@ -15,7 +15,7 @@ import SnapKit
 class RxAddTableView: UIView {
     // MARK: - Properties
     let disposeBag = DisposeBag()
-    let viewModel = RxAddViewModel()
+    let viewModel = RxAddTableViewModel()
     weak var parentViewController: UIViewController?
     
     // MARK: - Components
@@ -99,8 +99,8 @@ extension RxAddTableView {
     }
     
     // 테이블뷰셀 데이터 바인딩 정리 - 재사용 가능성
-    private func createDataSource() -> RxTableViewSectionedReloadDataSource<AddSection> {
-        return RxTableViewSectionedReloadDataSource<AddSection>(
+    private func createDataSource() -> RxTableViewSectionedReloadDataSource<AddTableSection> {
+        return RxTableViewSectionedReloadDataSource<AddTableSection>(
             configureCell: { _, tableView, indexPath, item in
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: AddTableViewCell.identifier, for: indexPath) as? AddTableViewCell else { return UITableViewCell() }
                 cell.selectionStyle = .none

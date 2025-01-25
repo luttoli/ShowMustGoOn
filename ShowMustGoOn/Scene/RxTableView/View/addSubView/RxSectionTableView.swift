@@ -15,9 +15,9 @@ import SnapKit
 class RxSectionTableView: UIView {
     // MARK: - Properties
     let disposeBag = DisposeBag()
-    let viewModel = RxSectionViewModel()
+    let viewModel = RxSectionTableViewModel()
     // RxDataSources 라이브러리를 사용하여 섹션 기반의 데이터를 테이블 뷰와 바인딩할 때 필요한 타입을 정의
-    typealias MultiplyDataSource = RxTableViewSectionedReloadDataSource<MultiplySection>
+    typealias MultiplyDataSource = RxTableViewSectionedReloadDataSource<MultiplyTableSection>
     
     // MARK: - Components
     let multiplicationTableView: UITableView = {

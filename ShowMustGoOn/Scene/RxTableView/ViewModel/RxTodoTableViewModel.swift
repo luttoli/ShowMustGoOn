@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class RxTodoListViewModel {
+class RxTodoTableViewModel {
     private let disposeBag = DisposeBag()
     
     // MARK: - 데이터 구조를 두개로 가져갈 때
@@ -72,18 +72,18 @@ class RxTodoListViewModel {
 //    }()
     
     // init 초기화 사용
-    let todoList: BehaviorRelay<[TodoModel]>
-    let rxTodoCellData: Observable<[RxTodoCellData]>
+    let todoList: BehaviorRelay<[TodoTableModel]>
+    let rxTodoCellData: Observable<[RxTodoTableViewCellData]>
 
     // 생성자에서 초기화
-    init(initialTodos: [TodoModel] = [TodoModel(title: "기본 값", isCompleted: true)]) {
+    init(initialTodos: [TodoTableModel] = [TodoTableModel(title: "기본 값", isCompleted: true)]) {
         self.todoList = BehaviorRelay(value: initialTodos)
 
         // rxTodoCellData 초기화
         self.rxTodoCellData = todoList
             .map { todos in
                 todos.map { todo in
-                    RxTodoCellData(
+                    RxTodoTableViewCellData(
                         title: todo.title,
                         isCompleted: todo.isCompleted,
                         textColor: todo.isCompleted ? .text.lavender : .text.black
@@ -95,7 +95,7 @@ class RxTodoListViewModel {
     // 새로운 Todo 추가
     func addTodoItem(title: String) {
         guard !title.isEmpty else { return }
-        let newTodo = TodoModel(title: title, isCompleted: false)
+        let newTodo = TodoTableModel(title: title, isCompleted: false)
         var updateList = todoList.value
         updateList.append(newTodo)
         todoList.accept(updateList)

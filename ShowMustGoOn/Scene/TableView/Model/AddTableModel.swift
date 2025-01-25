@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct AddModel {
+struct AddTableModel {
     let id: UUID
     let categoryTitle: String
     var checkItem: [CheckItem]
@@ -22,7 +22,7 @@ struct CheckItem {
 //
 import RxDataSources
 
-struct AddSection {
+struct AddTableSection {
     var id: UUID // 각 섹션의 고유 ID
     var header: String
     var items: [Item]
@@ -34,10 +34,10 @@ struct AddSection {
     }
 }
 
-extension AddSection: SectionModelType {
+extension AddTableSection: SectionModelType {
     typealias Item = CheckItem
     
-    init(original: AddSection, items: [Item]) {
+    init(original: AddTableSection, items: [Item]) {
         self = original
         self.items = items
     }

@@ -11,7 +11,7 @@ import SnapKit
 
 class HorizontalTableViewCell: UITableViewCell {
     // MARK: - Properties
-    var viewModel = MixViewModel()
+    var viewModel = MixTableViewModel()
     
     // MARK: - Components
     let horizontalNewsCollectionView: UICollectionView = {

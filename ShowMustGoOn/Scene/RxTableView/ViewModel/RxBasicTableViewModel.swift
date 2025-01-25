@@ -23,10 +23,10 @@ import RxSwift
 //}
 
 // init 초기화 사용
-class RxBasicViewModel {
+class RxBasicTableViewModel {
     let numbers: Observable<[String]>
     let titles: Observable<[String]>
-    let data: Observable<[BasicModel]>
+    let data: Observable<[BasicTableModel]>
     
     init() {
         self.numbers = Observable.of(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"])
@@ -35,7 +35,7 @@ class RxBasicViewModel {
         self.data = Observable
             .combineLatest(numbers, titles)
             .map { numbers, titles in
-                zip(numbers, titles).map { BasicModel(number: $0, title: $1) }
+                zip(numbers, titles).map { BasicTableModel(number: $0, title: $1) }
             }
     }
 }

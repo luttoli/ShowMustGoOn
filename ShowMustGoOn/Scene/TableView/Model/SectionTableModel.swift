@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct SectionModel {
+struct SectionTableModel {
     let frontNumber: Int
     let backNumber: Int
     let resultNumber: String
@@ -17,7 +17,7 @@ struct SectionModel {
 // RxDataSources에서 섹션을 나타낼 모델을 정의
 import RxDataSources
 
-struct MultiplySection {
+struct MultiplyTableSection {
     var header: String // 섹션 헤더 제목
     var items: [Item]  // 섹션에 포함된 데이터
     
@@ -27,10 +27,10 @@ struct MultiplySection {
     }
 }
 
-extension MultiplySection: SectionModelType {
-    typealias Item = SectionModel
+extension MultiplyTableSection: SectionModelType {
+    typealias Item = SectionTableModel
     
-    init(original: MultiplySection, items: [SectionModel]) {
+    init(original: MultiplyTableSection, items: [SectionTableModel]) {
         self = original
         self.items = items
     }

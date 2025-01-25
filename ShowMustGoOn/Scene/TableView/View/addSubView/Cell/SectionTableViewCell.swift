@@ -53,7 +53,7 @@ private extension SectionTableViewCell {
 
 // MARK: - Method
 extension SectionTableViewCell {
-    func configure(with model: SectionModel) {
+    func configure(with model: SectionTableModel) {
         frontNumberLabel.text = "\(model.frontNumber)"
         backNumberLabel.text = "\(model.backNumber)"
         resultNumberLabel.text = model.showResult ? "\(model.resultNumber)" : "?"

@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct BasicModel {
+struct BasicTableModel {
     let number: String
     let title: String
 }

@@ -11,7 +11,7 @@ import SnapKit
 
 class AddTableView: UIView {
     // MARK: - Properties
-    var viewModel = AddViewModel()
+    var viewModel = AddTableViewModel()
     weak var parentViewController: UIViewController?
     
     // MARK: - Components

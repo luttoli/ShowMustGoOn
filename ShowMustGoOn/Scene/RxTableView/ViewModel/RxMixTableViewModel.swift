@@ -1,19 +1,24 @@
 //
-//  MixViewModel.swift
+//  RxMixViewModel.swift
 //  ShowMustGoOn
 //
-//  Created by 김지훈 on 11/6/24.
+//  Created by 김지훈 on 1/7/25.
 //
 
 import UIKit
 
-class MixViewModel {
-    var eSportNews: [MixModel] = [
-        MixModel(mainImage: [
-            UIImage(named: "proveit"),
-            UIImage(named: "GENGDown"),
-            UIImage(named: "BLGDown"),
-        ], subNews: [
+import RxCocoa
+import RxSwift
+
+class RxMixTableViewModel {
+    let mixSections: Observable<[MixTableSection]>
+    
+    init() {
+        let mainImage = MixTableSection(items: [
+            [UIImage(named: "proveit"), UIImage(named: "GENGDown"), UIImage(named: "BLGDown")]
+        ])
+        
+        let subNews = MixTableSection(items: [
             SubNews(subImage: UIImage(named: "gumayusi"), subTitle: "[오피셜] T1, '구마유시' 이민형과 1년 재계약", url: "https://m.sports.naver.com/esports/article/442/0000177500?sid3=79b"),
             SubNews(subImage: UIImage(named: "oner"), subTitle: "[오피셜] T1, 정글러 '오너' 문현준과 2년 재계약", url: "https://m.sports.naver.com/esports/article/442/0000177447?sid3=79b"),
             SubNews(subImage: UIImage(named: "keria"), subTitle: "[오피셜] T1, 서포터 '케리아' 류민석과 2년 재계약", url: "https://m.sports.naver.com/esports/article/442/0000177387?sid3=79b"),
@@ -23,5 +28,7 @@ class MixViewModel {
             SubNews(subImage: UIImage(named: "4"), subTitle: "‘제오페구케’ 또 하나의 왕조…T1, 팬들 위해 ’엑소더스’ 막고 ‘왕조’ 사수 천명", url: "https://m.sports.naver.com/esports/article/109/0005189282?sid3=79b"),
             SubNews(subImage: UIImage(named: "5"), subTitle: "“페이커, 그는 GOAT”…美·中해설도 감탄한 우승 순간", url: "https://m.sports.naver.com/esports/article/005/0001735927?sid3=79b"),
         ])
-    ]
+        
+        self.mixSections = Observable.just([mainImage, subNews])
+    }
 }

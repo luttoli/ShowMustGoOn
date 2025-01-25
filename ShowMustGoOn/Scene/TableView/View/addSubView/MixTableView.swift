@@ -15,7 +15,7 @@ protocol MixTableViewDelegate: AnyObject {
 
 class MixTableView: UIView {
     // MARK: - Properties
-    var viewModel = MixViewModel()
+    var viewModel = MixTableViewModel()
     weak var delegate: MixTableViewDelegate?
     
     // MARK: - Components

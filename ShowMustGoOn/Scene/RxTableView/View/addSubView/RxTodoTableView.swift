@@ -14,7 +14,7 @@ import SnapKit
 class RxTodoTableView: UIView {
     // MARK: - Properties
     let disposeBag = DisposeBag()
-    let viewModel = RxTodoListViewModel()
+    let viewModel = RxTodoTableViewModel()
     
     // MARK: - Components
     var textField: UITextField = {

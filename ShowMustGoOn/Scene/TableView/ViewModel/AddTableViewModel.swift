@@ -7,10 +7,10 @@
 
 import UIKit
 
-class AddViewModel {
+class AddTableViewModel {
     // 섹션 데이터를 관리
-    private(set) var categories: [AddModel] = [
-        AddModel(id: UUID(),
+    private(set) var categories: [AddTableModel] = [
+        AddTableModel(id: UUID(),
                  categoryTitle: "T1",
                  checkItem: [
                     CheckItem(checkItemId: UUID(), checkItemTitle: "도란", isChecked: false),
@@ -28,7 +28,7 @@ class AddViewModel {
     // section 추가
     func addCategory(_ categoryTitle: String) {
         guard !categoryTitle.isEmpty else { return } // 빈 값 방지
-        let newCategory = AddModel(id: UUID(), categoryTitle: categoryTitle, checkItem: [])
+        let newCategory = AddTableModel(id: UUID(), categoryTitle: categoryTitle, checkItem: [])
         categories.append(newCategory)
         onCategoriesUpdated?() // 데이터 변경 알림
     }

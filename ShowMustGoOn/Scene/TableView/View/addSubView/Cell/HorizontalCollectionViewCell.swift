@@ -45,7 +45,7 @@ private extension HorizontalCollectionViewCell {
 
 // MARK: - Method
 extension HorizontalCollectionViewCell {
-    func configure(with mainNews: MixModel, at index: Int) {
+    func configure(with mainNews: MixTableModel, at index: Int) {
         newsImageView.image = mainNews.mainImage[index]
     }
 }

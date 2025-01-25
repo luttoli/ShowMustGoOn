@@ -11,7 +11,7 @@ import SnapKit
 
 class SectionTableView: UIView {
     // MARK: - Properties
-    private let viewModel = SectionViewModel()
+    private let viewModel = SectionTableViewModel()
     
     // MARK: - Components
     var multiplicationTableView: UITableView = {

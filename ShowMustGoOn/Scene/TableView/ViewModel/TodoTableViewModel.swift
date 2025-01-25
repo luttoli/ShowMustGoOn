@@ -7,10 +7,10 @@
 
 import UIKit
 
-class TodoViewModel {
+class TodoTableViewModel {
     // 데이터
-    var todoData: [TodoModel] = [
-        TodoModel(title: "기본 값", isCompleted: true)
+    var todoData: [TodoTableModel] = [
+        TodoTableModel(title: "기본 값", isCompleted: true)
     ]
     
     // 업데이트 체크
@@ -19,7 +19,7 @@ class TodoViewModel {
     // todo 추가
     func addTodo(title: String, isCompleted: Bool) {
         guard !title.isEmpty else { return }
-        let newTodo = TodoModel(title: title, isCompleted: isCompleted)
+        let newTodo = TodoTableModel(title: title, isCompleted: isCompleted)
         todoData.append(newTodo)
         onTodoUpdated?()
     }

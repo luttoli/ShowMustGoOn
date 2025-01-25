@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct MixModel {
+struct MixTableModel {
     let mainImage: [UIImage?]
     let subNews: [SubNews]
 }
@@ -21,7 +21,7 @@ struct SubNews {
 //
 import RxDataSources
 
-struct MixSection {
+struct MixTableSection {
     var items: [Item]
     
     init(items: [Item]) {
@@ -29,10 +29,10 @@ struct MixSection {
     }
 }
 
-extension MixSection: SectionModelType {
+extension MixTableSection: SectionModelType {
     typealias Item = Any
     
-    init(original: MixSection, items: [Item]) {
+    init(original: MixTableSection, items: [Item]) {
         self = original
         self.items = items
     }

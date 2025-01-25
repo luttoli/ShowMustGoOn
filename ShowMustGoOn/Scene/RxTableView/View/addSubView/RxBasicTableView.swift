@@ -14,7 +14,7 @@ import SnapKit
 class RxBasicTableView: UIView {
     // MARK: - Properties
     let disposeBag = DisposeBag()
-    let viewModel = RxBasicViewModel()
+    let viewModel = RxBasicTableViewModel()
     
     // MARK: - Components
     var rxBasicTableView: UITableView = {
@@ -60,7 +60,7 @@ extension RxBasicTableView {
             }
             .disposed(by: disposeBag)
         
-        rxBasicTableView.rx.modelSelected(BasicModel.self)
+        rxBasicTableView.rx.modelSelected(BasicTableModel.self)
             .subscribe(onNext: { model in
                 print("\(model.number). \(model.title)")
             })

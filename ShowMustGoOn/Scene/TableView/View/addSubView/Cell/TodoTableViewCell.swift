@@ -42,7 +42,7 @@ private extension TodoTableViewCell {
 
 // MARK: - Method
 extension TodoTableViewCell {
-    func configure(with model: TodoModel) {
+    func configure(with model: TodoTableModel) {
         title.text = model.title
         title.textColor = model.isCompleted ? .text.lavender : .text.black
     }

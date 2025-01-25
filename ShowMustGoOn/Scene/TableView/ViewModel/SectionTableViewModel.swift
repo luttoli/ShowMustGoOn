@@ -7,14 +7,14 @@
 
 import UIKit
 
-class SectionViewModel {
+class SectionTableViewModel {
     let frontNumbers = Array(2...9)
     let backNumbers = Array(1...9)
     
-    lazy var multiplyData: [[SectionModel]] = {
+    lazy var multiplyData: [[SectionTableModel]] = {
         return frontNumbers.map { front in
             backNumbers.map { back in
-                SectionModel(
+                SectionTableModel(
                     frontNumber: front,
                     backNumber: back,
                     resultNumber: "\(front * back)",

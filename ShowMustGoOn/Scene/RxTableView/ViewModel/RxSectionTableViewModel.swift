@@ -10,24 +10,24 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class RxSectionViewModel {
+class RxSectionTableViewModel {
     let disposeBag = DisposeBag()
     
     let frontNumbers = Array(2...9)
     let backNumbers = Array(1...9)
     
     // section 데이터 노출 로직
-    lazy var multiplySections: BehaviorRelay<[MultiplySection]> = {
+    lazy var multiplySections: BehaviorRelay<[MultiplyTableSection]> = {
         let sections = frontNumbers.map { front in
             let items = backNumbers.map { back in
-                SectionModel(
+                SectionTableModel(
                     frontNumber: front,
                     backNumber: back,
                     resultNumber: "\(front * back)",
                     showResult: false
                 )
             }
-            return MultiplySection(header: "\(front)단", items: items)
+            return MultiplyTableSection(header: "\(front)단", items: items)
         }
         return BehaviorRelay(value: sections)
     }()

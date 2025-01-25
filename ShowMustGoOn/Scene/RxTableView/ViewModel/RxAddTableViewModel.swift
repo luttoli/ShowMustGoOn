@@ -10,11 +10,11 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class RxAddViewModel {
+class RxAddTableViewModel {
     let disposeBag = DisposeBag()
     
-    var data = BehaviorRelay<[AddSection]>(value: [
-        AddSection(id: UUID(), header: "T1", items: [
+    var data = BehaviorRelay<[AddTableSection]>(value: [
+        AddTableSection(id: UUID(), header: "T1", items: [
             CheckItem(checkItemId: UUID(), checkItemTitle: "도란", isChecked: false),
             CheckItem(checkItemId: UUID(), checkItemTitle: "오너", isChecked: true),
             CheckItem(checkItemId: UUID(), checkItemTitle: "페이커", isChecked: true),
@@ -27,7 +27,7 @@ class RxAddViewModel {
     func addCategory(categoryTitle: String) {
         guard !categoryTitle.isEmpty else { return }
         var datas = data.value
-        let newCategory = AddSection(id: UUID(), header: categoryTitle, items: [])
+        let newCategory = AddTableSection(id: UUID(), header: categoryTitle, items: [])
         datas.append(newCategory)
         data.accept(datas)
     }

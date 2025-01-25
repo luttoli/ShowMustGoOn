@@ -11,7 +11,7 @@ import SnapKit
 
 class TodoTableView: UIView {
     // MARK: - Properties
-    var viewModel = TodoViewModel()
+    var viewModel = TodoTableViewModel()
     
     // MARK: - Components
     var textField: UITextField = {
