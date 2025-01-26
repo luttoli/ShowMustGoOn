@@ -1,15 +1,15 @@
 //
-//  BasicCollectionViewCell.swift
+//  VerticalCollectionViewCell.swift
 //  ShowMustGoOn
 //
-//  Created by 김지훈 on 1/24/25.
+//  Created by 김지훈 on 1/27/25.
 //
 
 import UIKit
 
 import SnapKit
 
-class BasicCollectionViewCell: UICollectionViewCell {
+class VerticalCollectionViewCell: UICollectionViewCell {
     // MARK: - Components
     let textLabel = CustomLabel(title: "", size: 20, weight: .Regular, color: .text.black)
     
@@ -24,7 +24,7 @@ class BasicCollectionViewCell: UICollectionViewCell {
 }
 
 // MARK: - SetUp
-private extension BasicCollectionViewCell {
+private extension VerticalCollectionViewCell {
     func setUp() {
         contentView.addSubview(textLabel)
         
@@ -35,8 +35,6 @@ private extension BasicCollectionViewCell {
 }
 
 // MARK: - Method
-extension BasicCollectionViewCell {
-    func configure(with text: String) {
-        textLabel.text = text
-    }
+extension VerticalCollectionViewCell {
+    
 }

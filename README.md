@@ -4,7 +4,7 @@
 ## 기본 설정
 - [SceneDelegate, AppDelegate](https://luttoli.notion.site/SceneDelegate-AppDelegate-17c0f60899b980e98010caa11103ee63?pvs=4)
 - [Extension](https://luttoli.notion.site/Extension-17c0f60899b9808382cee3e9a60820d3?pvs=4)
-- [Keybord Library - IQKeyboardManagerSwift](https://luttoli.notion.site/IQKeyboardManagerSwift-1640f60899b980cd8a99ed22aab0b3cf?pvs=4)
+- [Keyboard Library - IQKeyboardManagerSwift](https://luttoli.notion.site/IQKeyboardManagerSwift-1640f60899b980cd8a99ed22aab0b3cf?pvs=4)
 - [폰트 추가](https://luttoli.notion.site/219415e36423405a80588f77a0b62c88?pvs=4)
 
 
