@@ -17,12 +17,10 @@ class BasicCollectionView: UIView {
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(BasicCollectionViewCell.self, forCellWithReuseIdentifier: BasicCollectionViewCell.identifier)
-        collectionView.backgroundColor = .systemGray6
+        collectionView.backgroundColor = .clear
         
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
-        
-//        collectionView.isPagingEnabled = true
         return collectionView
     }()
     
@@ -67,6 +65,10 @@ extension BasicCollectionView: UICollectionViewDelegate, UICollectionViewDataSou
         return viewModel.keys[section].count
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: 0, height: 15)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BasicCollectionViewCell.identifier, for: indexPath) as? BasicCollectionViewCell else { return UICollectionViewCell() }
         
@@ -79,12 +81,33 @@ extension BasicCollectionView: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (collectionView.bounds.width - (9 * 5)) / 10
-        return CGSize(width: width, height: width + 5)
+        let spacing: CGFloat = 9 * 7
+        let width = (collectionView.bounds.width - spacing) / 10
+        return CGSize(width: width, height: width + 10)
     }
     
     // 좌우
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
+        return 7
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let key = viewModel.keys[indexPath.section][indexPath.row]
+        print(key)
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        // 섹션별 여백 조정
+        switch section {
+        case 0:
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        case 1:
+            return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        case 2:
+            return UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
+        default:
+            return UIEdgeInsets.zero
+        }
     }
 }

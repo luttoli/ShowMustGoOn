@@ -32,7 +32,7 @@ extension CollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .background.white
+        view.backgroundColor = .systemGray6
         
         navigationUI()
         setUp()
