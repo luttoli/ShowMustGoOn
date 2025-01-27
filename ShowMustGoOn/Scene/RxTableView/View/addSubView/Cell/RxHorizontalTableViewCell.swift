@@ -20,7 +20,7 @@ class RxHorizontalTableViewCell: UITableViewCell {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(HorizontalCollectionViewCell.self, forCellWithReuseIdentifier: HorizontalCollectionViewCell.identifier)
+        collectionView.register(HorizontalImageCollectionViewCell.self, forCellWithReuseIdentifier: HorizontalImageCollectionViewCell.identifier)
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isPagingEnabled = true
@@ -76,8 +76,8 @@ extension RxHorizontalTableViewCell {
     func configure(with images: [UIImage?]) {
         Observable.just(images)
             .bind(to: collectionView.rx.items(
-                cellIdentifier: HorizontalCollectionViewCell.identifier,
-                cellType: HorizontalCollectionViewCell.self
+                cellIdentifier: HorizontalImageCollectionViewCell.identifier,
+                cellType: HorizontalImageCollectionViewCell.self
             )) { index, image, cell in
                 cell.newsImageView.image = image
             }

@@ -26,7 +26,7 @@
 		B877DBDC2CD47374009D9C49 /* SectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBDB2CD47374009D9C49 /* SectionTableViewCell.swift */; };
 		B877DBE02CD99D02009D9C49 /* MixTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBDF2CD99D02009D9C49 /* MixTableView.swift */; };
 		B877DBE22CD9A47B009D9C49 /* HorizontalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBE12CD9A47B009D9C49 /* HorizontalTableViewCell.swift */; };
-		B877DBE42CD9B5F8009D9C49 /* HorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBE32CD9B5F8009D9C49 /* HorizontalCollectionViewCell.swift */; };
+		B877DBE42CD9B5F8009D9C49 /* HorizontalImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBE32CD9B5F8009D9C49 /* HorizontalImageCollectionViewCell.swift */; };
 		B877DBE62CD9B621009D9C49 /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBE52CD9B621009D9C49 /* UICollectionViewCell.swift */; };
 		B877DBE82CD9B96C009D9C49 /* VerticalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBE72CD9B96C009D9C49 /* VerticalTableViewCell.swift */; };
 		B877DBEA2CDAF506009D9C49 /* MixTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBE92CDAF506009D9C49 /* MixTableViewModel.swift */; };
@@ -84,7 +84,9 @@
 		B8E6F8D72D46850E00CDC1C4 /* SelectCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6F8D62D46850E00CDC1C4 /* SelectCollectionView.swift */; };
 		B8E6F8D92D4685C000CDC1C4 /* CalendarCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6F8D82D4685C000CDC1C4 /* CalendarCollectionView.swift */; };
 		B8E6F8DB2D4686E600CDC1C4 /* AddTodoCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6F8DA2D4686E600CDC1C4 /* AddTodoCollectionView.swift */; };
-		B8E6F8DD2D4689DD00CDC1C4 /* VerticalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6F8DC2D4689DD00CDC1C4 /* VerticalCollectionViewCell.swift */; };
+		B8E6F8DD2D4689DD00CDC1C4 /* BasicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6F8DC2D4689DD00CDC1C4 /* BasicCollectionViewCell.swift */; };
+		B8E6F8E12D4727B300CDC1C4 /* BasicCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6F8E02D4727B300CDC1C4 /* BasicCollectionModel.swift */; };
+		B8E6F8E32D4727C700CDC1C4 /* BasicCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6F8E22D4727C700CDC1C4 /* BasicCollectionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -120,7 +122,7 @@
 		B877DBDB2CD47374009D9C49 /* SectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTableViewCell.swift; sourceTree = "<group>"; };
 		B877DBDF2CD99D02009D9C49 /* MixTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixTableView.swift; sourceTree = "<group>"; };
 		B877DBE12CD9A47B009D9C49 /* HorizontalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalTableViewCell.swift; sourceTree = "<group>"; };
-		B877DBE32CD9B5F8009D9C49 /* HorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionViewCell.swift; sourceTree = "<group>"; };
+		B877DBE32CD9B5F8009D9C49 /* HorizontalImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		B877DBE52CD9B621009D9C49 /* UICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
 		B877DBE72CD9B96C009D9C49 /* VerticalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalTableViewCell.swift; sourceTree = "<group>"; };
 		B877DBE92CDAF506009D9C49 /* MixTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixTableViewModel.swift; sourceTree = "<group>"; };
@@ -172,7 +174,9 @@
 		B8E6F8D62D46850E00CDC1C4 /* SelectCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCollectionView.swift; sourceTree = "<group>"; };
 		B8E6F8D82D4685C000CDC1C4 /* CalendarCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionView.swift; sourceTree = "<group>"; };
 		B8E6F8DA2D4686E600CDC1C4 /* AddTodoCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoCollectionView.swift; sourceTree = "<group>"; };
-		B8E6F8DC2D4689DD00CDC1C4 /* VerticalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalCollectionViewCell.swift; sourceTree = "<group>"; };
+		B8E6F8DC2D4689DD00CDC1C4 /* BasicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCollectionViewCell.swift; sourceTree = "<group>"; };
+		B8E6F8E02D4727B300CDC1C4 /* BasicCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCollectionModel.swift; sourceTree = "<group>"; };
+		B8E6F8E22D4727C700CDC1C4 /* BasicCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCollectionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -450,7 +454,7 @@
 				B80B9F242D13F3B700052199 /* TodoTableViewCell.swift */,
 				B877DBDB2CD47374009D9C49 /* SectionTableViewCell.swift */,
 				B877DBE12CD9A47B009D9C49 /* HorizontalTableViewCell.swift */,
-				B877DBE32CD9B5F8009D9C49 /* HorizontalCollectionViewCell.swift */,
+				B877DBE32CD9B5F8009D9C49 /* HorizontalImageCollectionViewCell.swift */,
 				B877DBE72CD9B96C009D9C49 /* VerticalTableViewCell.swift */,
 				B877DC012CEAD977009D9C49 /* AddTableViewCell.swift */,
 			);
@@ -468,6 +472,7 @@
 		B8E6F8C52D43483400CDC1C4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B8E6F8E02D4727B300CDC1C4 /* BasicCollectionModel.swift */,
 				B8E6F8D22D44837000CDC1C4 /* KeyboardCollectionModel.swift */,
 			);
 			path = Model;
@@ -476,6 +481,7 @@
 		B8E6F8C62D43483B00CDC1C4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				B8E6F8E22D4727C700CDC1C4 /* BasicCollectionViewModel.swift */,
 				B8E6F8D02D43EEE300CDC1C4 /* KeyboardCollectionViewModel.swift */,
 			);
 			path = ViewModel;
@@ -506,7 +512,7 @@
 		B8E6F8C92D43487600CDC1C4 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				B8E6F8DC2D4689DD00CDC1C4 /* VerticalCollectionViewCell.swift */,
+				B8E6F8DC2D4689DD00CDC1C4 /* BasicCollectionViewCell.swift */,
 				B8E6F8CE2D43CF3F00CDC1C4 /* KeyboardCollectionViewCell.swift */,
 			);
 			path = Cell;
@@ -613,7 +619,7 @@
 				B8975F332CF06D6F008F2BA6 /* CustomButton.swift in Sources */,
 				B877DC022CEAD977009D9C49 /* AddTableViewCell.swift in Sources */,
 				B877DBC62CD30C2E009D9C49 /* CollectionViewController.swift in Sources */,
-				B8E6F8DD2D4689DD00CDC1C4 /* VerticalCollectionViewCell.swift in Sources */,
+				B8E6F8DD2D4689DD00CDC1C4 /* BasicCollectionViewCell.swift in Sources */,
 				B877DBF02CDDD942009D9C49 /* DetailMixViewController.swift in Sources */,
 				B80B9F252D13F3B700052199 /* TodoTableViewCell.swift in Sources */,
 				B80B9F1B2D101EE800052199 /* RxWeatherViewController.swift in Sources */,
@@ -642,6 +648,7 @@
 				B877DBC92CD32623009D9C49 /* BasicTableView.swift in Sources */,
 				B80B9F102D0D5E5F00052199 /* RxTodoTableView.swift in Sources */,
 				B8CD655B2CC8848900E8F8B3 /* UITableViewCell.swift in Sources */,
+				B8E6F8E32D4727C700CDC1C4 /* BasicCollectionViewModel.swift in Sources */,
 				B80B9F1D2D110B3A00052199 /* RxSectionTableViewModel.swift in Sources */,
 				B8CD65392CC0FD7100E8F8B3 /* TableViewController.swift in Sources */,
 				B8BDF7EF2D05DB0D0045FA94 /* RxButtonViewController.swift in Sources */,
@@ -654,6 +661,7 @@
 				B877DBDC2CD47374009D9C49 /* SectionTableViewCell.swift in Sources */,
 				B8CD653E2CC0FE8600E8F8B3 /* UIColor.swift in Sources */,
 				B8B9A1BF2D0930D4008D8130 /* RxMixViewController.swift in Sources */,
+				B8E6F8E12D4727B300CDC1C4 /* BasicCollectionModel.swift in Sources */,
 				B80B9F232D13BF3900052199 /* TodoTableView.swift in Sources */,
 				B8CD65442CC1038C00E8F8B3 /* CustomLabel.swift in Sources */,
 				B8E6F8D72D46850E00CDC1C4 /* SelectCollectionView.swift in Sources */,
@@ -666,7 +674,7 @@
 				B8E6F8CB2D4348AA00CDC1C4 /* BasicCollectionView.swift in Sources */,
 				B877DBCF2CD373D5009D9C49 /* BasicTableModel.swift in Sources */,
 				B8E6F8DB2D4686E600CDC1C4 /* AddTodoCollectionView.swift in Sources */,
-				B877DBE42CD9B5F8009D9C49 /* HorizontalCollectionViewCell.swift in Sources */,
+				B877DBE42CD9B5F8009D9C49 /* HorizontalImageCollectionViewCell.swift in Sources */,
 				B8E6F8BF2D39EAFF00CDC1C4 /* RxAddTableViewModel.swift in Sources */,
 				B8E6F8BA2D2CCDD800CDC1C4 /* RxMixTableViewModel.swift in Sources */,
 			);

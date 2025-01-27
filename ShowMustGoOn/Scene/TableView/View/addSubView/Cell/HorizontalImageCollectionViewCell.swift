@@ -1,5 +1,5 @@
 //
-//  HorizontalCollectionViewCell.swift
+//  HorizontalImageCollectionViewCell.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 11/5/24.
@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class HorizontalCollectionViewCell: UICollectionViewCell {
+class HorizontalImageCollectionViewCell: UICollectionViewCell {
     // MARK: - Components
     let newsImageView: UIImageView = {
         let newsImageView = UIImageView()
@@ -29,7 +29,7 @@ class HorizontalCollectionViewCell: UICollectionViewCell {
 }
 
 // MARK: - SetUp
-private extension HorizontalCollectionViewCell {
+private extension HorizontalImageCollectionViewCell {
     func setUp() {
         contentView.addSubview(newsImageView)
         
@@ -44,7 +44,7 @@ private extension HorizontalCollectionViewCell {
 }
 
 // MARK: - Method
-extension HorizontalCollectionViewCell {
+extension HorizontalImageCollectionViewCell {
     func configure(with mainNews: MixTableModel, at index: Int) {
         newsImageView.image = mainNews.mainImage[index]
     }

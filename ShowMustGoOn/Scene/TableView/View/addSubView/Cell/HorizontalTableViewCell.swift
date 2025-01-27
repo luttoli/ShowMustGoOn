@@ -18,7 +18,7 @@ class HorizontalTableViewCell: UITableViewCell {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let horizontalNewsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        horizontalNewsCollectionView.register(HorizontalCollectionViewCell.self, forCellWithReuseIdentifier: HorizontalCollectionViewCell.identifier)
+        horizontalNewsCollectionView.register(HorizontalImageCollectionViewCell.self, forCellWithReuseIdentifier: HorizontalImageCollectionViewCell.identifier)
         horizontalNewsCollectionView.backgroundColor = .clear
         horizontalNewsCollectionView.showsHorizontalScrollIndicator = false
         horizontalNewsCollectionView.isPagingEnabled = true
@@ -107,7 +107,7 @@ extension HorizontalTableViewCell: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HorizontalCollectionViewCell.identifier, for: indexPath) as? HorizontalCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HorizontalImageCollectionViewCell.identifier, for: indexPath) as? HorizontalImageCollectionViewCell else { return UICollectionViewCell() }
         
         let model = viewModel.eSportNews[0]
         cell.configure(with: model, at: indexPath.row)
