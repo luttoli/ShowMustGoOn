@@ -14,10 +14,11 @@ class CollectionViewController: UIViewController {
     
     
     // MARK: - Components
-    let segment = CustomSegment(items: ["반반", "선택", "키보드", "달력", "추가"])
+    let segment = CustomSegment(items: ["반반", "선택", "키보드", "계산기", "달력", "추가"])
     let basicCollectionView = BasicCollectionView()
     let selectCollectionView = SelectCollectionView()
     let keyboardCollectionView = KeyboardCollectionView()
+    let calculateCollectionView = CalculateCollectionView()
     let calendarCollectionView = CalendarCollectionView()
     let addTodoCollectionView = AddTodoCollectionView()
     
@@ -36,7 +37,7 @@ extension CollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = .background.white
         
         navigationUI()
         setUp()
@@ -126,7 +127,7 @@ private extension CollectionViewController {
         segment.selectedIndex
             .subscribe(onNext: { index in
                 // 모든 뷰 숨김 처리
-                let segmentView = [self.basicCollectionView, self.selectCollectionView, self.keyboardCollectionView, self.calendarCollectionView, self.addTodoCollectionView]
+                let segmentView = [self.basicCollectionView, self.selectCollectionView, self.keyboardCollectionView, self.calculateCollectionView, self.calendarCollectionView, self.addTodoCollectionView]
                 segmentView.forEach { $0.isHidden = true }
                 
                 // 선택된 세그먼트에 따라 해당 뷰만 보이게
@@ -138,8 +139,10 @@ private extension CollectionViewController {
                 case 2:
                     self.keyboardCollectionView.isHidden = false
                 case 3:
-                    self.calendarCollectionView.isHidden = false
+                    self.calculateCollectionView.isHidden = false
                 case 4:
+                    self.calendarCollectionView.isHidden = false
+                case 5:
                     self.addTodoCollectionView.isHidden = false
                 default:
                     break

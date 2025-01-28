@@ -1,17 +1,17 @@
 //
-//  KeyboardCollectionViewCell.swift
+//  SelectCollectionViewCell.swift
 //  ShowMustGoOn
 //
-//  Created by 김지훈 on 1/24/25.
+//  Created by 김지훈 on 1/28/25.
 //
 
 import UIKit
 
 import SnapKit
 
-class KeyboardCollectionViewCell: UICollectionViewCell {
+class SelectCollectionViewCell: UICollectionViewCell {
     // MARK: - Components
-    let textLabel = CustomLabel(title: "", size: Constants.size.size20, weight: .Regular, color: .text.black)
+    let textLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,10 +24,10 @@ class KeyboardCollectionViewCell: UICollectionViewCell {
 }
 
 // MARK: - SetUp
-private extension KeyboardCollectionViewCell {
+private extension SelectCollectionViewCell {
     func setUp() {
         contentView.addSubview(textLabel)
-        
+
         textLabel.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
         }
@@ -35,8 +35,8 @@ private extension KeyboardCollectionViewCell {
 }
 
 // MARK: - Method
-extension KeyboardCollectionViewCell {
-    func configure(with text: String) {
-        textLabel.text = text
+extension SelectCollectionViewCell {
+    func configure(with model: SelectCollectionModel) {
+        textLabel.text = model.menuTitle
     }
 }

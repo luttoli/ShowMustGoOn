@@ -7,6 +7,8 @@
 
 import UIKit
 
+import SnapKit
+
 class BasicCollectionView: UIView {
     // MARK: - Properties
     let viewModel = BasicCollectionViewModel()
@@ -91,9 +93,7 @@ extension BasicCollectionView: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BasicCollectionViewCell.identifier, for: indexPath) as? BasicCollectionViewCell else {
-            return UICollectionViewCell()
-        }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BasicCollectionViewCell.identifier, for: indexPath) as? BasicCollectionViewCell else { return UICollectionViewCell() }
         cell.colorView.backgroundColor = .background.lavender
         cell.configure(with: viewModel.number[indexPath.row])
         return cell

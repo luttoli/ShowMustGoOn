@@ -17,7 +17,7 @@ class BasicCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    let textLabel = CustomLabel(title: "", size: 20, weight: .Regular, color: .text.black)
+    let textLabel = CustomLabel(title: "", size: Constants.size.size20, weight: .Regular, color: .text.black)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
