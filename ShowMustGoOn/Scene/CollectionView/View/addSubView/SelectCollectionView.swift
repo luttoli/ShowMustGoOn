@@ -28,7 +28,7 @@ class SelectCollectionView: UIView {
         return tagCollectionView
     }()
     
-    var seletedIngredient = CustomLabel(title: "선택된 재료:", size: Constants.size.size18, weight: .Regular, color: .text.black)
+    var selectedIngredientLabel = CustomLabel(title: "선택한 재료: 없음", size: Constants.size.size12, weight: .Regular, color: .text.lavender)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,16 +44,16 @@ class SelectCollectionView: UIView {
 private extension SelectCollectionView {
     func setUp() {
         addSubview(tagCollectionView)
-        addSubview(seletedIngredient)
+        addSubview(selectedIngredientLabel)
         
         tagCollectionView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(seletedIngredient.snp.top).offset(-10)
+            $0.bottom.equalTo(selectedIngredientLabel.snp.top).offset(-10)
         }
         tagCollectionView.delegate = self
         tagCollectionView.dataSource = self
         
-        seletedIngredient.snp.makeConstraints {
+        selectedIngredientLabel.snp.makeConstraints {
             $0.leading.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
@@ -99,11 +99,22 @@ extension SelectCollectionView: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectCollectionViewCell.identifier, for: indexPath) as? SelectCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectCollectionViewCell.identifier, for: indexPath) as? SelectCollectionViewCell else {
+            return UICollectionViewCell()
+        }
         
+        // 셀 기본 초기화
         cell.layer.cornerRadius = cell.frame.height / 2
-        cell.backgroundColor = .button.lightGray
         cell.configure(with: viewModel.ingredients[indexPath.row])
+        
+        // 선택 여부에 따라 셀 스타일 업데이트
+        if viewModel.selectIndexPath.contains(indexPath) {
+            cell.backgroundColor = .cell.lavender
+            cell.textLabel.textColor = .text.white
+        } else {
+            cell.backgroundColor = .cell.lightGray
+            cell.textLabel.textColor = .text.black
+        }
         return cell
     }
     
@@ -124,7 +135,6 @@ extension SelectCollectionView: UICollectionViewDelegate, UICollectionViewDataSo
         if text.count == 1 {
             width += 10
         }
-        
         return CGSize(width: width, height: height)
     }
     
@@ -136,6 +146,28 @@ extension SelectCollectionView: UICollectionViewDelegate, UICollectionViewDataSo
     // 상하
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 25
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? SelectCollectionViewCell else { return }
+        
+        if let selectedIndex = viewModel.selectIndexPath.firstIndex(of: indexPath) {
+            viewModel.selectIndexPath.remove(at: selectedIndex)
+            viewModel.selectIngredient.remove(at: selectedIndex)
+            cell.backgroundColor = .cell.lightGray
+            cell.textLabel.textColor = .text.black
+            selectedIngredientLabel.text = "선택한 재료: \(viewModel.selectIngredient.joined(separator: ", "))"
+            if viewModel.selectIngredient.isEmpty {
+                selectedIngredientLabel.text = "선택한 재료: 없음"
+            }
+        } else {
+            viewModel.selectIndexPath.append(indexPath)
+            let selectedIngredient = viewModel.ingredients[indexPath.row].menuTitle
+            viewModel.selectIngredient.append(selectedIngredient)
+            cell.backgroundColor = .cell.lavender
+            cell.textLabel.textColor = .text.white
+            selectedIngredientLabel.text = "선택한 재료: \(viewModel.selectIngredient.joined(separator: ", "))"
+        }
     }
 }
 
@@ -164,7 +196,6 @@ class LeftAlignedFlowLayout: UICollectionViewFlowLayout {
             leftMargin += layoutAttribute.frame.width + minimumInteritemSpacing
             maxY = max(layoutAttribute.frame.maxY, maxY)
         }
-
         return attributes
     }
 }
