@@ -20,12 +20,15 @@ class SelectCollectionView: UIView {
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         let tagCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         tagCollectionView.isPrefetchingEnabled = true
+        tagCollectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,withReuseIdentifier: "header")
         tagCollectionView.register(SelectCollectionViewCell.self, forCellWithReuseIdentifier: SelectCollectionViewCell.identifier)
         tagCollectionView.backgroundColor = .clear
         tagCollectionView.showsHorizontalScrollIndicator = false
         tagCollectionView.showsVerticalScrollIndicator = false
         return tagCollectionView
     }()
+    
+    var seletedIngredient = CustomLabel(title: "선택된 재료:", size: Constants.size.size18, weight: .Regular, color: .text.black)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,18 +44,19 @@ class SelectCollectionView: UIView {
 private extension SelectCollectionView {
     func setUp() {
         addSubview(tagCollectionView)
-
+        addSubview(seletedIngredient)
         
         tagCollectionView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide)
-            $0.leading.equalTo(safeAreaLayoutGuide)
-            $0.trailing.equalTo(safeAreaLayoutGuide)
-            $0.height.equalTo(safeAreaLayoutGuide)
+            $0.top.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(seletedIngredient.snp.top).offset(-10)
         }
         tagCollectionView.delegate = self
         tagCollectionView.dataSource = self
         
-
+        seletedIngredient.snp.makeConstraints {
+            $0.leading.equalToSuperview()
+            $0.bottom.equalToSuperview()
+        }
     }
 }
 
@@ -63,6 +67,33 @@ extension SelectCollectionView {
 
 // MARK: - delegate
 extension SelectCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            // 재사용 가능한 헤더 뷰 생성
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                withReuseIdentifier: "header", for: indexPath)
+            
+            header.subviews.forEach { $0.removeFromSuperview() } // 기존 서브뷰 제거 (중복 추가 방지)
+            
+            let titleLabel = UILabel()
+            titleLabel.text = "재료 선택"
+            titleLabel.font = UIFont.toPretendard(size: Constants.size.size18, weight: .Regular)
+            titleLabel.textColor = .black
+            
+            header.addSubview(titleLabel)
+            titleLabel.snp.makeConstraints {
+                $0.leading.top.equalToSuperview()
+            }
+            
+            return header
+        }
+        return UICollectionReusableView()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: Constants.size.size40)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.ingredients.count
     }
@@ -118,6 +149,12 @@ class LeftAlignedFlowLayout: UICollectionViewFlowLayout {
         var maxY: CGFloat = -1.0
 
         for layoutAttribute in attributes {
+            // 헤더나 풋터는 위치 조정을 하지 않음
+            if layoutAttribute.representedElementKind == UICollectionView.elementKindSectionHeader ||
+               layoutAttribute.representedElementKind == UICollectionView.elementKindSectionFooter {
+                continue
+            }
+
             // 동일한 줄의 아이템은 정렬
             if layoutAttribute.frame.origin.y >= maxY {
                 leftMargin = sectionInset.left
