@@ -18,9 +18,9 @@ class TodoTableView: UIView {
         let textField = UITextField()
         textField.placeholder = "여기에 입력하세요."
         textField.borderStyle = .roundedRect
-        textField.font = .systemFont(ofSize: Constants.size.size15)
+        textField.font = .toPretendard(size: Constants.size.size15, weight: .Regular)
         textField.backgroundColor = .systemBackground
-        textField.textColor = .label
+        textField.textColor = .text.black
         textField.clearButtonMode = .whileEditing
         return textField
     }()
@@ -54,7 +54,7 @@ private extension TodoTableView {
         
         textField.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).offset(Constants.size.size20)
-            $0.leading.equalToSuperview().offset(Constants.size.size20)
+            $0.leading.equalTo(safeAreaLayoutGuide).offset(Constants.size.size20)
             $0.trailing.equalTo(addButton.snp.leading).offset(-Constants.size.size10)
             $0.height.equalTo(Constants.size.size40)
         }
