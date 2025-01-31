@@ -8,38 +8,10 @@
 import UIKit
 
 class KeyboardCollectionViewModel {
-//    var firstKey: [KeyboardCollectionModel] = {
-//        let first = ["ㅂ", "ㅈ", "ㄷ", "ㄱ", "ㅅ", "ㅛ", "ㅕ", "ㅑ", "ㅐ", "ㅔ"]
-//        
-//        return first.map {
-//            KeyboardCollectionModel(textKey: $0)
-//        }
-//    }()
-//    
-//    var secondKey: [KeyboardCollectionModel] = {
-//        let second = ["ㅁ", "ㄴ", "ㅇ", "ㄹ", "ㅎ", "ㅗ", "ㅓ", "ㅏ", "ㅣ"]
-//        
-//        return second.map {
-//            KeyboardCollectionModel(textKey: $0)
-//        }
-//    }()
-//    
-//    var thirdKey: [KeyboardCollectionModel] = {
-//        let third = ["ㅋ", "ㅌ", "ㅊ", "ㅍ", "ㅠ", "ㅜ", "ㅡ"]
-//        
-//        return third.map {
-//            KeyboardCollectionModel(textKey: $0)
-//        }
-//    }()
-    
-    var keys: [[String]] = [
-        ["ㅂ", "ㅈ", "ㄷ", "ㄱ", "ㅅ", "ㅛ", "ㅕ", "ㅑ", "ㅐ", "ㅔ"],
-        ["ㅁ", "ㄴ", "ㅇ", "ㄹ", "ㅎ", "ㅗ", "ㅓ", "ㅏ", "ㅣ"],
-        ["^", "ㅋ", "ㅌ", "ㅊ", "ㅍ", "ㅠ", "ㅜ", "ㅡ", "⌫"],
-        ["스페이스"]
-    ]
-    
-    var shiftKey: [[String]] = [
-        ["ㅃ", "ㅉ", "ㄸ", "ㄲ", "ㅆ", "ㅛ", "ㅕ", "ㅑ", "ㅒ", "ㅖ"],
+    var keys: [[KeyboardCollectionModel]] = [
+        [ "ㅂ", "ㅈ", "ㄷ", "ㄱ", "ㅅ", "ㅛ", "ㅕ", "ㅑ", "ㅐ", "ㅔ" ].map { KeyboardCollectionModel(textKey: $0) },
+        [ "ㅁ", "ㄴ", "ㅇ", "ㄹ", "ㅎ", "ㅗ", "ㅓ", "ㅏ", "ㅣ" ].map { KeyboardCollectionModel(textKey: $0) },
+        [ "^", "ㅋ", "ㅌ", "ㅊ", "ㅍ", "ㅠ", "ㅜ", "ㅡ", "⌫" ].map { KeyboardCollectionModel(textKey: $0) },
+        [ "스페이스" ].map { KeyboardCollectionModel(textKey: $0) }
     ]
 }

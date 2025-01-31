@@ -16,7 +16,7 @@ class KeyboardCollectionView: UIView {
         let textField = UITextField()
         textField.placeholder = "여기에 입력하세요."
         textField.borderStyle = .roundedRect
-        textField.font = .toPretendard(size: Constants.size.size25, weight: .Regular)
+        textField.font = .toPretendard(size: Constants.size.size15, weight: .Regular)
         textField.backgroundColor = .systemBackground
         textField.textColor = .text.black
         textField.clearButtonMode = .whileEditing
@@ -93,9 +93,9 @@ extension KeyboardCollectionView: UICollectionViewDelegate, UICollectionViewData
         cell.layer.cornerRadius = Constants.radius.px4
         
         let key = viewModel.keys[indexPath.section][indexPath.row]
-        cell.configure(with: key)
+        cell.configure(with: key.textKey)
         
-        if key == "^" || key == "⌫" {
+        if key.textKey == "^" || key.textKey == "⌫" {
             cell.backgroundColor = .systemGray4
         } else {
             cell.backgroundColor = .background.white
@@ -122,14 +122,12 @@ extension KeyboardCollectionView: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let key = viewModel.keys[indexPath.section][indexPath.row]
         
-        if key == "⌫" {
-            if let text = textField.text, !text.isEmpty {
-                textField.text = String(text.dropLast())
-            }
-        } else if key == "스페이스" {
-            textField.text = (textField.text ?? "") + " "
+        if key.textKey == "⌫" {
+            textField.deleteBackward()
+        } else if key.textKey == "스페이스" {
+            textField.insertText(" ")
         } else {
-            textField.text = (textField.text ?? "") + key
+            textField.insertText(key.textKey)
         }
     }
     
