@@ -107,7 +107,7 @@ extension RxHorizontalTableViewCell {
 
     @objc private func scrollToNext() {
         let currentOffset = collectionView.contentOffset.x
-        let nextOffset = currentOffset + collectionView.frame.width
+        let nextOffset = currentOffset + collectionView.bounds.width
         if nextOffset < collectionView.contentSize.width {
             collectionView.setContentOffset(CGPoint(x: nextOffset, y: 0), animated: true)
         } else {

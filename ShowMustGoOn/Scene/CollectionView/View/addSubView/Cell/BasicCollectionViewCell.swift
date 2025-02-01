@@ -47,7 +47,7 @@ private extension BasicCollectionViewCell {
 
 // MARK: - Method
 extension BasicCollectionViewCell {
-    func configure(with model: BasicCollectionModel) {
-        textLabel.text = model.number
+    func configure(with number: String) {
+        textLabel.text = number
     }
 }

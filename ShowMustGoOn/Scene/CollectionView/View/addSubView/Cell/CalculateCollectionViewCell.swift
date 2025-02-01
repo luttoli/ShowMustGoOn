@@ -1,17 +1,17 @@
 //
-//  KeyboardCollectionViewCell.swift
+//  CalculateCollectionViewCell.swift
 //  ShowMustGoOn
 //
-//  Created by 김지훈 on 1/24/25.
+//  Created by 김지훈 on 1/31/25.
 //
 
 import UIKit
 
 import SnapKit
 
-class KeyboardCollectionViewCell: UICollectionViewCell {
+class CalculateCollectionViewCell: UICollectionViewCell {
     // MARK: - Components
-    let textLabel = CustomLabel(title: "", size: Constants.size.size20, weight: .Regular, color: .text.black)
+    let keyPadLabel = CustomLabel(title: "", size: Constants.size.size30, weight: .Regular, color: .text.white)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,24 +24,24 @@ class KeyboardCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        textLabel.text = nil
+        keyPadLabel.text = nil
     }
 }
 
 // MARK: - SetUp
-private extension KeyboardCollectionViewCell {
+private extension CalculateCollectionViewCell {
     func setUp() {
-        contentView.addSubview(textLabel)
+        contentView.addSubview(keyPadLabel)
         
-        textLabel.snp.makeConstraints {
+        keyPadLabel.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
         }
     }
 }
 
 // MARK: - Method
-extension KeyboardCollectionViewCell {
+extension CalculateCollectionViewCell {
     func configure(with text: String) {
-        textLabel.text = text
+        keyPadLabel.text = text
     }
 }

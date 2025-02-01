@@ -36,7 +36,7 @@ private extension SelectCollectionViewCell {
 
 // MARK: - Method
 extension SelectCollectionViewCell {
-    func configure(with model: SelectCollectionModel) {
-        textLabel.text = model.menuTitle
+    func configure(with menuTitle: String) {
+        textLabel.text = menuTitle
     }
 }

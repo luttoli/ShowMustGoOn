@@ -89,13 +89,13 @@ extension BasicCollectionView {
 // MARK: - delegate
 extension BasicCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.number.count
+        return viewModel.numbers.number.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BasicCollectionViewCell.identifier, for: indexPath) as? BasicCollectionViewCell else { return UICollectionViewCell() }
         cell.colorView.backgroundColor = .background.lavender
-        cell.configure(with: viewModel.number[indexPath.row])
+        cell.configure(with: viewModel.numbers.number[indexPath.row])
         return cell
     }
     
@@ -103,10 +103,10 @@ extension BasicCollectionView: UICollectionViewDelegate, UICollectionViewDataSou
         let spacing: CGFloat = 1 * 2
         
         if collectionView == verticalCollectionView {
-            let width = (collectionView.frame.width - spacing) / 3
+            let width = (collectionView.bounds.width - spacing) / 3
             return CGSize(width: width, height: width)
         } else {
-            let width = (collectionView.frame.height - spacing) / 3
+            let width = (collectionView.bounds.height - spacing) / 3
             return CGSize(width: width, height: width)
         }
     }

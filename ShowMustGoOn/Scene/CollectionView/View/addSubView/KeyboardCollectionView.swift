@@ -7,6 +7,8 @@
 
 import UIKit
 
+import SnapKit
+
 class KeyboardCollectionView: UIView {
     // MARK: - Properties
     private let viewModel = KeyboardCollectionViewModel()
@@ -76,11 +78,11 @@ extension KeyboardCollectionView {
 // MARK: - delegate
 extension KeyboardCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return viewModel.keys.count
+        return viewModel.keys.textKey.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.keys[section].count
+        return viewModel.keys.textKey[section].count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
@@ -90,16 +92,16 @@ extension KeyboardCollectionView: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KeyboardCollectionViewCell.identifier, for: indexPath) as? KeyboardCollectionViewCell else { return UICollectionViewCell() }
         
+        let key = viewModel.keys.textKey[indexPath.section][indexPath.row]
         cell.layer.cornerRadius = Constants.radius.px4
         
-        let key = viewModel.keys[indexPath.section][indexPath.row]
-        cell.configure(with: key.textKey)
-        
-        if key.textKey == "^" || key.textKey == "⌫" {
+        if key == "^" || key == "⌫" {
             cell.backgroundColor = .systemGray4
         } else {
             cell.backgroundColor = .background.white
         }
+        
+        cell.configure(with: key)
         return cell
     }
     
@@ -120,14 +122,14 @@ extension KeyboardCollectionView: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let key = viewModel.keys[indexPath.section][indexPath.row]
+        let key = viewModel.keys.textKey[indexPath.section][indexPath.row]
         
-        if key.textKey == "⌫" {
+        if key == "⌫" {
             textField.deleteBackward()
-        } else if key.textKey == "스페이스" {
+        } else if key == "스페이스" {
             textField.insertText(" ")
         } else {
-            textField.insertText(key.textKey)
+            textField.insertText(key)
         }
     }
     

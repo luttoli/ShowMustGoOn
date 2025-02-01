@@ -91,11 +91,11 @@ extension SelectCollectionView: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: Constants.size.size40)
+        return CGSize(width: collectionView.bounds.width, height: Constants.size.size40)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.ingredients.count
+        return viewModel.ingredients.menuTitle.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -105,7 +105,7 @@ extension SelectCollectionView: UICollectionViewDelegate, UICollectionViewDataSo
         
         // 셀 기본 초기화
         cell.layer.cornerRadius = cell.frame.height / 2
-        cell.configure(with: viewModel.ingredients[indexPath.row])
+        cell.configure(with: viewModel.ingredients.menuTitle[indexPath.row])
         
         // 선택 여부에 따라 셀 스타일 업데이트
         if viewModel.selectIndexPath.contains(indexPath) {
@@ -119,20 +119,19 @@ extension SelectCollectionView: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let model = viewModel.ingredients[indexPath.row]
-        let text = model.menuTitle
+        let title = viewModel.ingredients.menuTitle[indexPath.row]
         
         // 임시 UILabel 생성 후 텍스트 길이 계산
         let label = UILabel()
         label.font = UIFont.toPretendard(size: Constants.size.size15, weight: .Regular)
-        label.text = text
+        label.text = title
         let textSize = label.intrinsicContentSize
         
         // 텍스트 크기에 패딩 추가
         var width = textSize.width + 26
         let height = textSize.height + 20
         
-        if text.count == 1 {
+        if title.count == 1 {
             width += 10
         }
         return CGSize(width: width, height: height)
@@ -162,7 +161,7 @@ extension SelectCollectionView: UICollectionViewDelegate, UICollectionViewDataSo
             }
         } else {
             viewModel.selectIndexPath.append(indexPath)
-            let selectedIngredient = viewModel.ingredients[indexPath.row].menuTitle
+            let selectedIngredient = viewModel.ingredients.menuTitle[indexPath.row]
             viewModel.selectIngredient.append(selectedIngredient)
             cell.backgroundColor = .cell.lavender
             cell.textLabel.textColor = .text.white

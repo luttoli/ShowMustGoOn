@@ -16,6 +16,9 @@
 		B80B9F232D13BF3900052199 /* TodoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80B9F222D13BF3900052199 /* TodoTableView.swift */; };
 		B80B9F252D13F3B700052199 /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80B9F242D13F3B700052199 /* TodoTableViewCell.swift */; };
 		B80B9F272D13F5F500052199 /* TodoTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80B9F262D13F5F500052199 /* TodoTableViewModel.swift */; };
+		B867451C2D4C6A370033AEC9 /* CalculateCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867451B2D4C6A360033AEC9 /* CalculateCollectionModel.swift */; };
+		B867451E2D4C6A430033AEC9 /* CalculateCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867451D2D4C6A430033AEC9 /* CalculateCollectionViewModel.swift */; };
+		B86745202D4CB6B90033AEC9 /* CalculateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867451F2D4CB6B90033AEC9 /* CalculateCollectionViewCell.swift */; };
 		B877DBC62CD30C2E009D9C49 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBC52CD30C2E009D9C49 /* CollectionViewController.swift */; };
 		B877DBC92CD32623009D9C49 /* BasicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBC82CD32623009D9C49 /* BasicTableView.swift */; };
 		B877DBCF2CD373D5009D9C49 /* BasicTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877DBCE2CD373D5009D9C49 /* BasicTableModel.swift */; };
@@ -116,6 +119,9 @@
 		B80B9F222D13BF3900052199 /* TodoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableView.swift; sourceTree = "<group>"; };
 		B80B9F242D13F3B700052199 /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
 		B80B9F262D13F5F500052199 /* TodoTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewModel.swift; sourceTree = "<group>"; };
+		B867451B2D4C6A360033AEC9 /* CalculateCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateCollectionModel.swift; sourceTree = "<group>"; };
+		B867451D2D4C6A430033AEC9 /* CalculateCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateCollectionViewModel.swift; sourceTree = "<group>"; };
+		B867451F2D4CB6B90033AEC9 /* CalculateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateCollectionViewCell.swift; sourceTree = "<group>"; };
 		B877DBC52CD30C2E009D9C49 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		B877DBC82CD32623009D9C49 /* BasicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTableView.swift; sourceTree = "<group>"; };
 		B877DBCE2CD373D5009D9C49 /* BasicTableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTableModel.swift; sourceTree = "<group>"; };
@@ -483,6 +489,7 @@
 				B8E6F8E02D4727B300CDC1C4 /* BasicCollectionModel.swift */,
 				B8E6F8E62D4878D300CDC1C4 /* SelectCollectionModel.swift */,
 				B8E6F8D22D44837000CDC1C4 /* KeyboardCollectionModel.swift */,
+				B867451B2D4C6A360033AEC9 /* CalculateCollectionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -493,6 +500,7 @@
 				B8E6F8E22D4727C700CDC1C4 /* BasicCollectionViewModel.swift */,
 				B8E6F8E42D4878B700CDC1C4 /* SelectCollectionViewModel.swift */,
 				B8E6F8D02D43EEE300CDC1C4 /* KeyboardCollectionViewModel.swift */,
+				B867451D2D4C6A430033AEC9 /* CalculateCollectionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -526,6 +534,7 @@
 				B8E6F8DC2D4689DD00CDC1C4 /* BasicCollectionViewCell.swift */,
 				B8E6F8E82D4879CA00CDC1C4 /* SelectCollectionViewCell.swift */,
 				B8E6F8CE2D43CF3F00CDC1C4 /* KeyboardCollectionViewCell.swift */,
+				B867451F2D4CB6B90033AEC9 /* CalculateCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -637,6 +646,7 @@
 				B80B9F252D13F3B700052199 /* TodoTableViewCell.swift in Sources */,
 				B80B9F1B2D101EE800052199 /* RxWeatherViewController.swift in Sources */,
 				B8B9A1B72D086AA6008D8130 /* RxBasicTableView.swift in Sources */,
+				B86745202D4CB6B90033AEC9 /* CalculateCollectionViewCell.swift in Sources */,
 				B80B9F212D13BEA000052199 /* TodoTableModel.swift in Sources */,
 				B877DBEA2CDAF506009D9C49 /* MixTableViewModel.swift in Sources */,
 				B8CD655D2CC8879800E8F8B3 /* BasicTableViewCell.swift in Sources */,
@@ -649,6 +659,7 @@
 				B8CD65292CC0FC5C00E8F8B3 /* SceneDelegate.swift in Sources */,
 				B8975F392CFE936A008F2BA6 /* RxTableViewController.swift in Sources */,
 				B8E6F8E72D4878D300CDC1C4 /* SelectCollectionModel.swift in Sources */,
+				B867451E2D4C6A430033AEC9 /* CalculateCollectionViewModel.swift in Sources */,
 				B8B9A1AB2D06763C008D8130 /* RxTextFieldViewController.swift in Sources */,
 				B80B9F272D13F5F500052199 /* TodoTableViewModel.swift in Sources */,
 				B8CD65402CC0FE9D00E8F8B3 /* UIFont.swift in Sources */,
@@ -674,6 +685,7 @@
 				B8B9A1B92D086AB1008D8130 /* RxSectionTableView.swift in Sources */,
 				B877DBF22CDDDEA4009D9C49 /* WebView.swift in Sources */,
 				B877DBDC2CD47374009D9C49 /* SectionTableViewCell.swift in Sources */,
+				B867451C2D4C6A370033AEC9 /* CalculateCollectionModel.swift in Sources */,
 				B8CD653E2CC0FE8600E8F8B3 /* UIColor.swift in Sources */,
 				B8E6F8E52D4878B700CDC1C4 /* SelectCollectionViewModel.swift in Sources */,
 				B8B9A1BF2D0930D4008D8130 /* RxMixViewController.swift in Sources */,

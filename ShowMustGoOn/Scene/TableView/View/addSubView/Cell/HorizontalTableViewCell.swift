@@ -82,7 +82,7 @@ extension HorizontalTableViewCell {
     
     @objc private func scrollToNext() {
         let currentOffset = horizontalNewsCollectionView.contentOffset.x
-        let nextOffset = currentOffset + horizontalNewsCollectionView.frame.width
+        let nextOffset = currentOffset + horizontalNewsCollectionView.bounds.width
         if nextOffset < horizontalNewsCollectionView.contentSize.width {
             horizontalNewsCollectionView.setContentOffset(CGPoint(x: nextOffset, y: 0), animated: true)
         } else {

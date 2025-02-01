@@ -8,5 +8,5 @@
 import UIKit
 
 struct BasicCollectionModel {
-    let number: String
+    let number: [String]
 }

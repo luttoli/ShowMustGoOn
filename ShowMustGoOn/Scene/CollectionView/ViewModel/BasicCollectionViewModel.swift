@@ -8,7 +8,7 @@
 import UIKit
 
 class BasicCollectionViewModel {
-    let number: [BasicCollectionModel] = (1...15).map {
-        BasicCollectionModel(number: "\($0)")
-    }
+    let numbers: BasicCollectionModel = BasicCollectionModel(number: [
+        "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"
+    ])
 }

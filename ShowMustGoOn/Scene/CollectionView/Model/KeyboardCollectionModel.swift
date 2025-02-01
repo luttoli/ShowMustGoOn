@@ -8,5 +8,5 @@
 import UIKit
 
 struct KeyboardCollectionModel {
-    let textKey: String
+    let textKey: [[String]]
 }

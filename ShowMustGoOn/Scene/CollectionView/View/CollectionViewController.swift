@@ -49,7 +49,7 @@ extension CollectionViewController {
         super.viewWillAppear(animated)
         
         // 세그먼트 인덱스 초기화
-        segment.segment.selectedSegmentIndex = 0
+        segment.segment.selectedSegmentIndex = 3
         segment.updateBottomLinePosition()
         
         // 초기화된 세그먼트 인덱스에 맞는 화면 업데이트
@@ -74,6 +74,7 @@ private extension CollectionViewController {
         view.addSubview(basicCollectionView)
         view.addSubview(selectCollectionView)
         view.addSubview(keyboardCollectionView)
+        view.addSubview(calculateCollectionView)
         view.addSubview(calendarCollectionView)
         view.addSubview(addTodoCollectionView)
         
@@ -99,6 +100,13 @@ private extension CollectionViewController {
         }
         
         keyboardCollectionView.snp.makeConstraints {
+            $0.top.equalTo(segment.snp.bottom).offset(Constants.margin.vertical)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
+        }
+        
+        calculateCollectionView.snp.makeConstraints {
             $0.top.equalTo(segment.snp.bottom).offset(Constants.margin.vertical)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)

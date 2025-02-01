@@ -8,5 +8,5 @@
 import UIKit
 
 struct SelectCollectionModel {
-    var menuTitle: String
+    var menuTitle: [String]
 }
