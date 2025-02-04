@@ -120,6 +120,14 @@ extension CalculateCollectionView: UICollectionViewDelegate, UICollectionViewDat
                 inputLabel.text = result // 계산 결과값 표시
             }
             
+        case "⌫": // 백스페이스 버튼 기능 추가
+            if let text = inputLabel.text, !text.isEmpty {
+                inputLabel.text = String(text.dropLast()) // 마지막 문자 제거
+            }
+            if inputLabel.text?.isEmpty == true {
+                inputLabel.text = "0" // 텍스트가 다 지워지면 "0"으로 초기화
+            }
+            
         default:
             if inputLabel.text == "0" {
                 inputLabel.text = keypad
