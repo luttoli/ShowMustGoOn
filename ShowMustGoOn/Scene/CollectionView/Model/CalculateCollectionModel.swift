@@ -8,5 +8,5 @@
 import UIKit
 
 struct CalculateCollectionModel {
-    var calculateNumberKey: [String]
+    var calculateKey: [String]
 }
