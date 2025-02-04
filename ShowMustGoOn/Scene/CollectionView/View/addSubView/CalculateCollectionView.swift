@@ -113,19 +113,34 @@ extension CalculateCollectionView: UICollectionViewDelegate, UICollectionViewDat
             inputLabel.text = "0"
             calculateLabel.text = ""
             
-        case "=":
-            if let expression = inputLabel.text, !expression.isEmpty {
-                let result = viewModel.calculation(expression)
-                calculateLabel.text = expression // 입력한 계산 수식 표시
-                inputLabel.text = result // 계산 결과값 표시
-            }
-            
         case "⌫": // 백스페이스 버튼 기능 추가
             if let text = inputLabel.text, !text.isEmpty {
                 inputLabel.text = String(text.dropLast()) // 마지막 문자 제거
             }
             if inputLabel.text?.isEmpty == true {
                 inputLabel.text = "0" // 텍스트가 다 지워지면 "0"으로 초기화
+            }
+            
+        case "+", "-", "*", "/", "%": // 연산자 처리
+            if let text = inputLabel.text, !text.isEmpty {
+                if let lastChar = text.last, "+-*/%".contains(lastChar) {
+                    // 마지막 문자가 연산자라면 현재 연산자로 교체
+                    inputLabel.text = String(text.dropLast()) + keypad
+                } else {
+                    // 마지막 문자가 숫자라면 연산자 추가
+                    inputLabel.text! += keypad
+                }
+            }
+            
+        case "=":
+            if let text = inputLabel.text, !text.isEmpty {
+                if let lastChar = text.last, "+-*/%".contains(lastChar) {
+                    
+                } else {
+                    let result = viewModel.calculation(text)
+                    calculateLabel.text = text // 입력한 계산 수식 표시
+                    inputLabel.text = result // 계산 결과값 표시
+                }
             }
             
         default:
