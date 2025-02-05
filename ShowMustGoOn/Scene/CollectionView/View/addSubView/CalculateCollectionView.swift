@@ -106,9 +106,9 @@ extension CalculateCollectionView: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let keypad = viewModel.keypad.calculateKey[indexPath.item]
+        let keypads = viewModel.keypad.calculateKey[indexPath.item]
         
-        switch keypad {
+        switch keypads {
         case "AC", "🧮":
             inputLabel.text = "0"
             calculateLabel.text = ""
@@ -125,17 +125,17 @@ extension CalculateCollectionView: UICollectionViewDelegate, UICollectionViewDat
             if let text = inputLabel.text, !text.isEmpty {
                 if let lastChar = text.last, "+-*/%".contains(lastChar) {
                     // 마지막 문자가 연산자라면 현재 연산자로 교체
-                    inputLabel.text = String(text.dropLast()) + keypad
+                    inputLabel.text = String(text.dropLast()) + keypads
                 } else {
                     // 마지막 문자가 숫자라면 연산자 추가
-                    inputLabel.text! += keypad
+                    inputLabel.text! += keypads
                 }
             }
             
         case "=":
             if let text = inputLabel.text, !text.isEmpty {
                 if let lastChar = text.last, "+-*/%".contains(lastChar) {
-                    
+                    // 마지막 문자가 연산자인 상태서 = 클릭하면 미동작
                 } else {
                     let result = viewModel.calculation(text)
                     calculateLabel.text = text // 입력한 계산 수식 표시
@@ -145,9 +145,9 @@ extension CalculateCollectionView: UICollectionViewDelegate, UICollectionViewDat
             
         default:
             if inputLabel.text == "0" {
-                inputLabel.text = keypad
+                inputLabel.text = keypads
             } else {
-                inputLabel.text! += keypad
+                inputLabel.text! += keypads
             }
         }
     }
