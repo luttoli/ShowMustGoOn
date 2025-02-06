@@ -18,6 +18,12 @@ class CalculateCollectionViewModel {
 
     // 계산식
     func calculation(_ expression: String) -> String {
+        // 0으로 나누는 경우 감지
+        let divideByZeroPattern = #"(/|÷)\s*0"#
+        if let _ = expression.range(of: divideByZeroPattern, options: .regularExpression) {
+            return "Error"
+        }
+        
         let mathExpression = NSExpression(format: expression)
         if let result = mathExpression.expressionValue(with: nil, context: nil) as? NSNumber {
             return result.stringValue

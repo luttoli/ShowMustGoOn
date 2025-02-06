@@ -134,8 +134,8 @@ extension CalculateCollectionView: UICollectionViewDelegate, UICollectionViewDat
             
         case "=":
             if let text = inputLabel.text, !text.isEmpty {
-                if let lastChar = text.last, "+-*/%".contains(lastChar) {
-                    // 마지막 문자가 연산자인 상태서 = 클릭하면 미동작
+                if let lastChar = text.last, "+-*/%.".contains(lastChar) {
+                    // 마지막 문자가 연산자, . 상태서 = 클릭하면 미동작
                 } else {
                     let result = viewModel.calculation(text)
                     calculateLabel.text = text // 입력한 계산 수식 표시
