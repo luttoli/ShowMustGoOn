@@ -147,6 +147,8 @@ extension CalculateCollectionView: UICollectionViewDelegate, UICollectionViewDat
                 if let lastChar = text.last, "+-*/%".contains(lastChar) {
                     // 마지막 문자가 연산자라면 현재 연산자로 교체
                     inputLabel.text = String(text.dropLast()) + keypads
+                } else if let lastChar = text.last, ".".contains(lastChar) {
+                    return // 마지막 문자가 연산자, . 상태서 = 클릭하면 미동작
                 } else {
                     // 마지막 문자가 숫자라면 연산자 추가
                     inputLabel.text! += keypads
