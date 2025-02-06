@@ -75,7 +75,29 @@ private extension CalculateCollectionView {
 
 // MARK: - Method
 extension CalculateCollectionView {
+    func updateFontSize() {
+        // 글자 수에 맞춰 동적으로 폰트 크기 설정
+        let textLength = inputLabel.text?.count ?? 0
+        let newFontSize: CGFloat
+        
+        switch textLength {
+        case 0..<3:
+            newFontSize = 70
+        case 3..<6:
+            newFontSize = 60
+        case 6..<9:
+            newFontSize = 50
+        case 9..<12:
+            newFontSize = 40
+        default:
+            newFontSize = 30
+        }
 
+        let font = UIFont.toPretendard(size: newFontSize, weight: .medium)
+        
+        // 폰트 변경
+        inputLabel.font = font
+    }
 }
 
 // MARK: - delegate
@@ -179,5 +201,7 @@ extension CalculateCollectionView: UICollectionViewDelegate, UICollectionViewDat
                 }
             }
         }
+        
+        updateFontSize()
     }
 }
