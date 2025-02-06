@@ -18,6 +18,9 @@ class CalculateCollectionView: UIView {
     
     var inputLabel = CustomLabel(title: "0", size: Constants.size.size70, weight: .medium, color: .text.black)
     
+    // 계산 여부
+    var calculateDisPlay = false
+    
     private lazy var numberStackView: UIStackView = {
         let numberStackView = UIStackView(arrangedSubviews: [calculateLabel, inputLabel])
         numberStackView.axis = .vertical
@@ -108,10 +111,25 @@ extension CalculateCollectionView: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let keypads = viewModel.keypad.calculateKey[indexPath.item]
         
+        // "Error" 상태일 때 숫자나 AC 누르면 처리
+        if inputLabel.text == "Error" {
+            if let _ = Double(keypads) { // 숫자일 경우
+                inputLabel.text = keypads
+                calculateLabel.text = ""
+                calculateDisPlay = false
+            } else if keypads == "AC" { // AC를 누르면 초기화
+                inputLabel.text = "0"
+                calculateLabel.text = ""
+                calculateDisPlay = false
+            }
+            return // 연산자는 무시
+        }
+        
         switch keypads {
         case "AC", "🧮":
             inputLabel.text = "0"
             calculateLabel.text = ""
+            calculateDisPlay = false // 초기화 시 계산 여부는 당연히 안함
             
         case "⌫": // 백스페이스 버튼 기능 추가
             if let text = inputLabel.text, !text.isEmpty {
@@ -123,6 +141,9 @@ extension CalculateCollectionView: UICollectionViewDelegate, UICollectionViewDat
             
         case "+", "-", "*", "/", "%": // 연산자 처리
             if let text = inputLabel.text, !text.isEmpty {
+                if calculateDisPlay {
+                    calculateDisPlay = false // 연산자를 누르면 결과값을 유지하고 연산 시작
+                }
                 if let lastChar = text.last, "+-*/%".contains(lastChar) {
                     // 마지막 문자가 연산자라면 현재 연산자로 교체
                     inputLabel.text = String(text.dropLast()) + keypads
@@ -135,19 +156,25 @@ extension CalculateCollectionView: UICollectionViewDelegate, UICollectionViewDat
         case "=":
             if let text = inputLabel.text, !text.isEmpty {
                 if let lastChar = text.last, "+-*/%.".contains(lastChar) {
-                    // 마지막 문자가 연산자, . 상태서 = 클릭하면 미동작
+                    return // 마지막 문자가 연산자, . 상태서 = 클릭하면 미동작
                 } else {
                     let result = viewModel.calculation(text)
                     calculateLabel.text = text // 입력한 계산 수식 표시
                     inputLabel.text = result // 계산 결과값 표시
+                    calculateDisPlay = true // =눌렀으니까 당연히 계산 함
                 }
             }
             
-        default:
-            if inputLabel.text == "0" {
-                inputLabel.text = keypads
+        default: // 숫자 입력
+            if calculateDisPlay { // true
+                inputLabel.text = keypads // 새로운 숫자로 초기화
+                calculateDisPlay = false // 새로운 입력이 시작됨
             } else {
-                inputLabel.text! += keypads
+                if inputLabel.text == "0" {
+                    inputLabel.text = keypads
+                } else {
+                    inputLabel.text! += keypads
+                }
             }
         }
     }
