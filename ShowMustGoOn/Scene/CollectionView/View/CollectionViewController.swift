@@ -49,7 +49,7 @@ extension CollectionViewController {
         super.viewWillAppear(animated)
         
         // 세그먼트 인덱스 초기화
-        segment.segment.selectedSegmentIndex = 3
+        segment.segment.selectedSegmentIndex = 4
         segment.updateBottomLinePosition()
         
         // 초기화된 세그먼트 인덱스에 맞는 화면 업데이트

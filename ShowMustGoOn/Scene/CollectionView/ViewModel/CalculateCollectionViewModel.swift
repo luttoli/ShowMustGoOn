@@ -18,7 +18,7 @@ class CalculateCollectionViewModel {
 
     // 계산식
     func calculation(_ expression: String) -> String {
-        var formattedExpression = expression
+        let formattedExpression = expression
         
         // % 연산자 처리 (NSExpression이 인식하지 못하므로 대체)
         if formattedExpression.contains("%") {
