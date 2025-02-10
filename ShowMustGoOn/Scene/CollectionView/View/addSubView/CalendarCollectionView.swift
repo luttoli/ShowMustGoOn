@@ -14,6 +14,16 @@ class CalendarCollectionView: UIView {
     
     
     // MARK: - Components
+    var yearLabel = CustomLabel(title: "25년 2월", size: Constants.size.size20, weight: .medium, color: .text.black)
+    
+    private lazy var dayStackView: UIStackView = {
+        let numberStackView = UIStackView()
+        numberStackView.axis = .horizontal
+        numberStackView.distribution = .fillEqually
+        numberStackView.alignment = .center
+        return numberStackView
+    }()
+    
     var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -30,6 +40,7 @@ class CalendarCollectionView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
+        configureDayLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -40,10 +51,22 @@ class CalendarCollectionView: UIView {
 // MARK: - SetUp
 private extension CalendarCollectionView {
     func setUp() {
+        addSubview(yearLabel)
+        addSubview(dayStackView)
         addSubview(collectionView)
         
+        yearLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(Constants.spacing.px10)
+            $0.leading.equalToSuperview()
+        }
+        
+        dayStackView.snp.makeConstraints {
+            $0.top.equalTo(yearLabel.snp.bottom).offset(Constants.spacing.px20)
+            $0.leading.trailing.equalToSuperview()
+        }
+        
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.top.equalTo(dayStackView.snp.bottom).offset(Constants.spacing.px20)
             $0.leading.equalTo(safeAreaLayoutGuide)
             $0.trailing.equalTo(safeAreaLayoutGuide)
             $0.bottom.equalTo(safeAreaLayoutGuide)
@@ -55,7 +78,24 @@ private extension CalendarCollectionView {
 
 // MARK: - Method
 extension CalendarCollectionView {
-
+    func configureDayLabel() {
+        let dayOfTheWeek: [String] = ["일", "월", "화", "수", "목", "금", "토"]
+        
+        for i in 0..<7 {
+            let label = CustomLabel(title: dayOfTheWeek[i], size: Constants.size.size20, weight: .medium, color: .text.black)
+            label.textAlignment = .center
+            
+            if i == 0 {
+                label.textColor = .text.notification.red
+            } else if i == 6 {
+                label.textColor = .text.lavender
+            } else {
+                label.textColor = .text.black
+            }
+            
+            self.dayStackView.addArrangedSubview(label)
+        }
+    }
 }
 
 // MARK: - delegate
