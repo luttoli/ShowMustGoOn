@@ -14,7 +14,7 @@ class CalendarCollectionView: UIView {
     
     
     // MARK: - Components
-    var yearLabel = CustomLabel(title: "25년 2월", size: Constants.size.size20, weight: .medium, color: .text.black)
+    var yearLabel = CustomLabel(title: "25년 2월", size: Constants.size.size20, weight: .Regular, color: .text.black)
     
     private lazy var dayStackView: UIStackView = {
         let numberStackView = UIStackView()
@@ -56,17 +56,16 @@ private extension CalendarCollectionView {
         addSubview(collectionView)
         
         yearLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(Constants.spacing.px10)
-            $0.leading.equalToSuperview()
+            $0.top.leading.equalToSuperview()
         }
         
         dayStackView.snp.makeConstraints {
-            $0.top.equalTo(yearLabel.snp.bottom).offset(Constants.spacing.px20)
+            $0.top.equalTo(yearLabel.snp.bottom).offset(Constants.margin.vertical)
             $0.leading.trailing.equalToSuperview()
         }
         
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(dayStackView.snp.bottom).offset(Constants.spacing.px20)
+            $0.top.equalTo(dayStackView.snp.bottom).offset(Constants.margin.vertical)
             $0.leading.equalTo(safeAreaLayoutGuide)
             $0.trailing.equalTo(safeAreaLayoutGuide)
             $0.bottom.equalTo(safeAreaLayoutGuide)
@@ -82,18 +81,18 @@ extension CalendarCollectionView {
         let dayOfTheWeek: [String] = ["일", "월", "화", "수", "목", "금", "토"]
         
         for i in 0..<7 {
-            let label = CustomLabel(title: dayOfTheWeek[i], size: Constants.size.size20, weight: .medium, color: .text.black)
-            label.textAlignment = .center
+            let dayLabel = CustomLabel(title: dayOfTheWeek[i], size: Constants.size.size12, weight: .Regular, color: .text.black)
+            dayLabel.textAlignment = .center
             
             if i == 0 {
-                label.textColor = .text.notification.red
+                dayLabel.textColor = .text.notification.red
             } else if i == 6 {
-                label.textColor = .text.lavender
+                dayLabel.textColor = .text.lavender
             } else {
-                label.textColor = .text.black
+                dayLabel.textColor = .text.black
             }
             
-            self.dayStackView.addArrangedSubview(label)
+            self.dayStackView.addArrangedSubview(dayLabel)
         }
     }
 }
@@ -101,7 +100,7 @@ extension CalendarCollectionView {
 // MARK: - delegate
 extension CalendarCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 12
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -117,5 +116,9 @@ extension CalendarCollectionView: UICollectionViewDelegate, UICollectionViewData
         let width = collectionView.bounds.width
         let height = collectionView.bounds.height
         return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0 // horizontal collectionViewCell 끼리의 여백 줄이기
     }
 }
