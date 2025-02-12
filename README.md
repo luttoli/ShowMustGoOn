@@ -162,6 +162,9 @@
         <tr>
             <td>2.</td>
             <td>
+                <a href="https://luttoli.notion.site/UICollectionView-18d0f60899b980518581db6b0850715f?pvs=4">
+                    UICollectionView로 태그 선택 구현
+                </a>
             </td>
             <td>
             </td>
@@ -171,6 +174,9 @@
         <tr>
             <td>3.</td>
             <td>
+                <a href="https://luttoli.notion.site/UICollectionView-18d0f60899b980d6b82bd42c9a4fc7b2?pvs=4">
+                    UICollectionView로 키보드 구현
+                </a>
             </td>
             <td>
             </td>
@@ -180,6 +186,9 @@
         <tr>
             <td>4.</td>
             <td>
+                <a href="https://luttoli.notion.site/UICollectionView-18d0f60899b980379c14fe30f084bfa9?pvs=4">
+                    UICollectionView로 계산기 구현
+                </a>
             </td>
             <td>
             </td>
@@ -188,6 +197,18 @@
         </tr>
         <tr>
             <td>5.</td>
+            <td>
+                <a href="https://luttoli.notion.site/UICollectionView-1980f60899b980e0acc7cb2ddb5eeea5?pvs=4">
+                    UICollectionView로 달력 구현
+                </a>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>6.</td>
             <td>
             </td>
             <td>
