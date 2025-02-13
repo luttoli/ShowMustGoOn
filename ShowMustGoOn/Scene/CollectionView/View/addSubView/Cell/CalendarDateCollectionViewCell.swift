@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class DateCollectionViewCell: UICollectionViewCell {
+class CalendarDateCollectionViewCell: UICollectionViewCell {
     // MARK: - Components
     let dateLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
     
@@ -29,19 +29,19 @@ class DateCollectionViewCell: UICollectionViewCell {
 }
 
 // MARK: - SetUp
-private extension DateCollectionViewCell {
+private extension CalendarDateCollectionViewCell {
     func setUp() {
         contentView.addSubview(dateLabel)
         
         dateLabel.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.top.equalToSuperview().offset(1)
         }
     }
 }
 
 // MARK: - Method
-extension DateCollectionViewCell {
+extension CalendarDateCollectionViewCell {
 //    func configure(with text: String) {
 //        keyPadLabel.text = text
 //    }

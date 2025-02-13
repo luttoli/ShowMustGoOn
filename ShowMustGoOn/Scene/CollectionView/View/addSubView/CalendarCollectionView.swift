@@ -29,7 +29,7 @@ class CalendarCollectionView: UIView {
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,withReuseIdentifier: "header")
-        collectionView.register(CalendarCollectionViewCell.self, forCellWithReuseIdentifier: CalendarCollectionViewCell.identifier)
+        collectionView.register(CalendarBoxCollectionViewCell.self, forCellWithReuseIdentifier: CalendarBoxCollectionViewCell.identifier)
         collectionView.backgroundColor = .background.white
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
@@ -104,7 +104,7 @@ extension CalendarCollectionView: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarCollectionViewCell.identifier, for: indexPath) as? CalendarCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarBoxCollectionViewCell.identifier, for: indexPath) as? CalendarBoxCollectionViewCell else { return UICollectionViewCell() }
         
         cell.backgroundColor = .clear
         cell.layer.borderColor = UIColor.black.cgColor

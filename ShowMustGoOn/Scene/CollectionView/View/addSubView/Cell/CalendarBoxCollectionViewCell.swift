@@ -9,13 +9,13 @@ import UIKit
 
 import SnapKit
 
-class CalendarCollectionViewCell: UICollectionViewCell {
+class CalendarBoxCollectionViewCell: UICollectionViewCell {
     // MARK: - Components
     var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(DateCollectionViewCell.self, forCellWithReuseIdentifier: DateCollectionViewCell.identifier)
+        collectionView.register(CalendarDateCollectionViewCell.self, forCellWithReuseIdentifier: CalendarDateCollectionViewCell.identifier)
         collectionView.backgroundColor = .background.white
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
@@ -37,7 +37,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
 }
 
 // MARK: - SetUp
-private extension CalendarCollectionViewCell {
+private extension CalendarBoxCollectionViewCell {
     func setUp() {
         contentView.addSubview(collectionView)
         
@@ -50,18 +50,18 @@ private extension CalendarCollectionViewCell {
 }
 
 // MARK: - Method
-extension CalendarCollectionViewCell {
+extension CalendarBoxCollectionViewCell {
     
 }
 
 // MARK: - CollectionViewDelegate
-extension CalendarCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension CalendarBoxCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 42
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DateCollectionViewCell.identifier, for: indexPath) as? DateCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarDateCollectionViewCell.identifier, for: indexPath) as? CalendarDateCollectionViewCell else { return UICollectionViewCell() }
         
         cell.backgroundColor = .clear
         cell.layer.borderWidth = 1
