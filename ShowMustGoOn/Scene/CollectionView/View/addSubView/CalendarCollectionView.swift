@@ -59,8 +59,9 @@ class CalendarCollectionView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
-        configureYearLabel()
+        bindViewModel()
         configureDayLabel()
+        previousNextButtonAction()
     }
     
     required init?(coder: NSCoder) {
@@ -97,11 +98,30 @@ private extension CalendarCollectionView {
 
 // MARK: - Method
 extension CalendarCollectionView {
-    func configureYearLabel() {
-        let yearComponents = viewModel.calendar.dateComponents([.year, .month], from: Date())
-        viewModel.calendarDate = Calendar.current.date(from: yearComponents) ?? Date()
-        let date = viewModel.dateformatter.string(from: viewModel.calendarDate)
-        self.yearLabel.text = date
+    private func bindViewModel() {
+        yearLabel.text = viewModel.yearLabelText
+    }
+    
+    func previousNextButtonAction() {
+        leftButton.addAction(UIAction(handler: { [weak self] _ in
+            guard let self = self else { return }
+            
+            let previousMonth = self.viewModel.calendar.date(byAdding: .month, value: -1, to: self.viewModel.calendarDate) ?? Date()
+            self.viewModel.updateYear(to: previousMonth)
+            self.yearLabel.text = self.viewModel.yearLabelText
+            
+            // datecell 지난달로 이동해야할거
+        }), for: .touchUpInside)
+        
+        rightButton.addAction(UIAction(handler: { [weak self] _ in
+            guard let self = self else { return }
+            
+            let nextMonth = self.viewModel.calendar.date(byAdding: .month, value: +1, to: self.viewModel.calendarDate) ?? Date()
+            self.viewModel.updateYear(to: nextMonth)
+            self.yearLabel.text = self.viewModel.yearLabelText
+            
+            // datecell 다음달로 이동해야할거
+        }), for: .touchUpInside)
     }
     
     func configureDayLabel() {
