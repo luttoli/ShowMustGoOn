@@ -11,10 +11,29 @@ import SnapKit
 
 class CalendarCollectionView: UIView {
     // MARK: - Properties
-    
+    var viewModel = CalendarCollcetionViewModel()
     
     // MARK: - Components
-    var yearLabel = CustomLabel(title: "25년 2월", size: Constants.size.size20, weight: .Regular, color: .text.black)
+    var leftButton = CustomButton(type: .iconButton(icon: .left))
+    var yearLabel = CustomLabel(title: "", size: Constants.size.size20, weight: .Regular, color: .text.black)
+    var rightButton = CustomButton(type: .iconButton(icon: .right))
+    var todayButton = CustomButton(type: .textButton(title: "오늘", color: .lavender, size: .small))
+    
+    private lazy var yearStackView: UIStackView = {
+        let yearStackView = UIStackView(arrangedSubviews: [leftButton, yearLabel, rightButton])
+        yearStackView.axis = .horizontal
+        yearStackView.distribution = .equalCentering
+        yearStackView.spacing = Constants.margin.horizontal
+        return yearStackView
+    }()
+    
+    private lazy var calendarHeader: UIStackView = {
+        let calendarHeader = UIStackView(arrangedSubviews: [yearStackView, todayButton])
+        calendarHeader.axis = .horizontal
+        calendarHeader.distribution = .equalSpacing
+        calendarHeader.alignment = .top
+        return calendarHeader
+    }()
     
     private lazy var dayStackView: UIStackView = {
         let numberStackView = UIStackView()
@@ -40,6 +59,7 @@ class CalendarCollectionView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
+        configureYearLabel()
         configureDayLabel()
     }
     
@@ -51,16 +71,16 @@ class CalendarCollectionView: UIView {
 // MARK: - SetUp
 private extension CalendarCollectionView {
     func setUp() {
-        addSubview(yearLabel)
+        addSubview(calendarHeader)
         addSubview(dayStackView)
         addSubview(collectionView)
         
-        yearLabel.snp.makeConstraints {
-            $0.top.leading.equalToSuperview()
+        calendarHeader.snp.makeConstraints {
+            $0.leading.trailing.top.equalToSuperview()
         }
         
         dayStackView.snp.makeConstraints {
-            $0.top.equalTo(yearLabel.snp.bottom).offset(Constants.margin.vertical)
+            $0.top.equalTo(calendarHeader.snp.bottom).offset(Constants.margin.vertical)
             $0.leading.trailing.equalToSuperview()
         }
         
@@ -77,6 +97,13 @@ private extension CalendarCollectionView {
 
 // MARK: - Method
 extension CalendarCollectionView {
+    func configureYearLabel() {
+        let yearComponents = viewModel.calendar.dateComponents([.year, .month], from: Date())
+        viewModel.calendarDate = Calendar.current.date(from: yearComponents) ?? Date()
+        let date = viewModel.dateformatter.string(from: viewModel.calendarDate)
+        self.yearLabel.text = date
+    }
+    
     func configureDayLabel() {
         let dayOfTheWeek: [String] = ["일", "월", "화", "수", "목", "금", "토"]
         

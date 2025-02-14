@@ -11,7 +11,7 @@ import SnapKit
 
 class CalendarDateCollectionViewCell: UICollectionViewCell {
     // MARK: - Components
-    let dateLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
+    let dateLabel = CustomLabel(title: "", size: Constants.size.size12, weight: .Regular, color: .text.black)
     
     override init(frame: CGRect) {
         super.init(frame: frame)

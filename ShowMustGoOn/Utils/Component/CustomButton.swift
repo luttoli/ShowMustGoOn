@@ -85,6 +85,8 @@ class CustomButton: UIButton {
             case minus
             case checkBox
             case heart
+            case left
+            case right
             
             var image: UIImage? {
                 switch self {
@@ -96,6 +98,10 @@ class CustomButton: UIButton {
                     return UIImage(systemName: "checkmark.square")
                 case .heart:
                     return UIImage(systemName: "heart")
+                case .left:
+                    return UIImage(systemName: "chevron.left")
+                case .right:
+                    return UIImage(systemName: "chevron.right")
                 }
             }
             

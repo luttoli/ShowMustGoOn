@@ -8,5 +8,5 @@
 import UIKit
 
 struct CalendarCollectionModel {
-    
+    var days: [String]
 }
