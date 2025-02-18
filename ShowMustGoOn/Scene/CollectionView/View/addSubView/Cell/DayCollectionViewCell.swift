@@ -1,5 +1,5 @@
 //
-//  DateCollectionViewCell.swift
+//  DayCollectionViewCell.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 2/9/25.
@@ -9,9 +9,9 @@ import UIKit
 
 import SnapKit
 
-class CalendarDateCollectionViewCell: UICollectionViewCell {
+class DayCollectionViewCell: UICollectionViewCell {
     // MARK: - Components
-    let dateLabel = CustomLabel(title: "", size: Constants.size.size12, weight: .Regular, color: .text.black)
+    let dateLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,20 +29,20 @@ class CalendarDateCollectionViewCell: UICollectionViewCell {
 }
 
 // MARK: - SetUp
-private extension CalendarDateCollectionViewCell {
+private extension DayCollectionViewCell {
     func setUp() {
         contentView.addSubview(dateLabel)
         
         dateLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().offset(1)
+            $0.top.equalToSuperview().offset(3)
         }
     }
 }
 
 // MARK: - Method
-extension CalendarDateCollectionViewCell {
-//    func configure(with text: String) {
-//        keyPadLabel.text = text
-//    }
+extension DayCollectionViewCell {
+    func configure(with dayText: String) {
+        dateLabel.text = dayText
+    }
 }

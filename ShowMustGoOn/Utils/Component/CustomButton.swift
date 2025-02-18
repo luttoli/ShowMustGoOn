@@ -64,7 +64,7 @@ class CustomButton: UIButton {
                 case .half:
                     return ((Constants.screenWidth - (Constants.margin.horizontal * 3)) / 2, Constants.size.size40)
                 case .small:
-                    return (Constants.size.size65, Constants.size.size35)
+                    return (Constants.size.size50, Constants.size.size35)
                 }
             }
             

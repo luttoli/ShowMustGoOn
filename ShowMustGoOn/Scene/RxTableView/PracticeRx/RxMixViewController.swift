@@ -23,7 +23,11 @@ class RxMixViewController: UIViewController {
         return textField
     }()
     
-    let button = CustomButton(type: .textButton(title: "클릭하세요!", color: .lavender, size: .small))
+    let button: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("클릭하세요!", for: .normal)
+        return button
+    }()
     
     let labelText = BehaviorRelay<String>(value: "버튼 클릭하면 여기에 표시됩니다.") // UI 상태 관리 - 마지막 값을 저장
     

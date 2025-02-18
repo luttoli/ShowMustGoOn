@@ -14,6 +14,11 @@ class CollectionViewController: UIViewController {
     
     
     // MARK: - Components
+    lazy var calendarButton: UIBarButtonItem = {
+        let calendarButton = UIBarButtonItem(image: UIImage(systemName: "calendar"), style: .plain, target: self, action: #selector(goCalendarButton))
+        return calendarButton
+    }()
+    
     let segment = CustomSegment(items: ["반반", "선택", "키보드", "계산기", "달력", "추가"])
     let basicCollectionView = BasicCollectionView()
     let selectCollectionView = SelectCollectionView()
@@ -53,7 +58,7 @@ extension CollectionViewController {
         segment.updateBottomLinePosition()
         
         // 초기화된 세그먼트 인덱스에 맞는 화면 업데이트
-        segment.selectedIndex.accept(0)
+        segment.selectedIndex.accept(4)
     }
 }
 
@@ -64,6 +69,9 @@ extension CollectionViewController {
         
         let viewTitle = CustomLabel(title: "CollectionView Practice", size: Constants.size.size20, weight: .Bold, color: .text.black)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: viewTitle)
+        
+        navigationItem.rightBarButtonItem = calendarButton
+        navigationController?.navigationBar.tintColor = .button.lavender
     }
 }
 
@@ -131,6 +139,13 @@ private extension CollectionViewController {
 
 // MARK: - Method
 private extension CollectionViewController {
+    //
+    @objc func goCalendarButton() {
+        let calendarVC = CalendarViewController()
+        calendarVC.hidesBottomBarWhenPushed = true // VC tabbar 숨기기
+        navigationController?.pushViewController(calendarVC, animated: true)
+    }
+    
     func segmentClickEvent() {
         segment.selectedIndex
             .subscribe(onNext: { index in

@@ -11,36 +11,36 @@ import SnapKit
 
 class CalendarCollectionView: UIView {
     // MARK: - Properties
-    var viewModel = CalendarCollcetionViewModel()
+    var viewModel = CalendarCollectionViewModel()
     
     // MARK: - Components
-    var leftButton = CustomButton(type: .iconButton(icon: .left))
     var yearLabel = CustomLabel(title: "", size: Constants.size.size20, weight: .Regular, color: .text.black)
-    var rightButton = CustomButton(type: .iconButton(icon: .right))
+    var leftButton = CustomButton(type: .iconButton(icon: .left))
     var todayButton = CustomButton(type: .textButton(title: "오늘", color: .lavender, size: .small))
+    var rightButton = CustomButton(type: .iconButton(icon: .right))
     
-    private lazy var yearStackView: UIStackView = {
-        let yearStackView = UIStackView(arrangedSubviews: [leftButton, yearLabel, rightButton])
-        yearStackView.axis = .horizontal
-        yearStackView.distribution = .equalCentering
-        yearStackView.spacing = Constants.margin.horizontal
-        return yearStackView
+    private lazy var moveButtonStackView: UIStackView = {
+        let moveButtonStackView = UIStackView(arrangedSubviews: [leftButton, todayButton, rightButton])
+        moveButtonStackView.axis = .horizontal
+        moveButtonStackView.distribution = .equalCentering
+        moveButtonStackView.spacing = Constants.spacing.px20
+        return moveButtonStackView
     }()
     
-    private lazy var calendarHeader: UIStackView = {
-        let calendarHeader = UIStackView(arrangedSubviews: [yearStackView, todayButton])
-        calendarHeader.axis = .horizontal
-        calendarHeader.distribution = .equalSpacing
-        calendarHeader.alignment = .top
-        return calendarHeader
+    private lazy var calendarHeaderStackView: UIStackView = {
+        let calendarHeaderStackView = UIStackView(arrangedSubviews: [yearLabel, moveButtonStackView])
+        calendarHeaderStackView.axis = .horizontal
+        calendarHeaderStackView.distribution = .equalSpacing
+        calendarHeaderStackView.alignment = .top
+        return calendarHeaderStackView
     }()
     
     private lazy var dayStackView: UIStackView = {
-        let numberStackView = UIStackView()
-        numberStackView.axis = .horizontal
-        numberStackView.distribution = .fillEqually
-        numberStackView.alignment = .center
-        return numberStackView
+        let dayStackView = UIStackView()
+        dayStackView.axis = .horizontal
+        dayStackView.distribution = .fillEqually
+        dayStackView.alignment = .center
+        return dayStackView
     }()
     
     var collectionView: UICollectionView = {
@@ -48,7 +48,7 @@ class CalendarCollectionView: UIView {
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,withReuseIdentifier: "header")
-        collectionView.register(CalendarBoxCollectionViewCell.self, forCellWithReuseIdentifier: CalendarBoxCollectionViewCell.identifier)
+        collectionView.register(MonthCollectionViewCell.self, forCellWithReuseIdentifier: MonthCollectionViewCell.identifier)
         collectionView.backgroundColor = .background.white
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
@@ -60,8 +60,8 @@ class CalendarCollectionView: UIView {
         super.init(frame: frame)
         setUp()
         bindViewModel()
-        configureDayLabel()
         previousNextButtonAction()
+        configureDayLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -72,16 +72,16 @@ class CalendarCollectionView: UIView {
 // MARK: - SetUp
 private extension CalendarCollectionView {
     func setUp() {
-        addSubview(calendarHeader)
+        addSubview(calendarHeaderStackView)
         addSubview(dayStackView)
         addSubview(collectionView)
         
-        calendarHeader.snp.makeConstraints {
+        calendarHeaderStackView.snp.makeConstraints {
             $0.leading.trailing.top.equalToSuperview()
         }
         
         dayStackView.snp.makeConstraints {
-            $0.top.equalTo(calendarHeader.snp.bottom).offset(Constants.margin.vertical)
+            $0.top.equalTo(calendarHeaderStackView.snp.bottom).offset(Constants.margin.vertical)
             $0.leading.trailing.equalToSuperview()
         }
         
@@ -98,32 +98,36 @@ private extension CalendarCollectionView {
 
 // MARK: - Method
 extension CalendarCollectionView {
+    // 뷰모델에서 작성한 dateFormatter를 적용해 년월텍스트라벨에 연결
     private func bindViewModel() {
         yearLabel.text = viewModel.yearLabelText
+        collectionView.reloadData()
     }
     
+    // 왼쪽, 오른쪽 버튼 클릭 액션
     func previousNextButtonAction() {
+        // 왼쪽 버튼 클릭 액션
         leftButton.addAction(UIAction(handler: { [weak self] _ in
             guard let self = self else { return }
             
             let previousMonth = self.viewModel.calendar.date(byAdding: .month, value: -1, to: self.viewModel.calendarDate) ?? Date()
             self.viewModel.updateYear(to: previousMonth)
             self.yearLabel.text = self.viewModel.yearLabelText
-            
-            // datecell 지난달로 이동해야할거
+            bindViewModel()
         }), for: .touchUpInside)
         
+        // 오른쪽 버튼 클릭 액션
         rightButton.addAction(UIAction(handler: { [weak self] _ in
             guard let self = self else { return }
             
             let nextMonth = self.viewModel.calendar.date(byAdding: .month, value: +1, to: self.viewModel.calendarDate) ?? Date()
             self.viewModel.updateYear(to: nextMonth)
             self.yearLabel.text = self.viewModel.yearLabelText
-            
-            // datecell 다음달로 이동해야할거
+            bindViewModel()
         }), for: .touchUpInside)
     }
     
+    // 요일 라벨을 표시할 스택뷰 설정
     func configureDayLabel() {
         let dayOfTheWeek: [String] = ["일", "월", "화", "수", "목", "금", "토"]
         
@@ -147,11 +151,11 @@ extension CalendarCollectionView {
 // MARK: - delegate
 extension CalendarCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return (2026 - 2024 + 1) * 12 // 2000년부터 2100년까지 총 1200개월
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarBoxCollectionViewCell.identifier, for: indexPath) as? CalendarBoxCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MonthCollectionViewCell.identifier, for: indexPath) as? MonthCollectionViewCell else { return UICollectionViewCell() }
         
         cell.backgroundColor = .clear
         cell.layer.borderColor = UIColor.black.cgColor

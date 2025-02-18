@@ -1,5 +1,5 @@
 //
-//  CalendarCollectionViewCell.swift
+//  MonthCollectionViewCell.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 2/9/25.
@@ -9,13 +9,16 @@ import UIKit
 
 import SnapKit
 
-class CalendarBoxCollectionViewCell: UICollectionViewCell {
+class MonthCollectionViewCell: UICollectionViewCell {
+    // MARK: - Properties
+    var viewModel = CalendarCollectionViewModel()
+    
     // MARK: - Components
     var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(CalendarDateCollectionViewCell.self, forCellWithReuseIdentifier: CalendarDateCollectionViewCell.identifier)
+        collectionView.register(DayCollectionViewCell.self, forCellWithReuseIdentifier: DayCollectionViewCell.identifier)
         collectionView.backgroundColor = .background.white
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
@@ -25,6 +28,7 @@ class CalendarBoxCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setUp()
+        viewModel.daysUpdate()
     }
     
     required init?(coder: NSCoder) {
@@ -37,7 +41,7 @@ class CalendarBoxCollectionViewCell: UICollectionViewCell {
 }
 
 // MARK: - SetUp
-private extension CalendarBoxCollectionViewCell {
+private extension MonthCollectionViewCell {
     func setUp() {
         contentView.addSubview(collectionView)
         
@@ -50,24 +54,31 @@ private extension CalendarBoxCollectionViewCell {
 }
 
 // MARK: - Method
-extension CalendarBoxCollectionViewCell {
+extension MonthCollectionViewCell {
     
 }
 
 // MARK: - CollectionViewDelegate
-extension CalendarBoxCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension MonthCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 42
+//        return 42
+        // 42개 전체가 노출되면 좋겠음
+        return viewModel.days.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarDateCollectionViewCell.identifier, for: indexPath) as? CalendarDateCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DayCollectionViewCell.identifier, for: indexPath) as? DayCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.backgroundColor = .clear
         cell.layer.borderWidth = 1
         cell.layer.borderColor = UIColor.cell.lightGray.cgColor
         
-        cell.dateLabel.text = "0"
+        cell.configure(with: viewModel.days[indexPath.row])
+        
+        if viewModel.days[indexPath.row] == viewModel.todayString {
+            cell.backgroundColor = .cell.lavender.withAlphaComponent(0.3)
+        } else {
+            cell.backgroundColor = .clear
+        }
         
         return cell
     }

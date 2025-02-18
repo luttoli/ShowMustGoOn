@@ -62,8 +62,6 @@ private extension TodoTableView {
         addButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().offset(-Constants.size.size20)
             $0.centerY.equalTo(textField)
-            $0.width.equalTo(Constants.size.size60)
-            $0.height.equalTo(Constants.size.size40)
         }
         
         tableView.snp.makeConstraints {
