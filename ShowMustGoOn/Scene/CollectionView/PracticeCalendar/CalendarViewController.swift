@@ -81,9 +81,10 @@ extension CalendarViewController {
         
         navigationUI()
         setUp()
+        
+        updateCalendar(to: Date())
         bindViewModel()
-        previousNextButtonAction()
-        todayButtonAction()
+        setupButtonActions()
         configureDayLabel()
         setupGestures()
     }
@@ -137,45 +138,35 @@ private extension CalendarViewController {
 
 // MARK: - Method
 extension CalendarViewController {
-    // 뷰모델에서 작성한 dateFormatter를 적용해 년월텍스트라벨에 연결
+    // 날짜 변경 메소드
+    private func updateCalendar(to date: Date) {
+        viewModel.updateYear(to: date)
+        bindViewModel()
+    }
+    
+    // UI 업데이트
     private func bindViewModel() {
-        viewModel.updateYear(to: viewModel.calendarDate)
         yearLabel.text = viewModel.yearLabelText
         collectionView.reloadData()
     }
     
-    // 왼쪽, 오른쪽 버튼 클릭 액션
-    func previousNextButtonAction() {
-        // 왼쪽 버튼 클릭 액션
+    // 왼쪽, 오늘, 오른쪽 버튼 클릭 액션
+    func setupButtonActions() {
         leftButton.addAction(UIAction(handler: { [weak self] _ in
             guard let self = self else { return }
-            
             let previousMonth = self.viewModel.calendar.date(byAdding: .month, value: -1, to: self.viewModel.calendarDate) ?? Date()
-            self.viewModel.updateYear(to: previousMonth)
-            self.yearLabel.text = self.viewModel.yearLabelText
-            bindViewModel()
+            self.updateCalendar(to: previousMonth)
         }), for: .touchUpInside)
-        
-        // 오른쪽 버튼 클릭 액션
+
         rightButton.addAction(UIAction(handler: { [weak self] _ in
             guard let self = self else { return }
-            
             let nextMonth = self.viewModel.calendar.date(byAdding: .month, value: +1, to: self.viewModel.calendarDate) ?? Date()
-            self.viewModel.updateYear(to: nextMonth)
-            self.yearLabel.text = self.viewModel.yearLabelText
-            bindViewModel()
+            self.updateCalendar(to: nextMonth)
         }), for: .touchUpInside)
-    }
-    
-    // 오늘 버튼 클릭 액션
-    func todayButtonAction() {
+
         todayButton.addAction(UIAction(handler: { [weak self] _ in
             guard let self = self else { return }
-            
-            let today = Date()
-            viewModel.updateYear(to: today) // 오늘 날짜로 업데이트
-            yearLabel.text = viewModel.yearLabelText
-            collectionView.reloadData()
+            self.updateCalendar(to: Date()) // 오늘 날짜로 이동
         }), for: .touchUpInside)
     }
     
@@ -199,7 +190,7 @@ extension CalendarViewController {
         }
     }
     
-    // 좌우 제스처
+    // 스와이프 제스처 설정
     private func setupGestures() {
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(_:)))
         leftSwipe.direction = .left
@@ -210,29 +201,15 @@ extension CalendarViewController {
         collectionView.addGestureRecognizer(rightSwipe)
     }
 
-    //
+    // 스와이프 동작
     @objc private func didSwipe(_ gesture: UISwipeGestureRecognizer) {
         if gesture.direction == .left {
-            goToNextMonth()
+            let nextMonth = viewModel.calendar.date(byAdding: .month, value: +1, to: viewModel.calendarDate) ?? Date()
+            updateCalendar(to: nextMonth)
         } else if gesture.direction == .right {
-            goToPreviousMonth()
+            let previousMonth = viewModel.calendar.date(byAdding: .month, value: -1, to: viewModel.calendarDate) ?? Date()
+            updateCalendar(to: previousMonth)
         }
-    }
-    
-    //
-    private func goToPreviousMonth() {
-        let previousMonth = self.viewModel.calendar.date(byAdding: .month, value: -1, to: self.viewModel.calendarDate) ?? Date()
-        self.viewModel.updateYear(to: previousMonth)
-        self.yearLabel.text = self.viewModel.yearLabelText
-        bindViewModel()
-    }
-
-    //
-    private func goToNextMonth() {
-        let nextMonth = self.viewModel.calendar.date(byAdding: .month, value: +1, to: self.viewModel.calendarDate) ?? Date()
-        self.viewModel.updateYear(to: nextMonth)
-        self.yearLabel.text = self.viewModel.yearLabelText
-        bindViewModel()
     }
 }
 
