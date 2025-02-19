@@ -67,7 +67,7 @@ class CalendarCollectionViewModel {
     
     // 오늘 날짜 가져오기
     var todayString: String {
-        let today = calendar.dateComponents([.year, .month, .day], from: Date()) // 오늘 날짜 (1~31)
+        let today = calendar.dateComponents([.year, .month, .day], from: calendarDate) // 오늘 날짜 (1~31)
         return "\(today)"
     }
     
@@ -93,5 +93,17 @@ class CalendarCollectionViewModel {
                 months.append(monthDate)
             }
         }
+    }
+    
+    //
+    var todayNumber: String? {
+        let today = calendar.dateComponents([.year, .month, .day], from: Date()) // 현재 날짜
+        let currentMonth = calendar.dateComponents([.year, .month], from: calendarDate) // 현재 보고 있는 월
+        
+        // 현재 보고 있는 달과 오늘의 달이 같다면 오늘 날짜 반환
+        if today.year == currentMonth.year, today.month == currentMonth.month {
+            return "\(today.day!)"
+        }
+        return nil
     }
 }

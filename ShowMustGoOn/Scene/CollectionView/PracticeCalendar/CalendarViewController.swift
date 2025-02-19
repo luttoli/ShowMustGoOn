@@ -197,6 +197,7 @@ extension CalendarViewController {
         collectionView.addGestureRecognizer(rightSwipe)
     }
 
+    //
     @objc private func didSwipe(_ gesture: UISwipeGestureRecognizer) {
         if gesture.direction == .left {
             goToNextMonth()
@@ -205,6 +206,7 @@ extension CalendarViewController {
         }
     }
     
+    //
     private func goToPreviousMonth() {
         let previousMonth = self.viewModel.calendar.date(byAdding: .month, value: -1, to: self.viewModel.calendarDate) ?? Date()
         self.viewModel.updateYear(to: previousMonth)
@@ -212,6 +214,7 @@ extension CalendarViewController {
         bindViewModel()
     }
 
+    //
     private func goToNextMonth() {
         let nextMonth = self.viewModel.calendar.date(byAdding: .month, value: +1, to: self.viewModel.calendarDate) ?? Date()
         self.viewModel.updateYear(to: nextMonth)
@@ -239,8 +242,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             cell.layer.borderColor = UIColor.clear.cgColor
         }
         
-        if viewModel.days[indexPath.row] == viewModel.todayString {
-            cell.backgroundColor = .cell.lavender.withAlphaComponent(0.3)
+        if let today = viewModel.todayNumber, viewModel.days[indexPath.row] == today {
+            cell.backgroundColor = .cell.lavender.withAlphaComponent(0.3) // 배경 강조
         } else {
             cell.backgroundColor = .clear
         }
