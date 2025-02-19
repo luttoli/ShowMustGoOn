@@ -178,10 +178,8 @@ extension CalendarViewController {
             let dayLabel = CustomLabel(title: dayOfTheWeek[i], size: Constants.size.size15, weight: .Regular, color: .text.black)
             dayLabel.textAlignment = .center
             
-            if i == 0 {
+            if i == 0 || i == 6 {
                 dayLabel.textColor = .text.notification.red
-            } else if i == 6 {
-                dayLabel.textColor = .text.lavender
             } else {
                 dayLabel.textColor = .text.black
             }
@@ -224,6 +222,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         
         cell.configure(with: viewModel.days[indexPath.row])
         
+        // 날짜가 있는 셀에만 테두리
         if !viewModel.days[indexPath.row].isEmpty {
             cell.layer.borderWidth = 1
             cell.layer.borderColor = UIColor.cell.lightGray.cgColor
@@ -232,10 +231,19 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             cell.layer.borderColor = UIColor.clear.cgColor
         }
         
+        // 오늘 날짜에 표시
         if let today = viewModel.todayNumber, viewModel.days[indexPath.row] == today {
             cell.backgroundColor = .cell.lavender.withAlphaComponent(0.3) // 배경 강조
         } else {
             cell.backgroundColor = .clear
+        }
+        
+        // 일요일, 토요일 셀에 들어가는 라벨 색 변경
+        let dayIndex = indexPath.row % 7 // 7로 나눈 나머지 값이 요일을 의미
+        if dayIndex == 0 || dayIndex == 6 {
+            cell.dateLabel.textColor = UIColor.text.notification.red
+        } else {
+            cell.dateLabel.textColor = UIColor.text.black
         }
         
         return cell
