@@ -83,6 +83,7 @@ extension CalendarViewController {
         setUp()
         bindViewModel()
         previousNextButtonAction()
+        todayButtonAction()
         configureDayLabel()
         setupGestures()
     }
@@ -163,6 +164,18 @@ extension CalendarViewController {
             self.viewModel.updateYear(to: nextMonth)
             self.yearLabel.text = self.viewModel.yearLabelText
             bindViewModel()
+        }), for: .touchUpInside)
+    }
+    
+    // 오늘 버튼 클릭 액션
+    func todayButtonAction() {
+        todayButton.addAction(UIAction(handler: { [weak self] _ in
+            guard let self = self else { return }
+            
+            let today = Date()
+            viewModel.updateYear(to: today) // 오늘 날짜로 업데이트
+            yearLabel.text = viewModel.yearLabelText
+            collectionView.reloadData()
         }), for: .touchUpInside)
     }
     

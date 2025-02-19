@@ -95,7 +95,7 @@ class CalendarCollectionViewModel {
         }
     }
     
-    //
+    // 오늘 날짜
     var todayNumber: String? {
         let today = calendar.dateComponents([.year, .month, .day], from: Date()) // 현재 날짜
         let currentMonth = calendar.dateComponents([.year, .month], from: calendarDate) // 현재 보고 있는 월
