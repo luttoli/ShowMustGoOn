@@ -25,6 +25,12 @@ class MonthCollectionViewCell: UICollectionViewCell {
         return collectionView
     }()
     
+    var days: [String] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setUp()
@@ -55,29 +61,43 @@ private extension MonthCollectionViewCell {
 
 // MARK: - Method
 extension MonthCollectionViewCell {
-    
+    func configure(with month: Date, days: [String]) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy년 MM월"
+//        monthLabel.text = formatter.string(from: month)
+
+        self.days = days
+        collectionView.reloadData()
+    }
 }
 
 // MARK: - CollectionViewDelegate
 extension MonthCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 42
-        // 42개 전체가 노출되면 좋겠음
-        return viewModel.days.count
+        return days.count // 전체 캘린더칸에 빈문자 포함이기 때문에 42개 동일
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DayCollectionViewCell.identifier, for: indexPath) as? DayCollectionViewCell else { return UICollectionViewCell() }
         
+        cell.configure(with: days[indexPath.row])
+        
         cell.layer.borderWidth = 1
         cell.layer.borderColor = UIColor.cell.lightGray.cgColor
         
-        cell.configure(with: viewModel.days[indexPath.row])
-        
-        if viewModel.days[indexPath.row] == viewModel.todayString {
-            cell.backgroundColor = .cell.lavender.withAlphaComponent(0.3)
+        // 오늘 날짜에 표시 - 이거 수정해야함
+        if let today = viewModel.todayNumber, viewModel.days[indexPath.row] == today {
+            cell.backgroundColor = .cell.lavender.withAlphaComponent(0.3) // 배경 강조
         } else {
             cell.backgroundColor = .clear
+        }
+        
+        // 일요일, 토요일 셀에 들어가는 라벨 색 변경
+        let dayIndex = indexPath.row % 7 // 7로 나눈 나머지 값이 요일을 의미
+        if dayIndex == 0 || dayIndex == 6 {
+            cell.dateLabel.textColor = UIColor.text.notification.red
+        } else {
+            cell.dateLabel.textColor = UIColor.text.black
         }
         
         return cell

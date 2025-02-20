@@ -43,12 +43,6 @@ class CalendarViewController: UIViewController {
         return dayStackView
     }()
     
-    let lineView: UIView = {
-        let lineView = UIView()
-        lineView.backgroundColor = .cell.lightGray
-        return lineView
-    }()
-    
     var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -103,7 +97,6 @@ private extension CalendarViewController {
     func setUp() {
         view.addSubview(calendarHeaderStackView)
         view.addSubview(dayStackView)
-        view.addSubview(lineView)
         view.addSubview(collectionView)
         
         calendarHeaderStackView.snp.makeConstraints {
@@ -118,15 +111,8 @@ private extension CalendarViewController {
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.spacing.px4)
         }
         
-        lineView.snp.makeConstraints {
-            $0.top.equalTo(dayStackView.snp.bottom).offset(Constants.margin.vertical)
-            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.spacing.px4)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.spacing.px4)
-            $0.height.equalTo(1)
-        }
-        
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(lineView.snp.bottom).offset(Constants.margin.vertical)
+            $0.top.equalTo(dayStackView.snp.bottom).offset(Constants.margin.vertical)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.spacing.px4)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.spacing.px4)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
@@ -211,7 +197,7 @@ extension CalendarViewController {
     }
 }
 
-// MARK: - Delegate
+// MARK: - CollectionViewDelegate
 extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.days.count
@@ -222,14 +208,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         
         cell.configure(with: viewModel.days[indexPath.row])
         
-        // 날짜가 있는 셀에만 테두리
-        if !viewModel.days[indexPath.row].isEmpty {
-            cell.layer.borderWidth = 1
-            cell.layer.borderColor = UIColor.cell.lightGray.cgColor
-        } else {
-            cell.layer.borderWidth = 0
-            cell.layer.borderColor = UIColor.clear.cgColor
-        }
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor.cell.lightGray.cgColor
         
         // 오늘 날짜에 표시
         if let today = viewModel.todayNumber, viewModel.days[indexPath.row] == today {

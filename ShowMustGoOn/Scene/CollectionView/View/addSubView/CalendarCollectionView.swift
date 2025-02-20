@@ -59,9 +59,14 @@ class CalendarCollectionView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
+        
+        updateCalendar(to: Date())
         bindViewModel()
-        previousNextButtonAction()
+        setupButtonActions()
         configureDayLabel()
+        
+        //
+        viewModel.generateMonths()
     }
     
     required init?(coder: NSCoder) {
@@ -98,32 +103,35 @@ private extension CalendarCollectionView {
 
 // MARK: - Method
 extension CalendarCollectionView {
-    // 뷰모델에서 작성한 dateFormatter를 적용해 년월텍스트라벨에 연결
+    // 날짜 변경 메소드
+    private func updateCalendar(to date: Date) {
+        viewModel.updateYear(to: date)
+        bindViewModel()
+    }
+    
+    // UI 업데이트
     private func bindViewModel() {
         yearLabel.text = viewModel.yearLabelText
         collectionView.reloadData()
     }
     
-    // 왼쪽, 오른쪽 버튼 클릭 액션
-    func previousNextButtonAction() {
-        // 왼쪽 버튼 클릭 액션
+    // 왼쪽, 오늘, 오른쪽 버튼 클릭 액션
+    func setupButtonActions() {
         leftButton.addAction(UIAction(handler: { [weak self] _ in
             guard let self = self else { return }
-            
             let previousMonth = self.viewModel.calendar.date(byAdding: .month, value: -1, to: self.viewModel.calendarDate) ?? Date()
-            self.viewModel.updateYear(to: previousMonth)
-            self.yearLabel.text = self.viewModel.yearLabelText
-            bindViewModel()
+            self.updateCalendar(to: previousMonth)
         }), for: .touchUpInside)
-        
-        // 오른쪽 버튼 클릭 액션
+
         rightButton.addAction(UIAction(handler: { [weak self] _ in
             guard let self = self else { return }
-            
             let nextMonth = self.viewModel.calendar.date(byAdding: .month, value: +1, to: self.viewModel.calendarDate) ?? Date()
-            self.viewModel.updateYear(to: nextMonth)
-            self.yearLabel.text = self.viewModel.yearLabelText
-            bindViewModel()
+            self.updateCalendar(to: nextMonth)
+        }), for: .touchUpInside)
+
+        todayButton.addAction(UIAction(handler: { [weak self] _ in
+            guard let self = self else { return }
+            self.updateCalendar(to: Date()) // 오늘 날짜로 이동
         }), for: .touchUpInside)
     }
     
@@ -132,13 +140,11 @@ extension CalendarCollectionView {
         let dayOfTheWeek: [String] = ["일", "월", "화", "수", "목", "금", "토"]
         
         for i in 0..<7 {
-            let dayLabel = CustomLabel(title: dayOfTheWeek[i], size: Constants.size.size12, weight: .Regular, color: .text.black)
+            let dayLabel = CustomLabel(title: dayOfTheWeek[i], size: Constants.size.size15, weight: .Regular, color: .text.black)
             dayLabel.textAlignment = .center
             
-            if i == 0 {
+            if i == 0 || i == 6 {
                 dayLabel.textColor = .text.notification.red
-            } else if i == 6 {
-                dayLabel.textColor = .text.lavender
             } else {
                 dayLabel.textColor = .text.black
             }
@@ -151,7 +157,8 @@ extension CalendarCollectionView {
 // MARK: - delegate
 extension CalendarCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (2026 - 2024 + 1) * 12 // 2000년부터 2100년까지 총 1200개월
+        // 정해긴 기간만큼의 월 수가 노출되게
+        return viewModel.months.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -159,6 +166,10 @@ extension CalendarCollectionView: UICollectionViewDelegate, UICollectionViewData
         
         cell.backgroundColor = .clear
         cell.layer.borderColor = UIColor.black.cgColor
+        
+        let month = viewModel.months[indexPath.item] // 월 데이터
+        let days = viewModel.daysByMonths[month] ?? [] // 해당 월의 일 데이터
+        cell.configure(with: month, days: days)
         
         return cell
     }
