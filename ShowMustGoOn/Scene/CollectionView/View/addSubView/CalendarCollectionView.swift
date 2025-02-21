@@ -60,13 +60,12 @@ class CalendarCollectionView: UIView {
         super.init(frame: frame)
         setUp()
         
-        updateCalendar(to: Date())
-        bindViewModel()
+        viewModel.generateMonths()
+//        updateCalendar(to: Date())
+        let startMonth = viewModel.months[viewModel.currentIndex]
+        updateCalendar(to: startMonth)
         setupButtonActions()
         configureDayLabel()
-        
-        //
-        viewModel.generateMonths()
     }
     
     required init?(coder: NSCoder) {
@@ -103,29 +102,30 @@ private extension CalendarCollectionView {
 
 // MARK: - Method
 extension CalendarCollectionView {
-    // 날짜 변경 메소드
+    // 날짜 변경 메소드 - 콜랙션뷰 스크롤
     private func updateCalendar(to date: Date) {
-        viewModel.updateYear(to: date)
-        bindViewModel()
-    }
-    
-    // UI 업데이트
-    private func bindViewModel() {
-        yearLabel.text = viewModel.yearLabelText
-        collectionView.reloadData()
+        if let index = viewModel.months.firstIndex(where: { Calendar.current.isDate($0, equalTo: date, toGranularity: .month) }) {
+            viewModel.currentIndex = index
+            collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: true)
+            
+            yearLabel.text = viewModel.dateFormatter.string(from: date)
+            collectionView.reloadData()
+        }
     }
     
     // 왼쪽, 오늘, 오른쪽 버튼 클릭 액션
     func setupButtonActions() {
         leftButton.addAction(UIAction(handler: { [weak self] _ in
             guard let self = self else { return }
-            let previousMonth = self.viewModel.calendar.date(byAdding: .month, value: -1, to: self.viewModel.calendarDate) ?? Date()
+            let previousIndex = max(0, self.viewModel.currentIndex - 1)
+            let previousMonth = self.viewModel.months[previousIndex]
             self.updateCalendar(to: previousMonth)
         }), for: .touchUpInside)
 
         rightButton.addAction(UIAction(handler: { [weak self] _ in
             guard let self = self else { return }
-            let nextMonth = self.viewModel.calendar.date(byAdding: .month, value: +1, to: self.viewModel.calendarDate) ?? Date()
+            let nextIndex = min(self.viewModel.months.count - 1, self.viewModel.currentIndex + 1)
+            let nextMonth = self.viewModel.months[nextIndex]
             self.updateCalendar(to: nextMonth)
         }), for: .touchUpInside)
 

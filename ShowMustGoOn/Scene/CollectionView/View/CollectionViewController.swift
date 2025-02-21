@@ -67,7 +67,7 @@ extension CollectionViewController {
     func navigationUI() {
         navigationController?.navigationBar.barTintColor = .background.white
         
-        let viewTitle = CustomLabel(title: "CollectionView Practice", size: Constants.size.size20, weight: .Bold, color: .text.black)
+        let viewTitle = CustomLabel(title: "CollectionView", size: Constants.size.size20, weight: .Bold, color: .text.black)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: viewTitle)
         
         navigationItem.rightBarButtonItem = calendarButton

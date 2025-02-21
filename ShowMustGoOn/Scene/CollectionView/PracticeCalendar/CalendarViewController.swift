@@ -11,7 +11,7 @@ import SnapKit
 
 class CalendarViewController: UIViewController {
     // MARK: - Properties
-    var viewModel = CalendarCollectionViewModel()
+    var viewModel = CalendarViewModel()
     
     // MARK: - Components
     var yearLabel = CustomLabel(title: "", size: Constants.size.size20, weight: .Regular, color: .text.black)

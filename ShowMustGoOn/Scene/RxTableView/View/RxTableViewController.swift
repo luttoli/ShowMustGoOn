@@ -69,7 +69,7 @@ extension RxTableViewController {
     func navigationUI() {
         navigationController?.navigationBar.barTintColor = .background.white
         
-        let viewTitle = CustomLabel(title: "RxSwift Practice", size: Constants.size.size20, weight: .Bold, color: .text.black)
+        let viewTitle = CustomLabel(title: "RxSwift UITableView", size: Constants.size.size20, weight: .Bold, color: .text.black)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: viewTitle)
         
         navigationItem.rightBarButtonItem = rxButtonPage

@@ -31,10 +31,11 @@ class MonthCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    var month: Date? // 현재 셀의 월 정보
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setUp()
-        viewModel.daysUpdate()
     }
     
     required init?(coder: NSCoder) {
@@ -62,10 +63,7 @@ private extension MonthCollectionViewCell {
 // MARK: - Method
 extension MonthCollectionViewCell {
     func configure(with month: Date, days: [String]) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy년 MM월"
-//        monthLabel.text = formatter.string(from: month)
-
+        self.month = month
         self.days = days
         collectionView.reloadData()
     }
@@ -86,11 +84,11 @@ extension MonthCollectionViewCell: UICollectionViewDelegate, UICollectionViewDat
         cell.layer.borderColor = UIColor.cell.lightGray.cgColor
         
         // 오늘 날짜에 표시 - 이거 수정해야함
-        if let today = viewModel.todayNumber, viewModel.days[indexPath.row] == today {
-            cell.backgroundColor = .cell.lavender.withAlphaComponent(0.3) // 배경 강조
-        } else {
-            cell.backgroundColor = .clear
-        }
+//        if let today = viewModel.todayNumber, viewModel.days[indexPath.row] == today {
+//            cell.backgroundColor = .cell.lavender.withAlphaComponent(0.3) // 배경 강조
+//        } else {
+//            cell.backgroundColor = .clear
+//        }
         
         // 일요일, 토요일 셀에 들어가는 라벨 색 변경
         let dayIndex = indexPath.row % 7 // 7로 나눈 나머지 값이 요일을 의미

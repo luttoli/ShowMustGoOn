@@ -25,87 +25,55 @@ class CalendarCollectionViewModel {
         return formatter
     }()
     
-    // 현재 날짜 0000-00-00 00:00:00
-    var calendarDate = Date()
+    // 2024년 1월 ~ 2026년 12월까지의 월을 저장할 배열
+    var months = [Date]()
     
-    // 일 데이터 ["", "", "1"...]
-    var days = [String]()
+    // 현재 보여지는 월
+    var currentIndex: Int = 0
     
-    // 뷰에서 구독할 수 있도록 프로퍼티 추가
-    var yearLabelText: String {
-        return dateFormatter.string(from: calendarDate)
-    }
-    
-    // 날짜 업데이트 메서드
-    func updateYear(to date: Date) {
-        calendarDate = date
-        daysUpdate()
-    }
-    
-    // 해당 월의 1일이 무슨 요일인지 계산하는 함수
-    func firstDayOfWeek() -> Int {
-        // 현재 calendarDate의 연도와 월을 가져와서 1일로 설정
-        let components = calendar.dateComponents([.year, .month], from: calendarDate)
-        guard let firstDay = calendar.date(from: components) else { return 0 }
-        
-        // 1일의 요일 반환 (0 = 일요일, 6 = 토요일)
-        return calendar.component(.weekday, from: firstDay) - 1
-    }
-    
-    // 말일
-    func endDate() -> Int {
-        return calendar.range(of: .day, in: .month, for: self.calendarDate)?.count ?? 0
-    }
-    
-    // 해당 년월의 1일과 요일부터 말일 날짜까지
-    func daysUpdate() {
-        days.removeAll()
-        let start = firstDayOfWeek() // 이번 달의 첫 날짜의 요일 가져오기
-        let totalDays = endDate() // 이번 달의 마지막 날짜 가져오기
-        
-        // 빈 공간과 날짜를 한 번에 처리
-        let totalCells = start + totalDays // 시작 요일 + 총 날짜 수
-        for i in 0..<42 { // 6주 * 7일 = 42칸
-            if i < start { // 첫 번째 주에 앞선 빈 공간 추가
-                self.days.append("")
-            } else if i < totalCells { // 날짜 추가
-                self.days.append("\(i - start + 1)")
-            } else { // 마지막 주 빈 공간 채우기
-                self.days.append("")
-            }
-        }
-    }
-    
-    // 오늘 날짜
-    var todayNumber: String? {
-        let today = calendar.dateComponents([.year, .month, .day], from: Date()) // 현재 날짜
-        let currentMonth = calendar.dateComponents([.year, .month], from: calendarDate) // 현재 보고 있는 월
-        
-        // 현재 보고 있는 달과 오늘의 달이 같다면 오늘 날짜 반환
-        if today.year == currentMonth.year, today.month == currentMonth.month {
-            return "\(today.day!)"
-        }
-        return nil
-    }
-    
-    
-    
-    // --------------------------- 2024년 1월 ~ 2026년 12월까지의 월을 저장할 배열
-    var months: [Date] = []
-
     // 각 월별 일자 데이터를 저장하는 딕셔너리
     var daysByMonths : [Date: [String]] = [:]
 
     // 2024년 1월부터 2026년 12월까지의 월을 생성하는 함수
+//    func generateMonths() {
+//        let dateComponents = DateComponents(year: 2024, month: 1)
+//        guard let startDate = calendar.date(from: dateComponents) else { return }
+//
+//        for i in 0..<(3 * 12) { // 3년 * 12개월
+//            if let monthDate = calendar.date(byAdding: .month, value: i, to: startDate) {
+//                months.append(monthDate)
+//                generateDays(for: monthDate)
+//            }
+//        }
+//
+//        // 오늘 날짜가 포함된 월을 찾아서 currentIndex 설정
+//        if let todayIndex = months.firstIndex(where: { calendar.isDate(Date(), equalTo: $0, toGranularity: .month) }) {
+//            currentIndex = todayIndex
+//        }
+//    }
+    // 비교
     func generateMonths() {
-        let dateComponents = DateComponents(year: 2024, month: 1)
-        guard let startDate = calendar.date(from: dateComponents) else { return }
+        let calendar = Calendar.current
+        
+        // 시작일: 2024년 1월 1일
+        let startDateComponents = DateComponents(year: 2024, month: 1)
+        guard let startDate = calendar.date(from: startDateComponents) else { return }
+        
+        // 종료일: 2026년 12월 31일
+        let endDateComponents = DateComponents(year: 2026, month: 12, day: 31)
+        guard let endDate = calendar.date(from: endDateComponents) else { return }
+        
+        var currentDate = startDate
+        
+        while currentDate <= endDate {
+            months.append(currentDate) // 월 추가
+            generateDays(for: currentDate) // 해당 월의 일 추가
+            currentDate = calendar.date(byAdding: .month, value: 1, to: currentDate) ?? endDate // 다음 월로 이동
+        }
 
-        for i in 0..<(3 * 12) { // 3년 * 12개월
-            if let monthDate = calendar.date(byAdding: .month, value: i, to: startDate) {
-                months.append(monthDate)
-                generateDays(for: monthDate) // 각 월별로 일 데이터 생성
-            }
+        // 오늘 날짜가 포함된 월을 찾아서 currentIndex 설정
+        if let todayIndex = months.firstIndex(where: { calendar.isDate(Date(), equalTo: $0, toGranularity: .month) }) {
+            currentIndex = todayIndex
         }
     }
     
