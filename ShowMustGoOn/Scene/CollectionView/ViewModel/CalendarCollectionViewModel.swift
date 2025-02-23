@@ -35,23 +35,6 @@ class CalendarCollectionViewModel {
     var daysByMonths : [Date: [String]] = [:]
 
     // 2024년 1월부터 2026년 12월까지의 월을 생성하는 함수
-//    func generateMonths() {
-//        let dateComponents = DateComponents(year: 2024, month: 1)
-//        guard let startDate = calendar.date(from: dateComponents) else { return }
-//
-//        for i in 0..<(3 * 12) { // 3년 * 12개월
-//            if let monthDate = calendar.date(byAdding: .month, value: i, to: startDate) {
-//                months.append(monthDate)
-//                generateDays(for: monthDate)
-//            }
-//        }
-//
-//        // 오늘 날짜가 포함된 월을 찾아서 currentIndex 설정
-//        if let todayIndex = months.firstIndex(where: { calendar.isDate(Date(), equalTo: $0, toGranularity: .month) }) {
-//            currentIndex = todayIndex
-//        }
-//    }
-    // 비교
     func generateMonths() {
         let calendar = Calendar.current
         
@@ -109,5 +92,11 @@ class CalendarCollectionViewModel {
     // 특정 월의 말일을 구하는 함수
     func endDates(for date: Date) -> Int {
         return calendar.range(of: .day, in: .month, for: date)?.count ?? 0
+    }
+    
+    // 오늘 날짜
+    var todayNumber: String? {
+        let today = calendar.dateComponents([.year, .month, .day], from: Date()) // 현재 날짜
+        return String(format: "%04d-%02d-%02d", today.year ?? 0, today.month ?? 0, today.day ?? 0)
     }
 }

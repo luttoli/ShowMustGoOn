@@ -78,18 +78,29 @@ extension MonthCollectionViewCell: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DayCollectionViewCell.identifier, for: indexPath) as? DayCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.configure(with: days[indexPath.row])
+        let day = days[indexPath.row]
+        cell.configure(with: day)
         
         cell.layer.borderWidth = 1
         cell.layer.borderColor = UIColor.cell.lightGray.cgColor
-        
-        // 오늘 날짜에 표시 - 이거 수정해야함
-//        if let today = viewModel.todayNumber, viewModel.days[indexPath.row] == today {
-//            cell.backgroundColor = .cell.lavender.withAlphaComponent(0.3) // 배경 강조
-//        } else {
-//            cell.backgroundColor = .clear
-//        }
-        
+
+        // 셀의 배경색을 기본값으로 초기화
+        cell.backgroundColor = .clear
+
+        // 현재 보고 있는 달과 날짜를 "yyyy-MM-dd" 형태로 변환
+        if let month = self.month {
+            let calendar = Calendar.current
+            let components = calendar.dateComponents([.year, .month], from: month)
+            if let year = components.year, let month = components.month, let dayInt = Int(day) {
+                let dateString = String(format: "%04d-%02d-%02d", year, month, dayInt)
+                
+                // 오늘 날짜와 비교하여 배경색 설정
+                if dateString == viewModel.todayNumber {
+                    cell.backgroundColor = .cell.lavender.withAlphaComponent(0.3) // 배경 강조
+                }
+            }
+        }
+
         // 일요일, 토요일 셀에 들어가는 라벨 색 변경
         let dayIndex = indexPath.row % 7 // 7로 나눈 나머지 값이 요일을 의미
         if dayIndex == 0 || dayIndex == 6 {

@@ -61,11 +61,17 @@ class CalendarCollectionView: UIView {
         setUp()
         
         viewModel.generateMonths()
-//        updateCalendar(to: Date())
-        let startMonth = viewModel.months[viewModel.currentIndex]
-        updateCalendar(to: startMonth)
         setupButtonActions()
         configureDayLabel()
+    }
+    
+    // 뷰의 크기나 위치가 변할 때 자동으로 레이아웃을 다시 계산
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        DispatchQueue.main.async {
+            // 처음에 업데이트 시 애니메이션 끄기
+            self.updateCalendar(to: Date(), animated: false)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -103,10 +109,11 @@ private extension CalendarCollectionView {
 // MARK: - Method
 extension CalendarCollectionView {
     // 날짜 변경 메소드 - 콜랙션뷰 스크롤
-    private func updateCalendar(to date: Date) {
+    private func updateCalendar(to date: Date, animated: Bool) {
         if let index = viewModel.months.firstIndex(where: { Calendar.current.isDate($0, equalTo: date, toGranularity: .month) }) {
             viewModel.currentIndex = index
-            collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: true)
+            // 애니메이션 설정
+            collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: animated)
             
             yearLabel.text = viewModel.dateFormatter.string(from: date)
             collectionView.reloadData()
@@ -119,19 +126,19 @@ extension CalendarCollectionView {
             guard let self = self else { return }
             let previousIndex = max(0, self.viewModel.currentIndex - 1)
             let previousMonth = self.viewModel.months[previousIndex]
-            self.updateCalendar(to: previousMonth)
+            self.updateCalendar(to: previousMonth, animated: true)
         }), for: .touchUpInside)
 
         rightButton.addAction(UIAction(handler: { [weak self] _ in
             guard let self = self else { return }
             let nextIndex = min(self.viewModel.months.count - 1, self.viewModel.currentIndex + 1)
             let nextMonth = self.viewModel.months[nextIndex]
-            self.updateCalendar(to: nextMonth)
+            self.updateCalendar(to: nextMonth, animated: true)
         }), for: .touchUpInside)
 
         todayButton.addAction(UIAction(handler: { [weak self] _ in
             guard let self = self else { return }
-            self.updateCalendar(to: Date()) // 오늘 날짜로 이동
+            self.updateCalendar(to: Date(), animated: true) // 오늘 날짜로 이동
         }), for: .touchUpInside)
     }
     
