@@ -54,11 +54,11 @@ extension CollectionViewController {
         super.viewWillAppear(animated)
         
         // 세그먼트 인덱스 초기화
-        segment.segment.selectedSegmentIndex = 4
+        segment.segment.selectedSegmentIndex = 5
         segment.updateBottomLinePosition()
         
         // 초기화된 세그먼트 인덱스에 맞는 화면 업데이트
-        segment.selectedIndex.accept(4)
+        segment.selectedIndex.accept(5)
     }
 }
 
@@ -67,7 +67,7 @@ extension CollectionViewController {
     func navigationUI() {
         navigationController?.navigationBar.barTintColor = .background.white
         
-        let viewTitle = CustomLabel(title: "CollectionView", size: Constants.size.size20, weight: .Bold, color: .text.black)
+        let viewTitle = CustomLabel(title: "UICollectionView", size: Constants.size.size20, weight: .Bold, color: .text.black)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: viewTitle)
         
         navigationItem.rightBarButtonItem = calendarButton

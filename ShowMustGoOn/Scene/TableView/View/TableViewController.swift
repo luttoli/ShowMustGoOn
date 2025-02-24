@@ -64,7 +64,7 @@ extension TableViewController {
     func navigationUI() {
         navigationController?.navigationBar.barTintColor = .background.white
         
-        let viewTitle = CustomLabel(title: "TableView", size: Constants.size.size20, weight: .Bold, color: .text.black)
+        let viewTitle = CustomLabel(title: "UITableView", size: Constants.size.size20, weight: .Bold, color: .text.black)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: viewTitle)
     }
 }
