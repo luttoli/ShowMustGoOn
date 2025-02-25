@@ -22,6 +22,8 @@
 		B8232BAA2D586BBB000B3989 /* CalendarCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8232BA92D586BBB000B3989 /* CalendarCollectionViewModel.swift */; };
 		B8232BAC2D587B59000B3989 /* DayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8232BAB2D587B59000B3989 /* DayCollectionViewCell.swift */; };
 		B85AE54D2D6852F7004D4F46 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85AE54C2D6852F7004D4F46 /* CalendarViewModel.swift */; };
+		B85AE54F2D6DF64F004D4F46 /* AddListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85AE54E2D6DF64F004D4F46 /* AddListTableViewCell.swift */; };
+		B85AE5512D6E060F004D4F46 /* AddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85AE5502D6E060F004D4F46 /* AddCollectionViewCell.swift */; };
 		B867451C2D4C6A370033AEC9 /* CalculateCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867451B2D4C6A360033AEC9 /* CalculateCollectionModel.swift */; };
 		B867451E2D4C6A430033AEC9 /* CalculateCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867451D2D4C6A430033AEC9 /* CalculateCollectionViewModel.swift */; };
 		B86745202D4CB6B90033AEC9 /* CalculateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867451F2D4CB6B90033AEC9 /* CalculateCollectionViewCell.swift */; };
@@ -131,6 +133,8 @@
 		B8232BA92D586BBB000B3989 /* CalendarCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewModel.swift; sourceTree = "<group>"; };
 		B8232BAB2D587B59000B3989 /* DayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCollectionViewCell.swift; sourceTree = "<group>"; };
 		B85AE54C2D6852F7004D4F46 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		B85AE54E2D6DF64F004D4F46 /* AddListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListTableViewCell.swift; sourceTree = "<group>"; };
+		B85AE5502D6E060F004D4F46 /* AddCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollectionViewCell.swift; sourceTree = "<group>"; };
 		B867451B2D4C6A360033AEC9 /* CalculateCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateCollectionModel.swift; sourceTree = "<group>"; };
 		B867451D2D4C6A430033AEC9 /* CalculateCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateCollectionViewModel.swift; sourceTree = "<group>"; };
 		B867451F2D4CB6B90033AEC9 /* CalculateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -561,6 +565,8 @@
 				B867451F2D4CB6B90033AEC9 /* CalculateCollectionViewCell.swift */,
 				B8232BA52D586B80000B3989 /* MonthCollectionViewCell.swift */,
 				B8232BAB2D587B59000B3989 /* DayCollectionViewCell.swift */,
+				B85AE54E2D6DF64F004D4F46 /* AddListTableViewCell.swift */,
+				B85AE5502D6E060F004D4F46 /* AddCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -703,6 +709,7 @@
 				B877DBC92CD32623009D9C49 /* BasicTableView.swift in Sources */,
 				B8E6F8EB2D48913700CDC1C4 /* CalculateCollectionView.swift in Sources */,
 				B80B9F102D0D5E5F00052199 /* RxTodoTableView.swift in Sources */,
+				B85AE54F2D6DF64F004D4F46 /* AddListTableViewCell.swift in Sources */,
 				B8CD655B2CC8848900E8F8B3 /* UITableViewCell.swift in Sources */,
 				B8E6F8E32D4727C700CDC1C4 /* BasicCollectionViewModel.swift in Sources */,
 				B80B9F1D2D110B3A00052199 /* RxSectionTableViewModel.swift in Sources */,
@@ -722,6 +729,7 @@
 				B8E6F8E12D4727B300CDC1C4 /* BasicCollectionModel.swift in Sources */,
 				B8126EC52D647DF1003C7CB0 /* CalendarViewController.swift in Sources */,
 				B80B9F232D13BF3900052199 /* TodoTableView.swift in Sources */,
+				B85AE5512D6E060F004D4F46 /* AddCollectionViewCell.swift in Sources */,
 				B8CD65442CC1038C00E8F8B3 /* CustomLabel.swift in Sources */,
 				B8232BAC2D587B59000B3989 /* DayCollectionViewCell.swift in Sources */,
 				B8E6F8D72D46850E00CDC1C4 /* SelectCollectionView.swift in Sources */,
