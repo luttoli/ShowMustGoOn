@@ -12,7 +12,6 @@ import SnapKit
 class AddCollectionViewCell: UICollectionViewCell {
     // MARK: - Components
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setUp()
@@ -31,7 +30,7 @@ class AddCollectionViewCell: UICollectionViewCell {
 // MARK: - SetUp
 private extension AddCollectionViewCell {
     func setUp() {
-
+        
     }
 }
 

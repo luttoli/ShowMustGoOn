@@ -233,7 +233,6 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         let spacing: CGFloat = 1
         let width = (collectionView.bounds.width - (spacing * 6)) / 7
         let height = (collectionView.bounds.height - (spacing * 5)) / 6
-        
         return CGSize(width: width, height: height)
     }
     

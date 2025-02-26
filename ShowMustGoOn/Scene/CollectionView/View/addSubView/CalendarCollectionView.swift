@@ -161,7 +161,7 @@ extension CalendarCollectionView {
     }
 }
 
-// MARK: - delegate
+// MARK: - UICollectionViewDelegate
 extension CalendarCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // 정해긴 기간만큼의 월 수가 노출되게

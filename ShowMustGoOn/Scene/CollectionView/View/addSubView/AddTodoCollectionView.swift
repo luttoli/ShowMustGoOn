@@ -27,11 +27,15 @@ class AddTodoCollectionView: UIView {
     
     var addTodoButton = CustomButton(type: .iconButton(icon: .plus))
     
-    var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.register(AddListTableViewCell.self, forCellReuseIdentifier: AddListTableViewCell.identifier)
-        tableView.backgroundColor = .yellow
-        return tableView
+    var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(AddListCollectionViewCell.self, forCellWithReuseIdentifier: AddListCollectionViewCell.identifier)
+        collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
+        return collectionView
     }()
     
     override init(frame: CGRect) {
@@ -49,7 +53,7 @@ private extension AddTodoCollectionView {
     func setUp() {
         addSubview(textField)
         addSubview(addTodoButton)
-        addSubview(tableView)
+        addSubview(collectionView)
         
         textField.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide)
@@ -63,14 +67,14 @@ private extension AddTodoCollectionView {
             $0.trailing.equalTo(safeAreaLayoutGuide)
         }
         
-        tableView.snp.makeConstraints {
+        collectionView.snp.makeConstraints {
             $0.top.equalTo(textField.snp.bottom).offset(Constants.spacing.px10)
             $0.leading.equalTo(safeAreaLayoutGuide)
             $0.trailing.equalTo(safeAreaLayoutGuide)
             $0.bottom.equalTo(safeAreaLayoutGuide)
         }
-        tableView.delegate = self
-        tableView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
 }
 
@@ -79,45 +83,33 @@ extension AddTodoCollectionView {
     
 }
 
-// MARK: - UITableViewDelegate
-extension AddTodoCollectionView: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+// MARK: - UICollectionViewDelegate
+extension AddTodoCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = .systemGray6
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddListCollectionViewCell.identifier, for: indexPath) as? AddListCollectionViewCell else { return UICollectionViewCell() }
         
-        
-        
-        return headerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return Constants.size.size40
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: AddListTableViewCell.identifier, for: indexPath) as? AddListTableViewCell else { return UITableViewCell() }
-        
-        cell.selectionStyle = .none
-        cell.backgroundColor = .black
-        
+        cell.backgroundColor = .clear
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.cornerRadius = Constants.radius.px12
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Constants.size.size130
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.bounds.width
+        return CGSize(width: width, height: Constants.size.size190)
     }
     
-    // 셀 삭제 기능 추가
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return Constants.spacing.px14
     }
 }
