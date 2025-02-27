@@ -34,7 +34,7 @@ class AddListCollectionViewCell: UICollectionViewCell {
         doneStackView.axis = .vertical
         doneStackView.distribution = .equalCentering
         doneStackView.alignment = .center
-        doneStackView.spacing = Constants.spacing.px8
+        doneStackView.spacing = Constants.spacing.px4
         return doneStackView
     }()
     
@@ -102,7 +102,7 @@ extension AddListCollectionViewCell: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddCollectionViewCell.identifier, for: indexPath) as? AddCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.backgroundColor = UIColor.lightGray
+        cell.backgroundColor = UIColor.systemGray4
         cell.layer.cornerRadius = Constants.radius.px4
         
         return cell
