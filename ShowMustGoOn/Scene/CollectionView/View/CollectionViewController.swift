@@ -25,7 +25,7 @@ class CollectionViewController: UIViewController {
     let keyboardCollectionView = KeyboardCollectionView()
     let calculateCollectionView = CalculateCollectionView()
     let calendarCollectionView = CalendarCollectionView()
-    let addTodoCollectionView = AddTodoCollectionView()
+    let addTodoCollectionView = ChallengeCollectionView()
     
     init() {
         super.init(nibName: nil, bundle: nil)

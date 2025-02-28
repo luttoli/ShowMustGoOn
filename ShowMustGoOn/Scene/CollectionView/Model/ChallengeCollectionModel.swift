@@ -1,5 +1,5 @@
 //
-//  AddCollectionModel.swift
+//  ChallengeCollectionModel.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 2/27/25.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct AddCollectionModel {
+struct ChallengeCollectionModel {
     let id: UUID
     let title: String
     var date: Date

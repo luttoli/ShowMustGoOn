@@ -1,5 +1,5 @@
 //
-//  AddCollectionViewCell.swift
+//  BlockCollectionViewCell.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 2/25/25.
@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class AddCollectionViewCell: UICollectionViewCell {
+class BlockCollectionViewCell: UICollectionViewCell {
     // MARK: - Components
     
     override init(frame: CGRect) {
@@ -28,13 +28,13 @@ class AddCollectionViewCell: UICollectionViewCell {
 }
 
 // MARK: - SetUp
-private extension AddCollectionViewCell {
+private extension BlockCollectionViewCell {
     func setUp() {
         
     }
 }
 
 // MARK: - Method
-extension DayCollectionViewCell {
+extension BlockCollectionViewCell {
 
 }

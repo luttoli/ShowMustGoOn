@@ -1,5 +1,5 @@
 //
-//  AddTodoCollectionView.swift
+//  ChallengeCollectionView.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 1/27/25.
@@ -9,14 +9,14 @@ import UIKit
 
 import SnapKit
 
-class AddTodoCollectionView: UIView {
+class ChallengeCollectionView: UIView {
     // MARK: - Properties
     
     
     // MARK: - Components
     var textField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "제목을 입력하세요."
+        textField.placeholder = "챌린지 타이틀을 입력하세요."
         textField.borderStyle = .roundedRect
         textField.font = .toPretendard(size: Constants.size.size15, weight: .Regular)
         textField.backgroundColor = .systemBackground
@@ -27,11 +27,13 @@ class AddTodoCollectionView: UIView {
     
     var addTodoButton = CustomButton(type: .iconButton(icon: .plus))
     
+    var nodataLabel = CustomLabel(title: "챌린지를 등록하세요!", size: Constants.size.size15, weight: .Regular, color: .text.black)
+    
     var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(AddListCollectionViewCell.self, forCellWithReuseIdentifier: AddListCollectionViewCell.identifier)
+        collectionView.register(ChallengeListCollectionViewCell.self, forCellWithReuseIdentifier: ChallengeListCollectionViewCell.identifier)
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
@@ -49,10 +51,11 @@ class AddTodoCollectionView: UIView {
 }
 
 // MARK: - SetUp
-private extension AddTodoCollectionView {
+private extension ChallengeCollectionView {
     func setUp() {
         addSubview(textField)
         addSubview(addTodoButton)
+        addSubview(nodataLabel)
         addSubview(collectionView)
         
         textField.snp.makeConstraints {
@@ -67,6 +70,10 @@ private extension AddTodoCollectionView {
             $0.trailing.equalTo(safeAreaLayoutGuide)
         }
         
+        nodataLabel.snp.makeConstraints {
+            $0.centerY.centerX.equalToSuperview()
+        }
+        
         collectionView.snp.makeConstraints {
             $0.top.equalTo(textField.snp.bottom).offset(Constants.spacing.px10)
             $0.leading.equalTo(safeAreaLayoutGuide)
@@ -79,18 +86,18 @@ private extension AddTodoCollectionView {
 }
 
 // MARK: - Method
-extension AddTodoCollectionView {
+extension ChallengeCollectionView {
     
 }
 
 // MARK: - UICollectionViewDelegate
-extension AddTodoCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ChallengeCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddListCollectionViewCell.identifier, for: indexPath) as? AddListCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChallengeListCollectionViewCell.identifier, for: indexPath) as? ChallengeListCollectionViewCell else { return UICollectionViewCell() }
         
         cell.backgroundColor = .clear
         cell.layer.borderWidth = 1

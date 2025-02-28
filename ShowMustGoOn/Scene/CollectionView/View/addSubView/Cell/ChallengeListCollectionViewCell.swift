@@ -1,5 +1,5 @@
 //
-//  AddListCollectionViewCell.swift
+//  ChallengeListCollectionViewCell.swift
 //  ShowMustGoOn
 //
 //  Created by 김지훈 on 2/26/25.
@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class AddListCollectionViewCell: UICollectionViewCell {
+class ChallengeListCollectionViewCell: UICollectionViewCell {
     // MARK: - Components
     var todoTitleLabel = CustomLabel(title: "TodoTitle", size: Constants.size.size15, weight: .SemiBold, color: .text.black)
     var yearLabel = CustomLabel(title: "25년\n02월", size: Constants.size.size15, weight: .SemiBold, color: .text.black)
@@ -18,7 +18,7 @@ class AddListCollectionViewCell: UICollectionViewCell {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(AddCollectionViewCell.self, forCellWithReuseIdentifier: AddCollectionViewCell.identifier)
+        collectionView.register(BlockCollectionViewCell.self, forCellWithReuseIdentifier: BlockCollectionViewCell.identifier)
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
@@ -53,7 +53,7 @@ class AddListCollectionViewCell: UICollectionViewCell {
 }
 
 // MARK: - SetUp
-private extension AddListCollectionViewCell {
+private extension ChallengeListCollectionViewCell {
     func setUp() {
         contentView.addSubview(todoTitleLabel)
         contentView.addSubview(yearLabel)
@@ -89,18 +89,18 @@ private extension AddListCollectionViewCell {
 }
 
 // MARK: - Method
-extension AddListCollectionViewCell {
+extension ChallengeListCollectionViewCell {
     
 }
 
 // MARK: - UICollectionViewDelegate
-extension AddListCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ChallengeListCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 42
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddCollectionViewCell.identifier, for: indexPath) as? AddCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BlockCollectionViewCell.identifier, for: indexPath) as? BlockCollectionViewCell else { return UICollectionViewCell() }
         
         cell.backgroundColor = UIColor.systemGray4
         cell.layer.cornerRadius = Constants.radius.px4
