@@ -11,7 +11,7 @@ import SnapKit
 
 class ChallengeCollectionView: UIView {
     // MARK: - Properties
-    
+    var viewModel = ChallengeCollectionViewModel()
     
     // MARK: - Components
     var textField: UITextField = {
@@ -43,6 +43,7 @@ class ChallengeCollectionView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
+        hideOnLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -87,13 +88,16 @@ private extension ChallengeCollectionView {
 
 // MARK: - Method
 extension ChallengeCollectionView {
-    
+    func hideOnLabel() {
+        nodataLabel.isHidden = !viewModel.challenges.isEmpty
+    }
 }
 
 // MARK: - UICollectionViewDelegate
 extension ChallengeCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+//        return 5
+        return viewModel.challenges.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
