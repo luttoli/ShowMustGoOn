@@ -75,7 +75,7 @@ class CustomButton: UIButton {
                 case .half:
                     return Constants.size.size15
                 case .small:
-                    return Constants.size.size12
+                    return Constants.size.size15
                 }
             }
         }

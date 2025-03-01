@@ -23,9 +23,9 @@
 		B8232BAC2D587B59000B3989 /* DayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8232BAB2D587B59000B3989 /* DayCollectionViewCell.swift */; };
 		B85AE54D2D6852F7004D4F46 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85AE54C2D6852F7004D4F46 /* CalendarViewModel.swift */; };
 		B85AE5512D6E060F004D4F46 /* BlockCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85AE5502D6E060F004D4F46 /* BlockCollectionViewCell.swift */; };
-		B85AE5532D6F582C004D4F46 /* ChallengeListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85AE5522D6F582C004D4F46 /* ChallengeListCollectionViewCell.swift */; };
-		B85AE5552D7033AC004D4F46 /* ChallengeCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85AE5542D7033AC004D4F46 /* ChallengeCollectionModel.swift */; };
-		B85AE5572D714CFF004D4F46 /* ChallengeCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85AE5562D714CFF004D4F46 /* ChallengeCollectionViewModel.swift */; };
+		B85AE5532D6F582C004D4F46 /* BackMiracleListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85AE5522D6F582C004D4F46 /* BackMiracleListCollectionViewCell.swift */; };
+		B85AE5552D7033AC004D4F46 /* BackMiracleCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85AE5542D7033AC004D4F46 /* BackMiracleCollectionModel.swift */; };
+		B85AE5572D714CFF004D4F46 /* BackMiracleCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85AE5562D714CFF004D4F46 /* BackMiracleCollectionViewModel.swift */; };
 		B867451C2D4C6A370033AEC9 /* CalculateCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867451B2D4C6A360033AEC9 /* CalculateCollectionModel.swift */; };
 		B867451E2D4C6A430033AEC9 /* CalculateCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867451D2D4C6A430033AEC9 /* CalculateCollectionViewModel.swift */; };
 		B86745202D4CB6B90033AEC9 /* CalculateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867451F2D4CB6B90033AEC9 /* CalculateCollectionViewCell.swift */; };
@@ -96,7 +96,7 @@
 		B8E6F8D52D4684E300CDC1C4 /* KeyboardCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6F8D42D4684E300CDC1C4 /* KeyboardCollectionView.swift */; };
 		B8E6F8D72D46850E00CDC1C4 /* SelectCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6F8D62D46850E00CDC1C4 /* SelectCollectionView.swift */; };
 		B8E6F8D92D4685C000CDC1C4 /* CalendarCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6F8D82D4685C000CDC1C4 /* CalendarCollectionView.swift */; };
-		B8E6F8DB2D4686E600CDC1C4 /* ChallengeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6F8DA2D4686E600CDC1C4 /* ChallengeCollectionView.swift */; };
+		B8E6F8DB2D4686E600CDC1C4 /* BackMiracleCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6F8DA2D4686E600CDC1C4 /* BackMiracleCollectionView.swift */; };
 		B8E6F8DD2D4689DD00CDC1C4 /* BasicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6F8DC2D4689DD00CDC1C4 /* BasicCollectionViewCell.swift */; };
 		B8E6F8E12D4727B300CDC1C4 /* BasicCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6F8E02D4727B300CDC1C4 /* BasicCollectionModel.swift */; };
 		B8E6F8E32D4727C700CDC1C4 /* BasicCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6F8E22D4727C700CDC1C4 /* BasicCollectionViewModel.swift */; };
@@ -136,9 +136,9 @@
 		B8232BAB2D587B59000B3989 /* DayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCollectionViewCell.swift; sourceTree = "<group>"; };
 		B85AE54C2D6852F7004D4F46 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		B85AE5502D6E060F004D4F46 /* BlockCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockCollectionViewCell.swift; sourceTree = "<group>"; };
-		B85AE5522D6F582C004D4F46 /* ChallengeListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeListCollectionViewCell.swift; sourceTree = "<group>"; };
-		B85AE5542D7033AC004D4F46 /* ChallengeCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCollectionModel.swift; sourceTree = "<group>"; };
-		B85AE5562D714CFF004D4F46 /* ChallengeCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCollectionViewModel.swift; sourceTree = "<group>"; };
+		B85AE5522D6F582C004D4F46 /* BackMiracleListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackMiracleListCollectionViewCell.swift; sourceTree = "<group>"; };
+		B85AE5542D7033AC004D4F46 /* BackMiracleCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackMiracleCollectionModel.swift; sourceTree = "<group>"; };
+		B85AE5562D714CFF004D4F46 /* BackMiracleCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackMiracleCollectionViewModel.swift; sourceTree = "<group>"; };
 		B867451B2D4C6A360033AEC9 /* CalculateCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateCollectionModel.swift; sourceTree = "<group>"; };
 		B867451D2D4C6A430033AEC9 /* CalculateCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateCollectionViewModel.swift; sourceTree = "<group>"; };
 		B867451F2D4CB6B90033AEC9 /* CalculateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -203,7 +203,7 @@
 		B8E6F8D42D4684E300CDC1C4 /* KeyboardCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardCollectionView.swift; sourceTree = "<group>"; };
 		B8E6F8D62D46850E00CDC1C4 /* SelectCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCollectionView.swift; sourceTree = "<group>"; };
 		B8E6F8D82D4685C000CDC1C4 /* CalendarCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionView.swift; sourceTree = "<group>"; };
-		B8E6F8DA2D4686E600CDC1C4 /* ChallengeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCollectionView.swift; sourceTree = "<group>"; };
+		B8E6F8DA2D4686E600CDC1C4 /* BackMiracleCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackMiracleCollectionView.swift; sourceTree = "<group>"; };
 		B8E6F8DC2D4689DD00CDC1C4 /* BasicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCollectionViewCell.swift; sourceTree = "<group>"; };
 		B8E6F8E02D4727B300CDC1C4 /* BasicCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCollectionModel.swift; sourceTree = "<group>"; };
 		B8E6F8E22D4727C700CDC1C4 /* BasicCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCollectionViewModel.swift; sourceTree = "<group>"; };
@@ -521,7 +521,7 @@
 				B8E6F8D22D44837000CDC1C4 /* KeyboardCollectionModel.swift */,
 				B867451B2D4C6A360033AEC9 /* CalculateCollectionModel.swift */,
 				B8232BA72D586B95000B3989 /* CalendarCollectionModel.swift */,
-				B85AE5542D7033AC004D4F46 /* ChallengeCollectionModel.swift */,
+				B85AE5542D7033AC004D4F46 /* BackMiracleCollectionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -534,7 +534,7 @@
 				B8E6F8D02D43EEE300CDC1C4 /* KeyboardCollectionViewModel.swift */,
 				B867451D2D4C6A430033AEC9 /* CalculateCollectionViewModel.swift */,
 				B8232BA92D586BBB000B3989 /* CalendarCollectionViewModel.swift */,
-				B85AE5562D714CFF004D4F46 /* ChallengeCollectionViewModel.swift */,
+				B85AE5562D714CFF004D4F46 /* BackMiracleCollectionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -556,7 +556,7 @@
 				B8E6F8D42D4684E300CDC1C4 /* KeyboardCollectionView.swift */,
 				B8E6F8EA2D48913700CDC1C4 /* CalculateCollectionView.swift */,
 				B8E6F8D82D4685C000CDC1C4 /* CalendarCollectionView.swift */,
-				B8E6F8DA2D4686E600CDC1C4 /* ChallengeCollectionView.swift */,
+				B8E6F8DA2D4686E600CDC1C4 /* BackMiracleCollectionView.swift */,
 				B8E6F8C92D43487600CDC1C4 /* Cell */,
 			);
 			path = addSubView;
@@ -571,7 +571,7 @@
 				B867451F2D4CB6B90033AEC9 /* CalculateCollectionViewCell.swift */,
 				B8232BA52D586B80000B3989 /* MonthCollectionViewCell.swift */,
 				B8232BAB2D587B59000B3989 /* DayCollectionViewCell.swift */,
-				B85AE5522D6F582C004D4F46 /* ChallengeListCollectionViewCell.swift */,
+				B85AE5522D6F582C004D4F46 /* BackMiracleListCollectionViewCell.swift */,
 				B85AE5502D6E060F004D4F46 /* BlockCollectionViewCell.swift */,
 			);
 			path = Cell;
@@ -702,7 +702,7 @@
 				B867451E2D4C6A430033AEC9 /* CalculateCollectionViewModel.swift in Sources */,
 				B8B9A1AB2D06763C008D8130 /* RxTextFieldViewController.swift in Sources */,
 				B80B9F272D13F5F500052199 /* TodoTableViewModel.swift in Sources */,
-				B85AE5552D7033AC004D4F46 /* ChallengeCollectionModel.swift in Sources */,
+				B85AE5552D7033AC004D4F46 /* BackMiracleCollectionModel.swift in Sources */,
 				B8CD65402CC0FE9D00E8F8B3 /* UIFont.swift in Sources */,
 				B8CD65362CC0FD2B00E8F8B3 /* CustomTabBarController.swift in Sources */,
 				B877DBE02CD99D02009D9C49 /* MixTableView.swift in Sources */,
@@ -737,11 +737,11 @@
 				B80B9F232D13BF3900052199 /* TodoTableView.swift in Sources */,
 				B85AE5512D6E060F004D4F46 /* BlockCollectionViewCell.swift in Sources */,
 				B8CD65442CC1038C00E8F8B3 /* CustomLabel.swift in Sources */,
-				B85AE5532D6F582C004D4F46 /* ChallengeListCollectionViewCell.swift in Sources */,
+				B85AE5532D6F582C004D4F46 /* BackMiracleListCollectionViewCell.swift in Sources */,
 				B8232BAC2D587B59000B3989 /* DayCollectionViewCell.swift in Sources */,
 				B8E6F8D72D46850E00CDC1C4 /* SelectCollectionView.swift in Sources */,
 				B8CD654F2CC221FC00E8F8B3 /* SplashViewController.swift in Sources */,
-				B85AE5572D714CFF004D4F46 /* ChallengeCollectionViewModel.swift in Sources */,
+				B85AE5572D714CFF004D4F46 /* BackMiracleCollectionViewModel.swift in Sources */,
 				B8B9A1AF2D073952008D8130 /* CustomSegment.swift in Sources */,
 				B8E6F8D12D43EEE300CDC1C4 /* KeyboardCollectionViewModel.swift in Sources */,
 				B80B9F152D0D5F0600052199 /* RxTodoTableViewModel.swift in Sources */,
@@ -749,7 +749,7 @@
 				B877DBE62CD9B621009D9C49 /* UICollectionViewCell.swift in Sources */,
 				B8E6F8CB2D4348AA00CDC1C4 /* BasicCollectionView.swift in Sources */,
 				B877DBCF2CD373D5009D9C49 /* BasicTableModel.swift in Sources */,
-				B8E6F8DB2D4686E600CDC1C4 /* ChallengeCollectionView.swift in Sources */,
+				B8E6F8DB2D4686E600CDC1C4 /* BackMiracleCollectionView.swift in Sources */,
 				B877DBE42CD9B5F8009D9C49 /* HorizontalImageCollectionViewCell.swift in Sources */,
 				B8E6F8BF2D39EAFF00CDC1C4 /* RxAddTableViewModel.swift in Sources */,
 				B8E6F8BA2D2CCDD800CDC1C4 /* RxMixTableViewModel.swift in Sources */,
