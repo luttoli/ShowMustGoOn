@@ -104,7 +104,8 @@ extension BackMiracleCollectionView: UICollectionViewDelegate, UICollectionViewD
         cell.backMiracleTitleLabel.text = backMiracle.title
         cell.yearLabel.text = viewModel.yearLabelText
         cell.dayNumberLabel.text = "100일차"
-        cell.doneCountLabel.text = "\(viewModel.doneCount)일 완료"
+//        cell.doneCountLabel.text = "\(viewModel.doneCount)일 완료"
+        cell.doneCountLabel.text = "100일 완료"
         
         cell.backMiracle = backMiracle // 데이터를 안에 콜랙션뷰셀에 있는 콜랙션뷰로 넘겨줌
         
