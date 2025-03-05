@@ -26,6 +26,7 @@
 		B85AE5532D6F582C004D4F46 /* BackMiracleListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85AE5522D6F582C004D4F46 /* BackMiracleListCollectionViewCell.swift */; };
 		B85AE5552D7033AC004D4F46 /* BackMiracleCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85AE5542D7033AC004D4F46 /* BackMiracleCollectionModel.swift */; };
 		B85AE5572D714CFF004D4F46 /* BackMiracleCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85AE5562D714CFF004D4F46 /* BackMiracleCollectionViewModel.swift */; };
+		B85AE55D2D76D55A004D4F46 /* AddBackMiracleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85AE55C2D76D55A004D4F46 /* AddBackMiracleViewController.swift */; };
 		B867451C2D4C6A370033AEC9 /* CalculateCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867451B2D4C6A360033AEC9 /* CalculateCollectionModel.swift */; };
 		B867451E2D4C6A430033AEC9 /* CalculateCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867451D2D4C6A430033AEC9 /* CalculateCollectionViewModel.swift */; };
 		B86745202D4CB6B90033AEC9 /* CalculateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867451F2D4CB6B90033AEC9 /* CalculateCollectionViewCell.swift */; };
@@ -80,9 +81,9 @@
 		B8CD65472CC104C400E8F8B3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B8CD65462CC104C400E8F8B3 /* SnapKit */; };
 		B8CD654F2CC221FC00E8F8B3 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD654E2CC221FC00E8F8B3 /* SplashViewController.swift */; };
 		B8CD65512CC2225800E8F8B3 /* codingGif.gif in Resources */ = {isa = PBXBuildFile; fileRef = B8CD65502CC2225800E8F8B3 /* codingGif.gif */; };
-		B8CD65572CC2355E00E8F8B3 /* SwiftyGif in Frameworks */ = {isa = PBXBuildFile; productRef = B8CD65562CC2355E00E8F8B3 /* SwiftyGif */; };
 		B8CD655B2CC8848900E8F8B3 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD655A2CC8848900E8F8B3 /* UITableViewCell.swift */; };
 		B8CD655D2CC8879800E8F8B3 /* BasicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD655C2CC8879800E8F8B3 /* BasicTableViewCell.swift */; };
+		B8E051F32D7841D2003EDBD5 /* SwiftyGif in Frameworks */ = {isa = PBXBuildFile; productRef = B8E051F22D7841D2003EDBD5 /* SwiftyGif */; };
 		B8E6F8B12D17CFCE00CDC1C4 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B8E6F8B02D17CFCE00CDC1C4 /* IQKeyboardManagerSwift */; };
 		B8E6F8B42D2B66F800CDC1C4 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = B8E6F8B32D2B66F800CDC1C4 /* Differentiator */; };
 		B8E6F8B62D2B66F800CDC1C4 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = B8E6F8B52D2B66F800CDC1C4 /* RxDataSources */; };
@@ -139,6 +140,7 @@
 		B85AE5522D6F582C004D4F46 /* BackMiracleListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackMiracleListCollectionViewCell.swift; sourceTree = "<group>"; };
 		B85AE5542D7033AC004D4F46 /* BackMiracleCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackMiracleCollectionModel.swift; sourceTree = "<group>"; };
 		B85AE5562D714CFF004D4F46 /* BackMiracleCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackMiracleCollectionViewModel.swift; sourceTree = "<group>"; };
+		B85AE55C2D76D55A004D4F46 /* AddBackMiracleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBackMiracleViewController.swift; sourceTree = "<group>"; };
 		B867451B2D4C6A360033AEC9 /* CalculateCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateCollectionModel.swift; sourceTree = "<group>"; };
 		B867451D2D4C6A430033AEC9 /* CalculateCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateCollectionViewModel.swift; sourceTree = "<group>"; };
 		B867451F2D4CB6B90033AEC9 /* CalculateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -224,8 +226,8 @@
 				B8975F3E2CFEA1AD008F2BA6 /* RxSwift in Frameworks */,
 				B8CD65472CC104C400E8F8B3 /* SnapKit in Frameworks */,
 				B8E6F8B62D2B66F800CDC1C4 /* RxDataSources in Frameworks */,
-				B8CD65572CC2355E00E8F8B3 /* SwiftyGif in Frameworks */,
 				B8E6F8B12D17CFCE00CDC1C4 /* IQKeyboardManagerSwift in Frameworks */,
+				B8E051F32D7841D2003EDBD5 /* SwiftyGif in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,6 +573,7 @@
 				B867451F2D4CB6B90033AEC9 /* CalculateCollectionViewCell.swift */,
 				B8232BA52D586B80000B3989 /* MonthCollectionViewCell.swift */,
 				B8232BAB2D587B59000B3989 /* DayCollectionViewCell.swift */,
+				B85AE55C2D76D55A004D4F46 /* AddBackMiracleViewController.swift */,
 				B85AE5522D6F582C004D4F46 /* BackMiracleListCollectionViewCell.swift */,
 				B85AE5502D6E060F004D4F46 /* BlockCollectionViewCell.swift */,
 			);
@@ -596,13 +599,13 @@
 			name = ShowMustGoOn;
 			packageProductDependencies = (
 				B8CD65462CC104C400E8F8B3 /* SnapKit */,
-				B8CD65562CC2355E00E8F8B3 /* SwiftyGif */,
 				B8975F3D2CFEA1AD008F2BA6 /* RxSwift */,
 				B8863D762CFEAE0400717A63 /* RxCocoa */,
 				B8863D782CFEAEF200717A63 /* RxRelay */,
 				B8E6F8B02D17CFCE00CDC1C4 /* IQKeyboardManagerSwift */,
 				B8E6F8B32D2B66F800CDC1C4 /* Differentiator */,
 				B8E6F8B52D2B66F800CDC1C4 /* RxDataSources */,
+				B8E051F22D7841D2003EDBD5 /* SwiftyGif */,
 			);
 			productName = ShowMustGoOn;
 			productReference = B8CD65052CC0FC4000E8F8B3 /* ShowMustGoOn.app */;
@@ -634,10 +637,10 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				B8CD65452CC104C400E8F8B3 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				B8CD65552CC2355E00E8F8B3 /* XCRemoteSwiftPackageReference "SwiftyGif" */,
 				B8975F3A2CFEA06E008F2BA6 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				B8E6F8AF2D17CFCE00CDC1C4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				B8E6F8B22D2B66F800CDC1C4 /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				B8E051F12D7841D2003EDBD5 /* XCRemoteSwiftPackageReference "SwiftyGif" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B8CD65062CC0FC4000E8F8B3 /* Products */;
@@ -729,6 +732,7 @@
 				B877DBF22CDDDEA4009D9C49 /* WebView.swift in Sources */,
 				B877DBDC2CD47374009D9C49 /* SectionTableViewCell.swift in Sources */,
 				B867451C2D4C6A370033AEC9 /* CalculateCollectionModel.swift in Sources */,
+				B85AE55D2D76D55A004D4F46 /* AddBackMiracleViewController.swift in Sources */,
 				B8CD653E2CC0FE8600E8F8B3 /* UIColor.swift in Sources */,
 				B8E6F8E52D4878B700CDC1C4 /* SelectCollectionViewModel.swift in Sources */,
 				B8B9A1BF2D0930D4008D8130 /* RxMixViewController.swift in Sources */,
@@ -985,7 +989,7 @@
 				minimumVersion = 5.7.1;
 			};
 		};
-		B8CD65552CC2355E00E8F8B3 /* XCRemoteSwiftPackageReference "SwiftyGif" */ = {
+		B8E051F12D7841D2003EDBD5 /* XCRemoteSwiftPackageReference "SwiftyGif" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kirualex/SwiftyGif";
 			requirement = {
@@ -1032,9 +1036,9 @@
 			package = B8CD65452CC104C400E8F8B3 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		B8CD65562CC2355E00E8F8B3 /* SwiftyGif */ = {
+		B8E051F22D7841D2003EDBD5 /* SwiftyGif */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B8CD65552CC2355E00E8F8B3 /* XCRemoteSwiftPackageReference "SwiftyGif" */;
+			package = B8E051F12D7841D2003EDBD5 /* XCRemoteSwiftPackageReference "SwiftyGif" */;
 			productName = SwiftyGif;
 		};
 		B8E6F8B02D17CFCE00CDC1C4 /* IQKeyboardManagerSwift */ = {

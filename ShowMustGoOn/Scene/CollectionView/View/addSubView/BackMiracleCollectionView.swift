@@ -11,6 +11,8 @@ import SnapKit
 
 class BackMiracleCollectionView: UIView {
     // MARK: - Properties
+    weak var parentViewController: UIViewController? //
+    
     var viewModel = BackMiracleCollectionViewModel()
     
     // MARK: - Components
@@ -29,12 +31,13 @@ class BackMiracleCollectionView: UIView {
         return collectionView
     }()
     
-    var addBackMiracleButton = CustomButton(type: .textButton(title: "기적 생성하기", color: .lavender, size: .large))
+    var addBackMiracleButton = CustomButton(type: .textButton(title: "빽일의 기적 추가", color: .lavender, size: .large))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
         hideOnLabel()
+        didTapAddBackMiracleButton()
     }
     
     required init?(coder: NSCoder) {
@@ -81,6 +84,24 @@ extension BackMiracleCollectionView {
     // 챌린지 없는 경우 라벨 숨기기
     func hideOnLabel() {
         nodataLabel.isHidden = !viewModel.backMiracles.isEmpty
+    }
+    
+    func didTapAddBackMiracleButton() {
+        addBackMiracleButton.addAction(UIAction(handler: { [weak self] _ in
+            guard let self = self else { return }
+            
+            let addBackMiracleVC = AddBackMiracleViewController()
+            let navController = UINavigationController(rootViewController: addBackMiracleVC)
+
+            //모달 크기 미디움
+            if let sheet = navController.sheetPresentationController {
+                sheet.detents = [.medium()]
+                sheet.prefersGrabberVisible = true //Grabber 노출 설정
+            }
+//            self.present(addBackMiracleVC, animated: true) // view라서 뷰컨 기능 권한 넘기기?
+            self.parentViewController?.present(navController, animated: true)
+            
+        }), for: .touchUpInside)
     }
 }
 

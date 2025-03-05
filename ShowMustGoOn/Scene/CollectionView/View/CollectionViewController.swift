@@ -134,6 +134,7 @@ private extension CollectionViewController {
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
         }
+        addTodoCollectionView.parentViewController = self
     }
 }
 
