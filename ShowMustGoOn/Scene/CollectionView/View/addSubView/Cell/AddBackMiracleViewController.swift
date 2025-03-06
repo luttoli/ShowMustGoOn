@@ -13,17 +13,34 @@ class AddBackMiracleViewController: UIViewController {
     // MARK: - Properties
     
     
-    // MARK: - Components    
+    // MARK: - Components
+    var inputTitleLabel = CustomLabel(title: "기적명", size: Constants.size.size15, weight: .Regular, color: .text.black)
+    
     var textField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "챌린지 타이틀을 입력하세요."
-        textField.borderStyle = .roundedRect
+        // PlaceholderColor 변경
+        textField.attributedPlaceholder = NSAttributedString(string: "미라클 타이틀을 입력하세요.", attributes: [NSAttributedString.Key.foregroundColor : UIColor.text.subDarkGray])
         textField.font = .toPretendard(size: Constants.size.size15, weight: .Regular)
         textField.backgroundColor = .systemBackground
         textField.textColor = .text.black
         textField.clearButtonMode = .whileEditing
+        
+        // 보더 스타일 제거 (roundedRect 대신 보더 굵기, 컬러, 굴곡, 여백 직접 설정)
+//        textField.borderStyle = .roundedRect
+        textField.borderStyle = .none
+        
+        // 커스텀 보더 추가
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.black.cgColor
+        textField.layer.cornerRadius = Constants.radius.px8
+
+        // 왼쪽 여백 추가
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: textField.frame.height))
+        textField.leftView = paddingView
+        textField.leftViewMode = .always // 항상 여백 적용
         return textField
     }()
+    
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -60,13 +77,23 @@ extension AddBackMiracleViewController {
 // MARK: - SetUp
 private extension AddBackMiracleViewController {
     func setUp() {
+        view.addSubview(inputTitleLabel)
         view.addSubview(textField)
         
-        textField.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
+        inputTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.vertical)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
         }
+        
+        textField.snp.makeConstraints {
+            $0.top.equalTo(inputTitleLabel.snp.bottom).offset(Constants.margin.vertical)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
+            $0.height.equalTo(60)
+        }
+        
+        
     }
 }
 
