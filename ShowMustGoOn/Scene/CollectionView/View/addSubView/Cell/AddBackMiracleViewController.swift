@@ -41,6 +41,36 @@ class AddBackMiracleViewController: UIViewController {
         return textField
     }()
     
+    var selectedStartTitleLabel = CustomLabel(title: "시작일", size: Constants.size.size15, weight: .Regular, color: .text.black)
+    
+    // 날짜 선택 유아이 고민...
+    var selectedStartDateTextField: UITextField = {
+        let selectedStartDateTextField = UITextField()
+        selectedStartDateTextField.attributedPlaceholder = NSAttributedString(string: "시작할 날짜를 선택하세요.", attributes: [NSAttributedString.Key.foregroundColor : UIColor.text.subDarkGray])
+        selectedStartDateTextField.font = .toPretendard(size: Constants.size.size15, weight: .Regular)
+        selectedStartDateTextField.backgroundColor = .systemBackground
+        selectedStartDateTextField.textColor = .text.black
+        
+        //
+        selectedStartDateTextField.borderStyle = .none
+        selectedStartDateTextField.layer.borderWidth = 1
+        selectedStartDateTextField.layer.borderColor = UIColor.black.cgColor
+        selectedStartDateTextField.layer.cornerRadius = Constants.radius.px8
+
+        //
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: selectedStartDateTextField.frame.height))
+        selectedStartDateTextField.leftView = paddingView
+        selectedStartDateTextField.leftViewMode = .always // 항상 여백 적용
+        
+        //
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .wheels
+        
+        selectedStartDateTextField.inputView = datePicker
+        
+        return selectedStartDateTextField
+    }()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -79,6 +109,8 @@ private extension AddBackMiracleViewController {
     func setUp() {
         view.addSubview(inputTitleLabel)
         view.addSubview(textField)
+        view.addSubview(selectedStartTitleLabel)
+        view.addSubview(selectedStartDateTextField)
         
         inputTitleLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.vertical)
@@ -93,7 +125,18 @@ private extension AddBackMiracleViewController {
             $0.height.equalTo(60)
         }
         
+        selectedStartTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(textField.snp.bottom).offset(Constants.margin.vertical)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
+        }
         
+        selectedStartDateTextField.snp.makeConstraints {
+            $0.top.equalTo(selectedStartTitleLabel.snp.bottom).offset(Constants.margin.vertical)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
+            $0.height.equalTo(60)
+        }
     }
 }
 
