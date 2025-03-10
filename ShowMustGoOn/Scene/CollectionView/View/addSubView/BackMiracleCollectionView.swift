@@ -20,6 +20,17 @@ class BackMiracleCollectionView: UIView {
     
     var appTitleLabel = CustomLabel(title: "빽일의 기적", size: Constants.size.size20, weight: .SemiBold, color: .text.black)
     
+    var addButtonIcon = CustomButton(type: .iconButton(icon: .plus))
+    
+    private lazy var titleHStackView: UIStackView = {
+        let titleHStackView = UIStackView(arrangedSubviews: [appTitleLabel, addButtonIcon])
+        titleHStackView.axis = .horizontal
+        titleHStackView.spacing = 0
+        titleHStackView.alignment = .center
+        titleHStackView.distribution = .fill
+        return titleHStackView
+    }()
+
     var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -31,7 +42,7 @@ class BackMiracleCollectionView: UIView {
         return collectionView
     }()
     
-    var addBackMiracleButton = CustomButton(type: .textButton(title: "빽일의 기적 추가", color: .lavender, size: .large))
+    var addButtonLarge = CustomButton(type: .textButton(title: "빽일의 기적 추가", color: .lavender, size: .large))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -49,30 +60,30 @@ class BackMiracleCollectionView: UIView {
 private extension BackMiracleCollectionView {
     func setUp() {
         addSubview(nodataLabel)
-        addSubview(appTitleLabel)
+        addSubview(titleHStackView)
         addSubview(collectionView)
-        addSubview(addBackMiracleButton)
+        addSubview(addButtonLarge)
         
         nodataLabel.snp.makeConstraints {
             $0.centerY.centerX.equalToSuperview()
         }
         
-        appTitleLabel.snp.makeConstraints {
+        titleHStackView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide)
             $0.leading.equalTo(safeAreaLayoutGuide)
             $0.trailing.equalTo(safeAreaLayoutGuide)
         }
         
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(appTitleLabel.snp.bottom).offset(Constants.spacing.px20)
+            $0.top.equalTo(appTitleLabel.snp.bottom).offset(Constants.margin.vertical)
             $0.leading.equalTo(safeAreaLayoutGuide)
             $0.trailing.equalTo(safeAreaLayoutGuide)
         }
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        addBackMiracleButton.snp.makeConstraints {
-            $0.top.equalTo(collectionView.snp.bottom).offset(Constants.spacing.px10)
+        addButtonLarge.snp.makeConstraints {
+            $0.top.equalTo(collectionView.snp.bottom).offset(Constants.margin.vertical)
             $0.bottom.equalTo(safeAreaLayoutGuide)
             $0.centerX.equalTo(safeAreaLayoutGuide)
         }
@@ -86,22 +97,31 @@ extension BackMiracleCollectionView {
         nodataLabel.isHidden = !viewModel.backMiracles.isEmpty
     }
     
+    // 추가하기 버튼 액션
     func didTapAddBackMiracleButton() {
-        addBackMiracleButton.addAction(UIAction(handler: { [weak self] _ in
+        addButtonIcon.addAction(UIAction(handler: { [weak self] _ in
             guard let self = self else { return }
-            
-            let addBackMiracleVC = AddBackMiracleViewController()
-            let navController = UINavigationController(rootViewController: addBackMiracleVC)
-
-            //모달 크기 미디움
-            if let sheet = navController.sheetPresentationController {
-                sheet.detents = [.medium()]
-                sheet.prefersGrabberVisible = true //Grabber 노출 설정
-            }
-//            self.present(addBackMiracleVC, animated: true) // view라서 뷰컨 기능 권한 넘기기?
-            self.parentViewController?.present(navController, animated: true)
-            
+            self.presentAddBackMiracleVC()
         }), for: .touchUpInside)
+        
+        addButtonLarge.addAction(UIAction(handler: { [weak self] _ in
+            guard let self = self else { return }
+            self.presentAddBackMiracleVC()
+        }), for: .touchUpInside)
+    }
+    
+    // 모달 띠우는 함수
+    private func presentAddBackMiracleVC() {
+        let addBackMiracleVC = AddBackMiracleViewController()
+        let navController = UINavigationController(rootViewController: addBackMiracleVC)
+
+        //모달 크기 미디움
+        if let sheet = navController.sheetPresentationController {
+            sheet.detents = [.medium()]
+            sheet.prefersGrabberVisible = true //Grabber 노출 설정
+        }
+//            self.present(addBackMiracleVC, animated: true) // view라서 뷰컨 기능 권한 넘기기?
+        self.parentViewController?.present(navController, animated: true)
     }
 }
 
