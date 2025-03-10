@@ -72,6 +72,8 @@ class AddBackMiracleViewController: UIViewController {
         return selectedStartDateTextField
     }()
     
+    let makeBackMriracleButton = CustomButton(type: .textButton(title: "빽미라클 생성하기", color: .lavender, size: .large))
+    
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -91,6 +93,7 @@ extension AddBackMiracleViewController {
         
         navigationUI()
         setUp()
+        didTapmakeBackMiracleButton()
     }
 }
 
@@ -111,6 +114,8 @@ private extension AddBackMiracleViewController {
         view.addSubview(textField)
         view.addSubview(selectedStartTitleLabel)
         view.addSubview(selectedStartDateTextField)
+        
+        view.addSubview(makeBackMriracleButton)
         
         inputTitleLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.vertical)
@@ -137,12 +142,29 @@ private extension AddBackMiracleViewController {
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
             $0.height.equalTo(60)
         }
+        
+        
+        
+        makeBackMriracleButton.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
+            $0.centerX.equalTo(view.safeAreaLayoutGuide)
+        }
     }
 }
 
 // MARK: - Method
 private extension AddBackMiracleViewController {
-    
+    func didTapmakeBackMiracleButton() {
+        makeBackMriracleButton.addAction(UIAction(handler: { [weak self] _ in
+            guard let self = self else { return }
+            print("빽미라클 생성하기 버튼 클릭")
+            
+            
+            
+            dismiss(animated: true)
+            
+        }), for: .touchUpInside)
+    }
 }
 
 // MARK: - Delegate
