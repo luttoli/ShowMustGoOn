@@ -16,7 +16,12 @@ class RxWeatherViewController: UIViewController {
     
     
     // MARK: - Components
+    lazy var chartButton: UIBarButtonItem = {
+        let chartButton = UIBarButtonItem(image: UIImage(systemName: "chart.bar.xaxis"), style: .plain, target: self, action: #selector(goChartView))
+        return chartButton
+    }()
     
+    //
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -47,6 +52,9 @@ extension RxWeatherViewController {
         
         let viewTitle = CustomLabel(title: "RxSwift WeatherApp", size: Constants.size.size20, weight: .Bold, color: .text.black)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: viewTitle)
+        
+        navigationItem.rightBarButtonItem = chartButton
+        navigationController?.navigationBar.tintColor = .button.lavender
     }
 }
 
@@ -59,5 +67,10 @@ private extension RxWeatherViewController {
 
 // MARK: - Method
 private extension RxWeatherViewController {
-    
+    //
+    @objc func goChartView() {
+        let chartVC = ChartViewController()
+        chartVC.hidesBottomBarWhenPushed = true // VC tabbar 숨기기
+        navigationController?.pushViewController(chartVC, animated: true)
+    }
 }

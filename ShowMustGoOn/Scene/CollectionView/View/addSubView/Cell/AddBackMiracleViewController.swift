@@ -159,7 +159,7 @@ private extension AddBackMiracleViewController {
             guard let self = self else { return }
             print("빽미라클 생성하기 버튼 클릭")
             
-            
+            // 생성되는 동작 추가
             
             dismiss(animated: true)
             

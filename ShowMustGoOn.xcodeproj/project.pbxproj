@@ -57,6 +57,10 @@
 		B8975F332CF06D6F008F2BA6 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8975F322CF06D6F008F2BA6 /* CustomButton.swift */; };
 		B8975F392CFE936A008F2BA6 /* RxTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8975F382CFE936A008F2BA6 /* RxTableViewController.swift */; };
 		B8975F3E2CFEA1AD008F2BA6 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B8975F3D2CFEA1AD008F2BA6 /* RxSwift */; };
+		B8B9A0AC2D8079FB00CFB213 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B9A0AB2D8079FB00CFB213 /* ChartViewController.swift */; };
+		B8B9A0AF2D808CA800CFB213 /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B9A0AE2D808CA800CFB213 /* BarChartView.swift */; };
+		B8B9A0B12D808CB600CFB213 /* DotChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B9A0B02D808CB600CFB213 /* DotChartView.swift */; };
+		B8B9A0B32D808CC500CFB213 /* CircleChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B9A0B22D808CC500CFB213 /* CircleChartView.swift */; };
 		B8B9A1AB2D06763C008D8130 /* RxTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B9A1AA2D06763C008D8130 /* RxTextFieldViewController.swift */; };
 		B8B9A1AF2D073952008D8130 /* CustomSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B9A1AE2D073952008D8130 /* CustomSegment.swift */; };
 		B8B9A1B72D086AA6008D8130 /* RxBasicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B9A1B62D086AA6008D8130 /* RxBasicTableView.swift */; };
@@ -168,6 +172,10 @@
 		B877DC052CEAE361009D9C49 /* AddTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTableViewModel.swift; sourceTree = "<group>"; };
 		B8975F322CF06D6F008F2BA6 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		B8975F382CFE936A008F2BA6 /* RxTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTableViewController.swift; sourceTree = "<group>"; };
+		B8B9A0AB2D8079FB00CFB213 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		B8B9A0AE2D808CA800CFB213 /* BarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
+		B8B9A0B02D808CB600CFB213 /* DotChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotChartView.swift; sourceTree = "<group>"; };
+		B8B9A0B22D808CC500CFB213 /* CircleChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleChartView.swift; sourceTree = "<group>"; };
 		B8B9A1AA2D06763C008D8130 /* RxTextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTextFieldViewController.swift; sourceTree = "<group>"; };
 		B8B9A1AE2D073952008D8130 /* CustomSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegment.swift; sourceTree = "<group>"; };
 		B8B9A1B62D086AA6008D8130 /* RxBasicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxBasicTableView.swift; sourceTree = "<group>"; };
@@ -246,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				B80B9F1A2D101EE800052199 /* RxWeatherViewController.swift */,
+				B8B9A0AA2D8079E100CFB213 /* PracticeChart */,
 			);
 			path = RxWeatherForecast;
 			sourceTree = "<group>";
@@ -332,6 +341,25 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B8B9A0AA2D8079E100CFB213 /* PracticeChart */ = {
+			isa = PBXGroup;
+			children = (
+				B8B9A0AB2D8079FB00CFB213 /* ChartViewController.swift */,
+				B8B9A0AD2D808B4000CFB213 /* addSubView */,
+			);
+			path = PracticeChart;
+			sourceTree = "<group>";
+		};
+		B8B9A0AD2D808B4000CFB213 /* addSubView */ = {
+			isa = PBXGroup;
+			children = (
+				B8B9A0AE2D808CA800CFB213 /* BarChartView.swift */,
+				B8B9A0B02D808CB600CFB213 /* DotChartView.swift */,
+				B8B9A0B22D808CC500CFB213 /* CircleChartView.swift */,
+			);
+			path = addSubView;
 			sourceTree = "<group>";
 		};
 		B8B9A1A92D06747F008D8130 /* PracticeRx */ = {
@@ -720,8 +748,10 @@
 				B8E6F8EB2D48913700CDC1C4 /* CalculateCollectionView.swift in Sources */,
 				B80B9F102D0D5E5F00052199 /* RxTodoTableView.swift in Sources */,
 				B8CD655B2CC8848900E8F8B3 /* UITableViewCell.swift in Sources */,
+				B8B9A0B32D808CC500CFB213 /* CircleChartView.swift in Sources */,
 				B8E6F8E32D4727C700CDC1C4 /* BasicCollectionViewModel.swift in Sources */,
 				B80B9F1D2D110B3A00052199 /* RxSectionTableViewModel.swift in Sources */,
+				B8B9A0AF2D808CA800CFB213 /* BarChartView.swift in Sources */,
 				B8CD65392CC0FD7100E8F8B3 /* TableViewController.swift in Sources */,
 				B8BDF7EF2D05DB0D0045FA94 /* RxButtonViewController.swift in Sources */,
 				B877DC002CEACB10009D9C49 /* AddTableView.swift in Sources */,
@@ -752,9 +782,11 @@
 				B80B9F182D101E8200052199 /* RxCollectionViewController.swift in Sources */,
 				B877DBE62CD9B621009D9C49 /* UICollectionViewCell.swift in Sources */,
 				B8E6F8CB2D4348AA00CDC1C4 /* BasicCollectionView.swift in Sources */,
+				B8B9A0B12D808CB600CFB213 /* DotChartView.swift in Sources */,
 				B877DBCF2CD373D5009D9C49 /* BasicTableModel.swift in Sources */,
 				B8E6F8DB2D4686E600CDC1C4 /* BackMiracleCollectionView.swift in Sources */,
 				B877DBE42CD9B5F8009D9C49 /* HorizontalImageCollectionViewCell.swift in Sources */,
+				B8B9A0AC2D8079FB00CFB213 /* ChartViewController.swift in Sources */,
 				B8E6F8BF2D39EAFF00CDC1C4 /* RxAddTableViewModel.swift in Sources */,
 				B8E6F8BA2D2CCDD800CDC1C4 /* RxMixTableViewModel.swift in Sources */,
 			);
@@ -788,7 +820,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -816,7 +848,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

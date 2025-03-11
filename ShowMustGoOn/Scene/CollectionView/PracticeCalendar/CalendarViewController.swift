@@ -87,6 +87,15 @@ extension CalendarViewController {
 extension CalendarViewController {
     func navigationUI() {
         navigationController?.navigationBar.barTintColor = .background.white
+        
+        let titleLabel = UILabel()
+        titleLabel.text = "Calendar"
+        titleLabel.font = UIFont.toPretendard(size: Constants.size.size18, weight: .medium)
+        titleLabel.textColor = .text.black
+        titleLabel.textAlignment = .center
+        
+        self.navigationItem.titleView = titleLabel
+        
         navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 }
