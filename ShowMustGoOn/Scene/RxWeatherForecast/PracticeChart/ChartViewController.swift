@@ -7,17 +7,27 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
 import SnapKit
 
 class ChartViewController: UIViewController {
     // MARK: - Properties
-    
+    let disposeBag = DisposeBag()
     
     // MARK: - Components
-    let segment = CustomSegment(items: ["바차트", "점차트", "원차트"])
-    let barChartView = BarChartView()
-    let dotChartView = DotChartView()
-    let circleChartView = CircleChartView()
+//    let segment = CustomSegment(items: ["바차트", "점차트", "원차트", "선차트", "뭔차트"])
+    let segment: UISegmentedControl = {
+        let segment = UISegmentedControl(items: ["바차트", "점차트", "원차트", "선차트", "뭔차트"])
+        segment.selectedSegmentIndex = 0
+        
+        return segment
+    }()
+    var barChartView = BarChartView()
+    var dotChartView = DotChartView()
+    var circleChartView = CircleChartView()
+    var lineChartView = LineChartView()
+    var semiCircleView = SemiCircleView()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -46,11 +56,11 @@ extension ChartViewController {
         super.viewWillAppear(animated)
         
         // 세그먼트 인덱스 초기화
-        segment.segment.selectedSegmentIndex = 0
-        segment.updateBottomLinePosition()
+//        segment.segment.selectedSegmentIndex = 0
+//        segment.updateBottomLinePosition()
         
         // 초기화된 세그먼트 인덱스에 맞는 화면 업데이트
-        segment.selectedIndex.accept(0)
+//        segment.selectedIndex.accept(0)
     }
 }
 
@@ -78,6 +88,14 @@ private extension ChartViewController {
         view.addSubview(barChartView)
         view.addSubview(dotChartView)
         view.addSubview(circleChartView)
+        view.addSubview(lineChartView)
+        view.addSubview(semiCircleView)
+        
+        let chartViews = [dotChartView, circleChartView, lineChartView, semiCircleView]
+
+        for chartView in chartViews {
+            chartView.isHidden = true
+        }
         
         segment.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
@@ -106,35 +124,73 @@ private extension ChartViewController {
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
         }
+        
+        lineChartView.snp.makeConstraints {
+            $0.top.equalTo(segment.snp.bottom).offset(Constants.margin.vertical)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
+        }
+        
+        semiCircleView.snp.makeConstraints {
+            $0.top.equalTo(segment.snp.bottom).offset(Constants.margin.vertical)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
+        }
     }
 }
 
 // MARK: - Method
 private extension ChartViewController {
+//    func segmentClickEvent() {
+//        segment.selectedIndex
+//            .subscribe(onNext: { index in
+//                // 모든 뷰 숨김 처리
+//                let segmentView = [self.barChartView, self.dotChartView, self.circleChartView, self.lineChartView, self.semiCircleView]
+//                segmentView.forEach { $0.isHidden = true }
+//                
+//                // 선택된 세그먼트에 따라 해당 뷰만 보이게
+//                switch index {
+//                case 0:
+//                    self.barChartView.isHidden = false
+//                case 1:
+//                    self.dotChartView.isHidden = false
+//                case 2:
+//                    self.circleChartView.isHidden = false
+//                case 3:
+//                    self.lineChartView.isHidden = false
+//                case 4:
+//                    self.semiCircleView.isHidden = false
+//                default:
+//                    break
+//                }
+//            })
+//            .disposed(by: disposeBag)
+//    }
     func segmentClickEvent() {
-        segment.selectedIndex
-            .subscribe(onNext: { index in
-                // 모든 뷰 숨김 처리
-                let segmentView = [self.barChartView, self.dotChartView, self.circleChartView]
-                segmentView.forEach { $0.isHidden = true }
-                
-                // 선택된 세그먼트에 따라 해당 뷰만 보이게
-                switch index {
-                case 0:
-                    self.barChartView.isHidden = false
-                case 1:
-                    self.dotChartView.isHidden = false
-                case 2:
-                    self.circleChartView.isHidden = false
-                default:
-                    break
-                }
-            })
-            .disposed(by: disposeBag)
+        segment.addAction(UIAction(handler: { [weak self] _ in
+            self?.changeView()
+        }), for: .valueChanged)
     }
-}
-
-// MARK: - Delegate
-extension ChartViewController {
     
+    func changeView() {
+        let chartViews = [barChartView, dotChartView, circleChartView, lineChartView, semiCircleView]
+        chartViews.forEach { $0.isHidden = true }
+
+        switch segment.selectedSegmentIndex {
+        case 0:
+            barChartView.isHidden = false
+        case 1:
+            dotChartView.isHidden = false
+        case 2:
+            circleChartView.isHidden = false
+        case 3:
+            lineChartView.isHidden = false
+        case 4:
+            semiCircleView.isHidden = false
+        default:
+            break
+        }
+    }
 }

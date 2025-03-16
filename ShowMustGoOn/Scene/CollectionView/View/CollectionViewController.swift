@@ -7,15 +7,17 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
 import SnapKit
 
 class CollectionViewController: UIViewController {
     // MARK: - Properties
-    
+    let disposeBag = DisposeBag()
     
     // MARK: - Components
     lazy var calendarButton: UIBarButtonItem = {
-        let calendarButton = UIBarButtonItem(image: UIImage(systemName: "calendar"), style: .plain, target: self, action: #selector(goCalendarButton))
+        let calendarButton = UIBarButtonItem(image: UIImage(systemName: "calendar"), style: .plain, target: self, action: #selector(goCalendarView))
         return calendarButton
     }()
     
@@ -141,7 +143,7 @@ private extension CollectionViewController {
 // MARK: - Method
 private extension CollectionViewController {
     //
-    @objc func goCalendarButton() {
+    @objc func goCalendarView() {
         let calendarVC = CalendarViewController()
         calendarVC.hidesBottomBarWhenPushed = true // VC tabbar 숨기기
         navigationController?.pushViewController(calendarVC, animated: true)

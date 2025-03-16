@@ -12,6 +12,7 @@ import SnapKit
 class DotChartView: UIView {
     // MARK: - Properties
     
+    
     // MARK: - Components
     
     
@@ -28,7 +29,7 @@ class DotChartView: UIView {
 // MARK: - SetUp
 private extension DotChartView {
     func setUp() {
-        
+        backgroundColor = .yellow
     }
 }
 

@@ -1,15 +1,15 @@
 //
-//  CircleChartView.swift
+//  SemiCircleView.swift
 //  ShowMustGoOn
 //
-//  Created by 김지훈 on 3/12/25.
+//  Created by 김지훈 on 3/15/25.
 //
 
 import UIKit
 
 import SnapKit
 
-class CircleChartView: UIView {
+class SemiCircleView: UIView {
     // MARK: - Properties
     
     
@@ -27,13 +27,13 @@ class CircleChartView: UIView {
 }
 
 // MARK: - SetUp
-private extension CircleChartView {
+private extension SemiCircleView {
     func setUp() {
-        backgroundColor = .red
+        backgroundColor = .black
     }
 }
 
 // MARK: - Method
-extension CircleChartView {
+extension SemiCircleView {
 
 }

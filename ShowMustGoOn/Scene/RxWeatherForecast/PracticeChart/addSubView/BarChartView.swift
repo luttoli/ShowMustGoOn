@@ -29,7 +29,7 @@ class BarChartView: UIView {
 // MARK: - SetUp
 private extension BarChartView {
     func setUp() {
-        
+        backgroundColor = .white
     }
 }
 
