@@ -10,106 +10,19 @@ import UIKit
 class BackMiracleCollectionViewModel {
     let backMiracles: [BackMiracleCollectionModel] = [
         BackMiracleCollectionModel(
-            id: UUID(),
             title: "코딩해서 깃헙에 올리기",
-            date: Date(),
-            backDays: [
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-            ]
+            startDate: Date()
         ),
         BackMiracleCollectionModel(
-            id: UUID(),
-            title: "100일의 기적 : 헬스장 가기",
-            date: Date(),
-            backDays: [
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: false),
-                BackDays(date: Date(), isChecked: true),
-                BackDays(date: Date(), isChecked: true),
-            ]
+            title: "너의 목소리가 들려",
+            startDate: Date()
+        ),
+        BackMiracleCollectionModel(
+            title: "나는 솔로",
+            startDate: Date()
         )
     ]
-    
+
     //
     var calendar: Calendar = {
         var calendar = Calendar(identifier: .gregorian)
@@ -144,13 +57,8 @@ class BackMiracleCollectionViewModel {
         
     }
     
-    
-    
-    
-    
     // 전체 챌린지 중 완료된 개수 계산
     var doneCount: Int {
         backMiracles.reduce(0) { $0 + $1.doneCount }
     }
-
 }

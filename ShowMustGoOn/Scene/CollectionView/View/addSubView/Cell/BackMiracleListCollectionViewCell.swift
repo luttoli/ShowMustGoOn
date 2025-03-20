@@ -48,7 +48,7 @@ class BackMiracleListCollectionViewCell: UICollectionViewCell {
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.isPagingEnabled = false
+        collectionView.isPagingEnabled = true
         return collectionView
     }()
     
@@ -163,7 +163,7 @@ extension BackMiracleListCollectionViewCell: UICollectionViewDelegate, UICollect
         cell.backgroundColor = UIColor.systemGray4
         cell.layer.cornerRadius = Constants.radius.px4
         
-        cell.backgroundColor = backMiracle?.backDays[indexPath.row].isChecked == true ? .background.lavender : UIColor.systemGray4
+//        cell.backgroundColor = backMiracle?.backDays[indexPath.row].isChecked == true ? .background.lavender : UIColor.systemGray4
         
         return cell
     }
