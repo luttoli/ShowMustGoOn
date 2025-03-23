@@ -77,6 +77,7 @@
 		B8BD4C0C2D8FED520005FECD /* RxCalculateCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BD4C0B2D8FED520005FECD /* RxCalculateCollectionView.swift */; };
 		B8BD4C0E2D8FED5E0005FECD /* RxCalendarCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BD4C0D2D8FED5E0005FECD /* RxCalendarCollectionView.swift */; };
 		B8BD4C102D8FED6C0005FECD /* RxBackMiracleCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BD4C0F2D8FED6C0005FECD /* RxBackMiracleCollectionView.swift */; };
+		B8BD4C122D8FF2E30005FECD /* RxBasicCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BD4C112D8FF2E30005FECD /* RxBasicCollectionViewModel.swift */; };
 		B8BDF7ED2D04430E0045FA94 /* RxSwiftPractice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDF7EC2D04430E0045FA94 /* RxSwiftPractice.swift */; };
 		B8BDF7EF2D05DB0D0045FA94 /* RxButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDF7EE2D05DB0D0045FA94 /* RxButtonViewController.swift */; };
 		B8CD65282CC0FC5C00E8F8B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD651E2CC0FC5C00E8F8B3 /* AppDelegate.swift */; };
@@ -200,6 +201,7 @@
 		B8BD4C0B2D8FED520005FECD /* RxCalculateCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCalculateCollectionView.swift; sourceTree = "<group>"; };
 		B8BD4C0D2D8FED5E0005FECD /* RxCalendarCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCalendarCollectionView.swift; sourceTree = "<group>"; };
 		B8BD4C0F2D8FED6C0005FECD /* RxBackMiracleCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxBackMiracleCollectionView.swift; sourceTree = "<group>"; };
+		B8BD4C112D8FF2E30005FECD /* RxBasicCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxBasicCollectionViewModel.swift; sourceTree = "<group>"; };
 		B8BDF7EC2D04430E0045FA94 /* RxSwiftPractice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftPractice.swift; sourceTree = "<group>"; };
 		B8BDF7EE2D05DB0D0045FA94 /* RxButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxButtonViewController.swift; sourceTree = "<group>"; };
 		B8CD65052CC0FC4000E8F8B3 /* ShowMustGoOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowMustGoOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -393,6 +395,7 @@
 		B8B9A0B62D854EC900CFB213 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				B8BD4C112D8FF2E30005FECD /* RxBasicCollectionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -886,6 +889,7 @@
 				B877DBE62CD9B621009D9C49 /* UICollectionViewCell.swift in Sources */,
 				B8E6F8CB2D4348AA00CDC1C4 /* BasicCollectionView.swift in Sources */,
 				B8B9A0B12D808CB600CFB213 /* DotChartView.swift in Sources */,
+				B8BD4C122D8FF2E30005FECD /* RxBasicCollectionViewModel.swift in Sources */,
 				B877DBCF2CD373D5009D9C49 /* BasicTableModel.swift in Sources */,
 				B8E6F8DB2D4686E600CDC1C4 /* BackMiracleCollectionView.swift in Sources */,
 				B877DBE42CD9B5F8009D9C49 /* HorizontalImageCollectionViewCell.swift in Sources */,
