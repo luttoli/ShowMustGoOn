@@ -48,7 +48,7 @@ class BackMiracleListCollectionViewCell: UICollectionViewCell {
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.isPagingEnabled = true
+        collectionView.isPagingEnabled = false
         return collectionView
     }()
     

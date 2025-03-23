@@ -71,6 +71,12 @@
 		B8B9A1BD2D086B01008D8130 /* RxAddTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B9A1BC2D086B01008D8130 /* RxAddTableView.swift */; };
 		B8B9A1BF2D0930D4008D8130 /* RxMixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B9A1BE2D0930D4008D8130 /* RxMixViewController.swift */; };
 		B8B9A1C32D0AEAB4008D8130 /* RxBasicTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B9A1C22D0AEAB4008D8130 /* RxBasicTableViewModel.swift */; };
+		B8BD4C062D8FED240005FECD /* RxBasicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BD4C052D8FED240005FECD /* RxBasicCollectionView.swift */; };
+		B8BD4C082D8FED360005FECD /* RxSelectCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BD4C072D8FED360005FECD /* RxSelectCollectionView.swift */; };
+		B8BD4C0A2D8FED450005FECD /* RxKeyboardCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BD4C092D8FED450005FECD /* RxKeyboardCollectionView.swift */; };
+		B8BD4C0C2D8FED520005FECD /* RxCalculateCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BD4C0B2D8FED520005FECD /* RxCalculateCollectionView.swift */; };
+		B8BD4C0E2D8FED5E0005FECD /* RxCalendarCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BD4C0D2D8FED5E0005FECD /* RxCalendarCollectionView.swift */; };
+		B8BD4C102D8FED6C0005FECD /* RxBackMiracleCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BD4C0F2D8FED6C0005FECD /* RxBackMiracleCollectionView.swift */; };
 		B8BDF7ED2D04430E0045FA94 /* RxSwiftPractice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDF7EC2D04430E0045FA94 /* RxSwiftPractice.swift */; };
 		B8BDF7EF2D05DB0D0045FA94 /* RxButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDF7EE2D05DB0D0045FA94 /* RxButtonViewController.swift */; };
 		B8CD65282CC0FC5C00E8F8B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD651E2CC0FC5C00E8F8B3 /* AppDelegate.swift */; };
@@ -188,6 +194,12 @@
 		B8B9A1BC2D086B01008D8130 /* RxAddTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxAddTableView.swift; sourceTree = "<group>"; };
 		B8B9A1BE2D0930D4008D8130 /* RxMixViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxMixViewController.swift; sourceTree = "<group>"; };
 		B8B9A1C22D0AEAB4008D8130 /* RxBasicTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxBasicTableViewModel.swift; sourceTree = "<group>"; };
+		B8BD4C052D8FED240005FECD /* RxBasicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxBasicCollectionView.swift; sourceTree = "<group>"; };
+		B8BD4C072D8FED360005FECD /* RxSelectCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSelectCollectionView.swift; sourceTree = "<group>"; };
+		B8BD4C092D8FED450005FECD /* RxKeyboardCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxKeyboardCollectionView.swift; sourceTree = "<group>"; };
+		B8BD4C0B2D8FED520005FECD /* RxCalculateCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCalculateCollectionView.swift; sourceTree = "<group>"; };
+		B8BD4C0D2D8FED5E0005FECD /* RxCalendarCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCalendarCollectionView.swift; sourceTree = "<group>"; };
+		B8BD4C0F2D8FED6C0005FECD /* RxBackMiracleCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxBackMiracleCollectionView.swift; sourceTree = "<group>"; };
 		B8BDF7EC2D04430E0045FA94 /* RxSwiftPractice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftPractice.swift; sourceTree = "<group>"; };
 		B8BDF7EE2D05DB0D0045FA94 /* RxButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxButtonViewController.swift; sourceTree = "<group>"; };
 		B8CD65052CC0FC4000E8F8B3 /* ShowMustGoOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowMustGoOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -249,7 +261,6 @@
 		B80B9F162D101E4900052199 /* RxCollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				B8B9A0B82D854ED000CFB213 /* Model */,
 				B8B9A0B72D854ECD00CFB213 /* View */,
 				B8B9A0B62D854EC900CFB213 /* ViewModel */,
 			);
@@ -395,16 +406,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		B8B9A0B82D854ED000CFB213 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		B8B9A0B92D854EE500CFB213 /* addSubView */ = {
 			isa = PBXGroup;
 			children = (
+				B8BD4C052D8FED240005FECD /* RxBasicCollectionView.swift */,
+				B8BD4C072D8FED360005FECD /* RxSelectCollectionView.swift */,
+				B8BD4C092D8FED450005FECD /* RxKeyboardCollectionView.swift */,
+				B8BD4C0B2D8FED520005FECD /* RxCalculateCollectionView.swift */,
+				B8BD4C0D2D8FED5E0005FECD /* RxCalendarCollectionView.swift */,
+				B8BD4C0F2D8FED6C0005FECD /* RxBackMiracleCollectionView.swift */,
 				B8B9A0BA2D854EF300CFB213 /* Cell */,
 			);
 			path = addSubView;
@@ -808,6 +818,7 @@
 				B8CD655D2CC8879800E8F8B3 /* BasicTableViewCell.swift in Sources */,
 				B877DC042CEAE2A0009D9C49 /* AddTableModel.swift in Sources */,
 				B8E6F8BD2D30CB6800CDC1C4 /* RxHorizontalTableViewCell.swift in Sources */,
+				B8BD4C082D8FED360005FECD /* RxSelectCollectionView.swift in Sources */,
 				B8CD65282CC0FC5C00E8F8B3 /* AppDelegate.swift in Sources */,
 				B877DBD12CD373E0009D9C49 /* BasicTableViewModel.swift in Sources */,
 				B85AE54D2D6852F7004D4F46 /* CalendarViewModel.swift in Sources */,
@@ -815,6 +826,7 @@
 				B8E6F8CF2D43CF3F00CDC1C4 /* KeyboardCollectionViewCell.swift in Sources */,
 				B8CD65292CC0FC5C00E8F8B3 /* SceneDelegate.swift in Sources */,
 				B8975F392CFE936A008F2BA6 /* RxTableViewController.swift in Sources */,
+				B8BD4C0C2D8FED520005FECD /* RxCalculateCollectionView.swift in Sources */,
 				B8E6F8E72D4878D300CDC1C4 /* SelectCollectionModel.swift in Sources */,
 				B867451E2D4C6A430033AEC9 /* CalculateCollectionViewModel.swift in Sources */,
 				B8B9A1AB2D06763C008D8130 /* RxTextFieldViewController.swift in Sources */,
@@ -825,6 +837,7 @@
 				B877DBE02CD99D02009D9C49 /* MixTableView.swift in Sources */,
 				B877DBDA2CD472A9009D9C49 /* SectionTableViewModel.swift in Sources */,
 				B8CD65422CC0FEC000E8F8B3 /* Constants.swift in Sources */,
+				B8BD4C102D8FED6C0005FECD /* RxBackMiracleCollectionView.swift in Sources */,
 				B8B9A1BD2D086B01008D8130 /* RxAddTableView.swift in Sources */,
 				B877DBE82CD9B96C009D9C49 /* VerticalTableViewCell.swift in Sources */,
 				B80530B52D85C93C00C89545 /* LineChartView.swift in Sources */,
@@ -839,6 +852,7 @@
 				B8E6F8E32D4727C700CDC1C4 /* BasicCollectionViewModel.swift in Sources */,
 				B80B9F1D2D110B3A00052199 /* RxSectionTableViewModel.swift in Sources */,
 				B80530B72D85C9AF00C89545 /* SemiCircleView.swift in Sources */,
+				B8BD4C062D8FED240005FECD /* RxBasicCollectionView.swift in Sources */,
 				B8B9A0AF2D808CA800CFB213 /* BarChartView.swift in Sources */,
 				B8CD65392CC0FD7100E8F8B3 /* TableViewController.swift in Sources */,
 				B8BDF7EF2D05DB0D0045FA94 /* RxButtonViewController.swift in Sources */,
@@ -851,6 +865,7 @@
 				B877DBDC2CD47374009D9C49 /* SectionTableViewCell.swift in Sources */,
 				B867451C2D4C6A370033AEC9 /* CalculateCollectionModel.swift in Sources */,
 				B85AE55D2D76D55A004D4F46 /* AddBackMiracleViewController.swift in Sources */,
+				B8BD4C0E2D8FED5E0005FECD /* RxCalendarCollectionView.swift in Sources */,
 				B8CD653E2CC0FE8600E8F8B3 /* UIColor.swift in Sources */,
 				B8E6F8E52D4878B700CDC1C4 /* SelectCollectionViewModel.swift in Sources */,
 				B8B9A1BF2D0930D4008D8130 /* RxMixViewController.swift in Sources */,
@@ -875,6 +890,7 @@
 				B8E6F8DB2D4686E600CDC1C4 /* BackMiracleCollectionView.swift in Sources */,
 				B877DBE42CD9B5F8009D9C49 /* HorizontalImageCollectionViewCell.swift in Sources */,
 				B8B9A0AC2D8079FB00CFB213 /* ChartViewController.swift in Sources */,
+				B8BD4C0A2D8FED450005FECD /* RxKeyboardCollectionView.swift in Sources */,
 				B8E6F8BF2D39EAFF00CDC1C4 /* RxAddTableViewModel.swift in Sources */,
 				B8E6F8BA2D2CCDD800CDC1C4 /* RxMixTableViewModel.swift in Sources */,
 			);

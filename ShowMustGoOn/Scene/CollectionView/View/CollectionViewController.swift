@@ -27,7 +27,7 @@ class CollectionViewController: UIViewController {
     let keyboardCollectionView = KeyboardCollectionView()
     let calculateCollectionView = CalculateCollectionView()
     let calendarCollectionView = CalendarCollectionView()
-    let addTodoCollectionView = BackMiracleCollectionView()
+    let backMiracleCollectionView = BackMiracleCollectionView()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -86,7 +86,7 @@ private extension CollectionViewController {
         view.addSubview(keyboardCollectionView)
         view.addSubview(calculateCollectionView)
         view.addSubview(calendarCollectionView)
-        view.addSubview(addTodoCollectionView)
+        view.addSubview(backMiracleCollectionView)
         
         segment.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
@@ -130,13 +130,13 @@ private extension CollectionViewController {
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
         }
         
-        addTodoCollectionView.snp.makeConstraints {
+        backMiracleCollectionView.snp.makeConstraints {
             $0.top.equalTo(segment.snp.bottom).offset(Constants.margin.vertical)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
         }
-        addTodoCollectionView.parentViewController = self
+        backMiracleCollectionView.parentViewController = self
     }
 }
 
@@ -153,7 +153,7 @@ private extension CollectionViewController {
         segment.selectedIndex
             .subscribe(onNext: { index in
                 // 모든 뷰 숨김 처리
-                let segmentView = [self.basicCollectionView, self.selectCollectionView, self.keyboardCollectionView, self.calculateCollectionView, self.calendarCollectionView, self.addTodoCollectionView]
+                let segmentView = [self.basicCollectionView, self.selectCollectionView, self.keyboardCollectionView, self.calculateCollectionView, self.calendarCollectionView, self.backMiracleCollectionView]
                 segmentView.forEach { $0.isHidden = true }
                 
                 // 선택된 세그먼트에 따라 해당 뷰만 보이게
@@ -169,7 +169,7 @@ private extension CollectionViewController {
                 case 4:
                     self.calendarCollectionView.isHidden = false
                 case 5:
-                    self.addTodoCollectionView.isHidden = false
+                    self.backMiracleCollectionView.isHidden = false
                 default:
                     break
                 }
